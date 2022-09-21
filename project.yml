@@ -1,0 +1,15 @@
+name: BasisTheory
+targets:
+  OpenAPIClient:
+    type: framework
+    platform: iOS
+    deploymentTarget: "9.0"
+    sources: [BasisTheory]
+    info:
+      path: ./Info.plist
+      version: v1
+    settings:
+      APPLICATION_EXTENSION_API_ONLY: true
+    scheme: {}
+    dependencies:
+    - carthage: AnyCodable
