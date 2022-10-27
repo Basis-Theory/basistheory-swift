@@ -1,0 +1,46 @@
+name: Release
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  tag:
+    name: Tag repo
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.SEMANTIC_RELEASE_PAT }}
+
+      - name: Bump version and push tag
+        id: tag-version
+        uses: mathieudutour/github-tag-action@v6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          default_bump: false
+          tag_prefix: ""
+
+      - name: Commit files
+        if: ${{ steps.tag-version.outputs.release_type != '' }}
+        run: |
+          git config --local user.email "platform@basistheory.com"
+          git config --local user.name "github-actions[bot]"
+
+          sed -i "s/\(s.version = \)'[^']*'/\1'${{ steps.tag-version.outputs.new_tag }}'/g" BasisTheory.podspec
+          sed -i 's/^\(tag *=*\)"[^"]*"/\1"${{ steps.tag-version.outputs.new_tag }}"/' BasisTheory.podspec # replace a.b.c with output from tag-version step ${{ steps.tag-version.outputs.new_tag }}
+
+
+          echo "${{ steps.tag-version.outputs.changelog }}" | cat - CHANGELOG.md > temp && mv temp CHANGELOG.md
+
+          git add CHANGELOG.md BasisTheory.podspect
+          git commit -m "chore(release): upating podspec and changelog ${{ steps.tag-version.outputs.new_tag }} [skip ci]" || echo "Nothing to update"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        if: ${{ steps.tag-version.outputs.release_type != '' }}
+        with:
+          github_token: ${{ secrets.SEMANTIC_RELEASE_PAT }}
+          branch: ${{ github.ref }}

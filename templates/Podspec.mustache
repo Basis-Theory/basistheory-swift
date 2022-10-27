@@ -13,13 +13,13 @@ Pod::Spec.new do |s|
   {{/useAlamofire}}
   s.watchos.deployment_target = '3.0'
   s.version = '0.0.1'
-  s.source = {{#podSource}}{{& podSource}}{{/podSource}}{{^podSource}}{ :git => 'git@github.com:OpenAPITools/openapi-generator.git', :tag => '0.0.1' }{{/podSource}}
+  s.source = {{#podSource}}{{& podSource}}{{/podSource}}{{^podSource}}{ :git => 'git@github.com:Basis-Theory/basistheory-swift.git', :tag => '0.0.1' }{{/podSource}}
   s.authors = 'BasisTheory'
   {{#podSocialMediaURL}}
   s.social_media_url = '{{.}}'
   {{/podSocialMediaURL}}
   s.license = 'Apache'
-  s.homepage = '{{podHomepage}}{{^podHomepage}}https://github.com/OpenAPITools/openapi-generator{{/podHomepage}}'
+  s.homepage = '{{podHomepage}}{{^podHomepage}}https://github.com/Basis-Theory/basistheory-swift{{/podHomepage}}'
   s.summary = '{{podSummary}}{{^podSummary}}{{projectName}} Swift SDK{{/podSummary}}'
   {{#podDescription}}
   s.description = '{{.}}'
