@@ -34,7 +34,7 @@ jobs:
 
           echo "${{ steps.tag-version.outputs.changelog }}" | cat - CHANGELOG.md > temp && mv temp CHANGELOG.md
 
-          git add CHANGELOG.md BasisTheory.podspect
+          git add CHANGELOG.md BasisTheory.podspec
           git commit -m "chore(release): upating podspec and changelog ${{ steps.tag-version.outputs.new_tag }} [skip ci]" || echo "Nothing to update"
 
       - name: Push changes
