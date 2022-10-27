@@ -31,10 +31,10 @@ public struct MonthlyActiveTokenHistory: Codable, JSONEncodable, Hashable {
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(year, forKey: .year)
-        try container.encodeIfPresent(month, forKey: .month)
-        try container.encodeIfPresent(count, forKey: .count)
+        var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encodeIfPresent(year, forKey: .year)
+        try containerEncoder.encodeIfPresent(month, forKey: .month)
+        try containerEncoder.encodeIfPresent(count, forKey: .count)
     }
 }
 

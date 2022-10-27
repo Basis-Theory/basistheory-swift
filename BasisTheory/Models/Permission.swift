@@ -31,10 +31,10 @@ public struct Permission: Codable, JSONEncodable, Hashable {
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(type, forKey: .type)
-        try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(applicationTypes, forKey: .applicationTypes)
+        var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encodeIfPresent(type, forKey: .type)
+        try containerEncoder.encodeIfPresent(description, forKey: .description)
+        try containerEncoder.encodeIfPresent(applicationTypes, forKey: .applicationTypes)
     }
 }
 

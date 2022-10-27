@@ -37,12 +37,12 @@ public struct AccessRule: Codable, JSONEncodable, Hashable {
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(priority, forKey: .priority)
-        try container.encodeIfPresent(container, forKey: .container)
-        try container.encodeIfPresent(transform, forKey: .transform)
-        try container.encodeIfPresent(permissions, forKey: .permissions)
+        var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encodeIfPresent(description, forKey: .description)
+        try containerEncoder.encodeIfPresent(priority, forKey: .priority)
+        try containerEncoder.encodeIfPresent(container, forKey: .container)
+        try containerEncoder.encodeIfPresent(transform, forKey: .transform)
+        try containerEncoder.encodeIfPresent(permissions, forKey: .permissions)
     }
 }
 

@@ -21,7 +21,7 @@ Method | HTTP request | Description
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let id = [123] // [UUID] |  (optional)
 let name = "name_example" // String |  (optional)
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let createProxyRequest = CreateProxyRequest(name: "name_example", destinationUrl: "destinationUrl_example", requestReactorId: 123, responseReactorId: 123, requireAuth: false) // CreateProxyRequest | 
 
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let id = 987 // UUID | 
 
@@ -168,7 +168,7 @@ Void (empty response body)
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let id = 987 // UUID | 
 
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let id = 987 // UUID | 
 let updateProxyRequest = UpdateProxyRequest(name: "name_example", destinationUrl: "destinationUrl_example", requestReactorId: 123, responseReactorId: 123, requireAuth: false) // UpdateProxyRequest | 

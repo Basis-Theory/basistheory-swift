@@ -34,11 +34,11 @@ public struct TokenReport: Codable, JSONEncodable, Hashable {
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(includedMonthlyActiveTokens, forKey: .includedMonthlyActiveTokens)
-        try container.encodeIfPresent(monthlyActiveTokens, forKey: .monthlyActiveTokens)
-        try container.encodeIfPresent(metricsByType, forKey: .metricsByType)
-        try container.encodeIfPresent(monthlyActiveTokenHistory, forKey: .monthlyActiveTokenHistory)
+        var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encodeIfPresent(includedMonthlyActiveTokens, forKey: .includedMonthlyActiveTokens)
+        try containerEncoder.encodeIfPresent(monthlyActiveTokens, forKey: .monthlyActiveTokens)
+        try containerEncoder.encodeIfPresent(metricsByType, forKey: .metricsByType)
+        try containerEncoder.encodeIfPresent(monthlyActiveTokenHistory, forKey: .monthlyActiveTokenHistory)
     }
 }
 

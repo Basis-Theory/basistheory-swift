@@ -31,10 +31,10 @@ public struct GetTenantMembers: Codable, JSONEncodable, Hashable {
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(userIds, forKey: .userIds)
-        try container.encodeIfPresent(page, forKey: .page)
-        try container.encodeIfPresent(size, forKey: .size)
+        var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encodeIfPresent(userIds, forKey: .userIds)
+        try containerEncoder.encodeIfPresent(page, forKey: .page)
+        try containerEncoder.encodeIfPresent(size, forKey: .size)
     }
 }
 

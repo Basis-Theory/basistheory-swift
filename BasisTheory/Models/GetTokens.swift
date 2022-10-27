@@ -37,12 +37,12 @@ public struct GetTokens: Codable, JSONEncodable, Hashable {
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(types, forKey: .types)
-        try container.encodeIfPresent(tokenIds, forKey: .tokenIds)
-        try container.encodeIfPresent(metadataSearch, forKey: .metadataSearch)
-        try container.encodeIfPresent(page, forKey: .page)
-        try container.encodeIfPresent(size, forKey: .size)
+        var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encodeIfPresent(types, forKey: .types)
+        try containerEncoder.encodeIfPresent(tokenIds, forKey: .tokenIds)
+        try containerEncoder.encodeIfPresent(metadataSearch, forKey: .metadataSearch)
+        try containerEncoder.encodeIfPresent(page, forKey: .page)
+        try containerEncoder.encodeIfPresent(size, forKey: .size)
     }
 }
 

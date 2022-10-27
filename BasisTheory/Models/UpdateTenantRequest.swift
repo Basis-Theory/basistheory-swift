@@ -28,9 +28,9 @@ public struct UpdateTenantRequest: Codable, JSONEncodable, Hashable {
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(name, forKey: .name)
-        try container.encodeIfPresent(settings, forKey: .settings)
+        var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encode(name, forKey: .name)
+        try containerEncoder.encodeIfPresent(settings, forKey: .settings)
     }
 }
 

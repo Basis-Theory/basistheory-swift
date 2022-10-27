@@ -34,11 +34,11 @@ public struct ReactorFormulaRequestParameter: Codable, JSONEncodable, Hashable {
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(name, forKey: .name)
-        try container.encodeIfPresent(description, forKey: .description)
-        try container.encode(type, forKey: .type)
-        try container.encodeIfPresent(_optional, forKey: ._optional)
+        var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encode(name, forKey: .name)
+        try containerEncoder.encodeIfPresent(description, forKey: .description)
+        try containerEncoder.encode(type, forKey: .type)
+        try containerEncoder.encodeIfPresent(_optional, forKey: ._optional)
     }
 }
 

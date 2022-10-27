@@ -40,13 +40,13 @@ public struct GetLogs: Codable, JSONEncodable, Hashable {
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(entityType, forKey: .entityType)
-        try container.encodeIfPresent(entityId, forKey: .entityId)
-        try container.encodeIfPresent(startDate, forKey: .startDate)
-        try container.encodeIfPresent(endDate, forKey: .endDate)
-        try container.encodeIfPresent(page, forKey: .page)
-        try container.encodeIfPresent(size, forKey: .size)
+        var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encodeIfPresent(entityType, forKey: .entityType)
+        try containerEncoder.encodeIfPresent(entityId, forKey: .entityId)
+        try containerEncoder.encodeIfPresent(startDate, forKey: .startDate)
+        try containerEncoder.encodeIfPresent(endDate, forKey: .endDate)
+        try containerEncoder.encodeIfPresent(page, forKey: .page)
+        try containerEncoder.encodeIfPresent(size, forKey: .size)
     }
 }
 

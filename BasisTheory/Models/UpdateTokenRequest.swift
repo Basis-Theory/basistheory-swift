@@ -49,16 +49,16 @@ public struct UpdateTokenRequest: Codable, JSONEncodable, Hashable {
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(data, forKey: .data)
-        try container.encodeIfPresent(encryption, forKey: .encryption)
-        try container.encodeIfPresent(privacy, forKey: .privacy)
-        try container.encodeIfPresent(metadata, forKey: .metadata)
-        try container.encodeIfPresent(searchIndexes, forKey: .searchIndexes)
-        try container.encodeIfPresent(fingerprintExpression, forKey: .fingerprintExpression)
-        try container.encodeIfPresent(mask, forKey: .mask)
-        try container.encodeIfPresent(deduplicateToken, forKey: .deduplicateToken)
-        try container.encodeIfPresent(container, forKey: .container)
+        var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encodeIfPresent(data, forKey: .data)
+        try containerEncoder.encodeIfPresent(encryption, forKey: .encryption)
+        try containerEncoder.encodeIfPresent(privacy, forKey: .privacy)
+        try containerEncoder.encodeIfPresent(metadata, forKey: .metadata)
+        try containerEncoder.encodeIfPresent(searchIndexes, forKey: .searchIndexes)
+        try containerEncoder.encodeIfPresent(fingerprintExpression, forKey: .fingerprintExpression)
+        try containerEncoder.encodeIfPresent(mask, forKey: .mask)
+        try containerEncoder.encodeIfPresent(deduplicateToken, forKey: .deduplicateToken)
+        try containerEncoder.encodeIfPresent(container, forKey: .container)
     }
 }
 

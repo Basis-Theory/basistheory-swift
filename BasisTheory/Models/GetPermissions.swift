@@ -28,9 +28,9 @@ public struct GetPermissions: Codable, JSONEncodable, Hashable {
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(applicationType, forKey: .applicationType)
-        try container.encodeIfPresent(version, forKey: .version)
+        var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encodeIfPresent(applicationType, forKey: .applicationType)
+        try containerEncoder.encodeIfPresent(version, forKey: .version)
     }
 }
 

@@ -52,12 +52,12 @@ public struct ProblemDetails: Codable, JSONEncodable, Hashable {
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(type, forKey: .type)
-        try container.encodeIfPresent(title, forKey: .title)
-        try container.encodeIfPresent(status, forKey: .status)
-        try container.encodeIfPresent(detail, forKey: .detail)
-        try container.encodeIfPresent(instance, forKey: .instance)
+        var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encodeIfPresent(type, forKey: .type)
+        try containerEncoder.encodeIfPresent(title, forKey: .title)
+        try containerEncoder.encodeIfPresent(status, forKey: .status)
+        try containerEncoder.encodeIfPresent(detail, forKey: .detail)
+        try containerEncoder.encodeIfPresent(instance, forKey: .instance)
         var additionalPropertiesContainer = encoder.container(keyedBy: String.self)
         try additionalPropertiesContainer.encodeMap(additionalProperties)
     }

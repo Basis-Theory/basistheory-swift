@@ -22,7 +22,7 @@ Method | HTTP request | Description
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let id = [123] // [UUID] |  (optional)
 let name = "name_example" // String |  (optional)
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let createReactorRequest = CreateReactorRequest(name: "name_example", formula: ReactorFormula(id: 123, type: "type_example", status: "status_example", name: "name_example", description: "description_example", icon: "icon_example", code: "code_example", createdBy: 123, createdAt: Date(), modifiedBy: 123, modifiedAt: Date(), configuration: [ReactorFormulaConfiguration(name: "name_example", description: "description_example", type: "type_example")], requestParameters: [ReactorFormulaRequestParameter(name: "name_example", description: "description_example", type: "type_example", _optional: false)]), application: Application(id: 123, tenantId: 123, name: "name_example", key: "key_example", type: "type_example", createdBy: 123, createdAt: Date(), modifiedBy: 123, modifiedAt: Date(), permissions: ["permissions_example"], rules: [AccessRule(description: "description_example", priority: 123, container: "container_example", transform: "transform_example", permissions: ["permissions_example"])]), configuration: "TODO") // CreateReactorRequest | 
 
@@ -122,7 +122,7 @@ Name | Type | Description  | Notes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let id = 987 // UUID | 
 
@@ -169,7 +169,7 @@ Void (empty response body)
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let id = 987 // UUID | 
 
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let id = 987 // UUID | 
 let reactRequest = ReactRequest(args: "TODO") // ReactRequest | 
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let id = 987 // UUID | 
 let updateReactorRequest = UpdateReactorRequest(name: "name_example", application: Application(id: 123, tenantId: 123, name: "name_example", key: "key_example", type: "type_example", createdBy: 123, createdAt: Date(), modifiedBy: 123, modifiedAt: Date(), permissions: ["permissions_example"], rules: [AccessRule(description: "description_example", priority: 123, container: "container_example", transform: "transform_example", permissions: ["permissions_example"])]), configuration: "TODO") // UpdateReactorRequest | 

@@ -28,9 +28,9 @@ public struct EncryptionMetadata: Codable, JSONEncodable, Hashable {
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(cek, forKey: .cek)
-        try container.encodeIfPresent(kek, forKey: .kek)
+        var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encodeIfPresent(cek, forKey: .cek)
+        try containerEncoder.encodeIfPresent(kek, forKey: .kek)
     }
 }
 

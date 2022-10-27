@@ -20,7 +20,7 @@ open class PermissionsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func callGet(applicationType: String? = nil, version: Int? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: [Permission]?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func callGet(applicationType: String? = nil, version: Int? = nil, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: [Permission]?, _ error: Error?) -> Void)) -> RequestTask {
         return callGetWithRequestBuilder(applicationType: applicationType, version: version).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -42,7 +42,7 @@ open class PermissionsAPI {
      */
     open class func callGetWithRequestBuilder(applicationType: String? = nil, version: Int? = nil) -> RequestBuilder<[Permission]> {
         let localVariablePath = "/permissions"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -57,7 +57,7 @@ open class PermissionsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[Permission]>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[Permission]>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

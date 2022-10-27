@@ -58,19 +58,19 @@ public struct Proxy: Codable, JSONEncodable, Hashable {
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(key, forKey: .key)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(name, forKey: .name)
-        try container.encodeIfPresent(destinationUrl, forKey: .destinationUrl)
-        try container.encodeIfPresent(requestReactorId, forKey: .requestReactorId)
-        try container.encodeIfPresent(responseReactorId, forKey: .responseReactorId)
-        try container.encodeIfPresent(requireAuth, forKey: .requireAuth)
-        try container.encodeIfPresent(createdBy, forKey: .createdBy)
-        try container.encodeIfPresent(createdAt, forKey: .createdAt)
-        try container.encodeIfPresent(modifiedBy, forKey: .modifiedBy)
-        try container.encodeIfPresent(modifiedAt, forKey: .modifiedAt)
+        var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encodeIfPresent(id, forKey: .id)
+        try containerEncoder.encodeIfPresent(key, forKey: .key)
+        try containerEncoder.encodeIfPresent(tenantId, forKey: .tenantId)
+        try containerEncoder.encodeIfPresent(name, forKey: .name)
+        try containerEncoder.encodeIfPresent(destinationUrl, forKey: .destinationUrl)
+        try containerEncoder.encodeIfPresent(requestReactorId, forKey: .requestReactorId)
+        try containerEncoder.encodeIfPresent(responseReactorId, forKey: .responseReactorId)
+        try containerEncoder.encodeIfPresent(requireAuth, forKey: .requireAuth)
+        try containerEncoder.encodeIfPresent(createdBy, forKey: .createdBy)
+        try containerEncoder.encodeIfPresent(createdAt, forKey: .createdAt)
+        try containerEncoder.encodeIfPresent(modifiedBy, forKey: .modifiedBy)
+        try containerEncoder.encodeIfPresent(modifiedAt, forKey: .modifiedAt)
     }
 }
 

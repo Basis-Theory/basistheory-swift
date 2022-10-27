@@ -1,3 +1,4 @@
 packageName: BasisTheory
 templateDir: /local/templates
 swiftPackagePath: BasisTheory
+projectName: BasisTheory

@@ -18,7 +18,7 @@ Method | HTTP request | Description
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let entityType = "entityType_example" // String |  (optional)
 let entityId = "entityId_example" // String |  (optional)
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 
 LogsAPI.getEntityTypes() { (response, error) in
