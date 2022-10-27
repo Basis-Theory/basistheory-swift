@@ -21,7 +21,7 @@ Method | HTTP request | Description
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let name = "name_example" // String |  (optional)
 let page = 987 // Int |  (optional)
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let createReactorFormulaRequest = CreateReactorFormulaRequest(id: 123, type: "type_example", name: "name_example", description: "description_example", icon: "icon_example", code: "code_example", configuration: [ReactorFormulaConfiguration(name: "name_example", description: "description_example", type: "type_example")], requestParameters: [ReactorFormulaRequestParameter(name: "name_example", description: "description_example", type: "type_example", _optional: false)]) // CreateReactorFormulaRequest | 
 
@@ -119,7 +119,7 @@ Name | Type | Description  | Notes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let id = 987 // UUID | 
 
@@ -166,7 +166,7 @@ Void (empty response body)
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let id = 987 // UUID | 
 
@@ -213,7 +213,7 @@ Name | Type | Description  | Notes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let id = 987 // UUID | 
 let updateReactorFormulaRequest = UpdateReactorFormulaRequest(type: "type_example", name: "name_example", description: "description_example", icon: "icon_example", code: "code_example", configuration: [ReactorFormulaConfiguration(name: "name_example", description: "description_example", type: "type_example")], requestParameters: [ReactorFormulaRequestParameter(name: "name_example", description: "description_example", type: "type_example", _optional: false)]) // UpdateReactorFormulaRequest | 

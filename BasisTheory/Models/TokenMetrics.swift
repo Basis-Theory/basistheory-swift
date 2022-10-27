@@ -28,9 +28,9 @@ public struct TokenMetrics: Codable, JSONEncodable, Hashable {
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(count, forKey: .count)
-        try container.encodeIfPresent(lastCreatedAt, forKey: .lastCreatedAt)
+        var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encodeIfPresent(count, forKey: .count)
+        try containerEncoder.encodeIfPresent(lastCreatedAt, forKey: .lastCreatedAt)
     }
 }
 

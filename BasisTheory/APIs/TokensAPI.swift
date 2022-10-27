@@ -23,7 +23,7 @@ open class TokensAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func callGet(type: [String]? = nil, id: [String]? = nil, metadata: [String: String]? = nil, page: Int? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TokenPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func callGet(type: [String]? = nil, id: [String]? = nil, metadata: [String: String]? = nil, page: Int? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: TokenPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
         return callGetWithRequestBuilder(type: type, id: id, metadata: metadata, page: page, size: size).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -48,7 +48,7 @@ open class TokensAPI {
      */
     open class func callGetWithRequestBuilder(type: [String]? = nil, id: [String]? = nil, metadata: [String: String]? = nil, page: Int? = nil, size: Int? = nil) -> RequestBuilder<TokenPaginatedList> {
         let localVariablePath = "/tokens"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -66,7 +66,7 @@ open class TokensAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TokenPaginatedList>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TokenPaginatedList>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -78,7 +78,7 @@ open class TokensAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func create(createTokenRequest: CreateTokenRequest, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CreateTokenResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func create(createTokenRequest: CreateTokenRequest, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: CreateTokenResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return createWithRequestBuilder(createTokenRequest: createTokenRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -99,7 +99,7 @@ open class TokensAPI {
      */
     open class func createWithRequestBuilder(createTokenRequest: CreateTokenRequest) -> RequestBuilder<CreateTokenResponse> {
         let localVariablePath = "/tokens"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createTokenRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -110,7 +110,7 @@ open class TokensAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<CreateTokenResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<CreateTokenResponse>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -123,7 +123,7 @@ open class TokensAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createAssociation(parentId: String, childId: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func createAssociation(parentId: String, childId: String, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return createAssociationWithRequestBuilder(parentId: parentId, childId: childId).execute(apiResponseQueue) { result in
             switch result {
             case .success:
@@ -151,7 +151,7 @@ open class TokensAPI {
         let childIdPreEscape = "\(APIHelper.mapValueToPathItem(childId))"
         let childIdPostEscape = childIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{childId}", with: childIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -162,7 +162,7 @@ open class TokensAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = BasisTheoryAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -175,7 +175,7 @@ open class TokensAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createChild(parentId: String, createTokenRequest: CreateTokenRequest, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: CreateTokenResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func createChild(parentId: String, createTokenRequest: CreateTokenRequest, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: CreateTokenResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return createChildWithRequestBuilder(parentId: parentId, createTokenRequest: createTokenRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -200,7 +200,7 @@ open class TokensAPI {
         let parentIdPreEscape = "\(APIHelper.mapValueToPathItem(parentId))"
         let parentIdPostEscape = parentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{parentId}", with: parentIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createTokenRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -211,7 +211,7 @@ open class TokensAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<CreateTokenResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<CreateTokenResponse>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -223,7 +223,7 @@ open class TokensAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func delete(id: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func delete(id: String, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return deleteWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case .success:
@@ -247,7 +247,7 @@ open class TokensAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -258,7 +258,7 @@ open class TokensAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = BasisTheoryAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -271,7 +271,7 @@ open class TokensAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func deleteAssociation(parentId: String, childId: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func deleteAssociation(parentId: String, childId: String, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return deleteAssociationWithRequestBuilder(parentId: parentId, childId: childId).execute(apiResponseQueue) { result in
             switch result {
             case .success:
@@ -299,7 +299,7 @@ open class TokensAPI {
         let childIdPreEscape = "\(APIHelper.mapValueToPathItem(childId))"
         let childIdPostEscape = childIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{childId}", with: childIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -310,7 +310,7 @@ open class TokensAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = BasisTheoryAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -322,7 +322,7 @@ open class TokensAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getById(id: String, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Token?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getById(id: String, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: Token?, _ error: Error?) -> Void)) -> RequestTask {
         return getByIdWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -346,7 +346,7 @@ open class TokensAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -357,7 +357,7 @@ open class TokensAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Token>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Token>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -374,7 +374,7 @@ open class TokensAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getChildren(parentId: String, type: [String]? = nil, id: [String]? = nil, metadata: [String: String]? = nil, page: Int? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TokenPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getChildren(parentId: String, type: [String]? = nil, id: [String]? = nil, metadata: [String: String]? = nil, page: Int? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: TokenPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
         return getChildrenWithRequestBuilder(parentId: parentId, type: type, id: id, metadata: metadata, page: page, size: size).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -403,7 +403,7 @@ open class TokensAPI {
         let parentIdPreEscape = "\(APIHelper.mapValueToPathItem(parentId))"
         let parentIdPostEscape = parentIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{parentId}", with: parentIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -421,7 +421,7 @@ open class TokensAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TokenPaginatedList>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TokenPaginatedList>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -433,7 +433,7 @@ open class TokensAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func search(searchTokensRequest: SearchTokensRequest, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TokenPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func search(searchTokensRequest: SearchTokensRequest, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: TokenPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
         return searchWithRequestBuilder(searchTokensRequest: searchTokensRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -454,7 +454,7 @@ open class TokensAPI {
      */
     open class func searchWithRequestBuilder(searchTokensRequest: SearchTokensRequest) -> RequestBuilder<TokenPaginatedList> {
         let localVariablePath = "/tokens/search"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: searchTokensRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -465,7 +465,7 @@ open class TokensAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TokenPaginatedList>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TokenPaginatedList>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -478,7 +478,7 @@ open class TokensAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func update(id: String, updateTokenRequest: UpdateTokenRequest, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Token?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func update(id: String, updateTokenRequest: UpdateTokenRequest, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: Token?, _ error: Error?) -> Void)) -> RequestTask {
         return updateWithRequestBuilder(id: id, updateTokenRequest: updateTokenRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -503,7 +503,7 @@ open class TokensAPI {
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: updateTokenRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -514,7 +514,7 @@ open class TokensAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Token>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Token>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PATCH", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

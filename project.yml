@@ -1,6 +1,6 @@
 name: BasisTheory
 targets:
-  OpenAPIClient:
+  BasisTheory:
     type: framework
     platform: iOS
     deploymentTarget: "9.0"

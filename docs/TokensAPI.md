@@ -26,7 +26,7 @@ Method | HTTP request | Description
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let type = ["inner_example"] // [String] |  (optional)
 let id = ["inner_example"] // [String] |  (optional)
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let createTokenRequest = CreateTokenRequest(id: "id_example", type: "type_example", data: "TODO", encryption: EncryptionMetadata(cek: EncryptionKey(key: "key_example", prov: "prov_example", alg: "alg_example"), kek: nil), privacy: Privacy(classification: "classification_example", impactLevel: "impactLevel_example", restrictionPolicy: "restrictionPolicy_example"), metadata: "TODO", searchIndexes: ["searchIndexes_example"], fingerprintExpression: "fingerprintExpression_example", mask: "TODO", deduplicateToken: false, expiresAt: "expiresAt_example", container: "container_example") // CreateTokenRequest | 
 
@@ -128,7 +128,7 @@ Name | Type | Description  | Notes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let parentId = "parentId_example" // String | 
 let childId = "childId_example" // String | 
@@ -177,7 +177,7 @@ Void (empty response body)
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let parentId = "parentId_example" // String | 
 let createTokenRequest = CreateTokenRequest(id: "id_example", type: "type_example", data: "TODO", encryption: EncryptionMetadata(cek: EncryptionKey(key: "key_example", prov: "prov_example", alg: "alg_example"), kek: nil), privacy: Privacy(classification: "classification_example", impactLevel: "impactLevel_example", restrictionPolicy: "restrictionPolicy_example"), metadata: "TODO", searchIndexes: ["searchIndexes_example"], fingerprintExpression: "fingerprintExpression_example", mask: "TODO", deduplicateToken: false, expiresAt: "expiresAt_example", container: "container_example") // CreateTokenRequest | 
@@ -226,7 +226,7 @@ Name | Type | Description  | Notes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let id = "id_example" // String | 
 
@@ -273,7 +273,7 @@ Void (empty response body)
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let parentId = "parentId_example" // String | 
 let childId = "childId_example" // String | 
@@ -322,7 +322,7 @@ Void (empty response body)
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let id = "id_example" // String | 
 
@@ -369,7 +369,7 @@ Name | Type | Description  | Notes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let parentId = "parentId_example" // String | 
 let type = ["inner_example"] // [String] |  (optional)
@@ -426,7 +426,7 @@ Name | Type | Description  | Notes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let searchTokensRequest = SearchTokensRequest(query: "query_example", page: 123, size: 123) // SearchTokensRequest | 
 
@@ -473,7 +473,7 @@ Name | Type | Description  | Notes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let id = "id_example" // String | 
 let updateTokenRequest = UpdateTokenRequest(data: "TODO", encryption: EncryptionMetadata(cek: EncryptionKey(key: "key_example", prov: "prov_example", alg: "alg_example"), kek: nil), privacy: UpdatePrivacy(impactLevel: "impactLevel_example", restrictionPolicy: "restrictionPolicy_example"), metadata: "TODO", searchIndexes: ["searchIndexes_example"], fingerprintExpression: "fingerprintExpression_example", mask: "TODO", deduplicateToken: false, container: "container_example") // UpdateTokenRequest | 

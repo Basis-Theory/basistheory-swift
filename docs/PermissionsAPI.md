@@ -17,7 +17,7 @@ Method | HTTP request | Description
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let applicationType = "applicationType_example" // String |  (optional)
 let version = 987 // Int |  (optional)

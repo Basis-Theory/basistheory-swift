@@ -37,12 +37,12 @@ public struct User: Codable, JSONEncodable, Hashable {
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(email, forKey: .email)
-        try container.encodeIfPresent(firstName, forKey: .firstName)
-        try container.encodeIfPresent(lastName, forKey: .lastName)
-        try container.encodeIfPresent(picture, forKey: .picture)
+        var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encodeIfPresent(id, forKey: .id)
+        try containerEncoder.encodeIfPresent(email, forKey: .email)
+        try containerEncoder.encodeIfPresent(firstName, forKey: .firstName)
+        try containerEncoder.encodeIfPresent(lastName, forKey: .lastName)
+        try containerEncoder.encodeIfPresent(picture, forKey: .picture)
     }
 }
 

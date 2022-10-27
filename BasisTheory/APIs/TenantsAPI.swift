@@ -18,7 +18,7 @@ open class TenantsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func callGet(apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Tenant?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func callGet(apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: Tenant?, _ error: Error?) -> Void)) -> RequestTask {
         return callGetWithRequestBuilder().execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -38,7 +38,7 @@ open class TenantsAPI {
      */
     open class func callGetWithRequestBuilder() -> RequestBuilder<Tenant> {
         let localVariablePath = "/tenants/self"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -49,7 +49,7 @@ open class TenantsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Tenant>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Tenant>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -61,7 +61,7 @@ open class TenantsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func createInvitation(createTenantInvitationRequest: CreateTenantInvitationRequest, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TenantInvitationResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func createInvitation(createTenantInvitationRequest: CreateTenantInvitationRequest, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: TenantInvitationResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return createInvitationWithRequestBuilder(createTenantInvitationRequest: createTenantInvitationRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -82,7 +82,7 @@ open class TenantsAPI {
      */
     open class func createInvitationWithRequestBuilder(createTenantInvitationRequest: CreateTenantInvitationRequest) -> RequestBuilder<TenantInvitationResponse> {
         let localVariablePath = "/tenants/self/invitations"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createTenantInvitationRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -93,7 +93,7 @@ open class TenantsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TenantInvitationResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TenantInvitationResponse>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -104,7 +104,7 @@ open class TenantsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func delete(apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func delete(apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return deleteWithRequestBuilder().execute(apiResponseQueue) { result in
             switch result {
             case .success:
@@ -124,7 +124,7 @@ open class TenantsAPI {
      */
     open class func deleteWithRequestBuilder() -> RequestBuilder<Void> {
         let localVariablePath = "/tenants/self"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -135,7 +135,7 @@ open class TenantsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = BasisTheoryAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -147,7 +147,7 @@ open class TenantsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func deleteInvitation(invitationId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func deleteInvitation(invitationId: UUID, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return deleteInvitationWithRequestBuilder(invitationId: invitationId).execute(apiResponseQueue) { result in
             switch result {
             case .success:
@@ -171,7 +171,7 @@ open class TenantsAPI {
         let invitationIdPreEscape = "\(APIHelper.mapValueToPathItem(invitationId))"
         let invitationIdPostEscape = invitationIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{invitationId}", with: invitationIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -182,7 +182,7 @@ open class TenantsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = BasisTheoryAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -194,7 +194,7 @@ open class TenantsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func deleteMember(memberId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func deleteMember(memberId: UUID, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
         return deleteMemberWithRequestBuilder(memberId: memberId).execute(apiResponseQueue) { result in
             switch result {
             case .success:
@@ -218,7 +218,7 @@ open class TenantsAPI {
         let memberIdPreEscape = "\(APIHelper.mapValueToPathItem(memberId))"
         let memberIdPostEscape = memberIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{memberId}", with: memberIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -229,7 +229,7 @@ open class TenantsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = OpenAPIClientAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = BasisTheoryAPI.requestBuilderFactory.getNonDecodableBuilder()
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -243,7 +243,7 @@ open class TenantsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getInvitations(status: TenantInvitationStatus? = nil, page: Int? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TenantInvitationResponsePaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getInvitations(status: TenantInvitationStatus? = nil, page: Int? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: TenantInvitationResponsePaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
         return getInvitationsWithRequestBuilder(status: status, page: page, size: size).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -266,7 +266,7 @@ open class TenantsAPI {
      */
     open class func getInvitationsWithRequestBuilder(status: TenantInvitationStatus? = nil, page: Int? = nil, size: Int? = nil) -> RequestBuilder<TenantInvitationResponsePaginatedList> {
         let localVariablePath = "/tenants/self/invitations"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -282,7 +282,7 @@ open class TenantsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TenantInvitationResponsePaginatedList>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TenantInvitationResponsePaginatedList>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -296,7 +296,7 @@ open class TenantsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getMembers(userId: [UUID]? = nil, page: Int? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TenantMemberResponsePaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getMembers(userId: [UUID]? = nil, page: Int? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: TenantMemberResponsePaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
         return getMembersWithRequestBuilder(userId: userId, page: page, size: size).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -319,7 +319,7 @@ open class TenantsAPI {
      */
     open class func getMembersWithRequestBuilder(userId: [UUID]? = nil, page: Int? = nil, size: Int? = nil) -> RequestBuilder<TenantMemberResponsePaginatedList> {
         let localVariablePath = "/tenants/self/members"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -335,7 +335,7 @@ open class TenantsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TenantMemberResponsePaginatedList>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TenantMemberResponsePaginatedList>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -346,7 +346,7 @@ open class TenantsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getTenantOperationReport(apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TenantUsageReport?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getTenantOperationReport(apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: TenantUsageReport?, _ error: Error?) -> Void)) -> RequestTask {
         return getTenantOperationReportWithRequestBuilder().execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -366,7 +366,7 @@ open class TenantsAPI {
      */
     open class func getTenantOperationReportWithRequestBuilder() -> RequestBuilder<TenantUsageReport> {
         let localVariablePath = "/tenants/self/reports/operations"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -377,7 +377,7 @@ open class TenantsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TenantUsageReport>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TenantUsageReport>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -388,7 +388,7 @@ open class TenantsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getTenantUsageReport(apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TenantUsageReport?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func getTenantUsageReport(apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: TenantUsageReport?, _ error: Error?) -> Void)) -> RequestTask {
         return getTenantUsageReportWithRequestBuilder().execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -408,7 +408,7 @@ open class TenantsAPI {
      */
     open class func getTenantUsageReportWithRequestBuilder() -> RequestBuilder<TenantUsageReport> {
         let localVariablePath = "/tenants/self/reports/usage"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -419,7 +419,7 @@ open class TenantsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TenantUsageReport>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TenantUsageReport>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -431,7 +431,7 @@ open class TenantsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func resendInvitation(invitationId: UUID, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: TenantInvitationResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func resendInvitation(invitationId: UUID, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: TenantInvitationResponse?, _ error: Error?) -> Void)) -> RequestTask {
         return resendInvitationWithRequestBuilder(invitationId: invitationId).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -455,7 +455,7 @@ open class TenantsAPI {
         let invitationIdPreEscape = "\(APIHelper.mapValueToPathItem(invitationId))"
         let invitationIdPostEscape = invitationIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{invitationId}", with: invitationIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -466,7 +466,7 @@ open class TenantsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<TenantInvitationResponse>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<TenantInvitationResponse>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }
@@ -478,7 +478,7 @@ open class TenantsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func update(updateTenantRequest: UpdateTenantRequest, apiResponseQueue: DispatchQueue = OpenAPIClientAPI.apiResponseQueue, completion: @escaping ((_ data: Tenant?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func update(updateTenantRequest: UpdateTenantRequest, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: Tenant?, _ error: Error?) -> Void)) -> RequestTask {
         return updateWithRequestBuilder(updateTenantRequest: updateTenantRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -499,7 +499,7 @@ open class TenantsAPI {
      */
     open class func updateWithRequestBuilder(updateTenantRequest: UpdateTenantRequest) -> RequestBuilder<Tenant> {
         let localVariablePath = "/tenants/self"
-        let localVariableURLString = OpenAPIClientAPI.basePath + localVariablePath
+        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: updateTenantRequest)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -510,7 +510,7 @@ open class TenantsAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Tenant>.Type = OpenAPIClientAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Tenant>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

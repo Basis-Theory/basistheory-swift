@@ -1,5 +1,6 @@
 .gitignore
 .swiftformat
+BasisTheory.podspec
 BasisTheory/APIHelper.swift
 BasisTheory/APIs.swift
 BasisTheory/APIs/ApplicationsAPI.swift
@@ -81,6 +82,7 @@ BasisTheory/Models/ValidationProblemDetails.swift
 BasisTheory/OpenISO8601DateFormatter.swift
 BasisTheory/SynchronizedDictionary.swift
 BasisTheory/URLSessionImplementations.swift
+Cartfile
 Package.swift
 docs/AccessRule.md
 docs/Application.md

@@ -25,8 +25,8 @@ public struct ReactRequest: Codable, JSONEncodable, Hashable {
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(args, forKey: .args)
+        var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encodeIfPresent(args, forKey: .args)
     }
 }
 

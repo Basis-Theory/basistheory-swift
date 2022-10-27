@@ -52,17 +52,17 @@ public struct Reactor: Codable, JSONEncodable, Hashable {
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(name, forKey: .name)
-        try container.encodeIfPresent(formula, forKey: .formula)
-        try container.encodeIfPresent(application, forKey: .application)
-        try container.encodeIfPresent(createdBy, forKey: .createdBy)
-        try container.encodeIfPresent(createdAt, forKey: .createdAt)
-        try container.encodeIfPresent(modifiedBy, forKey: .modifiedBy)
-        try container.encodeIfPresent(modifiedAt, forKey: .modifiedAt)
-        try container.encodeIfPresent(configuration, forKey: .configuration)
+        var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encodeIfPresent(id, forKey: .id)
+        try containerEncoder.encodeIfPresent(tenantId, forKey: .tenantId)
+        try containerEncoder.encodeIfPresent(name, forKey: .name)
+        try containerEncoder.encodeIfPresent(formula, forKey: .formula)
+        try containerEncoder.encodeIfPresent(application, forKey: .application)
+        try containerEncoder.encodeIfPresent(createdBy, forKey: .createdBy)
+        try containerEncoder.encodeIfPresent(createdAt, forKey: .createdAt)
+        try containerEncoder.encodeIfPresent(modifiedBy, forKey: .modifiedBy)
+        try containerEncoder.encodeIfPresent(modifiedAt, forKey: .modifiedAt)
+        try containerEncoder.encodeIfPresent(configuration, forKey: .configuration)
     }
 }
 

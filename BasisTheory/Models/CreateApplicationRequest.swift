@@ -34,11 +34,11 @@ public struct CreateApplicationRequest: Codable, JSONEncodable, Hashable {
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(name, forKey: .name)
-        try container.encode(type, forKey: .type)
-        try container.encodeIfPresent(permissions, forKey: .permissions)
-        try container.encodeIfPresent(rules, forKey: .rules)
+        var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encode(name, forKey: .name)
+        try containerEncoder.encode(type, forKey: .type)
+        try containerEncoder.encodeIfPresent(permissions, forKey: .permissions)
+        try containerEncoder.encodeIfPresent(rules, forKey: .rules)
     }
 }
 

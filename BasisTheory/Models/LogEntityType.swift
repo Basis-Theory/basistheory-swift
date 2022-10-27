@@ -28,9 +28,9 @@ public struct LogEntityType: Codable, JSONEncodable, Hashable {
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(displayName, forKey: .displayName)
-        try container.encodeIfPresent(value, forKey: .value)
+        var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encodeIfPresent(displayName, forKey: .displayName)
+        try containerEncoder.encodeIfPresent(value, forKey: .value)
     }
 }
 

@@ -28,9 +28,9 @@ public struct UpdatePrivacy: Codable, JSONEncodable, Hashable {
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(impactLevel, forKey: .impactLevel)
-        try container.encodeIfPresent(restrictionPolicy, forKey: .restrictionPolicy)
+        var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encodeIfPresent(impactLevel, forKey: .impactLevel)
+        try containerEncoder.encodeIfPresent(restrictionPolicy, forKey: .restrictionPolicy)
     }
 }
 

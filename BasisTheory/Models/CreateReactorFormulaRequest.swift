@@ -46,15 +46,15 @@ public struct CreateReactorFormulaRequest: Codable, JSONEncodable, Hashable {
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encode(type, forKey: .type)
-        try container.encode(name, forKey: .name)
-        try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(icon, forKey: .icon)
-        try container.encodeIfPresent(code, forKey: .code)
-        try container.encodeIfPresent(configuration, forKey: .configuration)
-        try container.encodeIfPresent(requestParameters, forKey: .requestParameters)
+        var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encodeIfPresent(id, forKey: .id)
+        try containerEncoder.encode(type, forKey: .type)
+        try containerEncoder.encode(name, forKey: .name)
+        try containerEncoder.encodeIfPresent(description, forKey: .description)
+        try containerEncoder.encodeIfPresent(icon, forKey: .icon)
+        try containerEncoder.encodeIfPresent(code, forKey: .code)
+        try containerEncoder.encodeIfPresent(configuration, forKey: .configuration)
+        try containerEncoder.encodeIfPresent(requestParameters, forKey: .requestParameters)
     }
 }
 

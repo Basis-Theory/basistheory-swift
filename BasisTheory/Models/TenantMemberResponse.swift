@@ -46,15 +46,15 @@ public struct TenantMemberResponse: Codable, JSONEncodable, Hashable {
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(tenantId, forKey: .tenantId)
-        try container.encodeIfPresent(user, forKey: .user)
-        try container.encodeIfPresent(role, forKey: .role)
-        try container.encodeIfPresent(createdBy, forKey: .createdBy)
-        try container.encodeIfPresent(createdDate, forKey: .createdDate)
-        try container.encodeIfPresent(modifiedBy, forKey: .modifiedBy)
-        try container.encodeIfPresent(modifiedAt, forKey: .modifiedAt)
+        var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encodeIfPresent(id, forKey: .id)
+        try containerEncoder.encodeIfPresent(tenantId, forKey: .tenantId)
+        try containerEncoder.encodeIfPresent(user, forKey: .user)
+        try containerEncoder.encodeIfPresent(role, forKey: .role)
+        try containerEncoder.encodeIfPresent(createdBy, forKey: .createdBy)
+        try containerEncoder.encodeIfPresent(createdDate, forKey: .createdDate)
+        try containerEncoder.encodeIfPresent(modifiedBy, forKey: .modifiedBy)
+        try containerEncoder.encodeIfPresent(modifiedAt, forKey: .modifiedAt)
     }
 }
 

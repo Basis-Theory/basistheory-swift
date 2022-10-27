@@ -61,20 +61,20 @@ public struct ReactorFormula: Codable, JSONEncodable, Hashable {
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encodeIfPresent(id, forKey: .id)
-        try container.encodeIfPresent(type, forKey: .type)
-        try container.encodeIfPresent(status, forKey: .status)
-        try container.encodeIfPresent(name, forKey: .name)
-        try container.encodeIfPresent(description, forKey: .description)
-        try container.encodeIfPresent(icon, forKey: .icon)
-        try container.encodeIfPresent(code, forKey: .code)
-        try container.encodeIfPresent(createdBy, forKey: .createdBy)
-        try container.encodeIfPresent(createdAt, forKey: .createdAt)
-        try container.encodeIfPresent(modifiedBy, forKey: .modifiedBy)
-        try container.encodeIfPresent(modifiedAt, forKey: .modifiedAt)
-        try container.encodeIfPresent(configuration, forKey: .configuration)
-        try container.encodeIfPresent(requestParameters, forKey: .requestParameters)
+        var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encodeIfPresent(id, forKey: .id)
+        try containerEncoder.encodeIfPresent(type, forKey: .type)
+        try containerEncoder.encodeIfPresent(status, forKey: .status)
+        try containerEncoder.encodeIfPresent(name, forKey: .name)
+        try containerEncoder.encodeIfPresent(description, forKey: .description)
+        try containerEncoder.encodeIfPresent(icon, forKey: .icon)
+        try containerEncoder.encodeIfPresent(code, forKey: .code)
+        try containerEncoder.encodeIfPresent(createdBy, forKey: .createdBy)
+        try containerEncoder.encodeIfPresent(createdAt, forKey: .createdAt)
+        try containerEncoder.encodeIfPresent(modifiedBy, forKey: .modifiedBy)
+        try containerEncoder.encodeIfPresent(modifiedAt, forKey: .modifiedAt)
+        try containerEncoder.encodeIfPresent(configuration, forKey: .configuration)
+        try containerEncoder.encodeIfPresent(requestParameters, forKey: .requestParameters)
     }
 }
 

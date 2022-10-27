@@ -28,9 +28,9 @@ public struct StringStringKeyValuePair: Codable, JSONEncodable, Hashable {
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(key, forKey: .key)
-        try container.encode(value, forKey: .value)
+        var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encode(key, forKey: .key)
+        try containerEncoder.encode(value, forKey: .value)
     }
 }
 

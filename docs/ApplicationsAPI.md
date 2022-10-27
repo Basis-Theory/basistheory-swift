@@ -23,7 +23,7 @@ Method | HTTP request | Description
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let id = [123] // [UUID] |  (optional)
 let page = 987 // Int |  (optional)
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let createApplicationRequest = CreateApplicationRequest(name: "name_example", type: "type_example", permissions: ["permissions_example"], rules: [AccessRule(description: "description_example", priority: 123, container: "container_example", transform: "transform_example", permissions: ["permissions_example"])]) // CreateApplicationRequest | 
 
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let id = 987 // UUID | 
 
@@ -168,7 +168,7 @@ Void (empty response body)
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let id = 987 // UUID | 
 
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 
 ApplicationsAPI.getByKey() { (response, error) in
@@ -258,7 +258,7 @@ This endpoint does not need any parameter.
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let id = 987 // UUID | 
 
@@ -305,7 +305,7 @@ Name | Type | Description  | Notes
 ### Example
 ```swift
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import OpenAPIClient
+import BasisTheory
 
 let id = 987 // UUID | 
 let updateApplicationRequest = UpdateApplicationRequest(name: "name_example", permissions: ["permissions_example"], rules: [AccessRule(description: "description_example", priority: 123, container: "container_example", transform: "transform_example", permissions: ["permissions_example"])]) // UpdateApplicationRequest | 
