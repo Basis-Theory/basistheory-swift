@@ -32,7 +32,7 @@ And add `BasisTheory` as a dependency to your `target`:
 
 Add the following line to your `Podfile` under your `target`:
 
-```
+```ruby
     pod 'BasisTheory'
 ```
 
