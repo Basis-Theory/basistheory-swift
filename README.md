@@ -8,13 +8,33 @@
 
 ## Installation
 
-### Carthage
+### Swift Package Manager
 
-Run `carthage update`
+#### Via Xcode
+
+Add through Xcode via _File -> Add Packages_. Search for "https://github.com/Basis-Theory/basistheory-swift" and click on "Copy Dependency".
+
+#### Via Package.swift
+
+Add the following line under `dependencies` to your `Package.swift`:
+
+```swift
+    .package(url: "https://github.com/Basis-Theory/basistheory-swift", from: "X.X.X"),
+```
+
+And add `BasisTheory` as a dependency to your `target`:
+
+```swift
+    dependencies: ["BasisTheory", ...],
+```
 
 ### CocoaPods
 
-Run `pod install`
+Add the following line to your `Podfile` under your `target`:
+
+```ruby
+    pod 'BasisTheory'
+```
 
 ## Documentation for API Endpoints
 
