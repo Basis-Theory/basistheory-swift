@@ -34,7 +34,7 @@ open class PermissionsAPI {
     /**
      - GET /permissions
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter applicationType: (query)  (optional)
      - parameter version: (query)  (optional)

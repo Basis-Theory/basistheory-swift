@@ -23,9 +23,9 @@ public struct CreateTokenRequest: Codable, JSONEncodable, Hashable {
     public var mask: AnyCodable?
     public var deduplicateToken: Bool?
     public var expiresAt: String?
-    public var container: String?
+    public var containers: [String]?
 
-    public init(id: String? = nil, type: String? = nil, data: AnyCodable?, encryption: EncryptionMetadata? = nil, privacy: Privacy? = nil, metadata: [String: String]? = nil, searchIndexes: [String]? = nil, fingerprintExpression: String? = nil, mask: AnyCodable? = nil, deduplicateToken: Bool? = nil, expiresAt: String? = nil, container: String? = nil) {
+    public init(id: String? = nil, type: String? = nil, data: AnyCodable?, encryption: EncryptionMetadata? = nil, privacy: Privacy? = nil, metadata: [String: String]? = nil, searchIndexes: [String]? = nil, fingerprintExpression: String? = nil, mask: AnyCodable? = nil, deduplicateToken: Bool? = nil, expiresAt: String? = nil, containers: [String]? = nil) {
         self.id = id
         self.type = type
         self.data = data
@@ -37,7 +37,7 @@ public struct CreateTokenRequest: Codable, JSONEncodable, Hashable {
         self.mask = mask
         self.deduplicateToken = deduplicateToken
         self.expiresAt = expiresAt
-        self.container = container
+        self.containers = containers
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -52,7 +52,7 @@ public struct CreateTokenRequest: Codable, JSONEncodable, Hashable {
         case mask
         case deduplicateToken = "deduplicate_token"
         case expiresAt = "expires_at"
-        case container
+        case containers
     }
 
     // Encodable protocol methods
@@ -70,7 +70,7 @@ public struct CreateTokenRequest: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(mask, forKey: .mask)
         try containerEncoder.encodeIfPresent(deduplicateToken, forKey: .deduplicateToken)
         try containerEncoder.encodeIfPresent(expiresAt, forKey: .expiresAt)
-        try containerEncoder.encodeIfPresent(container, forKey: .container)
+        try containerEncoder.encodeIfPresent(containers, forKey: .containers)
     }
 }
 

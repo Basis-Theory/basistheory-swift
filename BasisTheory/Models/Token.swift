@@ -28,9 +28,9 @@ public struct Token: Codable, JSONEncodable, Hashable {
     public var privacy: Privacy?
     public var searchIndexes: [String]?
     public var expiresAt: Date?
-    public var container: String?
+    public var containers: [String]?
 
-    public init(id: String? = nil, type: String? = nil, tenantId: UUID? = nil, data: AnyCodable? = nil, metadata: [String: String]? = nil, encryption: EncryptionMetadata? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, modifiedBy: UUID? = nil, modifiedAt: Date? = nil, fingerprint: String? = nil, fingerprintExpression: String? = nil, mask: AnyCodable? = nil, privacy: Privacy? = nil, searchIndexes: [String]? = nil, expiresAt: Date? = nil, container: String? = nil) {
+    public init(id: String? = nil, type: String? = nil, tenantId: UUID? = nil, data: AnyCodable? = nil, metadata: [String: String]? = nil, encryption: EncryptionMetadata? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, modifiedBy: UUID? = nil, modifiedAt: Date? = nil, fingerprint: String? = nil, fingerprintExpression: String? = nil, mask: AnyCodable? = nil, privacy: Privacy? = nil, searchIndexes: [String]? = nil, expiresAt: Date? = nil, containers: [String]? = nil) {
         self.id = id
         self.type = type
         self.tenantId = tenantId
@@ -47,7 +47,7 @@ public struct Token: Codable, JSONEncodable, Hashable {
         self.privacy = privacy
         self.searchIndexes = searchIndexes
         self.expiresAt = expiresAt
-        self.container = container
+        self.containers = containers
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -67,7 +67,7 @@ public struct Token: Codable, JSONEncodable, Hashable {
         case privacy
         case searchIndexes = "search_indexes"
         case expiresAt = "expires_at"
-        case container
+        case containers
     }
 
     // Encodable protocol methods
@@ -90,7 +90,7 @@ public struct Token: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(privacy, forKey: .privacy)
         try containerEncoder.encodeIfPresent(searchIndexes, forKey: .searchIndexes)
         try containerEncoder.encodeIfPresent(expiresAt, forKey: .expiresAt)
-        try containerEncoder.encodeIfPresent(container, forKey: .container)
+        try containerEncoder.encodeIfPresent(containers, forKey: .containers)
     }
 }
 

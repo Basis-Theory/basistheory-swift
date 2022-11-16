@@ -27,9 +27,9 @@ public struct CreateTokenResponse: Codable, JSONEncodable, Hashable {
     public var modifiedBy: UUID?
     public var modifiedAt: Date?
     public var expiresAt: Date?
-    public var container: String?
+    public var containers: [String]?
 
-    public init(id: String? = nil, tenantId: UUID? = nil, type: String? = nil, fingerprint: String? = nil, fingerprintExpression: String? = nil, mask: AnyCodable? = nil, data: AnyCodable? = nil, metadata: [String: String]? = nil, privacy: Privacy? = nil, searchIndexes: [String]? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, modifiedBy: UUID? = nil, modifiedAt: Date? = nil, expiresAt: Date? = nil, container: String? = nil) {
+    public init(id: String? = nil, tenantId: UUID? = nil, type: String? = nil, fingerprint: String? = nil, fingerprintExpression: String? = nil, mask: AnyCodable? = nil, data: AnyCodable? = nil, metadata: [String: String]? = nil, privacy: Privacy? = nil, searchIndexes: [String]? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, modifiedBy: UUID? = nil, modifiedAt: Date? = nil, expiresAt: Date? = nil, containers: [String]? = nil) {
         self.id = id
         self.tenantId = tenantId
         self.type = type
@@ -45,7 +45,7 @@ public struct CreateTokenResponse: Codable, JSONEncodable, Hashable {
         self.modifiedBy = modifiedBy
         self.modifiedAt = modifiedAt
         self.expiresAt = expiresAt
-        self.container = container
+        self.containers = containers
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -64,7 +64,7 @@ public struct CreateTokenResponse: Codable, JSONEncodable, Hashable {
         case modifiedBy = "modified_by"
         case modifiedAt = "modified_at"
         case expiresAt = "expires_at"
-        case container
+        case containers
     }
 
     // Encodable protocol methods
@@ -86,7 +86,7 @@ public struct CreateTokenResponse: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(modifiedBy, forKey: .modifiedBy)
         try containerEncoder.encodeIfPresent(modifiedAt, forKey: .modifiedAt)
         try containerEncoder.encodeIfPresent(expiresAt, forKey: .expiresAt)
-        try containerEncoder.encodeIfPresent(container, forKey: .container)
+        try containerEncoder.encodeIfPresent(containers, forKey: .containers)
     }
 }
 

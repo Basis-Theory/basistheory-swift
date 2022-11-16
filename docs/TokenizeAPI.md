@@ -1,6 +1,6 @@
 # TokenizeAPI
 
-All URIs are relative to *https://api.basistheory.com*
+All URIs are relative to *https://api-dev.basistheory.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------

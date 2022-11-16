@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **modifiedBy** | **UUID** |  | [optional] 
 **modifiedAt** | **Date** |  | [optional] 
 **expiresAt** | **Date** |  | [optional] 
-**container** | **String** |  | [optional] 
+**containers** | **[String]** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -13,17 +13,20 @@ import AnyCodable
 public struct UpdateApplicationRequest: Codable, JSONEncodable, Hashable {
 
     public var name: String
+    public var canCreateExpiringApplications: Bool?
     public var permissions: [String]?
     public var rules: [AccessRule]?
 
-    public init(name: String, permissions: [String]? = nil, rules: [AccessRule]? = nil) {
+    public init(name: String, canCreateExpiringApplications: Bool? = nil, permissions: [String]? = nil, rules: [AccessRule]? = nil) {
         self.name = name
+        self.canCreateExpiringApplications = canCreateExpiringApplications
         self.permissions = permissions
         self.rules = rules
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
+        case canCreateExpiringApplications = "can_create_expiring_applications"
         case permissions
         case rules
     }
@@ -33,6 +36,7 @@ public struct UpdateApplicationRequest: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
         try containerEncoder.encode(name, forKey: .name)
+        try containerEncoder.encodeIfPresent(canCreateExpiringApplications, forKey: .canCreateExpiringApplications)
         try containerEncoder.encodeIfPresent(permissions, forKey: .permissions)
         try containerEncoder.encodeIfPresent(rules, forKey: .rules)
     }

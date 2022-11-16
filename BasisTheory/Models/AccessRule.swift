@@ -16,13 +16,15 @@ public struct AccessRule: Codable, JSONEncodable, Hashable {
     public var priority: Int?
     public var container: String?
     public var transform: String?
+    public var conditions: [Condition]?
     public var permissions: [String]?
 
-    public init(description: String? = nil, priority: Int? = nil, container: String? = nil, transform: String? = nil, permissions: [String]? = nil) {
+    public init(description: String? = nil, priority: Int? = nil, container: String? = nil, transform: String? = nil, conditions: [Condition]? = nil, permissions: [String]? = nil) {
         self.description = description
         self.priority = priority
         self.container = container
         self.transform = transform
+        self.conditions = conditions
         self.permissions = permissions
     }
 
@@ -31,6 +33,7 @@ public struct AccessRule: Codable, JSONEncodable, Hashable {
         case priority
         case container
         case transform
+        case conditions
         case permissions
     }
 
@@ -42,6 +45,7 @@ public struct AccessRule: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(priority, forKey: .priority)
         try containerEncoder.encodeIfPresent(container, forKey: .container)
         try containerEncoder.encodeIfPresent(transform, forKey: .transform)
+        try containerEncoder.encodeIfPresent(conditions, forKey: .conditions)
         try containerEncoder.encodeIfPresent(permissions, forKey: .permissions)
     }
 }

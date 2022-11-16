@@ -12,24 +12,24 @@ import AnyCodable
 
 public struct GetTokens: Codable, JSONEncodable, Hashable {
 
-    public var types: [String]?
-    public var tokenIds: [String]?
-    public var metadataSearch: [String: String]?
+    public var type: [String]?
+    public var id: [String]?
+    public var metadata: [String: String]?
     public var page: Int?
     public var size: Int?
 
-    public init(types: [String]? = nil, tokenIds: [String]? = nil, metadataSearch: [String: String]? = nil, page: Int? = nil, size: Int? = nil) {
-        self.types = types
-        self.tokenIds = tokenIds
-        self.metadataSearch = metadataSearch
+    public init(type: [String]? = nil, id: [String]? = nil, metadata: [String: String]? = nil, page: Int? = nil, size: Int? = nil) {
+        self.type = type
+        self.id = id
+        self.metadata = metadata
         self.page = page
         self.size = size
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case types
-        case tokenIds
-        case metadataSearch
+        case type
+        case id
+        case metadata
         case page
         case size
     }
@@ -38,9 +38,9 @@ public struct GetTokens: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
-        try containerEncoder.encodeIfPresent(types, forKey: .types)
-        try containerEncoder.encodeIfPresent(tokenIds, forKey: .tokenIds)
-        try containerEncoder.encodeIfPresent(metadataSearch, forKey: .metadataSearch)
+        try containerEncoder.encodeIfPresent(type, forKey: .type)
+        try containerEncoder.encodeIfPresent(id, forKey: .id)
+        try containerEncoder.encodeIfPresent(metadata, forKey: .metadata)
         try containerEncoder.encodeIfPresent(page, forKey: .page)
         try containerEncoder.encodeIfPresent(size, forKey: .size)
     }

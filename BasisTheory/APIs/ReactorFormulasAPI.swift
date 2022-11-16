@@ -35,7 +35,7 @@ open class ReactorFormulasAPI {
     /**
      - GET /reactor-formulas
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter name: (query)  (optional)
      - parameter page: (query)  (optional)
@@ -86,7 +86,7 @@ open class ReactorFormulasAPI {
     /**
      - POST /reactor-formulas
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter createReactorFormulaRequest: (body)  
      - returns: RequestBuilder<ReactorFormula> 
@@ -130,7 +130,7 @@ open class ReactorFormulasAPI {
     /**
      - DELETE /reactor-formulas/{id}
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter id: (path)  
      - returns: RequestBuilder<Void> 
@@ -177,7 +177,7 @@ open class ReactorFormulasAPI {
     /**
      - GET /reactor-formulas/{id}
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter id: (path)  
      - returns: RequestBuilder<ReactorFormula> 
@@ -225,7 +225,7 @@ open class ReactorFormulasAPI {
     /**
      - PUT /reactor-formulas/{id}
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter id: (path)  
      - parameter updateReactorFormulaRequest: (body)  

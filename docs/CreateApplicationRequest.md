@@ -3,8 +3,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** |  | 
+**name** | **String** |  | [optional] 
 **type** | **String** |  | 
+**canCreateExpiringApplications** | **Bool** |  | [optional] 
+**expiresAt** | **String** |  | [optional] 
 **permissions** | **[String]** |  | [optional] 
 **rules** | [AccessRule] |  | [optional] 
 

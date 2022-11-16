@@ -21,7 +21,7 @@ public struct GetPermissions: Codable, JSONEncodable, Hashable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case applicationType
+        case applicationType = "application_type"
         case version
     }
 

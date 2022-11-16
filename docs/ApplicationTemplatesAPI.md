@@ -1,73 +1,16 @@
-# LogsAPI
+# ApplicationTemplatesAPI
 
 All URIs are relative to *https://api-dev.basistheory.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**callGet**](LogsAPI.md#callget) | **GET** /logs | 
-[**getEntityTypes**](LogsAPI.md#getentitytypes) | **GET** /logs/entity-types | 
+[**callGet**](ApplicationTemplatesAPI.md#callget) | **GET** /application-templates | 
+[**getById**](ApplicationTemplatesAPI.md#getbyid) | **GET** /application-templates/{id} | 
 
 
 # **callGet**
 ```swift
-    open class func callGet(entityType: String? = nil, entityId: String? = nil, startDate: Date? = nil, endDate: Date? = nil, page: Int? = nil, size: Int? = nil, completion: @escaping (_ data: LogPaginatedList?, _ error: Error?) -> Void)
-```
-
-
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import BasisTheory
-
-let entityType = "entityType_example" // String |  (optional)
-let entityId = "entityId_example" // String |  (optional)
-let startDate = Date() // Date |  (optional)
-let endDate = Date() // Date |  (optional)
-let page = 987 // Int |  (optional)
-let size = 987 // Int |  (optional)
-
-LogsAPI.callGet(entityType: entityType, entityId: entityId, startDate: startDate, endDate: endDate, page: page, size: size) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **entityType** | **String** |  | [optional] 
- **entityId** | **String** |  | [optional] 
- **startDate** | **Date** |  | [optional] 
- **endDate** | **Date** |  | [optional] 
- **page** | **Int** |  | [optional] 
- **size** | **Int** |  | [optional] 
-
-### Return type
-
-[**LogPaginatedList**](LogPaginatedList.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getEntityTypes**
-```swift
-    open class func getEntityTypes(completion: @escaping (_ data: [LogEntityType]?, _ error: Error?) -> Void)
+    open class func callGet(completion: @escaping (_ data: [ApplicationTemplate]?, _ error: Error?) -> Void)
 ```
 
 
@@ -78,7 +21,7 @@ Name | Type | Description  | Notes
 import BasisTheory
 
 
-LogsAPI.getEntityTypes() { (response, error) in
+ApplicationTemplatesAPI.callGet() { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -95,7 +38,54 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**[LogEntityType]**](LogEntityType.md)
+[**[ApplicationTemplate]**](ApplicationTemplate.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **getById**
+```swift
+    open class func getById(id: UUID, completion: @escaping (_ data: ApplicationTemplate?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import BasisTheory
+
+let id = 987 // UUID | 
+
+ApplicationTemplatesAPI.getById(id: id) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **UUID** |  | 
+
+### Return type
+
+[**ApplicationTemplate**](ApplicationTemplate.md)
 
 ### Authorization
 

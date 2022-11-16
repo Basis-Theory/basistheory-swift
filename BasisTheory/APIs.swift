@@ -14,7 +14,7 @@ import Foundation
 public typealias BasisTheory = BasisTheoryAPI
 
 open class BasisTheoryAPI {
-    public static var basePath = "https://api.basistheory.com"
+    public static var basePath = "https://api-dev.basistheory.com"
     public static var customHeaders: [String: String] = [:]
     public static var credential: URLCredential?
     public static var requestBuilderFactory: RequestBuilderFactory = URLSessionRequestBuilderFactory()

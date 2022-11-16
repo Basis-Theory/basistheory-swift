@@ -37,7 +37,7 @@ open class TokensAPI {
     /**
      - GET /tokens
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter type: (query)  (optional)
      - parameter id: (query)  (optional)
@@ -92,7 +92,7 @@ open class TokensAPI {
     /**
      - POST /tokens
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter createTokenRequest: (body)  
      - returns: RequestBuilder<CreateTokenResponse> 
@@ -137,7 +137,7 @@ open class TokensAPI {
     /**
      - POST /tokens/{parentId}/children/{childId}
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter parentId: (path)  
      - parameter childId: (path)  
@@ -189,7 +189,7 @@ open class TokensAPI {
     /**
      - POST /tokens/{parentId}/children
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter parentId: (path)  
      - parameter createTokenRequest: (body)  
@@ -237,7 +237,7 @@ open class TokensAPI {
     /**
      - DELETE /tokens/{id}
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter id: (path)  
      - returns: RequestBuilder<Void> 
@@ -285,7 +285,7 @@ open class TokensAPI {
     /**
      - DELETE /tokens/{parentId}/children/{childId}
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter parentId: (path)  
      - parameter childId: (path)  
@@ -336,7 +336,7 @@ open class TokensAPI {
     /**
      - GET /tokens/{id}
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter id: (path)  
      - returns: RequestBuilder<Token> 
@@ -388,7 +388,7 @@ open class TokensAPI {
     /**
      - GET /tokens/{parentId}/children
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter parentId: (path)  
      - parameter type: (query)  (optional)
@@ -447,7 +447,7 @@ open class TokensAPI {
     /**
      - POST /tokens/search
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter searchTokensRequest: (body)  
      - returns: RequestBuilder<TokenPaginatedList> 
@@ -492,7 +492,7 @@ open class TokensAPI {
     /**
      - PATCH /tokens/{id}
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter id: (path)  
      - parameter updateTokenRequest: (body)  

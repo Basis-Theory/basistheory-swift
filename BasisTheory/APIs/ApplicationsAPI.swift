@@ -15,14 +15,15 @@ open class ApplicationsAPI {
     /**
 
      - parameter id: (query)  (optional)
+     - parameter type: (query)  (optional)
      - parameter page: (query)  (optional)
      - parameter size: (query)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func callGet(id: [UUID]? = nil, page: Int? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: ApplicationPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
-        return callGetWithRequestBuilder(id: id, page: page, size: size).execute(apiResponseQueue) { result in
+    open class func callGet(id: [UUID]? = nil, type: [String]? = nil, page: Int? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: ApplicationPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
+        return callGetWithRequestBuilder(id: id, type: type, page: page, size: size).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -35,14 +36,15 @@ open class ApplicationsAPI {
     /**
      - GET /applications
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter id: (query)  (optional)
+     - parameter type: (query)  (optional)
      - parameter page: (query)  (optional)
      - parameter size: (query)  (optional)
      - returns: RequestBuilder<ApplicationPaginatedList> 
      */
-    open class func callGetWithRequestBuilder(id: [UUID]? = nil, page: Int? = nil, size: Int? = nil) -> RequestBuilder<ApplicationPaginatedList> {
+    open class func callGetWithRequestBuilder(id: [UUID]? = nil, type: [String]? = nil, page: Int? = nil, size: Int? = nil) -> RequestBuilder<ApplicationPaginatedList> {
         let localVariablePath = "/applications"
         let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -50,6 +52,7 @@ open class ApplicationsAPI {
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "id": (wrappedValue: id?.encodeToJSON(), isExplode: true),
+            "type": (wrappedValue: type?.encodeToJSON(), isExplode: true),
             "page": (wrappedValue: page?.encodeToJSON(), isExplode: true),
             "size": (wrappedValue: size?.encodeToJSON(), isExplode: true),
         ])
@@ -86,7 +89,7 @@ open class ApplicationsAPI {
     /**
      - POST /applications
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter createApplicationRequest: (body)  
      - returns: RequestBuilder<Application> 
@@ -130,7 +133,7 @@ open class ApplicationsAPI {
     /**
      - DELETE /applications/{id}
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter id: (path)  
      - returns: RequestBuilder<Void> 
@@ -177,7 +180,7 @@ open class ApplicationsAPI {
     /**
      - GET /applications/{id}
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter id: (path)  
      - returns: RequestBuilder<Application> 
@@ -223,7 +226,7 @@ open class ApplicationsAPI {
     /**
      - GET /applications/key
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - returns: RequestBuilder<Application> 
      */
@@ -266,7 +269,7 @@ open class ApplicationsAPI {
     /**
      - POST /applications/{id}/regenerate
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter id: (path)  
      - returns: RequestBuilder<Application> 
@@ -314,7 +317,7 @@ open class ApplicationsAPI {
     /**
      - PUT /applications/{id}
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter id: (path)  
      - parameter updateApplicationRequest: (body)  

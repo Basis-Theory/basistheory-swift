@@ -3,9 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**types** | **[String]** |  | [optional] 
-**tokenIds** | **[String]** |  | [optional] 
-**metadataSearch** | **[String: String]** |  | [optional] 
+**type** | **[String]** |  | [optional] 
+**id** | **[String]** |  | [optional] 
+**metadata** | **[String: String]** |  | [optional] 
 **page** | **Int** |  | [optional] 
 **size** | **Int** |  | [optional] 
 

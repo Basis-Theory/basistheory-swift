@@ -12,18 +12,21 @@ import AnyCodable
 
 public struct GetApplications: Codable, JSONEncodable, Hashable {
 
-    public var applicationIds: [UUID]?
+    public var id: [UUID]?
+    public var type: [String]?
     public var page: Int?
     public var size: Int?
 
-    public init(applicationIds: [UUID]? = nil, page: Int? = nil, size: Int? = nil) {
-        self.applicationIds = applicationIds
+    public init(id: [UUID]? = nil, type: [String]? = nil, page: Int? = nil, size: Int? = nil) {
+        self.id = id
+        self.type = type
         self.page = page
         self.size = size
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case applicationIds
+        case id
+        case type
         case page
         case size
     }
@@ -32,7 +35,8 @@ public struct GetApplications: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
-        try containerEncoder.encodeIfPresent(applicationIds, forKey: .applicationIds)
+        try containerEncoder.encodeIfPresent(id, forKey: .id)
+        try containerEncoder.encodeIfPresent(type, forKey: .type)
         try containerEncoder.encodeIfPresent(page, forKey: .page)
         try containerEncoder.encodeIfPresent(size, forKey: .size)
     }

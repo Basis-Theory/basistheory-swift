@@ -1,6 +1,6 @@
 # ReactorsAPI
 
-All URIs are relative to *https://api.basistheory.com*
+All URIs are relative to *https://api-dev.basistheory.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -77,7 +77,7 @@ Name | Type | Description  | Notes
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import BasisTheory
 
-let createReactorRequest = CreateReactorRequest(name: "name_example", formula: ReactorFormula(id: 123, type: "type_example", status: "status_example", name: "name_example", description: "description_example", icon: "icon_example", code: "code_example", createdBy: 123, createdAt: Date(), modifiedBy: 123, modifiedAt: Date(), configuration: [ReactorFormulaConfiguration(name: "name_example", description: "description_example", type: "type_example")], requestParameters: [ReactorFormulaRequestParameter(name: "name_example", description: "description_example", type: "type_example", _optional: false)]), application: Application(id: 123, tenantId: 123, name: "name_example", key: "key_example", type: "type_example", createdBy: 123, createdAt: Date(), modifiedBy: 123, modifiedAt: Date(), permissions: ["permissions_example"], rules: [AccessRule(description: "description_example", priority: 123, container: "container_example", transform: "transform_example", permissions: ["permissions_example"])]), configuration: "TODO") // CreateReactorRequest | 
+let createReactorRequest = CreateReactorRequest(name: "name_example", formula: ReactorFormula(id: 123, type: "type_example", status: "status_example", name: "name_example", description: "description_example", icon: "icon_example", code: "code_example", createdBy: 123, createdAt: Date(), modifiedBy: 123, modifiedAt: Date(), configuration: [ReactorFormulaConfiguration(name: "name_example", description: "description_example", type: "type_example")], requestParameters: [ReactorFormulaRequestParameter(name: "name_example", description: "description_example", type: "type_example", _optional: false)]), application: Application(id: 123, tenantId: 123, name: "name_example", key: "key_example", type: "type_example", createdBy: 123, createdAt: Date(), modifiedBy: 123, modifiedAt: Date(), canCreateExpiringApplications: false, expiresAt: Date(), permissions: ["permissions_example"], rules: [AccessRule(description: "description_example", priority: 123, container: "container_example", transform: "transform_example", conditions: [Condition(attribute: "attribute_example", _operator: "_operator_example", value: "value_example")], permissions: ["permissions_example"])]), configuration: "TODO") // CreateReactorRequest | 
 
 ReactorsAPI.create(createReactorRequest: createReactorRequest) { (response, error) in
     guard error == nil else {
@@ -268,7 +268,7 @@ Name | Type | Description  | Notes
 import BasisTheory
 
 let id = 987 // UUID | 
-let updateReactorRequest = UpdateReactorRequest(name: "name_example", application: Application(id: 123, tenantId: 123, name: "name_example", key: "key_example", type: "type_example", createdBy: 123, createdAt: Date(), modifiedBy: 123, modifiedAt: Date(), permissions: ["permissions_example"], rules: [AccessRule(description: "description_example", priority: 123, container: "container_example", transform: "transform_example", permissions: ["permissions_example"])]), configuration: "TODO") // UpdateReactorRequest | 
+let updateReactorRequest = UpdateReactorRequest(name: "name_example", application: Application(id: 123, tenantId: 123, name: "name_example", key: "key_example", type: "type_example", createdBy: 123, createdAt: Date(), modifiedBy: 123, modifiedAt: Date(), canCreateExpiringApplications: false, expiresAt: Date(), permissions: ["permissions_example"], rules: [AccessRule(description: "description_example", priority: 123, container: "container_example", transform: "transform_example", conditions: [Condition(attribute: "attribute_example", _operator: "_operator_example", value: "value_example")], permissions: ["permissions_example"])]), configuration: "TODO") // UpdateReactorRequest | 
 
 ReactorsAPI.update(id: id, updateReactorRequest: updateReactorRequest) { (response, error) in
     guard error == nil else {

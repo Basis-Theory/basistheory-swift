@@ -32,7 +32,7 @@ open class TenantsAPI {
     /**
      - GET /tenants/self
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - returns: RequestBuilder<Tenant> 
      */
@@ -75,7 +75,7 @@ open class TenantsAPI {
     /**
      - POST /tenants/self/invitations
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter createTenantInvitationRequest: (body)  
      - returns: RequestBuilder<TenantInvitationResponse> 
@@ -118,7 +118,7 @@ open class TenantsAPI {
     /**
      - DELETE /tenants/self
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - returns: RequestBuilder<Void> 
      */
@@ -161,7 +161,7 @@ open class TenantsAPI {
     /**
      - DELETE /tenants/self/invitations/{invitationId}
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter invitationId: (path)  
      - returns: RequestBuilder<Void> 
@@ -208,7 +208,7 @@ open class TenantsAPI {
     /**
      - DELETE /tenants/self/members/{memberId}
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter memberId: (path)  
      - returns: RequestBuilder<Void> 
@@ -257,7 +257,7 @@ open class TenantsAPI {
     /**
      - GET /tenants/self/invitations
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter status: (query)  (optional)
      - parameter page: (query)  (optional)
@@ -310,7 +310,7 @@ open class TenantsAPI {
     /**
      - GET /tenants/self/members
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter userId: (query)  (optional)
      - parameter page: (query)  (optional)
@@ -360,7 +360,7 @@ open class TenantsAPI {
     /**
      - GET /tenants/self/reports/operations
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - returns: RequestBuilder<TenantUsageReport> 
      */
@@ -402,7 +402,7 @@ open class TenantsAPI {
     /**
      - GET /tenants/self/reports/usage
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - returns: RequestBuilder<TenantUsageReport> 
      */
@@ -445,7 +445,7 @@ open class TenantsAPI {
     /**
      - POST /tenants/self/invitations/{invitationId}/resend
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter invitationId: (path)  
      - returns: RequestBuilder<TenantInvitationResponse> 
@@ -492,7 +492,7 @@ open class TenantsAPI {
     /**
      - PUT /tenants/self
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter updateTenantRequest: (body)  
      - returns: RequestBuilder<Tenant> 

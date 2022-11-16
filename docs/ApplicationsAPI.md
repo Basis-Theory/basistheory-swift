@@ -1,6 +1,6 @@
 # ApplicationsAPI
 
-All URIs are relative to *https://api.basistheory.com*
+All URIs are relative to *https://api-dev.basistheory.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 # **callGet**
 ```swift
-    open class func callGet(id: [UUID]? = nil, page: Int? = nil, size: Int? = nil, completion: @escaping (_ data: ApplicationPaginatedList?, _ error: Error?) -> Void)
+    open class func callGet(id: [UUID]? = nil, type: [String]? = nil, page: Int? = nil, size: Int? = nil, completion: @escaping (_ data: ApplicationPaginatedList?, _ error: Error?) -> Void)
 ```
 
 
@@ -26,10 +26,11 @@ Method | HTTP request | Description
 import BasisTheory
 
 let id = [123] // [UUID] |  (optional)
+let type = ["inner_example"] // [String] |  (optional)
 let page = 987 // Int |  (optional)
 let size = 987 // Int |  (optional)
 
-ApplicationsAPI.callGet(id: id, page: page, size: size) { (response, error) in
+ApplicationsAPI.callGet(id: id, type: type, page: page, size: size) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -46,6 +47,7 @@ ApplicationsAPI.callGet(id: id, page: page, size: size) { (response, error) in
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | [**[UUID]**](UUID.md) |  | [optional] 
+ **type** | [**[String]**](String.md) |  | [optional] 
  **page** | **Int** |  | [optional] 
  **size** | **Int** |  | [optional] 
 
@@ -76,7 +78,7 @@ Name | Type | Description  | Notes
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import BasisTheory
 
-let createApplicationRequest = CreateApplicationRequest(name: "name_example", type: "type_example", permissions: ["permissions_example"], rules: [AccessRule(description: "description_example", priority: 123, container: "container_example", transform: "transform_example", permissions: ["permissions_example"])]) // CreateApplicationRequest | 
+let createApplicationRequest = CreateApplicationRequest(name: "name_example", type: "type_example", canCreateExpiringApplications: false, expiresAt: "expiresAt_example", permissions: ["permissions_example"], rules: [AccessRule(description: "description_example", priority: 123, container: "container_example", transform: "transform_example", conditions: [Condition(attribute: "attribute_example", _operator: "_operator_example", value: "value_example")], permissions: ["permissions_example"])]) // CreateApplicationRequest | 
 
 ApplicationsAPI.create(createApplicationRequest: createApplicationRequest) { (response, error) in
     guard error == nil else {
@@ -308,7 +310,7 @@ Name | Type | Description  | Notes
 import BasisTheory
 
 let id = 987 // UUID | 
-let updateApplicationRequest = UpdateApplicationRequest(name: "name_example", permissions: ["permissions_example"], rules: [AccessRule(description: "description_example", priority: 123, container: "container_example", transform: "transform_example", permissions: ["permissions_example"])]) // UpdateApplicationRequest | 
+let updateApplicationRequest = UpdateApplicationRequest(name: "name_example", canCreateExpiringApplications: false, permissions: ["permissions_example"], rules: [AccessRule(description: "description_example", priority: 123, container: "container_example", transform: "transform_example", conditions: [Condition(attribute: "attribute_example", _operator: "_operator_example", value: "value_example")], permissions: ["permissions_example"])]) // UpdateApplicationRequest | 
 
 ApplicationsAPI.update(id: id, updateApplicationRequest: updateApplicationRequest) { (response, error) in
     guard error == nil else {
