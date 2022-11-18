@@ -1,0 +1,19 @@
+name: Pull Request
+
+on:
+  pull_request:
+    branches:
+    - master
+
+jobs:
+  pod-linting:
+    name: Testing BasisTheoryElements Package
+    runs-on: macOS-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      
+      - name: Pod Linting
+        run: |
+          pod lib lint --allow-warnings
+          pod spec lint --allow-warnings

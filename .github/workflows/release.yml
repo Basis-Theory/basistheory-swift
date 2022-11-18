@@ -53,7 +53,11 @@ jobs:
     runs-on: macOS-latest
     needs:
       - tag-repo
+
     if: ${{ needs.tag-repo.outputs.releaseType != '' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
       - name: Install Cocoapods
         run: gem install cocoapods
