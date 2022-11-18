@@ -54,7 +54,7 @@ jobs:
     needs:
       - tag-repo
 
-    # if: ${{ needs.tag-repo.outputs.releaseType != '' }}
+    if: ${{ needs.tag-repo.outputs.releaseType != '' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
