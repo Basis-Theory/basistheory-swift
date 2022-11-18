@@ -15,4 +15,4 @@ jobs:
       
       - name: Pod Linting
         run: |
-          pod spec lint --allow-warnings --verbose
+          pod spec lint --allow-warnings
