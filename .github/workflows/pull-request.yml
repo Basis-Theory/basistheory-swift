@@ -7,7 +7,7 @@ on:
 
 jobs:
   pod-linting:
-    name: Testing BasisTheoryElements Package
+    name: Pod Linting
     runs-on: macOS-latest
     steps:
       - name: Checkout repository
