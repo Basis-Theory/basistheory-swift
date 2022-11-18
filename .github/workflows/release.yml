@@ -5,9 +5,13 @@ on:
     branches: [ master ]
 
 jobs:
-  tag:
-    name: Tag repo
+  tag-repo:
+    name: Tag Repo
     runs-on: ubuntu-latest
+
+    outputs:
+      releaseType: ${{ steps.tag-version.outputs.release_type }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -43,3 +47,18 @@ jobs:
         with:
           github_token: ${{ secrets.SEMANTIC_RELEASE_PAT }}
           branch: ${{ github.ref }}
+
+  release-cocoapod:
+    name: Release CocoaPod
+    runs-on: macOS-latest
+    needs:
+      - tag-repo
+    if: ${{ needs.tag-repo.outputs.releaseType != '' }}
+
+      - name: Install Cocoapods
+        run: gem install cocoapods
+
+      - name: Push CocoaPods
+        uses: michaelhenry/deploy-to-cocoapods-github-action@1.0.10
+        env:
+          COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
