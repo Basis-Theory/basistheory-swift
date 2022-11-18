@@ -59,9 +59,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install Cocoapods
-        run: gem install cocoapods
-
       - name: Push CocoaPods
         uses: michaelhenry/deploy-to-cocoapods-github-action@1.0.10
         env:
