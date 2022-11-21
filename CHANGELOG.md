@@ -1,3 +1,11 @@
+### [0.5.1](https://github.com/Basis-Theory/basistheory-swift/compare/0.5.0...0.5.1) (2022-11-21)
+
+
+### Bug Fixes
+
+* force push release to master ([#11](https://github.com/Basis-Theory/basistheory-swift/issues/11)) ([bd372ad](https://github.com/Basis-Theory/basistheory-swift/commit/bd372ade396433bb07fc1a362284eeaed298c4f8))
+
+
 ## [0.4.0](https://github.com/Basis-Theory/basistheory-swift/compare/0.3.0...0.4.0) (2022-11-21)
 
 
