@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**reactorIds** | **[UUID]** |  | [optional] 
+**id** | **[UUID]** |  | [optional] 
 **name** | **String** |  | [optional] 
 **page** | **Int** |  | [optional] 
 **size** | **Int** |  | [optional] 

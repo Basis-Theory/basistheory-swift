@@ -12,20 +12,20 @@ import AnyCodable
 
 public struct GetReactors: Codable, JSONEncodable, Hashable {
 
-    public var reactorIds: [UUID]?
+    public var id: [UUID]?
     public var name: String?
     public var page: Int?
     public var size: Int?
 
-    public init(reactorIds: [UUID]? = nil, name: String? = nil, page: Int? = nil, size: Int? = nil) {
-        self.reactorIds = reactorIds
+    public init(id: [UUID]? = nil, name: String? = nil, page: Int? = nil, size: Int? = nil) {
+        self.id = id
         self.name = name
         self.page = page
         self.size = size
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case reactorIds
+        case id
         case name
         case page
         case size
@@ -35,7 +35,7 @@ public struct GetReactors: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
-        try containerEncoder.encodeIfPresent(reactorIds, forKey: .reactorIds)
+        try containerEncoder.encodeIfPresent(id, forKey: .id)
         try containerEncoder.encodeIfPresent(name, forKey: .name)
         try containerEncoder.encodeIfPresent(page, forKey: .page)
         try containerEncoder.encodeIfPresent(size, forKey: .size)

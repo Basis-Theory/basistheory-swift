@@ -12,18 +12,18 @@ import AnyCodable
 
 public struct GetTenantMembers: Codable, JSONEncodable, Hashable {
 
-    public var userIds: [UUID]?
+    public var userId: [UUID]?
     public var page: Int?
     public var size: Int?
 
-    public init(userIds: [UUID]? = nil, page: Int? = nil, size: Int? = nil) {
-        self.userIds = userIds
+    public init(userId: [UUID]? = nil, page: Int? = nil, size: Int? = nil) {
+        self.userId = userId
         self.page = page
         self.size = size
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case userIds
+        case userId = "user_id"
         case page
         case size
     }
@@ -32,7 +32,7 @@ public struct GetTenantMembers: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
-        try containerEncoder.encodeIfPresent(userIds, forKey: .userIds)
+        try containerEncoder.encodeIfPresent(userId, forKey: .userId)
         try containerEncoder.encodeIfPresent(page, forKey: .page)
         try containerEncoder.encodeIfPresent(size, forKey: .size)
     }

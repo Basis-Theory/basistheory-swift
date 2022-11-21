@@ -29,10 +29,10 @@ public struct GetLogs: Codable, JSONEncodable, Hashable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case entityType
-        case entityId
-        case startDate
-        case endDate
+        case entityType = "entity_type"
+        case entityId = "entity_id"
+        case startDate = "start_date"
+        case endDate = "end_date"
         case page
         case size
     }

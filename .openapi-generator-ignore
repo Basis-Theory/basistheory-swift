@@ -25,5 +25,5 @@
 .github/*
 .travis.yml
 git_push.sh
-OpenAPIClient.podspec
+BasisTheory.podspec
 README.md

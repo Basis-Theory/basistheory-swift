@@ -19,10 +19,11 @@ public struct UpdateTokenRequest: Codable, JSONEncodable, Hashable {
     public var searchIndexes: [String]?
     public var fingerprintExpression: String?
     public var mask: AnyCodable?
+    public var expiresAt: String?
     public var deduplicateToken: Bool?
-    public var container: String?
+    public var containers: [String]?
 
-    public init(data: AnyCodable? = nil, encryption: EncryptionMetadata? = nil, privacy: UpdatePrivacy? = nil, metadata: [String: String]? = nil, searchIndexes: [String]? = nil, fingerprintExpression: String? = nil, mask: AnyCodable? = nil, deduplicateToken: Bool? = nil, container: String? = nil) {
+    public init(data: AnyCodable? = nil, encryption: EncryptionMetadata? = nil, privacy: UpdatePrivacy? = nil, metadata: [String: String]? = nil, searchIndexes: [String]? = nil, fingerprintExpression: String? = nil, mask: AnyCodable? = nil, expiresAt: String? = nil, deduplicateToken: Bool? = nil, containers: [String]? = nil) {
         self.data = data
         self.encryption = encryption
         self.privacy = privacy
@@ -30,8 +31,9 @@ public struct UpdateTokenRequest: Codable, JSONEncodable, Hashable {
         self.searchIndexes = searchIndexes
         self.fingerprintExpression = fingerprintExpression
         self.mask = mask
+        self.expiresAt = expiresAt
         self.deduplicateToken = deduplicateToken
-        self.container = container
+        self.containers = containers
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -42,8 +44,9 @@ public struct UpdateTokenRequest: Codable, JSONEncodable, Hashable {
         case searchIndexes = "search_indexes"
         case fingerprintExpression = "fingerprint_expression"
         case mask
+        case expiresAt = "expires_at"
         case deduplicateToken = "deduplicate_token"
-        case container
+        case containers
     }
 
     // Encodable protocol methods
@@ -57,8 +60,9 @@ public struct UpdateTokenRequest: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(searchIndexes, forKey: .searchIndexes)
         try containerEncoder.encodeIfPresent(fingerprintExpression, forKey: .fingerprintExpression)
         try containerEncoder.encodeIfPresent(mask, forKey: .mask)
+        try containerEncoder.encodeIfPresent(expiresAt, forKey: .expiresAt)
         try containerEncoder.encodeIfPresent(deduplicateToken, forKey: .deduplicateToken)
-        try containerEncoder.encodeIfPresent(container, forKey: .container)
+        try containerEncoder.encodeIfPresent(containers, forKey: .containers)
     }
 }
 
