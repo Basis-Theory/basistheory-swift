@@ -38,7 +38,7 @@ open class LogsAPI {
     /**
      - GET /logs
      - API Key:
-       - type: apiKey BT-API-KEY (HEADER)
+       - type: apiKey BT-API-KEY 
        - name: ApiKey
      - parameter entityType: (query)  (optional)
      - parameter entityId: (query)  (optional)
@@ -94,7 +94,7 @@ open class LogsAPI {
     /**
      - GET /logs/entity-types
      - API Key:
-       - type: apiKey BT-API-KEY (HEADER)
+       - type: apiKey BT-API-KEY 
        - name: ApiKey
      - returns: RequestBuilder<[LogEntityType]> 
      */

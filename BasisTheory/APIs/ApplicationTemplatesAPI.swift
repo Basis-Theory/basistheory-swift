@@ -32,7 +32,7 @@ open class ApplicationTemplatesAPI {
     /**
      - GET /application-templates
      - API Key:
-       - type: apiKey BT-API-KEY (HEADER)
+       - type: apiKey BT-API-KEY 
        - name: ApiKey
      - returns: RequestBuilder<[ApplicationTemplate]> 
      */
@@ -75,7 +75,7 @@ open class ApplicationTemplatesAPI {
     /**
      - GET /application-templates/{id}
      - API Key:
-       - type: apiKey BT-API-KEY (HEADER)
+       - type: apiKey BT-API-KEY 
        - name: ApiKey
      - parameter id: (path)  
      - returns: RequestBuilder<ApplicationTemplate> 

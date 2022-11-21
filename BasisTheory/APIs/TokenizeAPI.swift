@@ -33,7 +33,7 @@ open class TokenizeAPI {
     /**
      - POST /tokenize
      - API Key:
-       - type: apiKey BT-API-KEY (HEADER)
+       - type: apiKey BT-API-KEY 
        - name: ApiKey
      - parameter body: (body)  (optional)
      - returns: RequestBuilder<AnyCodable> 

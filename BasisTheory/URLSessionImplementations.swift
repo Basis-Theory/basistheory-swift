@@ -10,7 +10,7 @@ import MobileCoreServices
 #endif
 
 public protocol URLSessionProtocol {
-    func dataTask(with request: URLRequest, completionHandler: @escaping @Sendable (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
+    func dataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask
 }
 
 extension URLSession: URLSessionProtocol {}
@@ -122,11 +122,11 @@ open class URLSessionRequestBuilder<T>: RequestBuilder<T> {
         case .options, .post, .put, .patch, .delete, .trace, .connect:
             let contentType = headers["Content-Type"] ?? "application/json"
 
-            if contentType.hasPrefix("application/json") {
+            if contentType == "application/json" {
                 encoding = JSONDataEncoding()
-            } else if contentType.hasPrefix("multipart/form-data") {
+            } else if contentType == "multipart/form-data" {
                 encoding = FormDataEncoding(contentTypeForFormPart: contentTypeForFormPart(fileURL:))
-            } else if contentType.hasPrefix("application/x-www-form-urlencoded") {
+            } else if contentType == "application/x-www-form-urlencoded" {
                 encoding = FormURLEncoding()
             } else {
                 fatalError("Unsupported Media Type - \(contentType)")
@@ -208,7 +208,7 @@ open class URLSessionRequestBuilder<T>: RequestBuilder<T> {
         switch T.self {
         case is Void.Type:
 
-            completion(.success(Response(response: httpResponse, body: () as! T, bodyData: data)))
+            completion(.success(Response(response: httpResponse, body: () as! T)))
 
         default:
             fatalError("Unsupported Response Body Type - \(String(describing: T.self))")
@@ -303,7 +303,7 @@ open class URLSessionDecodableRequestBuilder<T: Decodable>: URLSessionRequestBui
 
             let body = data.flatMap { String(data: $0, encoding: .utf8) } ?? ""
 
-            completion(.success(Response<T>(response: httpResponse, body: body as! T, bodyData: data)))
+            completion(.success(Response<T>(response: httpResponse, body: body as! T)))
 
         case is URL.Type:
             do {
@@ -334,7 +334,7 @@ open class URLSessionDecodableRequestBuilder<T: Decodable>: URLSessionRequestBui
                 try fileManager.createDirectory(atPath: directoryPath, withIntermediateDirectories: true, attributes: nil)
                 try data.write(to: filePath, options: .atomic)
 
-                completion(.success(Response(response: httpResponse, body: filePath as! T, bodyData: data)))
+                completion(.success(Response(response: httpResponse, body: filePath as! T)))
 
             } catch let requestParserError as DownloadException {
                 completion(.failure(ErrorResponse.error(400, data, response, requestParserError)))
@@ -344,30 +344,30 @@ open class URLSessionDecodableRequestBuilder<T: Decodable>: URLSessionRequestBui
 
         case is Void.Type:
 
-            completion(.success(Response(response: httpResponse, body: () as! T, bodyData: data)))
+            completion(.success(Response(response: httpResponse, body: () as! T)))
 
         case is Data.Type:
 
-            completion(.success(Response(response: httpResponse, body: data as! T, bodyData: data)))
+            completion(.success(Response(response: httpResponse, body: data as! T)))
 
         default:
 
-            guard let unwrappedData = data, !unwrappedData.isEmpty else {
+            guard let data = data, !data.isEmpty else {
                 if let E = T.self as? ExpressibleByNilLiteral.Type {
-                    completion(.success(Response(response: httpResponse, body: E.init(nilLiteral: ()) as! T, bodyData: data)))
+                    completion(.success(Response(response: httpResponse, body: E.init(nilLiteral: ()) as! T)))
                 } else {
                     completion(.failure(ErrorResponse.error(httpResponse.statusCode, nil, response, DecodableRequestBuilderError.emptyDataResponse)))
                 }
                 return
             }
 
-            let decodeResult = CodableHelper.decode(T.self, from: unwrappedData)
+            let decodeResult = CodableHelper.decode(T.self, from: data)
 
             switch decodeResult {
             case let .success(decodableObj):
-                completion(.success(Response(response: httpResponse, body: decodableObj, bodyData: unwrappedData)))
+                completion(.success(Response(response: httpResponse, body: decodableObj)))
             case let .failure(error):
-                completion(.failure(ErrorResponse.error(httpResponse.statusCode, unwrappedData, response, error)))
+                completion(.failure(ErrorResponse.error(httpResponse.statusCode, data, response, error)))
             }
         }
     }

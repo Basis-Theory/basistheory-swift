@@ -36,7 +36,7 @@ open class ProxiesAPI {
     /**
      - GET /proxies
      - API Key:
-       - type: apiKey BT-API-KEY (HEADER)
+       - type: apiKey BT-API-KEY 
        - name: ApiKey
      - parameter id: (query)  (optional)
      - parameter name: (query)  (optional)
@@ -89,7 +89,7 @@ open class ProxiesAPI {
     /**
      - POST /proxies
      - API Key:
-       - type: apiKey BT-API-KEY (HEADER)
+       - type: apiKey BT-API-KEY 
        - name: ApiKey
      - parameter createProxyRequest: (body)  
      - returns: RequestBuilder<Proxy> 
@@ -133,7 +133,7 @@ open class ProxiesAPI {
     /**
      - DELETE /proxies/{id}
      - API Key:
-       - type: apiKey BT-API-KEY (HEADER)
+       - type: apiKey BT-API-KEY 
        - name: ApiKey
      - parameter id: (path)  
      - returns: RequestBuilder<Void> 
@@ -180,7 +180,7 @@ open class ProxiesAPI {
     /**
      - GET /proxies/{id}
      - API Key:
-       - type: apiKey BT-API-KEY (HEADER)
+       - type: apiKey BT-API-KEY 
        - name: ApiKey
      - parameter id: (path)  
      - returns: RequestBuilder<Proxy> 
@@ -228,7 +228,7 @@ open class ProxiesAPI {
     /**
      - PUT /proxies/{id}
      - API Key:
-       - type: apiKey BT-API-KEY (HEADER)
+       - type: apiKey BT-API-KEY 
        - name: ApiKey
      - parameter id: (path)  
      - parameter updateProxyRequest: (body)  

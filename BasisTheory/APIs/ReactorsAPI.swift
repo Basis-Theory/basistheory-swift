@@ -36,7 +36,7 @@ open class ReactorsAPI {
     /**
      - GET /reactors
      - API Key:
-       - type: apiKey BT-API-KEY (HEADER)
+       - type: apiKey BT-API-KEY 
        - name: ApiKey
      - parameter id: (query)  (optional)
      - parameter name: (query)  (optional)
@@ -89,7 +89,7 @@ open class ReactorsAPI {
     /**
      - POST /reactors
      - API Key:
-       - type: apiKey BT-API-KEY (HEADER)
+       - type: apiKey BT-API-KEY 
        - name: ApiKey
      - parameter createReactorRequest: (body)  
      - returns: RequestBuilder<Reactor> 
@@ -133,7 +133,7 @@ open class ReactorsAPI {
     /**
      - DELETE /reactors/{id}
      - API Key:
-       - type: apiKey BT-API-KEY (HEADER)
+       - type: apiKey BT-API-KEY 
        - name: ApiKey
      - parameter id: (path)  
      - returns: RequestBuilder<Void> 
@@ -180,7 +180,7 @@ open class ReactorsAPI {
     /**
      - GET /reactors/{id}
      - API Key:
-       - type: apiKey BT-API-KEY (HEADER)
+       - type: apiKey BT-API-KEY 
        - name: ApiKey
      - parameter id: (path)  
      - returns: RequestBuilder<Reactor> 
@@ -228,7 +228,7 @@ open class ReactorsAPI {
     /**
      - POST /reactors/{id}/react
      - API Key:
-       - type: apiKey BT-API-KEY (HEADER)
+       - type: apiKey BT-API-KEY 
        - name: ApiKey
      - parameter id: (path)  
      - parameter reactRequest: (body)  
@@ -277,7 +277,7 @@ open class ReactorsAPI {
     /**
      - PUT /reactors/{id}
      - API Key:
-       - type: apiKey BT-API-KEY (HEADER)
+       - type: apiKey BT-API-KEY 
        - name: ApiKey
      - parameter id: (path)  
      - parameter updateReactorRequest: (body)  

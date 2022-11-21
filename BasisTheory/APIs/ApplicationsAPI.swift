@@ -36,7 +36,7 @@ open class ApplicationsAPI {
     /**
      - GET /applications
      - API Key:
-       - type: apiKey BT-API-KEY (HEADER)
+       - type: apiKey BT-API-KEY 
        - name: ApiKey
      - parameter id: (query)  (optional)
      - parameter type: (query)  (optional)
@@ -89,7 +89,7 @@ open class ApplicationsAPI {
     /**
      - POST /applications
      - API Key:
-       - type: apiKey BT-API-KEY (HEADER)
+       - type: apiKey BT-API-KEY 
        - name: ApiKey
      - parameter createApplicationRequest: (body)  
      - returns: RequestBuilder<Application> 
@@ -133,7 +133,7 @@ open class ApplicationsAPI {
     /**
      - DELETE /applications/{id}
      - API Key:
-       - type: apiKey BT-API-KEY (HEADER)
+       - type: apiKey BT-API-KEY 
        - name: ApiKey
      - parameter id: (path)  
      - returns: RequestBuilder<Void> 
@@ -180,7 +180,7 @@ open class ApplicationsAPI {
     /**
      - GET /applications/{id}
      - API Key:
-       - type: apiKey BT-API-KEY (HEADER)
+       - type: apiKey BT-API-KEY 
        - name: ApiKey
      - parameter id: (path)  
      - returns: RequestBuilder<Application> 
@@ -226,7 +226,7 @@ open class ApplicationsAPI {
     /**
      - GET /applications/key
      - API Key:
-       - type: apiKey BT-API-KEY (HEADER)
+       - type: apiKey BT-API-KEY 
        - name: ApiKey
      - returns: RequestBuilder<Application> 
      */
@@ -269,7 +269,7 @@ open class ApplicationsAPI {
     /**
      - POST /applications/{id}/regenerate
      - API Key:
-       - type: apiKey BT-API-KEY (HEADER)
+       - type: apiKey BT-API-KEY 
        - name: ApiKey
      - parameter id: (path)  
      - returns: RequestBuilder<Application> 
@@ -317,7 +317,7 @@ open class ApplicationsAPI {
     /**
      - PUT /applications/{id}
      - API Key:
-       - type: apiKey BT-API-KEY (HEADER)
+       - type: apiKey BT-API-KEY 
        - name: ApiKey
      - parameter id: (path)  
      - parameter updateApplicationRequest: (body)  
