@@ -1,6 +1,5 @@
 .gitignore
 .swiftformat
-BasisTheory.podspec
 BasisTheory/APIHelper.swift
 BasisTheory/APIs.swift
 BasisTheory/APIs/ApplicationTemplatesAPI.swift

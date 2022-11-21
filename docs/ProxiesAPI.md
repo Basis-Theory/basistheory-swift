@@ -1,6 +1,6 @@
 # ProxiesAPI
 
-All URIs are relative to *https://api-dev.basistheory.com*
+All URIs are relative to *https://api.basistheory.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
