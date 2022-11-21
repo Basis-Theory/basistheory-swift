@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **privacy** | [**Privacy**](Privacy.md) |  | [optional] 
 **searchIndexes** | **[String]** |  | [optional] 
 **expiresAt** | **Date** |  | [optional] 
-**container** | **String** |  | [optional] 
+**containers** | **[String]** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

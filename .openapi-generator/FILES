@@ -1,8 +1,8 @@
 .gitignore
 .swiftformat
-BasisTheory.podspec
 BasisTheory/APIHelper.swift
 BasisTheory/APIs.swift
+BasisTheory/APIs/ApplicationTemplatesAPI.swift
 BasisTheory/APIs/ApplicationsAPI.swift
 BasisTheory/APIs/LogsAPI.swift
 BasisTheory/APIs/PermissionsAPI.swift
@@ -21,6 +21,8 @@ BasisTheory/Models.swift
 BasisTheory/Models/AccessRule.swift
 BasisTheory/Models/Application.swift
 BasisTheory/Models/ApplicationPaginatedList.swift
+BasisTheory/Models/ApplicationTemplate.swift
+BasisTheory/Models/Condition.swift
 BasisTheory/Models/CreateApplicationRequest.swift
 BasisTheory/Models/CreateProxyRequest.swift
 BasisTheory/Models/CreateReactorFormulaRequest.swift
@@ -87,7 +89,10 @@ Package.swift
 docs/AccessRule.md
 docs/Application.md
 docs/ApplicationPaginatedList.md
+docs/ApplicationTemplate.md
+docs/ApplicationTemplatesAPI.md
 docs/ApplicationsAPI.md
+docs/Condition.md
 docs/CreateApplicationRequest.md
 docs/CreateProxyRequest.md
 docs/CreateReactorFormulaRequest.md

@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **mask** | [**AnyCodable**](.md) |  | [optional] 
 **deduplicateToken** | **Bool** |  | [optional] 
 **expiresAt** | **String** |  | [optional] 
-**container** | **String** |  | [optional] 
+**containers** | **[String]** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -28,7 +28,19 @@
                 "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
                 "type": "string",
                 "format": "uuid"
-              }
+              },
+              "nullable": true
+            }
+          },
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "nullable": true
             }
           },
           {
@@ -458,6 +470,102 @@
         }
       }
     },
+    "/application-templates": {
+      "get": {
+        "tags": [
+          "ApplicationTemplates"
+        ],
+        "operationId": "ApplicationTemplates_Get",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ApplicationTemplate"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/application-templates/{id}": {
+      "get": {
+        "tags": [
+          "ApplicationTemplates"
+        ],
+        "operationId": "ApplicationTemplates_GetById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "maxLength": 36,
+              "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApplicationTemplate"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/logs": {
       "get": {
         "tags": [
@@ -469,6 +577,7 @@
             "name": "entity_type",
             "in": "query",
             "schema": {
+              "maxLength": 50,
               "pattern": "^[A-z]+$",
               "type": "string",
               "nullable": true
@@ -626,6 +735,8 @@
             "name": "application_type",
             "in": "query",
             "schema": {
+              "maxLength": 25,
+              "pattern": "^[A-z_]+$",
               "type": "string",
               "nullable": true
             }
@@ -706,7 +817,8 @@
                 "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
                 "type": "string",
                 "format": "uuid"
-              }
+              },
+              "nullable": true
             }
           },
           {
@@ -1401,7 +1513,8 @@
                 "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
                 "type": "string",
                 "format": "uuid"
-              }
+              },
+              "nullable": true
             }
           },
           {
@@ -2097,7 +2210,8 @@
                 "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
                 "type": "string",
                 "format": "uuid"
-              }
+              },
+              "nullable": true
             }
           },
           {
@@ -2497,7 +2611,8 @@
               "type": "array",
               "items": {
                 "type": "string"
-              }
+              },
+              "nullable": true
             }
           },
           {
@@ -2507,7 +2622,8 @@
               "type": "array",
               "items": {
                 "type": "string"
-              }
+              },
+              "nullable": true
             }
           },
           {
@@ -2518,7 +2634,8 @@
               "type": "object",
               "additionalProperties": {
                 "type": "string"
-              }
+              },
+              "nullable": true
             }
           },
           {
@@ -2916,7 +3033,8 @@
               "type": "array",
               "items": {
                 "type": "string"
-              }
+              },
+              "nullable": true
             }
           },
           {
@@ -2926,7 +3044,8 @@
               "type": "array",
               "items": {
                 "type": "string"
-              }
+              },
+              "nullable": true
             }
           },
           {
@@ -2937,7 +3056,8 @@
               "type": "object",
               "additionalProperties": {
                 "type": "string"
-              }
+              },
+              "nullable": true
             }
           },
           {
@@ -3353,7 +3473,8 @@
           },
           "priority": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "nullable": true
           },
           "container": {
             "type": "string",
@@ -3361,6 +3482,13 @@
           },
           "transform": {
             "type": "string",
+            "nullable": true
+          },
+          "conditions": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Condition"
+            },
             "nullable": true
           },
           "permissions": {
@@ -3432,6 +3560,16 @@
             "format": "date-time",
             "nullable": true
           },
+          "can_create_expiring_applications": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "expires_at": {
+            "maxLength": 40,
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
           "permissions": {
             "maxItems": 50,
             "type": "array",
@@ -3467,24 +3605,94 @@
         },
         "additionalProperties": false
       },
+      "ApplicationTemplate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "maxLength": 36,
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "application_type": {
+            "type": "string",
+            "nullable": true
+          },
+          "template_type": {
+            "type": "string",
+            "nullable": true
+          },
+          "is_starter": {
+            "type": "boolean"
+          },
+          "rules": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AccessRule"
+            },
+            "nullable": true
+          },
+          "permissions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Condition": {
+        "type": "object",
+        "properties": {
+          "attribute": {
+            "type": "string",
+            "nullable": true
+          },
+          "operator": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CreateApplicationRequest": {
         "required": [
-          "name",
           "type"
         ],
         "type": "object",
         "properties": {
           "name": {
             "maxLength": 200,
-            "minLength": 1,
             "pattern": "^.+$",
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "type": {
             "maxLength": 25,
             "minLength": 1,
             "pattern": "^[A-z_]+$",
             "type": "string"
+          },
+          "can_create_expiring_applications": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "expires_at": {
+            "type": "string",
+            "nullable": true
           },
           "permissions": {
             "maxItems": 50,
@@ -3705,10 +3913,12 @@
             "type": "string",
             "nullable": true
           },
-          "container": {
-            "maxLength": 400,
-            "pattern": "^(?!.*\\/\\/)(?=.*\\/$)\\/[A-z0-9_\\-\\/]*$",
-            "type": "string",
+          "containers": {
+            "maxItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
             "nullable": true
           }
         },
@@ -3804,10 +4014,13 @@
             "format": "date-time",
             "nullable": true
           },
-          "container": {
-            "maxLength": 400,
+          "containers": {
             "pattern": "^(?!.*\\/\\/)(?=.*\\/$)\\/[A-z0-9_\\-\\/]*$",
-            "type": "string",
+            "maxItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
             "nullable": true
           }
         },
@@ -3848,14 +4061,20 @@
       "GetApplications": {
         "type": "object",
         "properties": {
-          "applicationIds": {
-            "maxItems": 100,
+          "id": {
             "type": "array",
             "items": {
               "maxLength": 36,
               "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
               "type": "string",
               "format": "uuid"
+            },
+            "nullable": true
+          },
+          "type": {
+            "type": "array",
+            "items": {
+              "type": "string"
             },
             "nullable": true
           },
@@ -3880,24 +4099,25 @@
       "GetLogs": {
         "type": "object",
         "properties": {
-          "entityType": {
+          "entity_type": {
+            "maxLength": 50,
             "pattern": "^[A-z]+$",
             "type": "string",
             "nullable": true
           },
-          "entityId": {
+          "entity_id": {
             "maxLength": 200,
             "pattern": "^.+$",
             "type": "string",
             "nullable": true
           },
-          "startDate": {
+          "start_date": {
             "maxLength": 40,
             "type": "string",
             "format": "date-time",
             "nullable": true
           },
-          "endDate": {
+          "end_date": {
             "maxLength": 40,
             "type": "string",
             "format": "date-time",
@@ -3924,7 +4144,9 @@
       "GetPermissions": {
         "type": "object",
         "properties": {
-          "applicationType": {
+          "application_type": {
+            "maxLength": 25,
+            "pattern": "^[A-z_]+$",
             "type": "string",
             "nullable": true
           },
@@ -3941,8 +4163,7 @@
       "GetProxies": {
         "type": "object",
         "properties": {
-          "ids": {
-            "maxItems": 100,
+          "id": {
             "type": "array",
             "items": {
               "maxLength": 36,
@@ -4006,8 +4227,7 @@
       "GetReactors": {
         "type": "object",
         "properties": {
-          "reactorIds": {
-            "maxItems": 100,
+          "id": {
             "type": "array",
             "items": {
               "maxLength": 36,
@@ -4068,8 +4288,7 @@
       "GetTenantMembers": {
         "type": "object",
         "properties": {
-          "userIds": {
-            "maxItems": 50,
+          "user_id": {
             "type": "array",
             "items": {
               "maxLength": 36,
@@ -4100,24 +4319,21 @@
       "GetTokens": {
         "type": "object",
         "properties": {
-          "types": {
-            "maxItems": 10,
+          "type": {
             "type": "array",
             "items": {
               "type": "string"
             },
             "nullable": true
           },
-          "tokenIds": {
-            "maxItems": 100,
+          "id": {
             "type": "array",
             "items": {
               "type": "string"
             },
             "nullable": true
           },
-          "metadataSearch": {
-            "maxLength": 10,
+          "metadata": {
             "type": "object",
             "additionalProperties": {
               "type": "string",
@@ -5075,10 +5291,13 @@
             "format": "date-time",
             "nullable": true
           },
-          "container": {
-            "maxLength": 400,
+          "containers": {
             "pattern": "^(?!.*\\/\\/)(?=.*\\/$)\\/[A-z0-9_\\-\\/]*$",
-            "type": "string",
+            "maxItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
             "nullable": true
           }
         },
@@ -5161,6 +5380,10 @@
             "minLength": 1,
             "pattern": "^.+$",
             "type": "string"
+          },
+          "can_create_expiring_applications": {
+            "type": "boolean",
+            "nullable": true
           },
           "permissions": {
             "maxItems": 50,
@@ -5374,14 +5597,20 @@
           "mask": {
             "nullable": true
           },
+          "expires_at": {
+            "type": "string",
+            "nullable": true
+          },
           "deduplicate_token": {
             "type": "boolean",
             "nullable": true
           },
-          "container": {
-            "maxLength": 400,
-            "pattern": "^(?!.*\\/\\/)(?=.*\\/$)\\/[A-z0-9_\\-\\/]*$",
-            "type": "string",
+          "containers": {
+            "maxItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
             "nullable": true
           }
         },

@@ -10,8 +10,9 @@ Name | Type | Description | Notes
 **searchIndexes** | **[String]** |  | [optional] 
 **fingerprintExpression** | **String** |  | [optional] 
 **mask** | [**AnyCodable**](.md) |  | [optional] 
+**expiresAt** | **String** |  | [optional] 
 **deduplicateToken** | **Bool** |  | [optional] 
-**container** | **String** |  | [optional] 
+**containers** | **[String]** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

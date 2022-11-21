@@ -4,6 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** |  | 
+**canCreateExpiringApplications** | **Bool** |  | [optional] 
 **permissions** | **[String]** |  | [optional] 
 **rules** | [AccessRule] |  | [optional] 
 
