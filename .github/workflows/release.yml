@@ -47,7 +47,7 @@ jobs:
           force: true
 
       - name: Push CocoaPods
-        uses: michaelhenry/deploy-to-cocoapods-github-action@1.0.10
         if: ${{ steps.tag-version.outputs.release_type != '' }}
+        run: pod trunk push --allow-warnings
         env:
           COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
