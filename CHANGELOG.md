@@ -1,3 +1,11 @@
+### [0.5.3](https://github.com/Basis-Theory/basistheory-swift/compare/0.5.2...0.5.3) (2022-11-28)
+
+
+### Bug Fixes
+
+* fixes cocoapods release ([#13](https://github.com/Basis-Theory/basistheory-swift/issues/13)) ([1d439d4](https://github.com/Basis-Theory/basistheory-swift/commit/1d439d4563987eb4b6c1b61e7c3b3c4eb189dc72))
+
+
 ### [0.5.2](https://github.com/Basis-Theory/basistheory-swift/compare/0.5.1...0.5.2) (2022-11-28)
 
 
