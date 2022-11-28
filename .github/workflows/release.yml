@@ -9,9 +9,6 @@ jobs:
     name: Tag Repo
     runs-on: ubuntu-latest
 
-    outputs:
-      releaseType: ${{ steps.tag-version.outputs.release_type }}
-
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -49,18 +46,8 @@ jobs:
           branch: ${{ github.ref }}
           force: true
 
-  release-cocoapod:
-    name: Release CocoaPod
-    runs-on: macOS-latest
-    needs:
-      - tag-repo
-
-    if: ${{ needs.tag-repo.outputs.releaseType != '' }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
       - name: Push CocoaPods
         uses: michaelhenry/deploy-to-cocoapods-github-action@1.0.10
+        if: ${{ steps.tag-version.outputs.release_type != '' }}
         env:
           COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
