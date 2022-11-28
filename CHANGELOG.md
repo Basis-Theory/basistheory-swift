@@ -1,3 +1,11 @@
+### [0.5.5](https://github.com/Basis-Theory/basistheory-swift/compare/0.5.4...0.5.5) (2022-11-28)
+
+
+### Bug Fixes
+
+* fixes sed cmd. releases CocoaPod ([#15](https://github.com/Basis-Theory/basistheory-swift/issues/15)) ([d4d10d6](https://github.com/Basis-Theory/basistheory-swift/commit/d4d10d63fe9373ec667a95910fbc4504b6004fde))
+
+
 ### [0.5.3](https://github.com/Basis-Theory/basistheory-swift/compare/0.5.2...0.5.3) (2022-11-28)
 
 
