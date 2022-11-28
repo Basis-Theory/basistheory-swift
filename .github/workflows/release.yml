@@ -5,9 +5,9 @@ on:
     branches: [ master ]
 
 jobs:
-  tag-repo:
-    name: Tag Repo
-    runs-on: ubuntu-latest
+  tag-and-release:
+    name: Tag and Release
+    runs-on: macOS-latest
 
     steps:
       - name: Checkout
