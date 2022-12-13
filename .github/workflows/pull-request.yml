@@ -19,7 +19,7 @@ jobs:
 
   dependency-check-test:
     name: Dependency Check Test
-    runs-on: macOS-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
