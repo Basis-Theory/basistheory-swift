@@ -38,7 +38,7 @@ jobs:
             --scan Package.swift
 
       - name: Upload Test results
-      if: success() || failure()
+        if: success() || failure()
         uses: actions/upload-artifact@master
         with:
            name: Depcheck report
