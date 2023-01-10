@@ -16,13 +16,21 @@ public struct UpdateProxyRequest: Codable, JSONEncodable, Hashable {
     public var destinationUrl: String
     public var requestReactorId: UUID?
     public var responseReactorId: UUID?
+    public var requestTransform: ProxyTransform?
+    public var responseTransform: ProxyTransform?
+    public var application: Application?
+    public var configuration: [String: String]?
     public var requireAuth: Bool?
 
-    public init(name: String, destinationUrl: String, requestReactorId: UUID? = nil, responseReactorId: UUID? = nil, requireAuth: Bool? = nil) {
+    public init(name: String, destinationUrl: String, requestReactorId: UUID? = nil, responseReactorId: UUID? = nil, requestTransform: ProxyTransform? = nil, responseTransform: ProxyTransform? = nil, application: Application? = nil, configuration: [String: String]? = nil, requireAuth: Bool? = nil) {
         self.name = name
         self.destinationUrl = destinationUrl
         self.requestReactorId = requestReactorId
         self.responseReactorId = responseReactorId
+        self.requestTransform = requestTransform
+        self.responseTransform = responseTransform
+        self.application = application
+        self.configuration = configuration
         self.requireAuth = requireAuth
     }
 
@@ -31,6 +39,10 @@ public struct UpdateProxyRequest: Codable, JSONEncodable, Hashable {
         case destinationUrl = "destination_url"
         case requestReactorId = "request_reactor_id"
         case responseReactorId = "response_reactor_id"
+        case requestTransform = "request_transform"
+        case responseTransform = "response_transform"
+        case application
+        case configuration
         case requireAuth = "require_auth"
     }
 
@@ -42,6 +54,10 @@ public struct UpdateProxyRequest: Codable, JSONEncodable, Hashable {
         try containerEncoder.encode(destinationUrl, forKey: .destinationUrl)
         try containerEncoder.encodeIfPresent(requestReactorId, forKey: .requestReactorId)
         try containerEncoder.encodeIfPresent(responseReactorId, forKey: .responseReactorId)
+        try containerEncoder.encodeIfPresent(requestTransform, forKey: .requestTransform)
+        try containerEncoder.encodeIfPresent(responseTransform, forKey: .responseTransform)
+        try containerEncoder.encodeIfPresent(application, forKey: .application)
+        try containerEncoder.encodeIfPresent(configuration, forKey: .configuration)
         try containerEncoder.encodeIfPresent(requireAuth, forKey: .requireAuth)
     }
 }

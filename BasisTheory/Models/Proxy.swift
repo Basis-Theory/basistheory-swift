@@ -20,12 +20,16 @@ public struct Proxy: Codable, JSONEncodable, Hashable {
     public var requestReactorId: UUID?
     public var responseReactorId: UUID?
     public var requireAuth: Bool?
+    public var requestTransform: ProxyTransform?
+    public var responseTransform: ProxyTransform?
+    public var applicationId: UUID?
+    public var configuration: [String: String]?
     public var createdBy: UUID?
     public var createdAt: Date?
     public var modifiedBy: UUID?
     public var modifiedAt: Date?
 
-    public init(id: UUID? = nil, key: String? = nil, tenantId: UUID? = nil, name: String? = nil, destinationUrl: String? = nil, requestReactorId: UUID? = nil, responseReactorId: UUID? = nil, requireAuth: Bool? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, modifiedBy: UUID? = nil, modifiedAt: Date? = nil) {
+    public init(id: UUID? = nil, key: String? = nil, tenantId: UUID? = nil, name: String? = nil, destinationUrl: String? = nil, requestReactorId: UUID? = nil, responseReactorId: UUID? = nil, requireAuth: Bool? = nil, requestTransform: ProxyTransform? = nil, responseTransform: ProxyTransform? = nil, applicationId: UUID? = nil, configuration: [String: String]? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, modifiedBy: UUID? = nil, modifiedAt: Date? = nil) {
         self.id = id
         self.key = key
         self.tenantId = tenantId
@@ -34,6 +38,10 @@ public struct Proxy: Codable, JSONEncodable, Hashable {
         self.requestReactorId = requestReactorId
         self.responseReactorId = responseReactorId
         self.requireAuth = requireAuth
+        self.requestTransform = requestTransform
+        self.responseTransform = responseTransform
+        self.applicationId = applicationId
+        self.configuration = configuration
         self.createdBy = createdBy
         self.createdAt = createdAt
         self.modifiedBy = modifiedBy
@@ -49,6 +57,10 @@ public struct Proxy: Codable, JSONEncodable, Hashable {
         case requestReactorId = "request_reactor_id"
         case responseReactorId = "response_reactor_id"
         case requireAuth = "require_auth"
+        case requestTransform = "request_transform"
+        case responseTransform = "response_transform"
+        case applicationId = "application_id"
+        case configuration
         case createdBy = "created_by"
         case createdAt = "created_at"
         case modifiedBy = "modified_by"
@@ -67,6 +79,10 @@ public struct Proxy: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(requestReactorId, forKey: .requestReactorId)
         try containerEncoder.encodeIfPresent(responseReactorId, forKey: .responseReactorId)
         try containerEncoder.encodeIfPresent(requireAuth, forKey: .requireAuth)
+        try containerEncoder.encodeIfPresent(requestTransform, forKey: .requestTransform)
+        try containerEncoder.encodeIfPresent(responseTransform, forKey: .responseTransform)
+        try containerEncoder.encodeIfPresent(applicationId, forKey: .applicationId)
+        try containerEncoder.encodeIfPresent(configuration, forKey: .configuration)
         try containerEncoder.encodeIfPresent(createdBy, forKey: .createdBy)
         try containerEncoder.encodeIfPresent(createdAt, forKey: .createdAt)
         try containerEncoder.encodeIfPresent(modifiedBy, forKey: .modifiedBy)

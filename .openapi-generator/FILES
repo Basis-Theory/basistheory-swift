@@ -9,6 +9,7 @@ BasisTheory/APIs/PermissionsAPI.swift
 BasisTheory/APIs/ProxiesAPI.swift
 BasisTheory/APIs/ReactorFormulasAPI.swift
 BasisTheory/APIs/ReactorsAPI.swift
+BasisTheory/APIs/SessionsAPI.swift
 BasisTheory/APIs/TenantsAPI.swift
 BasisTheory/APIs/TokenizeAPI.swift
 BasisTheory/APIs/TokensAPI.swift
@@ -22,11 +23,13 @@ BasisTheory/Models/AccessRule.swift
 BasisTheory/Models/Application.swift
 BasisTheory/Models/ApplicationPaginatedList.swift
 BasisTheory/Models/ApplicationTemplate.swift
+BasisTheory/Models/AuthorizeSessionRequest.swift
 BasisTheory/Models/Condition.swift
 BasisTheory/Models/CreateApplicationRequest.swift
 BasisTheory/Models/CreateProxyRequest.swift
 BasisTheory/Models/CreateReactorFormulaRequest.swift
 BasisTheory/Models/CreateReactorRequest.swift
+BasisTheory/Models/CreateSessionResponse.swift
 BasisTheory/Models/CreateTenantInvitationRequest.swift
 BasisTheory/Models/CreateTokenRequest.swift
 BasisTheory/Models/CreateTokenResponse.swift
@@ -51,6 +54,7 @@ BasisTheory/Models/Privacy.swift
 BasisTheory/Models/ProblemDetails.swift
 BasisTheory/Models/Proxy.swift
 BasisTheory/Models/ProxyPaginatedList.swift
+BasisTheory/Models/ProxyTransform.swift
 BasisTheory/Models/ReactRequest.swift
 BasisTheory/Models/ReactResponse.swift
 BasisTheory/Models/Reactor.swift
@@ -92,11 +96,13 @@ docs/ApplicationPaginatedList.md
 docs/ApplicationTemplate.md
 docs/ApplicationTemplatesAPI.md
 docs/ApplicationsAPI.md
+docs/AuthorizeSessionRequest.md
 docs/Condition.md
 docs/CreateApplicationRequest.md
 docs/CreateProxyRequest.md
 docs/CreateReactorFormulaRequest.md
 docs/CreateReactorRequest.md
+docs/CreateSessionResponse.md
 docs/CreateTenantInvitationRequest.md
 docs/CreateTokenRequest.md
 docs/CreateTokenResponse.md
@@ -124,6 +130,7 @@ docs/ProblemDetails.md
 docs/ProxiesAPI.md
 docs/Proxy.md
 docs/ProxyPaginatedList.md
+docs/ProxyTransform.md
 docs/ReactRequest.md
 docs/ReactResponse.md
 docs/Reactor.md
@@ -135,6 +142,7 @@ docs/ReactorFormulasAPI.md
 docs/ReactorPaginatedList.md
 docs/ReactorsAPI.md
 docs/SearchTokensRequest.md
+docs/SessionsAPI.md
 docs/StringStringKeyValuePair.md
 docs/Tenant.md
 docs/TenantInvitationResponse.md

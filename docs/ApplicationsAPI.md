@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import BasisTheory
 
-let createApplicationRequest = CreateApplicationRequest(name: "name_example", type: "type_example", canCreateExpiringApplications: false, expiresAt: "expiresAt_example", permissions: ["permissions_example"], rules: [AccessRule(description: "description_example", priority: 123, container: "container_example", transform: "transform_example", conditions: [Condition(attribute: "attribute_example", _operator: "_operator_example", value: "value_example")], permissions: ["permissions_example"])]) // CreateApplicationRequest | 
+let createApplicationRequest = CreateApplicationRequest(name: "name_example", type: "type_example", expiresAt: "expiresAt_example", permissions: ["permissions_example"], rules: [AccessRule(description: "description_example", priority: 123, container: "container_example", transform: "transform_example", conditions: [Condition(attribute: "attribute_example", _operator: "_operator_example", value: "value_example")], permissions: ["permissions_example"])]) // CreateApplicationRequest | 
 
 ApplicationsAPI.create(createApplicationRequest: createApplicationRequest) { (response, error) in
     guard error == nil else {
@@ -310,7 +310,7 @@ Name | Type | Description  | Notes
 import BasisTheory
 
 let id = 987 // UUID | 
-let updateApplicationRequest = UpdateApplicationRequest(name: "name_example", canCreateExpiringApplications: false, permissions: ["permissions_example"], rules: [AccessRule(description: "description_example", priority: 123, container: "container_example", transform: "transform_example", conditions: [Condition(attribute: "attribute_example", _operator: "_operator_example", value: "value_example")], permissions: ["permissions_example"])]) // UpdateApplicationRequest | 
+let updateApplicationRequest = UpdateApplicationRequest(name: "name_example", permissions: ["permissions_example"], rules: [AccessRule(description: "description_example", priority: 123, container: "container_example", transform: "transform_example", conditions: [Condition(attribute: "attribute_example", _operator: "_operator_example", value: "value_example")], permissions: ["permissions_example"])]) // UpdateApplicationRequest | 
 
 ApplicationsAPI.update(id: id, updateApplicationRequest: updateApplicationRequest) { (response, error) in
     guard error == nil else {

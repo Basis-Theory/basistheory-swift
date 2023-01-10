@@ -14,15 +14,21 @@ public struct ReactResponse: Codable, JSONEncodable, Hashable {
 
     public var tokens: AnyCodable?
     public var raw: AnyCodable?
+    public var body: AnyCodable?
+    public var headers: AnyCodable?
 
-    public init(tokens: AnyCodable? = nil, raw: AnyCodable? = nil) {
+    public init(tokens: AnyCodable? = nil, raw: AnyCodable? = nil, body: AnyCodable? = nil, headers: AnyCodable? = nil) {
         self.tokens = tokens
         self.raw = raw
+        self.body = body
+        self.headers = headers
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case tokens
         case raw
+        case body
+        case headers
     }
 
     // Encodable protocol methods
@@ -31,6 +37,8 @@ public struct ReactResponse: Codable, JSONEncodable, Hashable {
         var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
         try containerEncoder.encodeIfPresent(tokens, forKey: .tokens)
         try containerEncoder.encodeIfPresent(raw, forKey: .raw)
+        try containerEncoder.encodeIfPresent(body, forKey: .body)
+        try containerEncoder.encodeIfPresent(headers, forKey: .headers)
     }
 }
 

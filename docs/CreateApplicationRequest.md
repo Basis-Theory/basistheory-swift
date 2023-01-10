@@ -3,9 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** |  | [optional] 
+**name** | **String** |  | 
 **type** | **String** |  | 
-**canCreateExpiringApplications** | **Bool** |  | [optional] 
 **expiresAt** | **String** |  | [optional] 
 **permissions** | **[String]** |  | [optional] 
 **rules** | [AccessRule] |  | [optional] 
