@@ -12,7 +12,6 @@ Name | Type | Description | Notes
 **createdAt** | **Date** |  | [optional] 
 **modifiedBy** | **UUID** |  | [optional] 
 **modifiedAt** | **Date** |  | [optional] 
-**canCreateExpiringApplications** | **Bool** |  | [optional] 
 **expiresAt** | **Date** |  | [optional] 
 **permissions** | **[String]** |  | [optional] 
 **rules** | [AccessRule] |  | [optional] 

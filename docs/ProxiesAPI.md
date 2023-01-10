@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import BasisTheory
 
-let createProxyRequest = CreateProxyRequest(name: "name_example", destinationUrl: "destinationUrl_example", requestReactorId: 123, responseReactorId: 123, requireAuth: false) // CreateProxyRequest | 
+let createProxyRequest = CreateProxyRequest(name: "name_example", destinationUrl: "destinationUrl_example", requestReactorId: 123, responseReactorId: 123, requestTransform: ProxyTransform(code: "code_example"), responseTransform: nil, application: Application(id: 123, tenantId: 123, name: "name_example", key: "key_example", type: "type_example", createdBy: 123, createdAt: Date(), modifiedBy: 123, modifiedAt: Date(), expiresAt: Date(), permissions: ["permissions_example"], rules: [AccessRule(description: "description_example", priority: 123, container: "container_example", transform: "transform_example", conditions: [Condition(attribute: "attribute_example", _operator: "_operator_example", value: "value_example")], permissions: ["permissions_example"])]), configuration: "TODO", requireAuth: false) // CreateProxyRequest | 
 
 ProxiesAPI.create(createProxyRequest: createProxyRequest) { (response, error) in
     guard error == nil else {
@@ -218,7 +218,7 @@ Name | Type | Description  | Notes
 import BasisTheory
 
 let id = 987 // UUID | 
-let updateProxyRequest = UpdateProxyRequest(name: "name_example", destinationUrl: "destinationUrl_example", requestReactorId: 123, responseReactorId: 123, requireAuth: false) // UpdateProxyRequest | 
+let updateProxyRequest = UpdateProxyRequest(name: "name_example", destinationUrl: "destinationUrl_example", requestReactorId: 123, responseReactorId: 123, requestTransform: ProxyTransform(code: "code_example"), responseTransform: nil, application: Application(id: 123, tenantId: 123, name: "name_example", key: "key_example", type: "type_example", createdBy: 123, createdAt: Date(), modifiedBy: 123, modifiedAt: Date(), expiresAt: Date(), permissions: ["permissions_example"], rules: [AccessRule(description: "description_example", priority: 123, container: "container_example", transform: "transform_example", conditions: [Condition(attribute: "attribute_example", _operator: "_operator_example", value: "value_example")], permissions: ["permissions_example"])]), configuration: "TODO", requireAuth: false) // UpdateProxyRequest | 
 
 ProxiesAPI.update(id: id, updateProxyRequest: updateProxyRequest) { (response, error) in
     guard error == nil else {

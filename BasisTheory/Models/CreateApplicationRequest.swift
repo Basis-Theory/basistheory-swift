@@ -12,17 +12,15 @@ import AnyCodable
 
 public struct CreateApplicationRequest: Codable, JSONEncodable, Hashable {
 
-    public var name: String?
+    public var name: String
     public var type: String
-    public var canCreateExpiringApplications: Bool?
     public var expiresAt: String?
     public var permissions: [String]?
     public var rules: [AccessRule]?
 
-    public init(name: String? = nil, type: String, canCreateExpiringApplications: Bool? = nil, expiresAt: String? = nil, permissions: [String]? = nil, rules: [AccessRule]? = nil) {
+    public init(name: String, type: String, expiresAt: String? = nil, permissions: [String]? = nil, rules: [AccessRule]? = nil) {
         self.name = name
         self.type = type
-        self.canCreateExpiringApplications = canCreateExpiringApplications
         self.expiresAt = expiresAt
         self.permissions = permissions
         self.rules = rules
@@ -31,7 +29,6 @@ public struct CreateApplicationRequest: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case type
-        case canCreateExpiringApplications = "can_create_expiring_applications"
         case expiresAt = "expires_at"
         case permissions
         case rules
@@ -41,9 +38,8 @@ public struct CreateApplicationRequest: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
-        try containerEncoder.encodeIfPresent(name, forKey: .name)
+        try containerEncoder.encode(name, forKey: .name)
         try containerEncoder.encode(type, forKey: .type)
-        try containerEncoder.encodeIfPresent(canCreateExpiringApplications, forKey: .canCreateExpiringApplications)
         try containerEncoder.encodeIfPresent(expiresAt, forKey: .expiresAt)
         try containerEncoder.encodeIfPresent(permissions, forKey: .permissions)
         try containerEncoder.encodeIfPresent(rules, forKey: .rules)

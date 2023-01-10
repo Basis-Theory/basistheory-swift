@@ -1,9 +1,10 @@
-# UpdateApplicationRequest
+# AuthorizeSessionRequest
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** |  | 
+**nonce** | **String** |  | 
+**expiresAt** | **String** |  | [optional] 
 **permissions** | **[String]** |  | [optional] 
 **rules** | [AccessRule] |  | [optional] 
 
