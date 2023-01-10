@@ -1,3 +1,11 @@
+## [0.6.0](https://github.com/Basis-Theory/basistheory-swift/compare/0.5.5...0.6.0) (2023-01-10)
+
+
+### Features
+
+* adds session endpoints, updates proxy and applications ([#18](https://github.com/Basis-Theory/basistheory-swift/issues/18)) ([d66e6cb](https://github.com/Basis-Theory/basistheory-swift/commit/d66e6cbdec55fac6ded14b3771fbfd504a3679ab))
+
+
 ### [0.5.5](https://github.com/Basis-Theory/basistheory-swift/compare/0.5.4...0.5.5) (2022-11-28)
 
 
