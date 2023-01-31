@@ -1,3 +1,11 @@
+### [0.6.1](https://github.com/Basis-Theory/basistheory-swift/compare/0.6.0...0.6.1) (2023-01-31)
+
+
+### Bug Fixes
+
+* remove unused decimal encoding extension ([#19](https://github.com/Basis-Theory/basistheory-swift/issues/19)) ([bf18937](https://github.com/Basis-Theory/basistheory-swift/commit/bf18937db09350893f02fd853b50ffd873dd4559))
+
+
 ## [0.6.0](https://github.com/Basis-Theory/basistheory-swift/compare/0.5.5...0.6.0) (2023-01-10)
 
 
