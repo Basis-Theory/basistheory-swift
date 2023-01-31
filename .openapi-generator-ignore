@@ -27,3 +27,4 @@
 git_push.sh
 BasisTheory.podspec
 README.md
+BasisTheory/Extensions.swift
