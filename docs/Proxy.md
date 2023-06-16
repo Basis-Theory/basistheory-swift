@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **responseTransform** | [**ProxyTransform**](ProxyTransform.md) |  | [optional] 
 **applicationId** | **UUID** |  | [optional] 
 **configuration** | **[String: String]** |  | [optional] 
+**proxyHost** | **String** |  | [optional] 
 **createdBy** | **UUID** |  | [optional] 
 **createdAt** | **Date** |  | [optional] 
 **modifiedBy** | **UUID** |  | [optional] 

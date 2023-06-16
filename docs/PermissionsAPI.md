@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 # **callGet**
 ```swift
-    open class func callGet(applicationType: String? = nil, version: Int? = nil, completion: @escaping (_ data: [Permission]?, _ error: Error?) -> Void)
+    open class func callGet(applicationType: String? = nil, completion: @escaping (_ data: [Permission]?, _ error: Error?) -> Void)
 ```
 
 
@@ -20,9 +20,8 @@ Method | HTTP request | Description
 import BasisTheory
 
 let applicationType = "applicationType_example" // String |  (optional)
-let version = 987 // Int |  (optional)
 
-PermissionsAPI.callGet(applicationType: applicationType, version: version) { (response, error) in
+PermissionsAPI.callGet(applicationType: applicationType) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -39,7 +38,6 @@ PermissionsAPI.callGet(applicationType: applicationType, version: version) { (re
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **applicationType** | **String** |  | [optional] 
- **version** | **Int** |  | [optional] 
 
 ### Return type
 

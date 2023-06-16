@@ -28,8 +28,9 @@ public struct CreateTokenResponse: Codable, JSONEncodable, Hashable {
     public var modifiedAt: Date?
     public var expiresAt: Date?
     public var containers: [String]?
+    public var aliases: [String]?
 
-    public init(id: String? = nil, tenantId: UUID? = nil, type: String? = nil, fingerprint: String? = nil, fingerprintExpression: String? = nil, mask: AnyCodable? = nil, data: AnyCodable? = nil, metadata: [String: String]? = nil, privacy: Privacy? = nil, searchIndexes: [String]? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, modifiedBy: UUID? = nil, modifiedAt: Date? = nil, expiresAt: Date? = nil, containers: [String]? = nil) {
+    public init(id: String? = nil, tenantId: UUID? = nil, type: String? = nil, fingerprint: String? = nil, fingerprintExpression: String? = nil, mask: AnyCodable? = nil, data: AnyCodable? = nil, metadata: [String: String]? = nil, privacy: Privacy? = nil, searchIndexes: [String]? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, modifiedBy: UUID? = nil, modifiedAt: Date? = nil, expiresAt: Date? = nil, containers: [String]? = nil, aliases: [String]? = nil) {
         self.id = id
         self.tenantId = tenantId
         self.type = type
@@ -46,6 +47,7 @@ public struct CreateTokenResponse: Codable, JSONEncodable, Hashable {
         self.modifiedAt = modifiedAt
         self.expiresAt = expiresAt
         self.containers = containers
+        self.aliases = aliases
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -65,6 +67,7 @@ public struct CreateTokenResponse: Codable, JSONEncodable, Hashable {
         case modifiedAt = "modified_at"
         case expiresAt = "expires_at"
         case containers
+        case aliases
     }
 
     // Encodable protocol methods
@@ -87,6 +90,7 @@ public struct CreateTokenResponse: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(modifiedAt, forKey: .modifiedAt)
         try containerEncoder.encodeIfPresent(expiresAt, forKey: .expiresAt)
         try containerEncoder.encodeIfPresent(containers, forKey: .containers)
+        try containerEncoder.encodeIfPresent(aliases, forKey: .aliases)
     }
 }
 

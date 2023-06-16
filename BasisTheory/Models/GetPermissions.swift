@@ -13,16 +13,13 @@ import AnyCodable
 public struct GetPermissions: Codable, JSONEncodable, Hashable {
 
     public var applicationType: String?
-    public var version: Int?
 
-    public init(applicationType: String? = nil, version: Int? = nil) {
+    public init(applicationType: String? = nil) {
         self.applicationType = applicationType
-        self.version = version
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case applicationType = "application_type"
-        case version
     }
 
     // Encodable protocol methods
@@ -30,7 +27,6 @@ public struct GetPermissions: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
         try containerEncoder.encodeIfPresent(applicationType, forKey: .applicationType)
-        try containerEncoder.encodeIfPresent(version, forKey: .version)
     }
 }
 
