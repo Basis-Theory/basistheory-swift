@@ -1,3 +1,11 @@
+## [0.7.0](https://github.com/Basis-Theory/basistheory-swift/compare/0.6.1...0.7.0) (2023-06-16)
+
+
+### Features
+
+* updates Proxy, Reactors, and Tokens. adds Transactions ([#20](https://github.com/Basis-Theory/basistheory-swift/issues/20)) ([0e02cf3](https://github.com/Basis-Theory/basistheory-swift/commit/0e02cf3d09cf79b30ca130acc112f4be264aa53c))
+
+
 ### [0.6.1](https://github.com/Basis-Theory/basistheory-swift/compare/0.6.0...0.6.1) (2023-01-31)
 
 
