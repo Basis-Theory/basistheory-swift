@@ -29,8 +29,9 @@ public struct Token: Codable, JSONEncodable, Hashable {
     public var searchIndexes: [String]?
     public var expiresAt: Date?
     public var containers: [String]?
+    public var aliases: [String]?
 
-    public init(id: String? = nil, type: String? = nil, tenantId: UUID? = nil, data: AnyCodable? = nil, metadata: [String: String]? = nil, encryption: EncryptionMetadata? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, modifiedBy: UUID? = nil, modifiedAt: Date? = nil, fingerprint: String? = nil, fingerprintExpression: String? = nil, mask: AnyCodable? = nil, privacy: Privacy? = nil, searchIndexes: [String]? = nil, expiresAt: Date? = nil, containers: [String]? = nil) {
+    public init(id: String? = nil, type: String? = nil, tenantId: UUID? = nil, data: AnyCodable? = nil, metadata: [String: String]? = nil, encryption: EncryptionMetadata? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, modifiedBy: UUID? = nil, modifiedAt: Date? = nil, fingerprint: String? = nil, fingerprintExpression: String? = nil, mask: AnyCodable? = nil, privacy: Privacy? = nil, searchIndexes: [String]? = nil, expiresAt: Date? = nil, containers: [String]? = nil, aliases: [String]? = nil) {
         self.id = id
         self.type = type
         self.tenantId = tenantId
@@ -48,6 +49,7 @@ public struct Token: Codable, JSONEncodable, Hashable {
         self.searchIndexes = searchIndexes
         self.expiresAt = expiresAt
         self.containers = containers
+        self.aliases = aliases
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -68,6 +70,7 @@ public struct Token: Codable, JSONEncodable, Hashable {
         case searchIndexes = "search_indexes"
         case expiresAt = "expires_at"
         case containers
+        case aliases
     }
 
     // Encodable protocol methods
@@ -91,6 +94,7 @@ public struct Token: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(searchIndexes, forKey: .searchIndexes)
         try containerEncoder.encodeIfPresent(expiresAt, forKey: .expiresAt)
         try containerEncoder.encodeIfPresent(containers, forKey: .containers)
+        try containerEncoder.encodeIfPresent(aliases, forKey: .aliases)
     }
 }
 

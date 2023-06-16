@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **searchIndexes** | **[String]** |  | [optional] 
 **expiresAt** | **Date** |  | [optional] 
 **containers** | **[String]** |  | [optional] 
+**aliases** | **[String]** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

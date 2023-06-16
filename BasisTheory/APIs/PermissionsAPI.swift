@@ -15,13 +15,12 @@ open class PermissionsAPI {
     /**
 
      - parameter applicationType: (query)  (optional)
-     - parameter version: (query)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func callGet(applicationType: String? = nil, version: Int? = nil, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: [Permission]?, _ error: Error?) -> Void)) -> RequestTask {
-        return callGetWithRequestBuilder(applicationType: applicationType, version: version).execute(apiResponseQueue) { result in
+    open class func callGet(applicationType: String? = nil, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: [Permission]?, _ error: Error?) -> Void)) -> RequestTask {
+        return callGetWithRequestBuilder(applicationType: applicationType).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -37,10 +36,9 @@ open class PermissionsAPI {
        - type: apiKey BT-API-KEY 
        - name: ApiKey
      - parameter applicationType: (query)  (optional)
-     - parameter version: (query)  (optional)
      - returns: RequestBuilder<[Permission]> 
      */
-    open class func callGetWithRequestBuilder(applicationType: String? = nil, version: Int? = nil) -> RequestBuilder<[Permission]> {
+    open class func callGetWithRequestBuilder(applicationType: String? = nil) -> RequestBuilder<[Permission]> {
         let localVariablePath = "/permissions"
         let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -48,7 +46,6 @@ open class PermissionsAPI {
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "application_type": (wrappedValue: applicationType?.encodeToJSON(), isExplode: true),
-            "version": (wrappedValue: version?.encodeToJSON(), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [

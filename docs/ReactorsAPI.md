@@ -219,7 +219,7 @@ Name | Type | Description  | Notes
 import BasisTheory
 
 let id = 987 // UUID | 
-let reactRequest = ReactRequest(args: "TODO") // ReactRequest | 
+let reactRequest = ReactRequest(args: "TODO", callbackUrl: "callbackUrl_example", timeoutMs: 123) // ReactRequest | 
 
 ReactorsAPI.react(id: id, reactRequest: reactRequest) { (response, error) in
     guard error == nil else {
