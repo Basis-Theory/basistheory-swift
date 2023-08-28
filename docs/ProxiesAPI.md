@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**create**](ProxiesAPI.md#create) | **POST** /proxies | 
 [**delete**](ProxiesAPI.md#delete) | **DELETE** /proxies/{id} | 
 [**getById**](ProxiesAPI.md#getbyid) | **GET** /proxies/{id} | 
+[**patch**](ProxiesAPI.md#patch) | **PATCH** /proxies/{id} | 
 [**update**](ProxiesAPI.md#update) | **PUT** /proxies/{id} | 
 
 
@@ -201,6 +202,55 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patch**
+```swift
+    open class func patch(id: UUID, patchProxyRequest: PatchProxyRequest, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import BasisTheory
+
+let id = 987 // UUID | 
+let patchProxyRequest = PatchProxyRequest(name: "name_example", destinationUrl: "destinationUrl_example", requestTransform: ProxyTransform(code: "code_example"), responseTransform: nil, application: Application(id: 123, tenantId: 123, name: "name_example", key: "key_example", type: "type_example", createdBy: 123, createdAt: Date(), modifiedBy: 123, modifiedAt: Date(), expiresAt: Date(), permissions: ["permissions_example"], rules: [AccessRule(description: "description_example", priority: 123, container: "container_example", transform: "transform_example", conditions: [Condition(attribute: "attribute_example", _operator: "_operator_example", value: "value_example")], permissions: ["permissions_example"])]), configuration: "TODO", requireAuth: false) // PatchProxyRequest | 
+
+ProxiesAPI.patch(id: id, patchProxyRequest: patchProxyRequest) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **UUID** |  | 
+ **patchProxyRequest** | [**PatchProxyRequest**](PatchProxyRequest.md) |  | 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/merge-patch+json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

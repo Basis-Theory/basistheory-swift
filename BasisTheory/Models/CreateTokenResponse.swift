@@ -20,6 +20,7 @@ public struct CreateTokenResponse: Codable, JSONEncodable, Hashable {
     public var mask: AnyCodable?
     public var data: AnyCodable?
     public var metadata: [String: String]?
+    public var enrichments: TokenEnrichments?
     public var privacy: Privacy?
     public var searchIndexes: [String]?
     public var createdBy: UUID?
@@ -30,7 +31,7 @@ public struct CreateTokenResponse: Codable, JSONEncodable, Hashable {
     public var containers: [String]?
     public var aliases: [String]?
 
-    public init(id: String? = nil, tenantId: UUID? = nil, type: String? = nil, fingerprint: String? = nil, fingerprintExpression: String? = nil, mask: AnyCodable? = nil, data: AnyCodable? = nil, metadata: [String: String]? = nil, privacy: Privacy? = nil, searchIndexes: [String]? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, modifiedBy: UUID? = nil, modifiedAt: Date? = nil, expiresAt: Date? = nil, containers: [String]? = nil, aliases: [String]? = nil) {
+    public init(id: String? = nil, tenantId: UUID? = nil, type: String? = nil, fingerprint: String? = nil, fingerprintExpression: String? = nil, mask: AnyCodable? = nil, data: AnyCodable? = nil, metadata: [String: String]? = nil, enrichments: TokenEnrichments? = nil, privacy: Privacy? = nil, searchIndexes: [String]? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, modifiedBy: UUID? = nil, modifiedAt: Date? = nil, expiresAt: Date? = nil, containers: [String]? = nil, aliases: [String]? = nil) {
         self.id = id
         self.tenantId = tenantId
         self.type = type
@@ -39,6 +40,7 @@ public struct CreateTokenResponse: Codable, JSONEncodable, Hashable {
         self.mask = mask
         self.data = data
         self.metadata = metadata
+        self.enrichments = enrichments
         self.privacy = privacy
         self.searchIndexes = searchIndexes
         self.createdBy = createdBy
@@ -59,6 +61,7 @@ public struct CreateTokenResponse: Codable, JSONEncodable, Hashable {
         case mask
         case data
         case metadata
+        case enrichments
         case privacy
         case searchIndexes = "search_indexes"
         case createdBy = "created_by"
@@ -82,6 +85,7 @@ public struct CreateTokenResponse: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(mask, forKey: .mask)
         try containerEncoder.encodeIfPresent(data, forKey: .data)
         try containerEncoder.encodeIfPresent(metadata, forKey: .metadata)
+        try containerEncoder.encodeIfPresent(enrichments, forKey: .enrichments)
         try containerEncoder.encodeIfPresent(privacy, forKey: .privacy)
         try containerEncoder.encodeIfPresent(searchIndexes, forKey: .searchIndexes)
         try containerEncoder.encodeIfPresent(createdBy, forKey: .createdBy)

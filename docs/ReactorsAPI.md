@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**create**](ReactorsAPI.md#create) | **POST** /reactors | 
 [**delete**](ReactorsAPI.md#delete) | **DELETE** /reactors/{id} | 
 [**getById**](ReactorsAPI.md#getbyid) | **GET** /reactors/{id} | 
+[**patch**](ReactorsAPI.md#patch) | **PATCH** /reactors/{id} | 
 [**react**](ReactorsAPI.md#react) | **POST** /reactors/{id}/react | 
 [**update**](ReactorsAPI.md#update) | **PUT** /reactors/{id} | 
 
@@ -202,6 +203,55 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **patch**
+```swift
+    open class func patch(id: UUID, patchReactorRequest: PatchReactorRequest, completion: @escaping (_ data: Void?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import BasisTheory
+
+let id = 987 // UUID | 
+let patchReactorRequest = PatchReactorRequest(name: "name_example", application: Application(id: 123, tenantId: 123, name: "name_example", key: "key_example", type: "type_example", createdBy: 123, createdAt: Date(), modifiedBy: 123, modifiedAt: Date(), expiresAt: Date(), permissions: ["permissions_example"], rules: [AccessRule(description: "description_example", priority: 123, container: "container_example", transform: "transform_example", conditions: [Condition(attribute: "attribute_example", _operator: "_operator_example", value: "value_example")], permissions: ["permissions_example"])]), configuration: "TODO") // PatchReactorRequest | 
+
+ReactorsAPI.patch(id: id, patchReactorRequest: patchReactorRequest) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **UUID** |  | 
+ **patchReactorRequest** | [**PatchReactorRequest**](PatchReactorRequest.md) |  | 
+
+### Return type
+
+Void (empty response body)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/merge-patch+json
  - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)

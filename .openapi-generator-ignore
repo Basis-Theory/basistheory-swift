@@ -23,6 +23,7 @@
 #!docs/README.md
 
 .github/*
+.gitignore
 .travis.yml
 git_push.sh
 BasisTheory.podspec
