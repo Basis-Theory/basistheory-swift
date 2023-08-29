@@ -1,3 +1,11 @@
+## [0.8.0](https://github.com/Basis-Theory/basistheory-swift/compare/0.7.0...0.8.0) (2023-08-29)
+
+
+### Features
+
+* adds bin details and removes token associations ([#21](https://github.com/Basis-Theory/basistheory-swift/issues/21)) ([6095565](https://github.com/Basis-Theory/basistheory-swift/commit/6095565ba4065bfd747e836a4624e38ef69111ac))
+
+
 ## [0.7.0](https://github.com/Basis-Theory/basistheory-swift/compare/0.6.1...0.7.0) (2023-06-16)
 
 
