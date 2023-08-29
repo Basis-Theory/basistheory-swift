@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **tenantId** | **UUID** |  | [optional] 
 **data** | [**AnyCodable**](.md) |  | [optional] 
 **metadata** | **[String: String]** |  | [optional] 
+**enrichments** | [**TokenEnrichments**](TokenEnrichments.md) |  | [optional] 
 **encryption** | [**EncryptionMetadata**](EncryptionMetadata.md) |  | [optional] 
 **createdBy** | **UUID** |  | [optional] 
 **createdAt** | **Date** |  | [optional] 

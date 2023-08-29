@@ -24,6 +24,10 @@ BasisTheory/Models/Application.swift
 BasisTheory/Models/ApplicationPaginatedList.swift
 BasisTheory/Models/ApplicationTemplate.swift
 BasisTheory/Models/AuthorizeSessionRequest.swift
+BasisTheory/Models/BinDetails.swift
+BasisTheory/Models/BinDetailsBank.swift
+BasisTheory/Models/BinDetailsCountry.swift
+BasisTheory/Models/BinDetailsProduct.swift
 BasisTheory/Models/Condition.swift
 BasisTheory/Models/CreateApplicationRequest.swift
 BasisTheory/Models/CreateProxyRequest.swift
@@ -50,6 +54,8 @@ BasisTheory/Models/LogEntityType.swift
 BasisTheory/Models/LogPaginatedList.swift
 BasisTheory/Models/MonthlyActiveTokenHistory.swift
 BasisTheory/Models/Pagination.swift
+BasisTheory/Models/PatchProxyRequest.swift
+BasisTheory/Models/PatchReactorRequest.swift
 BasisTheory/Models/Permission.swift
 BasisTheory/Models/Privacy.swift
 BasisTheory/Models/ProblemDetails.swift
@@ -74,6 +80,7 @@ BasisTheory/Models/TenantMemberResponse.swift
 BasisTheory/Models/TenantMemberResponsePaginatedList.swift
 BasisTheory/Models/TenantUsageReport.swift
 BasisTheory/Models/Token.swift
+BasisTheory/Models/TokenEnrichments.swift
 BasisTheory/Models/TokenMetrics.swift
 BasisTheory/Models/TokenPaginatedList.swift
 BasisTheory/Models/TokenReport.swift
@@ -98,6 +105,10 @@ docs/ApplicationTemplate.md
 docs/ApplicationTemplatesAPI.md
 docs/ApplicationsAPI.md
 docs/AuthorizeSessionRequest.md
+docs/BinDetails.md
+docs/BinDetailsBank.md
+docs/BinDetailsCountry.md
+docs/BinDetailsProduct.md
 docs/Condition.md
 docs/CreateApplicationRequest.md
 docs/CreateProxyRequest.md
@@ -125,6 +136,8 @@ docs/LogPaginatedList.md
 docs/LogsAPI.md
 docs/MonthlyActiveTokenHistory.md
 docs/Pagination.md
+docs/PatchProxyRequest.md
+docs/PatchReactorRequest.md
 docs/Permission.md
 docs/PermissionsAPI.md
 docs/Privacy.md
@@ -155,6 +168,7 @@ docs/TenantMemberResponsePaginatedList.md
 docs/TenantUsageReport.md
 docs/TenantsAPI.md
 docs/Token.md
+docs/TokenEnrichments.md
 docs/TokenMetrics.md
 docs/TokenPaginatedList.md
 docs/TokenReport.md

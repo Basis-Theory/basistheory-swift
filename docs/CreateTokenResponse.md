@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **mask** | [**AnyCodable**](.md) |  | [optional] 
 **data** | [**AnyCodable**](.md) |  | [optional] 
 **metadata** | **[String: String]** |  | [optional] 
+**enrichments** | [**TokenEnrichments**](TokenEnrichments.md) |  | [optional] 
 **privacy** | [**Privacy**](Privacy.md) |  | [optional] 
 **searchIndexes** | **[String]** |  | [optional] 
 **createdBy** | **UUID** |  | [optional] 
