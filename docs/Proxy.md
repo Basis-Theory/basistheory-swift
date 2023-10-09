@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **UUID** |  | [optional] 
-**key** | **String** |  | [optional] [readonly] 
+**key** | **String** |  | [optional] 
 **tenantId** | **UUID** |  | [optional] 
 **name** | **String** |  | [optional] 
 **destinationUrl** | **String** |  | [optional] 

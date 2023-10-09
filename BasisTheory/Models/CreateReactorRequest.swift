@@ -13,13 +13,16 @@ import AnyCodable
 public struct CreateReactorRequest: Codable, JSONEncodable, Hashable {
 
     public var name: String
+    @available(*, deprecated, message: "This property is deprecated.")
     public var formula: ReactorFormula?
+    public var code: String?
     public var application: Application?
     public var configuration: [String: String]?
 
-    public init(name: String, formula: ReactorFormula? = nil, application: Application? = nil, configuration: [String: String]? = nil) {
+    public init(name: String, formula: ReactorFormula? = nil, code: String? = nil, application: Application? = nil, configuration: [String: String]? = nil) {
         self.name = name
         self.formula = formula
+        self.code = code
         self.application = application
         self.configuration = configuration
     }
@@ -27,6 +30,7 @@ public struct CreateReactorRequest: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case formula
+        case code
         case application
         case configuration
     }
@@ -37,6 +41,7 @@ public struct CreateReactorRequest: Codable, JSONEncodable, Hashable {
         var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
         try containerEncoder.encode(name, forKey: .name)
         try containerEncoder.encodeIfPresent(formula, forKey: .formula)
+        try containerEncoder.encodeIfPresent(code, forKey: .code)
         try containerEncoder.encodeIfPresent(application, forKey: .application)
         try containerEncoder.encodeIfPresent(configuration, forKey: .configuration)
     }

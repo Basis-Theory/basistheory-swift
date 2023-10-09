@@ -15,20 +15,17 @@ public struct TokenReport: Codable, JSONEncodable, Hashable {
     public var includedMonthlyActiveTokens: Int64?
     public var monthlyActiveTokens: Int64?
     public var metricsByType: [String: TokenMetrics]?
-    public var monthlyActiveTokenHistory: [MonthlyActiveTokenHistory]?
 
-    public init(includedMonthlyActiveTokens: Int64? = nil, monthlyActiveTokens: Int64? = nil, metricsByType: [String: TokenMetrics]? = nil, monthlyActiveTokenHistory: [MonthlyActiveTokenHistory]? = nil) {
+    public init(includedMonthlyActiveTokens: Int64? = nil, monthlyActiveTokens: Int64? = nil, metricsByType: [String: TokenMetrics]? = nil) {
         self.includedMonthlyActiveTokens = includedMonthlyActiveTokens
         self.monthlyActiveTokens = monthlyActiveTokens
         self.metricsByType = metricsByType
-        self.monthlyActiveTokenHistory = monthlyActiveTokenHistory
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case includedMonthlyActiveTokens = "included_monthly_active_tokens"
         case monthlyActiveTokens = "monthly_active_tokens"
         case metricsByType = "metrics_by_type"
-        case monthlyActiveTokenHistory = "monthly_active_token_history"
     }
 
     // Encodable protocol methods
@@ -38,7 +35,6 @@ public struct TokenReport: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(includedMonthlyActiveTokens, forKey: .includedMonthlyActiveTokens)
         try containerEncoder.encodeIfPresent(monthlyActiveTokens, forKey: .monthlyActiveTokens)
         try containerEncoder.encodeIfPresent(metricsByType, forKey: .metricsByType)
-        try containerEncoder.encodeIfPresent(monthlyActiveTokenHistory, forKey: .monthlyActiveTokenHistory)
     }
 }
 

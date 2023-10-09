@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **tenantId** | **UUID** |  | [optional] 
 **name** | **String** |  | [optional] 
 **formula** | [**ReactorFormula**](ReactorFormula.md) |  | [optional] 
+**code** | **String** |  | [optional] 
 **application** | [**Application**](Application.md) |  | [optional] 
 **createdBy** | **UUID** |  | [optional] 
 **createdAt** | **Date** |  | [optional] 
