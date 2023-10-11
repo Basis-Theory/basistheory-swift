@@ -1,3 +1,11 @@
+## [0.9.0](https://github.com/Basis-Theory/basistheory-swift/compare/0.8.0...0.9.0) (2023-10-11)
+
+
+### Features
+
+* remove MATs, add code to reactors, deprecate formulas ([#22](https://github.com/Basis-Theory/basistheory-swift/issues/22)) ([023ec1b](https://github.com/Basis-Theory/basistheory-swift/commit/023ec1b6a0b58c93d4ba19b5b22d6ba7251c827c))
+
+
 ## [0.8.0](https://github.com/Basis-Theory/basistheory-swift/compare/0.7.0...0.8.0) (2023-08-29)
 
 
