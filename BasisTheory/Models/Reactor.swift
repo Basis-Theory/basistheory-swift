@@ -15,7 +15,9 @@ public struct Reactor: Codable, JSONEncodable, Hashable {
     public var id: UUID?
     public var tenantId: UUID?
     public var name: String?
+    @available(*, deprecated, message: "This property is deprecated.")
     public var formula: ReactorFormula?
+    public var code: String?
     public var application: Application?
     public var createdBy: UUID?
     public var createdAt: Date?
@@ -23,11 +25,12 @@ public struct Reactor: Codable, JSONEncodable, Hashable {
     public var modifiedAt: Date?
     public var configuration: [String: String]?
 
-    public init(id: UUID? = nil, tenantId: UUID? = nil, name: String? = nil, formula: ReactorFormula? = nil, application: Application? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, modifiedBy: UUID? = nil, modifiedAt: Date? = nil, configuration: [String: String]? = nil) {
+    public init(id: UUID? = nil, tenantId: UUID? = nil, name: String? = nil, formula: ReactorFormula? = nil, code: String? = nil, application: Application? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, modifiedBy: UUID? = nil, modifiedAt: Date? = nil, configuration: [String: String]? = nil) {
         self.id = id
         self.tenantId = tenantId
         self.name = name
         self.formula = formula
+        self.code = code
         self.application = application
         self.createdBy = createdBy
         self.createdAt = createdAt
@@ -41,6 +44,7 @@ public struct Reactor: Codable, JSONEncodable, Hashable {
         case tenantId = "tenant_id"
         case name
         case formula
+        case code
         case application
         case createdBy = "created_by"
         case createdAt = "created_at"
@@ -57,6 +61,7 @@ public struct Reactor: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(tenantId, forKey: .tenantId)
         try containerEncoder.encodeIfPresent(name, forKey: .name)
         try containerEncoder.encodeIfPresent(formula, forKey: .formula)
+        try containerEncoder.encodeIfPresent(code, forKey: .code)
         try containerEncoder.encodeIfPresent(application, forKey: .application)
         try containerEncoder.encodeIfPresent(createdBy, forKey: .createdBy)
         try containerEncoder.encodeIfPresent(createdAt, forKey: .createdAt)

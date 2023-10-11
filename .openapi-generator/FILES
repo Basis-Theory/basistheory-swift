@@ -1,4 +1,3 @@
-.gitignore
 .swiftformat
 BasisTheory/APIHelper.swift
 BasisTheory/APIs.swift
@@ -52,7 +51,6 @@ BasisTheory/Models/GetTokens.swift
 BasisTheory/Models/Log.swift
 BasisTheory/Models/LogEntityType.swift
 BasisTheory/Models/LogPaginatedList.swift
-BasisTheory/Models/MonthlyActiveTokenHistory.swift
 BasisTheory/Models/Pagination.swift
 BasisTheory/Models/PatchProxyRequest.swift
 BasisTheory/Models/PatchReactorRequest.swift
@@ -134,7 +132,6 @@ docs/Log.md
 docs/LogEntityType.md
 docs/LogPaginatedList.md
 docs/LogsAPI.md
-docs/MonthlyActiveTokenHistory.md
 docs/Pagination.md
 docs/PatchProxyRequest.md
 docs/PatchReactorRequest.md
