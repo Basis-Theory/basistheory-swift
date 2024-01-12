@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 # **callGet**
 ```swift
-    open class func callGet(entityType: String? = nil, entityId: String? = nil, startDate: Date? = nil, endDate: Date? = nil, page: Int? = nil, size: Int? = nil, completion: @escaping (_ data: LogPaginatedList?, _ error: Error?) -> Void)
+    open class func callGet(entityType: String? = nil, entityId: String? = nil, startDate: Date? = nil, endDate: Date? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, completion: @escaping (_ data: LogPaginatedList?, _ error: Error?) -> Void)
 ```
 
 
@@ -25,9 +25,10 @@ let entityId = "entityId_example" // String |  (optional)
 let startDate = Date() // Date |  (optional)
 let endDate = Date() // Date |  (optional)
 let page = 987 // Int |  (optional)
+let start = "start_example" // String |  (optional)
 let size = 987 // Int |  (optional)
 
-LogsAPI.callGet(entityType: entityType, entityId: entityId, startDate: startDate, endDate: endDate, page: page, size: size) { (response, error) in
+LogsAPI.callGet(entityType: entityType, entityId: entityId, startDate: startDate, endDate: endDate, page: page, start: start, size: size) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -48,6 +49,7 @@ Name | Type | Description  | Notes
  **startDate** | **Date** |  | [optional] 
  **endDate** | **Date** |  | [optional] 
  **page** | **Int** |  | [optional] 
+ **start** | **String** |  | [optional] 
  **size** | **Int** |  | [optional] 
 
 ### Return type

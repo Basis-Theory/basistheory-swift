@@ -15,12 +15,14 @@ public struct GetApplications: Codable, JSONEncodable, Hashable {
     public var id: [UUID]?
     public var type: [String]?
     public var page: Int?
+    public var start: String?
     public var size: Int?
 
-    public init(id: [UUID]? = nil, type: [String]? = nil, page: Int? = nil, size: Int? = nil) {
+    public init(id: [UUID]? = nil, type: [String]? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil) {
         self.id = id
         self.type = type
         self.page = page
+        self.start = start
         self.size = size
     }
 
@@ -28,6 +30,7 @@ public struct GetApplications: Codable, JSONEncodable, Hashable {
         case id
         case type
         case page
+        case start
         case size
     }
 
@@ -38,6 +41,7 @@ public struct GetApplications: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(id, forKey: .id)
         try containerEncoder.encodeIfPresent(type, forKey: .type)
         try containerEncoder.encodeIfPresent(page, forKey: .page)
+        try containerEncoder.encodeIfPresent(start, forKey: .start)
         try containerEncoder.encodeIfPresent(size, forKey: .size)
     }
 }

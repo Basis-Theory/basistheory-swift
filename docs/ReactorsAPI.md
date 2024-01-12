@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 # **callGet**
 ```swift
-    open class func callGet(id: [UUID]? = nil, name: String? = nil, page: Int? = nil, size: Int? = nil, completion: @escaping (_ data: ReactorPaginatedList?, _ error: Error?) -> Void)
+    open class func callGet(id: [UUID]? = nil, name: String? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, completion: @escaping (_ data: ReactorPaginatedList?, _ error: Error?) -> Void)
 ```
 
 
@@ -28,9 +28,10 @@ import BasisTheory
 let id = [123] // [UUID] |  (optional)
 let name = "name_example" // String |  (optional)
 let page = 987 // Int |  (optional)
+let start = "start_example" // String |  (optional)
 let size = 987 // Int |  (optional)
 
-ReactorsAPI.callGet(id: id, name: name, page: page, size: size) { (response, error) in
+ReactorsAPI.callGet(id: id, name: name, page: page, start: start, size: size) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -49,6 +50,7 @@ Name | Type | Description  | Notes
  **id** | [**[UUID]**](UUID.md) |  | [optional] 
  **name** | **String** |  | [optional] 
  **page** | **Int** |  | [optional] 
+ **start** | **String** |  | [optional] 
  **size** | **Int** |  | [optional] 
 
 ### Return type

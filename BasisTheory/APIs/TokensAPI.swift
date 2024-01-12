@@ -18,13 +18,14 @@ open class TokensAPI {
      - parameter id: (query)  (optional)
      - parameter metadata: (query)  (optional)
      - parameter page: (query)  (optional)
+     - parameter start: (query)  (optional)
      - parameter size: (query)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func callGet(type: [String]? = nil, id: [String]? = nil, metadata: [String: String]? = nil, page: Int? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: TokenPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
-        return callGetWithRequestBuilder(type: type, id: id, metadata: metadata, page: page, size: size).execute(apiResponseQueue) { result in
+    open class func callGet(type: [String]? = nil, id: [String]? = nil, metadata: [String: String]? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: TokenPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
+        return callGetWithRequestBuilder(type: type, id: id, metadata: metadata, page: page, start: start, size: size).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -43,10 +44,11 @@ open class TokensAPI {
      - parameter id: (query)  (optional)
      - parameter metadata: (query)  (optional)
      - parameter page: (query)  (optional)
+     - parameter start: (query)  (optional)
      - parameter size: (query)  (optional)
      - returns: RequestBuilder<TokenPaginatedList> 
      */
-    open class func callGetWithRequestBuilder(type: [String]? = nil, id: [String]? = nil, metadata: [String: String]? = nil, page: Int? = nil, size: Int? = nil) -> RequestBuilder<TokenPaginatedList> {
+    open class func callGetWithRequestBuilder(type: [String]? = nil, id: [String]? = nil, metadata: [String: String]? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil) -> RequestBuilder<TokenPaginatedList> {
         let localVariablePath = "/tokens"
         let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -57,6 +59,7 @@ open class TokensAPI {
             "id": (wrappedValue: id?.encodeToJSON(), isExplode: true),
             "metadata": (wrappedValue: metadata?.encodeToJSON(), isExplode: false),
             "page": (wrappedValue: page?.encodeToJSON(), isExplode: true),
+            "start": (wrappedValue: start?.encodeToJSON(), isExplode: true),
             "size": (wrappedValue: size?.encodeToJSON(), isExplode: true),
         ])
 
@@ -78,7 +81,7 @@ open class TokensAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func create(createTokenRequest: CreateTokenRequest, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: CreateTokenResponse?, _ error: Error?) -> Void)) -> RequestTask {
+    open class func create(createTokenRequest: CreateTokenRequest, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: Token?, _ error: Error?) -> Void)) -> RequestTask {
         return createWithRequestBuilder(createTokenRequest: createTokenRequest).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
@@ -95,9 +98,9 @@ open class TokensAPI {
        - type: apiKey BT-API-KEY 
        - name: ApiKey
      - parameter createTokenRequest: (body)  
-     - returns: RequestBuilder<CreateTokenResponse> 
+     - returns: RequestBuilder<Token> 
      */
-    open class func createWithRequestBuilder(createTokenRequest: CreateTokenRequest) -> RequestBuilder<CreateTokenResponse> {
+    open class func createWithRequestBuilder(createTokenRequest: CreateTokenRequest) -> RequestBuilder<Token> {
         let localVariablePath = "/tokens"
         let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createTokenRequest)
@@ -110,7 +113,7 @@ open class TokensAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<CreateTokenResponse>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Token>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

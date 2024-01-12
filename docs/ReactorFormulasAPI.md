@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 # **callGet**
 ```swift
-    open class func callGet(name: String? = nil, page: Int? = nil, size: Int? = nil, completion: @escaping (_ data: ReactorFormulaPaginatedList?, _ error: Error?) -> Void)
+    open class func callGet(name: String? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, completion: @escaping (_ data: ReactorFormulaPaginatedList?, _ error: Error?) -> Void)
 ```
 
 
@@ -25,9 +25,10 @@ import BasisTheory
 
 let name = "name_example" // String |  (optional)
 let page = 987 // Int |  (optional)
+let start = "start_example" // String |  (optional)
 let size = 987 // Int |  (optional)
 
-ReactorFormulasAPI.callGet(name: name, page: page, size: size) { (response, error) in
+ReactorFormulasAPI.callGet(name: name, page: page, start: start, size: size) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -45,6 +46,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **name** | **String** |  | [optional] 
  **page** | **Int** |  | [optional] 
+ **start** | **String** |  | [optional] 
  **size** | **Int** |  | [optional] 
 
 ### Return type

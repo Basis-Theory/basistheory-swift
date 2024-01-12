@@ -35,7 +35,6 @@ BasisTheory/Models/CreateReactorRequest.swift
 BasisTheory/Models/CreateSessionResponse.swift
 BasisTheory/Models/CreateTenantInvitationRequest.swift
 BasisTheory/Models/CreateTokenRequest.swift
-BasisTheory/Models/CreateTokenResponse.swift
 BasisTheory/Models/CreateTransactionResponse.swift
 BasisTheory/Models/EncryptionKey.swift
 BasisTheory/Models/EncryptionMetadata.swift
@@ -115,7 +114,6 @@ docs/CreateReactorRequest.md
 docs/CreateSessionResponse.md
 docs/CreateTenantInvitationRequest.md
 docs/CreateTokenRequest.md
-docs/CreateTokenResponse.md
 docs/CreateTransactionResponse.md
 docs/EncryptionKey.md
 docs/EncryptionMetadata.md

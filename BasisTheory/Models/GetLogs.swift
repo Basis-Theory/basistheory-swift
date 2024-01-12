@@ -17,14 +17,16 @@ public struct GetLogs: Codable, JSONEncodable, Hashable {
     public var startDate: Date?
     public var endDate: Date?
     public var page: Int?
+    public var start: String?
     public var size: Int?
 
-    public init(entityType: String? = nil, entityId: String? = nil, startDate: Date? = nil, endDate: Date? = nil, page: Int? = nil, size: Int? = nil) {
+    public init(entityType: String? = nil, entityId: String? = nil, startDate: Date? = nil, endDate: Date? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil) {
         self.entityType = entityType
         self.entityId = entityId
         self.startDate = startDate
         self.endDate = endDate
         self.page = page
+        self.start = start
         self.size = size
     }
 
@@ -34,6 +36,7 @@ public struct GetLogs: Codable, JSONEncodable, Hashable {
         case startDate = "start_date"
         case endDate = "end_date"
         case page
+        case start
         case size
     }
 
@@ -46,6 +49,7 @@ public struct GetLogs: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(startDate, forKey: .startDate)
         try containerEncoder.encodeIfPresent(endDate, forKey: .endDate)
         try containerEncoder.encodeIfPresent(page, forKey: .page)
+        try containerEncoder.encodeIfPresent(start, forKey: .start)
         try containerEncoder.encodeIfPresent(size, forKey: .size)
     }
 }

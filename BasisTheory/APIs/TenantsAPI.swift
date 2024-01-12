@@ -238,13 +238,14 @@ open class TenantsAPI {
 
      - parameter status: (query)  (optional)
      - parameter page: (query)  (optional)
+     - parameter start: (query)  (optional)
      - parameter size: (query)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getInvitations(status: TenantInvitationStatus? = nil, page: Int? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: TenantInvitationResponsePaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
-        return getInvitationsWithRequestBuilder(status: status, page: page, size: size).execute(apiResponseQueue) { result in
+    open class func getInvitations(status: TenantInvitationStatus? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: TenantInvitationResponsePaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
+        return getInvitationsWithRequestBuilder(status: status, page: page, start: start, size: size).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -261,10 +262,11 @@ open class TenantsAPI {
        - name: ApiKey
      - parameter status: (query)  (optional)
      - parameter page: (query)  (optional)
+     - parameter start: (query)  (optional)
      - parameter size: (query)  (optional)
      - returns: RequestBuilder<TenantInvitationResponsePaginatedList> 
      */
-    open class func getInvitationsWithRequestBuilder(status: TenantInvitationStatus? = nil, page: Int? = nil, size: Int? = nil) -> RequestBuilder<TenantInvitationResponsePaginatedList> {
+    open class func getInvitationsWithRequestBuilder(status: TenantInvitationStatus? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil) -> RequestBuilder<TenantInvitationResponsePaginatedList> {
         let localVariablePath = "/tenants/self/invitations"
         let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -273,6 +275,7 @@ open class TenantsAPI {
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "status": (wrappedValue: status?.encodeToJSON(), isExplode: true),
             "page": (wrappedValue: page?.encodeToJSON(), isExplode: true),
+            "start": (wrappedValue: start?.encodeToJSON(), isExplode: true),
             "size": (wrappedValue: size?.encodeToJSON(), isExplode: true),
         ])
 
@@ -291,13 +294,14 @@ open class TenantsAPI {
 
      - parameter userId: (query)  (optional)
      - parameter page: (query)  (optional)
+     - parameter start: (query)  (optional)
      - parameter size: (query)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getMembers(userId: [UUID]? = nil, page: Int? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: TenantMemberResponsePaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
-        return getMembersWithRequestBuilder(userId: userId, page: page, size: size).execute(apiResponseQueue) { result in
+    open class func getMembers(userId: [UUID]? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: TenantMemberResponsePaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
+        return getMembersWithRequestBuilder(userId: userId, page: page, start: start, size: size).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -314,10 +318,11 @@ open class TenantsAPI {
        - name: ApiKey
      - parameter userId: (query)  (optional)
      - parameter page: (query)  (optional)
+     - parameter start: (query)  (optional)
      - parameter size: (query)  (optional)
      - returns: RequestBuilder<TenantMemberResponsePaginatedList> 
      */
-    open class func getMembersWithRequestBuilder(userId: [UUID]? = nil, page: Int? = nil, size: Int? = nil) -> RequestBuilder<TenantMemberResponsePaginatedList> {
+    open class func getMembersWithRequestBuilder(userId: [UUID]? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil) -> RequestBuilder<TenantMemberResponsePaginatedList> {
         let localVariablePath = "/tenants/self/members"
         let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -326,6 +331,7 @@ open class TenantsAPI {
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "user_id": (wrappedValue: userId?.encodeToJSON(), isExplode: true),
             "page": (wrappedValue: page?.encodeToJSON(), isExplode: true),
+            "start": (wrappedValue: start?.encodeToJSON(), isExplode: true),
             "size": (wrappedValue: size?.encodeToJSON(), isExplode: true),
         ])
 

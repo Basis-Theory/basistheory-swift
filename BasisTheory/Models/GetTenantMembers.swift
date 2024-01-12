@@ -14,17 +14,20 @@ public struct GetTenantMembers: Codable, JSONEncodable, Hashable {
 
     public var userId: [UUID]?
     public var page: Int?
+    public var start: String?
     public var size: Int?
 
-    public init(userId: [UUID]? = nil, page: Int? = nil, size: Int? = nil) {
+    public init(userId: [UUID]? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil) {
         self.userId = userId
         self.page = page
+        self.start = start
         self.size = size
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case userId = "user_id"
         case page
+        case start
         case size
     }
 
@@ -34,6 +37,7 @@ public struct GetTenantMembers: Codable, JSONEncodable, Hashable {
         var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
         try containerEncoder.encodeIfPresent(userId, forKey: .userId)
         try containerEncoder.encodeIfPresent(page, forKey: .page)
+        try containerEncoder.encodeIfPresent(start, forKey: .start)
         try containerEncoder.encodeIfPresent(size, forKey: .size)
     }
 }

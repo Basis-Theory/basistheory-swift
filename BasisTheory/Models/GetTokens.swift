@@ -16,13 +16,15 @@ public struct GetTokens: Codable, JSONEncodable, Hashable {
     public var id: [String]?
     public var metadata: [String: String]?
     public var page: Int?
+    public var start: String?
     public var size: Int?
 
-    public init(type: [String]? = nil, id: [String]? = nil, metadata: [String: String]? = nil, page: Int? = nil, size: Int? = nil) {
+    public init(type: [String]? = nil, id: [String]? = nil, metadata: [String: String]? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil) {
         self.type = type
         self.id = id
         self.metadata = metadata
         self.page = page
+        self.start = start
         self.size = size
     }
 
@@ -31,6 +33,7 @@ public struct GetTokens: Codable, JSONEncodable, Hashable {
         case id
         case metadata
         case page
+        case start
         case size
     }
 
@@ -42,6 +45,7 @@ public struct GetTokens: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(id, forKey: .id)
         try containerEncoder.encodeIfPresent(metadata, forKey: .metadata)
         try containerEncoder.encodeIfPresent(page, forKey: .page)
+        try containerEncoder.encodeIfPresent(start, forKey: .start)
         try containerEncoder.encodeIfPresent(size, forKey: .size)
     }
 }

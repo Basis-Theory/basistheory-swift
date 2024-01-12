@@ -19,13 +19,14 @@ open class LogsAPI {
      - parameter startDate: (query)  (optional)
      - parameter endDate: (query)  (optional)
      - parameter page: (query)  (optional)
+     - parameter start: (query)  (optional)
      - parameter size: (query)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func callGet(entityType: String? = nil, entityId: String? = nil, startDate: Date? = nil, endDate: Date? = nil, page: Int? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: LogPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
-        return callGetWithRequestBuilder(entityType: entityType, entityId: entityId, startDate: startDate, endDate: endDate, page: page, size: size).execute(apiResponseQueue) { result in
+    open class func callGet(entityType: String? = nil, entityId: String? = nil, startDate: Date? = nil, endDate: Date? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: LogPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
+        return callGetWithRequestBuilder(entityType: entityType, entityId: entityId, startDate: startDate, endDate: endDate, page: page, start: start, size: size).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -45,10 +46,11 @@ open class LogsAPI {
      - parameter startDate: (query)  (optional)
      - parameter endDate: (query)  (optional)
      - parameter page: (query)  (optional)
+     - parameter start: (query)  (optional)
      - parameter size: (query)  (optional)
      - returns: RequestBuilder<LogPaginatedList> 
      */
-    open class func callGetWithRequestBuilder(entityType: String? = nil, entityId: String? = nil, startDate: Date? = nil, endDate: Date? = nil, page: Int? = nil, size: Int? = nil) -> RequestBuilder<LogPaginatedList> {
+    open class func callGetWithRequestBuilder(entityType: String? = nil, entityId: String? = nil, startDate: Date? = nil, endDate: Date? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil) -> RequestBuilder<LogPaginatedList> {
         let localVariablePath = "/logs"
         let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -60,6 +62,7 @@ open class LogsAPI {
             "start_date": (wrappedValue: startDate?.encodeToJSON(), isExplode: true),
             "end_date": (wrappedValue: endDate?.encodeToJSON(), isExplode: true),
             "page": (wrappedValue: page?.encodeToJSON(), isExplode: true),
+            "start": (wrappedValue: start?.encodeToJSON(), isExplode: true),
             "size": (wrappedValue: size?.encodeToJSON(), isExplode: true),
         ])
 

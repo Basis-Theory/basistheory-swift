@@ -246,7 +246,7 @@ Void (empty response body)
 
 # **getInvitations**
 ```swift
-    open class func getInvitations(status: TenantInvitationStatus? = nil, page: Int? = nil, size: Int? = nil, completion: @escaping (_ data: TenantInvitationResponsePaginatedList?, _ error: Error?) -> Void)
+    open class func getInvitations(status: TenantInvitationStatus? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, completion: @escaping (_ data: TenantInvitationResponsePaginatedList?, _ error: Error?) -> Void)
 ```
 
 
@@ -258,9 +258,10 @@ import BasisTheory
 
 let status = TenantInvitationStatus() // TenantInvitationStatus |  (optional)
 let page = 987 // Int |  (optional)
+let start = "start_example" // String |  (optional)
 let size = 987 // Int |  (optional)
 
-TenantsAPI.getInvitations(status: status, page: page, size: size) { (response, error) in
+TenantsAPI.getInvitations(status: status, page: page, start: start, size: size) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -278,6 +279,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **status** | [**TenantInvitationStatus**](.md) |  | [optional] 
  **page** | **Int** |  | [optional] 
+ **start** | **String** |  | [optional] 
  **size** | **Int** |  | [optional] 
 
 ### Return type
@@ -297,7 +299,7 @@ Name | Type | Description  | Notes
 
 # **getMembers**
 ```swift
-    open class func getMembers(userId: [UUID]? = nil, page: Int? = nil, size: Int? = nil, completion: @escaping (_ data: TenantMemberResponsePaginatedList?, _ error: Error?) -> Void)
+    open class func getMembers(userId: [UUID]? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, completion: @escaping (_ data: TenantMemberResponsePaginatedList?, _ error: Error?) -> Void)
 ```
 
 
@@ -309,9 +311,10 @@ import BasisTheory
 
 let userId = [123] // [UUID] |  (optional)
 let page = 987 // Int |  (optional)
+let start = "start_example" // String |  (optional)
 let size = 987 // Int |  (optional)
 
-TenantsAPI.getMembers(userId: userId, page: page, size: size) { (response, error) in
+TenantsAPI.getMembers(userId: userId, page: page, start: start, size: size) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -329,6 +332,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | [**[UUID]**](UUID.md) |  | [optional] 
  **page** | **Int** |  | [optional] 
+ **start** | **String** |  | [optional] 
  **size** | **Int** |  | [optional] 
 
 ### Return type

@@ -14,17 +14,20 @@ public struct GetReactorFormulas: Codable, JSONEncodable, Hashable {
 
     public var name: String?
     public var page: Int?
+    public var start: String?
     public var size: Int?
 
-    public init(name: String? = nil, page: Int? = nil, size: Int? = nil) {
+    public init(name: String? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil) {
         self.name = name
         self.page = page
+        self.start = start
         self.size = size
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case name
         case page
+        case start
         case size
     }
 
@@ -34,6 +37,7 @@ public struct GetReactorFormulas: Codable, JSONEncodable, Hashable {
         var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
         try containerEncoder.encodeIfPresent(name, forKey: .name)
         try containerEncoder.encodeIfPresent(page, forKey: .page)
+        try containerEncoder.encodeIfPresent(start, forKey: .start)
         try containerEncoder.encodeIfPresent(size, forKey: .size)
     }
 }

@@ -17,13 +17,14 @@ open class ReactorsAPI {
      - parameter id: (query)  (optional)
      - parameter name: (query)  (optional)
      - parameter page: (query)  (optional)
+     - parameter start: (query)  (optional)
      - parameter size: (query)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func callGet(id: [UUID]? = nil, name: String? = nil, page: Int? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: ReactorPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
-        return callGetWithRequestBuilder(id: id, name: name, page: page, size: size).execute(apiResponseQueue) { result in
+    open class func callGet(id: [UUID]? = nil, name: String? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: ReactorPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
+        return callGetWithRequestBuilder(id: id, name: name, page: page, start: start, size: size).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -41,10 +42,11 @@ open class ReactorsAPI {
      - parameter id: (query)  (optional)
      - parameter name: (query)  (optional)
      - parameter page: (query)  (optional)
+     - parameter start: (query)  (optional)
      - parameter size: (query)  (optional)
      - returns: RequestBuilder<ReactorPaginatedList> 
      */
-    open class func callGetWithRequestBuilder(id: [UUID]? = nil, name: String? = nil, page: Int? = nil, size: Int? = nil) -> RequestBuilder<ReactorPaginatedList> {
+    open class func callGetWithRequestBuilder(id: [UUID]? = nil, name: String? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil) -> RequestBuilder<ReactorPaginatedList> {
         let localVariablePath = "/reactors"
         let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -54,6 +56,7 @@ open class ReactorsAPI {
             "id": (wrappedValue: id?.encodeToJSON(), isExplode: true),
             "name": (wrappedValue: name?.encodeToJSON(), isExplode: true),
             "page": (wrappedValue: page?.encodeToJSON(), isExplode: true),
+            "start": (wrappedValue: start?.encodeToJSON(), isExplode: true),
             "size": (wrappedValue: size?.encodeToJSON(), isExplode: true),
         ])
 
