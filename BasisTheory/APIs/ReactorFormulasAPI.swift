@@ -16,13 +16,14 @@ open class ReactorFormulasAPI {
 
      - parameter name: (query)  (optional)
      - parameter page: (query)  (optional)
+     - parameter start: (query)  (optional)
      - parameter size: (query)  (optional)
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func callGet(name: String? = nil, page: Int? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: ReactorFormulaPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
-        return callGetWithRequestBuilder(name: name, page: page, size: size).execute(apiResponseQueue) { result in
+    open class func callGet(name: String? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: ReactorFormulaPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
+        return callGetWithRequestBuilder(name: name, page: page, start: start, size: size).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -39,10 +40,11 @@ open class ReactorFormulasAPI {
        - name: ApiKey
      - parameter name: (query)  (optional)
      - parameter page: (query)  (optional)
+     - parameter start: (query)  (optional)
      - parameter size: (query)  (optional)
      - returns: RequestBuilder<ReactorFormulaPaginatedList> 
      */
-    open class func callGetWithRequestBuilder(name: String? = nil, page: Int? = nil, size: Int? = nil) -> RequestBuilder<ReactorFormulaPaginatedList> {
+    open class func callGetWithRequestBuilder(name: String? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil) -> RequestBuilder<ReactorFormulaPaginatedList> {
         let localVariablePath = "/reactor-formulas"
         let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -51,6 +53,7 @@ open class ReactorFormulasAPI {
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "name": (wrappedValue: name?.encodeToJSON(), isExplode: true),
             "page": (wrappedValue: page?.encodeToJSON(), isExplode: true),
+            "start": (wrappedValue: start?.encodeToJSON(), isExplode: true),
             "size": (wrappedValue: size?.encodeToJSON(), isExplode: true),
         ])
 

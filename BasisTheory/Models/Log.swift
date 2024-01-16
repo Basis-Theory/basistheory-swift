@@ -12,6 +12,7 @@ import AnyCodable
 
 public struct Log: Codable, JSONEncodable, Hashable {
 
+    public var id: String?
     public var tenantId: UUID?
     public var actorId: UUID?
     public var actorType: String?
@@ -21,7 +22,8 @@ public struct Log: Codable, JSONEncodable, Hashable {
     public var message: String?
     public var createdAt: Date?
 
-    public init(tenantId: UUID? = nil, actorId: UUID? = nil, actorType: String? = nil, entityType: String? = nil, entityId: String? = nil, operation: String? = nil, message: String? = nil, createdAt: Date? = nil) {
+    public init(id: String? = nil, tenantId: UUID? = nil, actorId: UUID? = nil, actorType: String? = nil, entityType: String? = nil, entityId: String? = nil, operation: String? = nil, message: String? = nil, createdAt: Date? = nil) {
+        self.id = id
         self.tenantId = tenantId
         self.actorId = actorId
         self.actorType = actorType
@@ -33,6 +35,7 @@ public struct Log: Codable, JSONEncodable, Hashable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case id
         case tenantId = "tenant_id"
         case actorId = "actor_id"
         case actorType = "actor_type"
@@ -47,6 +50,7 @@ public struct Log: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encodeIfPresent(id, forKey: .id)
         try containerEncoder.encodeIfPresent(tenantId, forKey: .tenantId)
         try containerEncoder.encodeIfPresent(actorId, forKey: .actorId)
         try containerEncoder.encodeIfPresent(actorType, forKey: .actorType)
