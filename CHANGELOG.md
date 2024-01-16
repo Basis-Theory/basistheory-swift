@@ -1,3 +1,15 @@
+## [1.0.0](https://github.com/Basis-Theory/basistheory-swift/compare/0.9.0...1.0.0) (2024-01-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* logs api changed from using offset pagination to cursor pagination
+
+### Features
+
+* support logs cursor pagination ([#23](https://github.com/Basis-Theory/basistheory-swift/issues/23)) ([64e8fb5](https://github.com/Basis-Theory/basistheory-swift/commit/64e8fb503a10514610af67c4544ae68e69b4e33e))
+
+
 ## [0.9.0](https://github.com/Basis-Theory/basistheory-swift/compare/0.8.0...0.9.0) (2023-10-11)
 
 
