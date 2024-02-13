@@ -4,8 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** |  | 
-**formula** | [**ReactorFormula**](ReactorFormula.md) |  | [optional] 
-**code** | **String** |  | [optional] 
+**code** | **String** |  | 
 **application** | [**Application**](Application.md) |  | [optional] 
 **configuration** | **[String: String]** |  | [optional] 
 

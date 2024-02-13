@@ -14,10 +14,10 @@ public struct UpdateReactorRequest: Codable, JSONEncodable, Hashable {
 
     public var name: String
     public var application: Application?
-    public var code: String?
+    public var code: String
     public var configuration: [String: String]?
 
-    public init(name: String, application: Application? = nil, code: String? = nil, configuration: [String: String]? = nil) {
+    public init(name: String, application: Application? = nil, code: String, configuration: [String: String]? = nil) {
         self.name = name
         self.application = application
         self.code = code
@@ -37,7 +37,7 @@ public struct UpdateReactorRequest: Codable, JSONEncodable, Hashable {
         var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
         try containerEncoder.encode(name, forKey: .name)
         try containerEncoder.encodeIfPresent(application, forKey: .application)
-        try containerEncoder.encodeIfPresent(code, forKey: .code)
+        try containerEncoder.encode(code, forKey: .code)
         try containerEncoder.encodeIfPresent(configuration, forKey: .configuration)
     }
 }

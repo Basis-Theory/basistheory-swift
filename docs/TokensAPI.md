@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 # **callGet**
 ```swift
-    open class func callGet(type: [String]? = nil, id: [String]? = nil, metadata: [String: String]? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, completion: @escaping (_ data: TokenPaginatedList?, _ error: Error?) -> Void)
+    open class func callGet(id: [String]? = nil, metadata: [String: String]? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, completion: @escaping (_ data: TokenPaginatedList?, _ error: Error?) -> Void)
 ```
 
 
@@ -24,14 +24,13 @@ Method | HTTP request | Description
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import BasisTheory
 
-let type = ["inner_example"] // [String] |  (optional)
 let id = ["inner_example"] // [String] |  (optional)
 let metadata = "TODO" // [String: String] |  (optional)
 let page = 987 // Int |  (optional)
 let start = "start_example" // String |  (optional)
 let size = 987 // Int |  (optional)
 
-TokensAPI.callGet(type: type, id: id, metadata: metadata, page: page, start: start, size: size) { (response, error) in
+TokensAPI.callGet(id: id, metadata: metadata, page: page, start: start, size: size) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -47,7 +46,6 @@ TokensAPI.callGet(type: type, id: id, metadata: metadata, page: page, start: sta
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **type** | [**[String]**](String.md) |  | [optional] 
  **id** | [**[String]**](String.md) |  | [optional] 
  **metadata** | [**[String: String]**](String.md) |  | [optional] 
  **page** | **Int** |  | [optional] 

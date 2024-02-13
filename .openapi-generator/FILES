@@ -12,7 +12,6 @@ BasisTheory/APIs/SessionsAPI.swift
 BasisTheory/APIs/TenantsAPI.swift
 BasisTheory/APIs/TokenizeAPI.swift
 BasisTheory/APIs/TokensAPI.swift
-BasisTheory/APIs/TransactionsAPI.swift
 BasisTheory/CodableHelper.swift
 BasisTheory/Configuration.swift
 BasisTheory/JSONDataEncoding.swift
@@ -35,7 +34,6 @@ BasisTheory/Models/CreateReactorRequest.swift
 BasisTheory/Models/CreateSessionResponse.swift
 BasisTheory/Models/CreateTenantInvitationRequest.swift
 BasisTheory/Models/CreateTokenRequest.swift
-BasisTheory/Models/CreateTransactionResponse.swift
 BasisTheory/Models/EncryptionKey.swift
 BasisTheory/Models/EncryptionMetadata.swift
 BasisTheory/Models/GetApplications.swift
@@ -114,7 +112,6 @@ docs/CreateReactorRequest.md
 docs/CreateSessionResponse.md
 docs/CreateTenantInvitationRequest.md
 docs/CreateTokenRequest.md
-docs/CreateTransactionResponse.md
 docs/EncryptionKey.md
 docs/EncryptionMetadata.md
 docs/GetApplications.md
@@ -169,7 +166,6 @@ docs/TokenPaginatedList.md
 docs/TokenReport.md
 docs/TokenizeAPI.md
 docs/TokensAPI.md
-docs/TransactionsAPI.md
 docs/UpdateApplicationRequest.md
 docs/UpdatePrivacy.md
 docs/UpdateProxyRequest.md

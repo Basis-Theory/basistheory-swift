@@ -14,7 +14,6 @@ open class TokensAPI {
 
     /**
 
-     - parameter type: (query)  (optional)
      - parameter id: (query)  (optional)
      - parameter metadata: (query)  (optional)
      - parameter page: (query)  (optional)
@@ -24,8 +23,8 @@ open class TokensAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func callGet(type: [String]? = nil, id: [String]? = nil, metadata: [String: String]? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: TokenPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
-        return callGetWithRequestBuilder(type: type, id: id, metadata: metadata, page: page, start: start, size: size).execute(apiResponseQueue) { result in
+    open class func callGet(id: [String]? = nil, metadata: [String: String]? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: TokenPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
+        return callGetWithRequestBuilder(id: id, metadata: metadata, page: page, start: start, size: size).execute(apiResponseQueue) { result in
             switch result {
             case let .success(response):
                 completion(response.body, nil)
@@ -40,7 +39,6 @@ open class TokensAPI {
      - API Key:
        - type: apiKey BT-API-KEY 
        - name: ApiKey
-     - parameter type: (query)  (optional)
      - parameter id: (query)  (optional)
      - parameter metadata: (query)  (optional)
      - parameter page: (query)  (optional)
@@ -48,14 +46,13 @@ open class TokensAPI {
      - parameter size: (query)  (optional)
      - returns: RequestBuilder<TokenPaginatedList> 
      */
-    open class func callGetWithRequestBuilder(type: [String]? = nil, id: [String]? = nil, metadata: [String: String]? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil) -> RequestBuilder<TokenPaginatedList> {
+    open class func callGetWithRequestBuilder(id: [String]? = nil, metadata: [String: String]? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil) -> RequestBuilder<TokenPaginatedList> {
         let localVariablePath = "/tokens"
         let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "type": (wrappedValue: type?.encodeToJSON(), isExplode: true),
             "id": (wrappedValue: id?.encodeToJSON(), isExplode: true),
             "metadata": (wrappedValue: metadata?.encodeToJSON(), isExplode: false),
             "page": (wrappedValue: page?.encodeToJSON(), isExplode: true),
