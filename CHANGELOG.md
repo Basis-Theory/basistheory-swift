@@ -1,3 +1,15 @@
+## [2.0.0](https://github.com/Basis-Theory/basistheory-swift/compare/1.0.0...2.0.0) (2024-02-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* removing transactions
+
+### Features
+
+* removing transactions ([#24](https://github.com/Basis-Theory/basistheory-swift/issues/24)) ([3619f3e](https://github.com/Basis-Theory/basistheory-swift/commit/3619f3e5e4f0084ac381e1989b73073ab631fc61))
+
+
 ## [1.0.0](https://github.com/Basis-Theory/basistheory-swift/compare/0.9.0...1.0.0) (2024-01-16)
 
 
