@@ -11,7 +11,6 @@ Method | HTTP request | Description
 [**deleteMember**](TenantsAPI.md#deletemember) | **DELETE** /tenants/self/members/{memberId} | 
 [**getInvitations**](TenantsAPI.md#getinvitations) | **GET** /tenants/self/invitations | 
 [**getMembers**](TenantsAPI.md#getmembers) | **GET** /tenants/self/members | 
-[**getTenantOperationReport**](TenantsAPI.md#gettenantoperationreport) | **GET** /tenants/self/reports/operations | 
 [**getTenantUsageReport**](TenantsAPI.md#gettenantusagereport) | **GET** /tenants/self/reports/usage | 
 [**resendInvitation**](TenantsAPI.md#resendinvitation) | **POST** /tenants/self/invitations/{invitationId}/resend | 
 [**update**](TenantsAPI.md#update) | **PUT** /tenants/self | 
@@ -338,49 +337,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**TenantMemberResponsePaginatedList**](TenantMemberResponsePaginatedList.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **getTenantOperationReport**
-```swift
-    open class func getTenantOperationReport(completion: @escaping (_ data: TenantUsageReport?, _ error: Error?) -> Void)
-```
-
-
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import BasisTheory
-
-
-TenantsAPI.getTenantOperationReport() { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-This endpoint does not need any parameter.
-
-### Return type
-
-[**TenantUsageReport**](TenantUsageReport.md)
 
 ### Authorization
 

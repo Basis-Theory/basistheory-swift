@@ -352,48 +352,6 @@ open class TenantsAPI {
      - parameter completion: completion handler to receive the data and the error objects
      */
     @discardableResult
-    open class func getTenantOperationReport(apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: TenantUsageReport?, _ error: Error?) -> Void)) -> RequestTask {
-        return getTenantOperationReportWithRequestBuilder().execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
-    }
-
-    /**
-     - GET /tenants/self/reports/operations
-     - API Key:
-       - type: apiKey BT-API-KEY 
-       - name: ApiKey
-     - returns: RequestBuilder<TenantUsageReport> 
-     */
-    open class func getTenantOperationReportWithRequestBuilder() -> RequestBuilder<TenantUsageReport> {
-        let localVariablePath = "/tenants/self/reports/operations"
-        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<TenantUsageReport>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
-
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
-     */
-    @discardableResult
     open class func getTenantUsageReport(apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: TenantUsageReport?, _ error: Error?) -> Void)) -> RequestTask {
         return getTenantUsageReportWithRequestBuilder().execute(apiResponseQueue) { result in
             switch result {
