@@ -15,16 +15,18 @@ public struct Tenant: Codable, JSONEncodable, Hashable {
     public var id: UUID?
     public var ownerId: UUID?
     public var name: String?
+    public var type: String?
     public var createdBy: UUID?
     public var createdAt: Date?
     public var modifiedBy: UUID?
     public var modifiedAt: Date?
     public var settings: [String: String]?
 
-    public init(id: UUID? = nil, ownerId: UUID? = nil, name: String? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, modifiedBy: UUID? = nil, modifiedAt: Date? = nil, settings: [String: String]? = nil) {
+    public init(id: UUID? = nil, ownerId: UUID? = nil, name: String? = nil, type: String? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, modifiedBy: UUID? = nil, modifiedAt: Date? = nil, settings: [String: String]? = nil) {
         self.id = id
         self.ownerId = ownerId
         self.name = name
+        self.type = type
         self.createdBy = createdBy
         self.createdAt = createdAt
         self.modifiedBy = modifiedBy
@@ -36,6 +38,7 @@ public struct Tenant: Codable, JSONEncodable, Hashable {
         case id
         case ownerId = "owner_id"
         case name
+        case type
         case createdBy = "created_by"
         case createdAt = "created_at"
         case modifiedBy = "modified_by"
@@ -50,6 +53,7 @@ public struct Tenant: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(id, forKey: .id)
         try containerEncoder.encodeIfPresent(ownerId, forKey: .ownerId)
         try containerEncoder.encodeIfPresent(name, forKey: .name)
+        try containerEncoder.encodeIfPresent(type, forKey: .type)
         try containerEncoder.encodeIfPresent(createdBy, forKey: .createdBy)
         try containerEncoder.encodeIfPresent(createdAt, forKey: .createdAt)
         try containerEncoder.encodeIfPresent(modifiedBy, forKey: .modifiedBy)

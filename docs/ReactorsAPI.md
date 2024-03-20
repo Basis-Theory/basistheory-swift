@@ -271,7 +271,7 @@ Void (empty response body)
 import BasisTheory
 
 let id = 987 // UUID | 
-let reactRequest = ReactRequest(args: "TODO", callbackUrl: "callbackUrl_example", timeoutMs: 123) // ReactRequest | 
+let reactRequest = ReactRequest(args: "TODO", callbackUrl: "callbackUrl_example") // ReactRequest | 
 
 ReactorsAPI.react(id: id, reactRequest: reactRequest) { (response, error) in
     guard error == nil else {
