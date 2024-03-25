@@ -18,7 +18,6 @@ public struct Token: Codable, JSONEncodable, Hashable {
     public var data: AnyCodable?
     public var metadata: [String: String]?
     public var enrichments: TokenEnrichments?
-    public var encryption: EncryptionMetadata?
     public var createdBy: UUID?
     public var createdAt: Date?
     public var modifiedBy: UUID?
@@ -32,14 +31,13 @@ public struct Token: Codable, JSONEncodable, Hashable {
     public var containers: [String]?
     public var aliases: [String]?
 
-    public init(id: String? = nil, type: String? = nil, tenantId: UUID? = nil, data: AnyCodable? = nil, metadata: [String: String]? = nil, enrichments: TokenEnrichments? = nil, encryption: EncryptionMetadata? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, modifiedBy: UUID? = nil, modifiedAt: Date? = nil, fingerprint: String? = nil, fingerprintExpression: String? = nil, mask: AnyCodable? = nil, privacy: Privacy? = nil, searchIndexes: [String]? = nil, expiresAt: Date? = nil, containers: [String]? = nil, aliases: [String]? = nil) {
+    public init(id: String? = nil, type: String? = nil, tenantId: UUID? = nil, data: AnyCodable? = nil, metadata: [String: String]? = nil, enrichments: TokenEnrichments? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, modifiedBy: UUID? = nil, modifiedAt: Date? = nil, fingerprint: String? = nil, fingerprintExpression: String? = nil, mask: AnyCodable? = nil, privacy: Privacy? = nil, searchIndexes: [String]? = nil, expiresAt: Date? = nil, containers: [String]? = nil, aliases: [String]? = nil) {
         self.id = id
         self.type = type
         self.tenantId = tenantId
         self.data = data
         self.metadata = metadata
         self.enrichments = enrichments
-        self.encryption = encryption
         self.createdBy = createdBy
         self.createdAt = createdAt
         self.modifiedBy = modifiedBy
@@ -61,7 +59,6 @@ public struct Token: Codable, JSONEncodable, Hashable {
         case data
         case metadata
         case enrichments
-        case encryption
         case createdBy = "created_by"
         case createdAt = "created_at"
         case modifiedBy = "modified_by"
@@ -86,7 +83,6 @@ public struct Token: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(data, forKey: .data)
         try containerEncoder.encodeIfPresent(metadata, forKey: .metadata)
         try containerEncoder.encodeIfPresent(enrichments, forKey: .enrichments)
-        try containerEncoder.encodeIfPresent(encryption, forKey: .encryption)
         try containerEncoder.encodeIfPresent(createdBy, forKey: .createdBy)
         try containerEncoder.encodeIfPresent(createdAt, forKey: .createdAt)
         try containerEncoder.encodeIfPresent(modifiedBy, forKey: .modifiedBy)
