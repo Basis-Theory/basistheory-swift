@@ -1,3 +1,11 @@
+## [2.1.0](https://github.com/Basis-Theory/basistheory-swift/compare/2.0.0...2.1.0) (2024-03-26)
+
+
+### Features
+
+* adds 3DS and application keys endpoints ([#26](https://github.com/Basis-Theory/basistheory-swift/issues/26)) ([a91b22e](https://github.com/Basis-Theory/basistheory-swift/commit/a91b22e995744c9cfdffbf18b6d6798e66ba9361))
+
+
 ## [2.0.0](https://github.com/Basis-Theory/basistheory-swift/compare/1.0.0...2.0.0) (2024-02-13)
 
 
