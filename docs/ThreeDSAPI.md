@@ -4,57 +4,10 @@ All URIs are relative to *https://api.basistheory.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**call3dsSessionsIdGet**](ThreeDSAPI.md#call3dssessionsidget) | **GET** /3ds/sessions/{id} | 
 [**threeDSAuthenticateSession**](ThreeDSAPI.md#threedsauthenticatesession) | **POST** /3ds/sessions/{sessionId}/authenticate | 
 [**threeDSGetChallengeResult**](ThreeDSAPI.md#threedsgetchallengeresult) | **GET** /3ds/sessions/{sessionId}/challenge-result | 
+[**threeDSGetSessionById**](ThreeDSAPI.md#threedsgetsessionbyid) | **GET** /3ds/sessions/{id} | 
 
-
-# **call3dsSessionsIdGet**
-```swift
-    open class func call3dsSessionsIdGet(id: UUID, completion: @escaping (_ data: ThreeDSSession?, _ error: Error?) -> Void)
-```
-
-
-
-### Example
-```swift
-// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
-import BasisTheory
-
-let id = 987 // UUID | 
-
-ThreeDSAPI.call3dsSessionsIdGet(id: id) { (response, error) in
-    guard error == nil else {
-        print(error)
-        return
-    }
-
-    if (response) {
-        dump(response)
-    }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **UUID** |  | 
-
-### Return type
-
-[**ThreeDSSession**](ThreeDSSession.md)
-
-### Authorization
-
-[ApiKey](../README.md#ApiKey)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **threeDSAuthenticateSession**
 ```swift
@@ -140,6 +93,53 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ThreeDSAuthentication**](ThreeDSAuthentication.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **threeDSGetSessionById**
+```swift
+    open class func threeDSGetSessionById(id: UUID, completion: @escaping (_ data: ThreeDSSession?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import BasisTheory
+
+let id = 987 // UUID | 
+
+ThreeDSAPI.threeDSGetSessionById(id: id) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **UUID** |  | 
+
+### Return type
+
+[**ThreeDSSession**](ThreeDSSession.md)
 
 ### Authorization
 
