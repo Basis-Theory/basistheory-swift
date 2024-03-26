@@ -17,13 +17,15 @@ public struct CreateApplicationRequest: Codable, JSONEncodable, Hashable {
     public var expiresAt: String?
     public var permissions: [String]?
     public var rules: [AccessRule]?
+    public var createKey: Bool?
 
-    public init(name: String, type: String, expiresAt: String? = nil, permissions: [String]? = nil, rules: [AccessRule]? = nil) {
+    public init(name: String, type: String, expiresAt: String? = nil, permissions: [String]? = nil, rules: [AccessRule]? = nil, createKey: Bool? = nil) {
         self.name = name
         self.type = type
         self.expiresAt = expiresAt
         self.permissions = permissions
         self.rules = rules
+        self.createKey = createKey
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -32,6 +34,7 @@ public struct CreateApplicationRequest: Codable, JSONEncodable, Hashable {
         case expiresAt = "expires_at"
         case permissions
         case rules
+        case createKey = "create_key"
     }
 
     // Encodable protocol methods
@@ -43,6 +46,7 @@ public struct CreateApplicationRequest: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(expiresAt, forKey: .expiresAt)
         try containerEncoder.encodeIfPresent(permissions, forKey: .permissions)
         try containerEncoder.encodeIfPresent(rules, forKey: .rules)
+        try containerEncoder.encodeIfPresent(createKey, forKey: .createKey)
     }
 }
 

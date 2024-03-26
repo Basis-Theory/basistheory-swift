@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **id** | **UUID** |  | [optional] 
 **ownerId** | **UUID** |  | [optional] 
 **name** | **String** |  | [optional] 
+**type** | **String** |  | [optional] 
 **createdBy** | **UUID** |  | [optional] 
 **createdAt** | **Date** |  | [optional] 
 **modifiedBy** | **UUID** |  | [optional] 

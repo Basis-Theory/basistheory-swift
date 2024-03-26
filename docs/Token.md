@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **data** | [**AnyCodable**](.md) |  | [optional] 
 **metadata** | **[String: String]** |  | [optional] 
 **enrichments** | [**TokenEnrichments**](TokenEnrichments.md) |  | [optional] 
-**encryption** | [**EncryptionMetadata**](EncryptionMetadata.md) |  | [optional] 
 **createdBy** | **UUID** |  | [optional] 
 **createdAt** | **Date** |  | [optional] 
 **modifiedBy** | **UUID** |  | [optional] 

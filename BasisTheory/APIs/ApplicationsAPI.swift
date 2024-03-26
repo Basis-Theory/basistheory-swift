@@ -257,6 +257,7 @@ open class ApplicationsAPI {
      - parameter apiResponseQueue: The queue on which api response is dispatched.
      - parameter completion: completion handler to receive the data and the error objects
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     @discardableResult
     open class func regenerateKey(id: UUID, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: Application?, _ error: Error?) -> Void)) -> RequestTask {
         return regenerateKeyWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
@@ -277,6 +278,7 @@ open class ApplicationsAPI {
      - parameter id: (path)  
      - returns: RequestBuilder<Application> 
      */
+    @available(*, deprecated, message: "This operation is deprecated.")
     open class func regenerateKeyWithRequestBuilder(id: UUID) -> RequestBuilder<Application> {
         var localVariablePath = "/applications/{id}/regenerate"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"

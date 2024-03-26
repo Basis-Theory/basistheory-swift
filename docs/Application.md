@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **tenantId** | **UUID** |  | [optional] 
 **name** | **String** |  | [optional] 
 **key** | **String** |  | [optional] 
+**keys** | [ApplicationKey] |  | [optional] 
 **type** | **String** |  | [optional] 
 **createdBy** | **UUID** |  | [optional] 
 **createdAt** | **Date** |  | [optional] 

@@ -14,18 +14,15 @@ public struct ReactRequest: Codable, JSONEncodable, Hashable {
 
     public var args: AnyCodable?
     public var callbackUrl: String?
-    public var timeoutMs: Int?
 
-    public init(args: AnyCodable? = nil, callbackUrl: String? = nil, timeoutMs: Int? = nil) {
+    public init(args: AnyCodable? = nil, callbackUrl: String? = nil) {
         self.args = args
         self.callbackUrl = callbackUrl
-        self.timeoutMs = timeoutMs
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case args
         case callbackUrl = "callback_url"
-        case timeoutMs = "timeout_ms"
     }
 
     // Encodable protocol methods
@@ -34,7 +31,6 @@ public struct ReactRequest: Codable, JSONEncodable, Hashable {
         var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
         try containerEncoder.encodeIfPresent(args, forKey: .args)
         try containerEncoder.encodeIfPresent(callbackUrl, forKey: .callbackUrl)
-        try containerEncoder.encodeIfPresent(timeoutMs, forKey: .timeoutMs)
     }
 }
 
