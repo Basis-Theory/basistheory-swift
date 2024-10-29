@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      
+
       - name: Pod Linting
         run: pod lib lint --allow-warnings
 
@@ -33,5 +33,5 @@ jobs:
         if: success() || failure()
         uses: actions/upload-artifact@master
         with:
-           name: Dependency check report
-           path: ${{github.workspace}}/reports
+          name: Dependency check report
+          path: ${{github.workspace}}/reports
