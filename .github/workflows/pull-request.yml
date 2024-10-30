@@ -8,7 +8,7 @@ on:
 jobs:
   pod-linting:
     name: Pod Linting
-    runs-on: macOS-latest
+    runs-on: macOS-12
 
     steps:
       - name: Checkout repository

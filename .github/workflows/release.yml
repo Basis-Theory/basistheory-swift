@@ -8,7 +8,7 @@ jobs:
   tag-and-release:
     name: Tag and Release
     runs-on: macOS-latest
-    environmeht: PROD
+    environment: PROD
 
     steps:
       - name: Start Deploy Message
