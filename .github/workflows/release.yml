@@ -2,19 +2,26 @@ name: Release
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   tag-and-release:
     name: Tag and Release
     runs-on: macOS-latest
+    environment: PROD
 
     steps:
+      - name: Start Deploy Message
+        uses: Basis-Theory/github-actions/deploy-slack-action@master
+        with:
+          slack-api-token: ${{ secrets.SLACK_DUCKBOT_API_KEY }}
+          channel: ${{ vars.SLACK_DUCKBOT_PRODUCT_DEPLOY_CHANNEL }}
+
       - name: Checkout
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          token: ${{ secrets.SEMANTIC_RELEASE_PAT }}
+          token: ${{ secrets.GH_SEMANTIC_RELEASE_PAT }}
 
       - name: Bump version and push tag
         id: tag-version
@@ -42,7 +49,7 @@ jobs:
         uses: ad-m/github-push-action@master
         if: ${{ steps.tag-version.outputs.release_type != '' }}
         with:
-          github_token: ${{ secrets.SEMANTIC_RELEASE_PAT }}
+          github_token: ${{ secrets.GH_SEMANTIC_RELEASE_PAT }}
           branch: ${{ github.ref }}
           force: true
 
@@ -51,3 +58,11 @@ jobs:
         run: pod trunk push --allow-warnings
         env:
           COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
+
+      - name: Stop Deploy Message
+        if: always()
+        uses: Basis-Theory/github-actions/deploy-slack-action@master
+        with:
+          slack-api-token: ${{ secrets.SLACK_DUCKBOT_API_KEY }}
+          channel: ${{ vars.SLACK_DUCKBOT_PRODUCT_DEPLOY_CHANNEL }}
+          status: "done"
