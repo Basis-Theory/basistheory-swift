@@ -1,23 +1,13 @@
-name: Pull Request
+name: Semgrep PR Check
 
 on:
-  pull_request:
-    branches:
-      - master
+  # Scan changed files in PRs (diff-aware scanning):
+  pull_request: {}
+  # Scan on-demand through GitHub Actions interface:
+  workflow_dispatch: {}
 
 jobs:
-  pod-linting:
-    name: Pod Linting
-    runs-on: macOS-12
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Pod Linting
-        run: pod lib lint --allow-warnings
-
-  dependency-check-test:
+  pr-security-check:
     name: PR Security Check
-    uses: Basis-Theory/security-workflows/.github/workflows/pr-check.yml@master
+    uses: Basis-Theory/public-security-workflows/.github/workflows/pr-check.yml@master
     secrets: inherit
