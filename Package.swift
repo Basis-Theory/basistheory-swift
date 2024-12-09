@@ -5,9 +5,9 @@ import PackageDescription
 let package = Package(
     name: "BasisTheory",
     platforms: [
-        .iOS(.v9),
-        .macOS(.v10_11),
-        .tvOS(.v9),
+        .iOS(.v12),
+        .macOS(.v10_13),
+        .tvOS(.v12),
         .watchOS(.v3),
     ],
     products: [
@@ -15,19 +15,19 @@ let package = Package(
         .library(
             name: "BasisTheory",
             targets: ["BasisTheory"]
-        ),
+        )
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
-        .package(url: "https://github.com/Flight-School/AnyCodable", from: "0.6.1"),
+        .package(url: "https://github.com/Flight-School/AnyCodable", from: "0.6.1")
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "BasisTheory",
-            dependencies: ["AnyCodable", ],
+            dependencies: ["AnyCodable"],
             path: "BasisTheory"
-        ),
+        )
     ]
 )
