@@ -1,9 +1,9 @@
 #!/bin/bash
 
-docker pull openapitools/openapi-generator-cli:v6.2.1
-docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli:v6.2.1 generate \
+docker pull openapitools/openapi-generator-cli:v7.10.0
+docker run --rm -v ${PWD}:/local openapitools/openapi-generator-cli:v7.10.0 generate \
   -i /local/swagger.json \
-  -g swift5 \
+  -g swift6 \
   -o /local \
   -c /local/openapi-config.yml \
   --remove-operation-id-prefix

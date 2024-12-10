@@ -6,15 +6,13 @@
 //
 
 import Foundation
-#if canImport(AnyCodable)
-import AnyCodable
-#endif
 
 public struct TenantInvitationResponse: Codable, JSONEncodable, Hashable {
 
     public var id: UUID?
     public var tenantId: UUID?
     public var email: String?
+    public var role: String?
     public var status: TenantInvitationStatus?
     public var expiresAt: Date?
     public var createdBy: UUID?
@@ -22,10 +20,11 @@ public struct TenantInvitationResponse: Codable, JSONEncodable, Hashable {
     public var modifiedBy: UUID?
     public var modifiedAt: Date?
 
-    public init(id: UUID? = nil, tenantId: UUID? = nil, email: String? = nil, status: TenantInvitationStatus? = nil, expiresAt: Date? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, modifiedBy: UUID? = nil, modifiedAt: Date? = nil) {
+    public init(id: UUID? = nil, tenantId: UUID? = nil, email: String? = nil, role: String? = nil, status: TenantInvitationStatus? = nil, expiresAt: Date? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, modifiedBy: UUID? = nil, modifiedAt: Date? = nil) {
         self.id = id
         self.tenantId = tenantId
         self.email = email
+        self.role = role
         self.status = status
         self.expiresAt = expiresAt
         self.createdBy = createdBy
@@ -38,6 +37,7 @@ public struct TenantInvitationResponse: Codable, JSONEncodable, Hashable {
         case id
         case tenantId = "tenant_id"
         case email
+        case role
         case status
         case expiresAt = "expires_at"
         case createdBy = "created_by"
@@ -53,6 +53,7 @@ public struct TenantInvitationResponse: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(id, forKey: .id)
         try containerEncoder.encodeIfPresent(tenantId, forKey: .tenantId)
         try containerEncoder.encodeIfPresent(email, forKey: .email)
+        try containerEncoder.encodeIfPresent(role, forKey: .role)
         try containerEncoder.encodeIfPresent(status, forKey: .status)
         try containerEncoder.encodeIfPresent(expiresAt, forKey: .expiresAt)
         try containerEncoder.encodeIfPresent(createdBy, forKey: .createdBy)

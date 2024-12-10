@@ -6,9 +6,6 @@
 //
 
 import Foundation
-#if canImport(AnyCodable)
-import AnyCodable
-#endif
 
 open class ThreeDSAPI {
 
@@ -16,83 +13,109 @@ open class ThreeDSAPI {
 
      - parameter sessionId: (path)  
      - parameter authenticateThreeDSSessionRequest: (body)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: ThreeDSAuthentication
      */
-    @discardableResult
-    open class func threeDSAuthenticateSession(sessionId: UUID, authenticateThreeDSSessionRequest: AuthenticateThreeDSSessionRequest? = nil, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: ThreeDSAuthentication?, _ error: Error?) -> Void)) -> RequestTask {
-        return threeDSAuthenticateSessionWithRequestBuilder(sessionId: sessionId, authenticateThreeDSSessionRequest: authenticateThreeDSSessionRequest).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func threeDSAuthenticateSession(sessionId: UUID, authenticateThreeDSSessionRequest: AuthenticateThreeDSSessionRequest? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ThreeDSAuthentication {
+        return try await threeDSAuthenticateSessionWithRequestBuilder(sessionId: sessionId, authenticateThreeDSSessionRequest: authenticateThreeDSSessionRequest, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
      - POST /3ds/sessions/{sessionId}/authenticate
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter sessionId: (path)  
      - parameter authenticateThreeDSSessionRequest: (body)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<ThreeDSAuthentication> 
      */
-    open class func threeDSAuthenticateSessionWithRequestBuilder(sessionId: UUID, authenticateThreeDSSessionRequest: AuthenticateThreeDSSessionRequest? = nil) -> RequestBuilder<ThreeDSAuthentication> {
+    open class func threeDSAuthenticateSessionWithRequestBuilder(sessionId: UUID, authenticateThreeDSSessionRequest: AuthenticateThreeDSSessionRequest? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) -> RequestBuilder<ThreeDSAuthentication> {
         var localVariablePath = "/3ds/sessions/{sessionId}/authenticate"
         let sessionIdPreEscape = "\(APIHelper.mapValueToPathItem(sessionId))"
         let sessionIdPostEscape = sessionIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{sessionId}", with: sessionIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: authenticateThreeDSSessionRequest)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: authenticateThreeDSSessionRequest, codableHelper: apiConfiguration.codableHelper)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ThreeDSAuthentication>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ThreeDSAuthentication>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
+    }
+
+    /**
+
+     - parameter createThreeDSSessionRequest: (body)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: CreateThreeDSSessionResponse
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func threeDSCreateSession(createThreeDSSessionRequest: CreateThreeDSSessionRequest? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> CreateThreeDSSessionResponse {
+        return try await threeDSCreateSessionWithRequestBuilder(createThreeDSSessionRequest: createThreeDSSessionRequest, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - POST /3ds/sessions
+     - API Key:
+       - type: apiKey BT-API-KEY (HEADER)
+       - name: ApiKey
+     - parameter createThreeDSSessionRequest: (body)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<CreateThreeDSSessionResponse> 
+     */
+    open class func threeDSCreateSessionWithRequestBuilder(createThreeDSSessionRequest: CreateThreeDSSessionRequest? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) -> RequestBuilder<CreateThreeDSSessionResponse> {
+        let localVariablePath = "/3ds/sessions"
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createThreeDSSessionRequest, codableHelper: apiConfiguration.codableHelper)
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            "Content-Type": "application/json",
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<CreateThreeDSSessionResponse>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
 
      - parameter sessionId: (path)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: ThreeDSAuthentication
      */
-    @discardableResult
-    open class func threeDSGetChallengeResult(sessionId: UUID, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: ThreeDSAuthentication?, _ error: Error?) -> Void)) -> RequestTask {
-        return threeDSGetChallengeResultWithRequestBuilder(sessionId: sessionId).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func threeDSGetChallengeResult(sessionId: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ThreeDSAuthentication {
+        return try await threeDSGetChallengeResultWithRequestBuilder(sessionId: sessionId, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
      - GET /3ds/sessions/{sessionId}/challenge-result
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter sessionId: (path)  
+     - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<ThreeDSAuthentication> 
      */
-    open class func threeDSGetChallengeResultWithRequestBuilder(sessionId: UUID) -> RequestBuilder<ThreeDSAuthentication> {
+    open class func threeDSGetChallengeResultWithRequestBuilder(sessionId: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) -> RequestBuilder<ThreeDSAuthentication> {
         var localVariablePath = "/3ds/sessions/{sessionId}/challenge-result"
         let sessionIdPreEscape = "\(APIHelper.mapValueToPathItem(sessionId))"
         let sessionIdPostEscape = sessionIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{sessionId}", with: sessionIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -103,43 +126,37 @@ open class ThreeDSAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ThreeDSAuthentication>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ThreeDSAuthentication>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
 
      - parameter id: (path)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: ThreeDSSession
      */
-    @discardableResult
-    open class func threeDSGetSessionById(id: UUID, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: ThreeDSSession?, _ error: Error?) -> Void)) -> RequestTask {
-        return threeDSGetSessionByIdWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func threeDSGetSessionById(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ThreeDSSession {
+        return try await threeDSGetSessionByIdWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
      - GET /3ds/sessions/{id}
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter id: (path)  
+     - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<ThreeDSSession> 
      */
-    open class func threeDSGetSessionByIdWithRequestBuilder(id: UUID) -> RequestBuilder<ThreeDSSession> {
+    open class func threeDSGetSessionByIdWithRequestBuilder(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) -> RequestBuilder<ThreeDSSession> {
         var localVariablePath = "/3ds/sessions/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -150,8 +167,8 @@ open class ThreeDSAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ThreeDSSession>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ThreeDSSession>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 }

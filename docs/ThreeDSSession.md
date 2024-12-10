@@ -4,8 +4,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **UUID** |  | [optional] 
+**type** | **String** |  | [optional] 
 **tenantId** | **UUID** |  | [optional] 
 **panTokenId** | **String** |  | [optional] 
+**tokenId** | **String** |  | [optional] 
+**tokenIntentId** | **String** |  | [optional] 
 **cardBrand** | **String** |  | [optional] 
 **expirationDate** | **Date** |  | [optional] 
 **createdDate** | **Date** |  | [optional] 

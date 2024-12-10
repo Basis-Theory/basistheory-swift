@@ -6,27 +6,40 @@
 //
 
 import Foundation
-#if canImport(AnyCodable)
-import AnyCodable
-#endif
 
 public struct ProxyTransform: Codable, JSONEncodable, Hashable {
 
+    public var type: String?
     public var code: String?
+    public var matcher: String?
+    public var expression: String?
+    public var replacement: String?
 
-    public init(code: String? = nil) {
+    public init(type: String? = nil, code: String? = nil, matcher: String? = nil, expression: String? = nil, replacement: String? = nil) {
+        self.type = type
         self.code = code
+        self.matcher = matcher
+        self.expression = expression
+        self.replacement = replacement
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case type
         case code
+        case matcher
+        case expression
+        case replacement
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encodeIfPresent(type, forKey: .type)
         try containerEncoder.encodeIfPresent(code, forKey: .code)
+        try containerEncoder.encodeIfPresent(matcher, forKey: .matcher)
+        try containerEncoder.encodeIfPresent(expression, forKey: .expression)
+        try containerEncoder.encodeIfPresent(replacement, forKey: .replacement)
     }
 }
 

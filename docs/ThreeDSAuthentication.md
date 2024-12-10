@@ -3,6 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**panTokenId** | **String** |  | [optional] 
+**tokenId** | **String** |  | [optional] 
+**tokenIntentId** | **String** |  | [optional] 
 **threedsVersion** | **String** |  | [optional] 
 **acsTransactionId** | **UUID** |  | [optional] 
 **dsTransactionId** | **UUID** |  | [optional] 
@@ -11,6 +14,7 @@ Name | Type | Description | Notes
 **dsReferenceNumber** | **String** |  | [optional] 
 **authenticationValue** | **String** |  | [optional] 
 **authenticationStatus** | **String** |  | [optional] 
+**authenticationStatusCode** | **String** |  | [optional] 
 **authenticationStatusReason** | **String** |  | [optional] 
 **eci** | **String** |  | [optional] 
 **acsChallengeMandated** | **String** |  | [optional] 

@@ -3,7 +3,7 @@ targets:
   BasisTheory:
     type: framework
     platform: iOS
-    deploymentTarget: "12.0"
+    deploymentTarget: "11.0"
     sources: [BasisTheory]
     info:
       path: ./Info.plist
@@ -12,4 +12,3 @@ targets:
       APPLICATION_EXTENSION_API_ONLY: true
     scheme: {}
     dependencies:
-    - carthage: AnyCodable

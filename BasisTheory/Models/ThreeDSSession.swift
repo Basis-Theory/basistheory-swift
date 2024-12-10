@@ -6,15 +6,16 @@
 //
 
 import Foundation
-#if canImport(AnyCodable)
-import AnyCodable
-#endif
 
 public struct ThreeDSSession: Codable, JSONEncodable, Hashable {
 
     public var id: UUID?
+    public var type: String?
     public var tenantId: UUID?
+    @available(*, deprecated, message: "This property is deprecated.")
     public var panTokenId: String?
+    public var tokenId: String?
+    public var tokenIntentId: String?
     public var cardBrand: String?
     public var expirationDate: Date?
     public var createdDate: Date?
@@ -27,10 +28,13 @@ public struct ThreeDSSession: Codable, JSONEncodable, Hashable {
     public var method: ThreeDSMethod?
     public var authentication: ThreeDSAuthentication?
 
-    public init(id: UUID? = nil, tenantId: UUID? = nil, panTokenId: String? = nil, cardBrand: String? = nil, expirationDate: Date? = nil, createdDate: Date? = nil, createdBy: UUID? = nil, modifiedDate: Date? = nil, modifiedBy: UUID? = nil, device: String? = nil, deviceInfo: ThreeDSDeviceInfo? = nil, version: ThreeDSVersion? = nil, method: ThreeDSMethod? = nil, authentication: ThreeDSAuthentication? = nil) {
+    public init(id: UUID? = nil, type: String? = nil, tenantId: UUID? = nil, panTokenId: String? = nil, tokenId: String? = nil, tokenIntentId: String? = nil, cardBrand: String? = nil, expirationDate: Date? = nil, createdDate: Date? = nil, createdBy: UUID? = nil, modifiedDate: Date? = nil, modifiedBy: UUID? = nil, device: String? = nil, deviceInfo: ThreeDSDeviceInfo? = nil, version: ThreeDSVersion? = nil, method: ThreeDSMethod? = nil, authentication: ThreeDSAuthentication? = nil) {
         self.id = id
+        self.type = type
         self.tenantId = tenantId
         self.panTokenId = panTokenId
+        self.tokenId = tokenId
+        self.tokenIntentId = tokenIntentId
         self.cardBrand = cardBrand
         self.expirationDate = expirationDate
         self.createdDate = createdDate
@@ -46,8 +50,11 @@ public struct ThreeDSSession: Codable, JSONEncodable, Hashable {
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
+        case type
         case tenantId = "tenant_id"
         case panTokenId = "pan_token_id"
+        case tokenId = "token_id"
+        case tokenIntentId = "token_intent_id"
         case cardBrand = "card_brand"
         case expirationDate = "expiration_date"
         case createdDate = "created_date"
@@ -66,8 +73,11 @@ public struct ThreeDSSession: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
         try containerEncoder.encodeIfPresent(id, forKey: .id)
+        try containerEncoder.encodeIfPresent(type, forKey: .type)
         try containerEncoder.encodeIfPresent(tenantId, forKey: .tenantId)
         try containerEncoder.encodeIfPresent(panTokenId, forKey: .panTokenId)
+        try containerEncoder.encodeIfPresent(tokenId, forKey: .tokenId)
+        try containerEncoder.encodeIfPresent(tokenIntentId, forKey: .tokenIntentId)
         try containerEncoder.encodeIfPresent(cardBrand, forKey: .cardBrand)
         try containerEncoder.encodeIfPresent(expirationDate, forKey: .expirationDate)
         try containerEncoder.encodeIfPresent(createdDate, forKey: .createdDate)

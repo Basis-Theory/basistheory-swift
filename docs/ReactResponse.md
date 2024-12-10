@@ -3,10 +3,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tokens** | [**AnyCodable**](.md) |  | [optional] 
-**raw** | [**AnyCodable**](.md) |  | [optional] 
-**body** | [**AnyCodable**](.md) |  | [optional] 
-**headers** | [**AnyCodable**](.md) |  | [optional] 
+**tokens** | **JSONValue** |  | [optional] 
+**raw** | **JSONValue** |  | [optional] 
+**body** | **JSONValue** |  | [optional] 
+**headers** | **JSONValue** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

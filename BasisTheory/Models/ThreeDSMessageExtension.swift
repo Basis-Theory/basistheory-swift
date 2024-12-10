@@ -6,18 +6,15 @@
 //
 
 import Foundation
-#if canImport(AnyCodable)
-import AnyCodable
-#endif
 
 public struct ThreeDSMessageExtension: Codable, JSONEncodable, Hashable {
 
     public var id: String?
     public var name: String?
     public var critical: Bool?
-    public var data: AnyCodable?
+    public var data: JSONValue?
 
-    public init(id: String? = nil, name: String? = nil, critical: Bool? = nil, data: AnyCodable? = nil) {
+    public init(id: String? = nil, name: String? = nil, critical: Bool? = nil, data: JSONValue? = nil) {
         self.id = id
         self.name = name
         self.critical = critical

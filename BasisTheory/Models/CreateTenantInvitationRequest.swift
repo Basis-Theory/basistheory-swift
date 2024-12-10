@@ -6,20 +6,20 @@
 //
 
 import Foundation
-#if canImport(AnyCodable)
-import AnyCodable
-#endif
 
 public struct CreateTenantInvitationRequest: Codable, JSONEncodable, Hashable {
 
     public var email: String
+    public var role: String?
 
-    public init(email: String) {
+    public init(email: String, role: String? = nil) {
         self.email = email
+        self.role = role
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case email
+        case role
     }
 
     // Encodable protocol methods
@@ -27,6 +27,7 @@ public struct CreateTenantInvitationRequest: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
         try containerEncoder.encode(email, forKey: .email)
+        try containerEncoder.encodeIfPresent(role, forKey: .role)
     }
 }
 

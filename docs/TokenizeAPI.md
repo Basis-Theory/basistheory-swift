@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 # **tokenize**
 ```swift
-    open class func tokenize(body: AnyCodable? = nil, completion: @escaping (_ data: AnyCodable?, _ error: Error?) -> Void)
+    open class func tokenize(body: JSONValue? = nil, completion: @escaping (_ data: JSONValue?, _ error: Error?) -> Void)
 ```
 
 
@@ -19,7 +19,7 @@ Method | HTTP request | Description
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import BasisTheory
 
-let body = TODO // AnyCodable |  (optional)
+let body =  // JSONValue |  (optional)
 
 TokenizeAPI.tokenize(body: body) { (response, error) in
     guard error == nil else {
@@ -37,11 +37,11 @@ TokenizeAPI.tokenize(body: body) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | **AnyCodable** |  | [optional] 
+ **body** | **JSONValue** |  | [optional] 
 
 ### Return type
 
-[**AnyCodable**](AnyCodable.md)
+**JSONValue**
 
 ### Authorization
 

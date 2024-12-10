@@ -6,20 +6,19 @@
 //
 
 import Foundation
-#if canImport(AnyCodable)
-import AnyCodable
-#endif
 
 public struct ApplicationKey: Codable, JSONEncodable, Hashable {
 
     public var id: UUID?
     public var key: String?
+    public var version: String?
     public var createdBy: UUID?
     public var createdAt: Date?
 
-    public init(id: UUID? = nil, key: String? = nil, createdBy: UUID? = nil, createdAt: Date? = nil) {
+    public init(id: UUID? = nil, key: String? = nil, version: String? = nil, createdBy: UUID? = nil, createdAt: Date? = nil) {
         self.id = id
         self.key = key
+        self.version = version
         self.createdBy = createdBy
         self.createdAt = createdAt
     }
@@ -27,6 +26,7 @@ public struct ApplicationKey: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case key
+        case version
         case createdBy = "created_by"
         case createdAt = "created_at"
     }
@@ -37,6 +37,7 @@ public struct ApplicationKey: Codable, JSONEncodable, Hashable {
         var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
         try containerEncoder.encodeIfPresent(id, forKey: .id)
         try containerEncoder.encodeIfPresent(key, forKey: .key)
+        try containerEncoder.encodeIfPresent(version, forKey: .version)
         try containerEncoder.encodeIfPresent(createdBy, forKey: .createdBy)
         try containerEncoder.encodeIfPresent(createdAt, forKey: .createdAt)
     }

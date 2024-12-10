@@ -10,6 +10,5 @@ Pod::Spec.new do |s|
   s.homepage = 'https://github.com/Basis-Theory/basistheory-swift'
   s.summary = 'BasisTheory Swift SDK'
   s.source_files = 'BasisTheory/**/*.swift'
-  s.dependency 'AnyCodable-FlightSchool', '~> 0.6.1'
   s.swift_version = '5.1'
 end

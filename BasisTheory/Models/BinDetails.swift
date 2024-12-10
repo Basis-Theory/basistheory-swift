@@ -6,9 +6,6 @@
 //
 
 import Foundation
-#if canImport(AnyCodable)
-import AnyCodable
-#endif
 
 public struct BinDetails: Codable, JSONEncodable, Hashable {
 
@@ -30,10 +27,10 @@ public struct BinDetails: Codable, JSONEncodable, Hashable {
     public var issuerCurrency: String?
     public var comboCard: String?
     public var binLength: Int?
-    public var authentication: AnyCodable?
-    public var cost: AnyCodable?
+    public var authentication: JSONValue?
+    public var cost: JSONValue?
 
-    public init(cardBrand: String? = nil, type: String? = nil, prepaid: Bool? = nil, cardSegmentType: String? = nil, bank: BinDetailsBank? = nil, product: BinDetailsProduct? = nil, country: BinDetailsCountry? = nil, reloadable: Bool? = nil, panOrToken: String? = nil, accountUpdater: Bool? = nil, alm: Bool? = nil, domesticOnly: Bool? = nil, gamblingBlocked: Bool? = nil, level2: Bool? = nil, level3: Bool? = nil, issuerCurrency: String? = nil, comboCard: String? = nil, binLength: Int? = nil, authentication: AnyCodable? = nil, cost: AnyCodable? = nil) {
+    public init(cardBrand: String? = nil, type: String? = nil, prepaid: Bool? = nil, cardSegmentType: String? = nil, bank: BinDetailsBank? = nil, product: BinDetailsProduct? = nil, country: BinDetailsCountry? = nil, reloadable: Bool? = nil, panOrToken: String? = nil, accountUpdater: Bool? = nil, alm: Bool? = nil, domesticOnly: Bool? = nil, gamblingBlocked: Bool? = nil, level2: Bool? = nil, level3: Bool? = nil, issuerCurrency: String? = nil, comboCard: String? = nil, binLength: Int? = nil, authentication: JSONValue? = nil, cost: JSONValue? = nil) {
         self.cardBrand = cardBrand
         self.type = type
         self.prepaid = prepaid

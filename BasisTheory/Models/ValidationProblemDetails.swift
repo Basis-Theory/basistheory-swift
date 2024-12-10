@@ -6,9 +6,6 @@
 //
 
 import Foundation
-#if canImport(AnyCodable)
-import AnyCodable
-#endif
 
 public struct ValidationProblemDetails: Codable, JSONEncodable, Hashable {
 
@@ -37,9 +34,9 @@ public struct ValidationProblemDetails: Codable, JSONEncodable, Hashable {
         case instance
     }
 
-    public var additionalProperties: [String: AnyCodable] = [:]
+    public var additionalProperties: [String: JSONValue] = [:]
 
-    public subscript(key: String) -> AnyCodable? {
+    public subscript(key: String) -> JSONValue? {
         get {
             if let value = additionalProperties[key] {
                 return value
@@ -85,7 +82,7 @@ public struct ValidationProblemDetails: Codable, JSONEncodable, Hashable {
         nonAdditionalPropertyKeys.insert("detail")
         nonAdditionalPropertyKeys.insert("instance")
         let additionalPropertiesContainer = try decoder.container(keyedBy: String.self)
-        additionalProperties = try additionalPropertiesContainer.decodeMap(AnyCodable.self, excludedKeys: nonAdditionalPropertyKeys)
+        additionalProperties = try additionalPropertiesContainer.decodeMap(JSONValue.self, excludedKeys: nonAdditionalPropertyKeys)
     }
 }
 
