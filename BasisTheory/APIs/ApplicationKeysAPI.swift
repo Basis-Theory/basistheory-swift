@@ -6,9 +6,6 @@
 //
 
 import Foundation
-#if canImport(AnyCodable)
-import AnyCodable
-#endif
 
 open class ApplicationKeysAPI {
 
@@ -17,43 +14,37 @@ open class ApplicationKeysAPI {
      - parameter id: (path)  
      - parameter id2: (query)  (optional)
      - parameter type: (query)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: [ApplicationKey]
      */
-    @discardableResult
-    open class func callGet(id: UUID, id2: [UUID]? = nil, type: [String]? = nil, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: [ApplicationKey]?, _ error: Error?) -> Void)) -> RequestTask {
-        return callGetWithRequestBuilder(id: id, id2: id2, type: type).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func callGet(id: UUID, id2: [UUID]? = nil, type: [String]? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> [ApplicationKey] {
+        return try await callGetWithRequestBuilder(id: id, id2: id2, type: type, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
      - GET /applications/{id}/keys
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter id: (path)  
      - parameter id2: (query)  (optional)
      - parameter type: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<[ApplicationKey]> 
      */
-    open class func callGetWithRequestBuilder(id: UUID, id2: [UUID]? = nil, type: [String]? = nil) -> RequestBuilder<[ApplicationKey]> {
+    open class func callGetWithRequestBuilder(id: UUID, id2: [UUID]? = nil, type: [String]? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) -> RequestBuilder<[ApplicationKey]> {
         var localVariablePath = "/applications/{id}/keys"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "id": (wrappedValue: id2?.encodeToJSON(), isExplode: true),
-            "type": (wrappedValue: type?.encodeToJSON(), isExplode: true),
+            "id": (wrappedValue: id2?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "type": (wrappedValue: type?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -62,43 +53,37 @@ open class ApplicationKeysAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<[ApplicationKey]>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<[ApplicationKey]>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
 
      - parameter id: (path)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: ApplicationKey
      */
-    @discardableResult
-    open class func create(id: UUID, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: ApplicationKey?, _ error: Error?) -> Void)) -> RequestTask {
-        return createWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func create(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ApplicationKey {
+        return try await createWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
      - POST /applications/{id}/keys
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter id: (path)  
+     - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<ApplicationKey> 
      */
-    open class func createWithRequestBuilder(id: UUID) -> RequestBuilder<ApplicationKey> {
+    open class func createWithRequestBuilder(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) -> RequestBuilder<ApplicationKey> {
         var localVariablePath = "/applications/{id}/keys"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -109,40 +94,34 @@ open class ApplicationKeysAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ApplicationKey>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ApplicationKey>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
 
      - parameter id: (path)  
      - parameter keyId: (path)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: Void
      */
-    @discardableResult
-    open class func delete(id: UUID, keyId: UUID, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
-        return deleteWithRequestBuilder(id: id, keyId: keyId).execute(apiResponseQueue) { result in
-            switch result {
-            case .success:
-                completion((), nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func delete(id: UUID, keyId: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) {
+        return try await deleteWithRequestBuilder(id: id, keyId: keyId, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
      - DELETE /applications/{id}/keys/{keyId}
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter id: (path)  
      - parameter keyId: (path)  
+     - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<Void> 
      */
-    open class func deleteWithRequestBuilder(id: UUID, keyId: UUID) -> RequestBuilder<Void> {
+    open class func deleteWithRequestBuilder(id: UUID, keyId: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) -> RequestBuilder<Void> {
         var localVariablePath = "/applications/{id}/keys/{keyId}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -150,7 +129,7 @@ open class ApplicationKeysAPI {
         let keyIdPreEscape = "\(APIHelper.mapValueToPathItem(keyId))"
         let keyIdPostEscape = keyIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{keyId}", with: keyIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -161,40 +140,34 @@ open class ApplicationKeysAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = BasisTheoryAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = apiConfiguration.requestBuilderFactory.getNonDecodableBuilder()
 
-        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
 
      - parameter id: (path)  
      - parameter keyId: (path)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: ApplicationKey
      */
-    @discardableResult
-    open class func getById(id: UUID, keyId: UUID, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: ApplicationKey?, _ error: Error?) -> Void)) -> RequestTask {
-        return getByIdWithRequestBuilder(id: id, keyId: keyId).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func getById(id: UUID, keyId: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ApplicationKey {
+        return try await getByIdWithRequestBuilder(id: id, keyId: keyId, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
      - GET /applications/{id}/keys/{keyId}
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter id: (path)  
      - parameter keyId: (path)  
+     - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<ApplicationKey> 
      */
-    open class func getByIdWithRequestBuilder(id: UUID, keyId: UUID) -> RequestBuilder<ApplicationKey> {
+    open class func getByIdWithRequestBuilder(id: UUID, keyId: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) -> RequestBuilder<ApplicationKey> {
         var localVariablePath = "/applications/{id}/keys/{keyId}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
@@ -202,7 +175,7 @@ open class ApplicationKeysAPI {
         let keyIdPreEscape = "\(APIHelper.mapValueToPathItem(keyId))"
         let keyIdPostEscape = keyIdPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{keyId}", with: keyIdPostEscape, options: .literal, range: nil)
-        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -213,8 +186,8 @@ open class ApplicationKeysAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ApplicationKey>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ApplicationKey>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 }

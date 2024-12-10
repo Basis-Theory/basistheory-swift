@@ -21,8 +21,8 @@ Name | Type | Description | Notes
 **issuerCurrency** | **String** |  | [optional] 
 **comboCard** | **String** |  | [optional] 
 **binLength** | **Int** |  | [optional] 
-**authentication** | [**AnyCodable**](.md) |  | [optional] 
-**cost** | [**AnyCodable**](.md) |  | [optional] 
+**authentication** | **JSONValue** |  | [optional] 
+**cost** | **JSONValue** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

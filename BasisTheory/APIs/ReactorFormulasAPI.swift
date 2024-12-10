@@ -6,9 +6,6 @@
 //
 
 import Foundation
-#if canImport(AnyCodable)
-import AnyCodable
-#endif
 
 open class ReactorFormulasAPI {
 
@@ -18,43 +15,37 @@ open class ReactorFormulasAPI {
      - parameter page: (query)  (optional)
      - parameter start: (query)  (optional)
      - parameter size: (query)  (optional)
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: ReactorFormulaPaginatedList
      */
-    @discardableResult
-    open class func callGet(name: String? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: ReactorFormulaPaginatedList?, _ error: Error?) -> Void)) -> RequestTask {
-        return callGetWithRequestBuilder(name: name, page: page, start: start, size: size).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func callGet(name: String? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ReactorFormulaPaginatedList {
+        return try await callGetWithRequestBuilder(name: name, page: page, start: start, size: size, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
      - GET /reactor-formulas
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter name: (query)  (optional)
      - parameter page: (query)  (optional)
      - parameter start: (query)  (optional)
      - parameter size: (query)  (optional)
+     - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<ReactorFormulaPaginatedList> 
      */
-    open class func callGetWithRequestBuilder(name: String? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil) -> RequestBuilder<ReactorFormulaPaginatedList> {
+    open class func callGetWithRequestBuilder(name: String? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) -> RequestBuilder<ReactorFormulaPaginatedList> {
         let localVariablePath = "/reactor-formulas"
-        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "name": (wrappedValue: name?.encodeToJSON(), isExplode: true),
-            "page": (wrappedValue: page?.encodeToJSON(), isExplode: true),
-            "start": (wrappedValue: start?.encodeToJSON(), isExplode: true),
-            "size": (wrappedValue: size?.encodeToJSON(), isExplode: true),
+            "name": (wrappedValue: name?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "page": (wrappedValue: page?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "start": (wrappedValue: start?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "size": (wrappedValue: size?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
 
         let localVariableNillableHeaders: [String: Any?] = [
@@ -63,87 +54,75 @@ open class ReactorFormulasAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ReactorFormulaPaginatedList>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ReactorFormulaPaginatedList>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
 
      - parameter createReactorFormulaRequest: (body)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: ReactorFormula
      */
-    @discardableResult
-    open class func create(createReactorFormulaRequest: CreateReactorFormulaRequest, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: ReactorFormula?, _ error: Error?) -> Void)) -> RequestTask {
-        return createWithRequestBuilder(createReactorFormulaRequest: createReactorFormulaRequest).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func create(createReactorFormulaRequest: CreateReactorFormulaRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ReactorFormula {
+        return try await createWithRequestBuilder(createReactorFormulaRequest: createReactorFormulaRequest, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
      - POST /reactor-formulas
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter createReactorFormulaRequest: (body)  
+     - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<ReactorFormula> 
      */
-    open class func createWithRequestBuilder(createReactorFormulaRequest: CreateReactorFormulaRequest) -> RequestBuilder<ReactorFormula> {
+    open class func createWithRequestBuilder(createReactorFormulaRequest: CreateReactorFormulaRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) -> RequestBuilder<ReactorFormula> {
         let localVariablePath = "/reactor-formulas"
-        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createReactorFormulaRequest)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: createReactorFormulaRequest, codableHelper: apiConfiguration.codableHelper)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ReactorFormula>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ReactorFormula>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
 
      - parameter id: (path)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: Void
      */
-    @discardableResult
-    open class func delete(id: UUID, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: Void?, _ error: Error?) -> Void)) -> RequestTask {
-        return deleteWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
-            switch result {
-            case .success:
-                completion((), nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func delete(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) {
+        return try await deleteWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
      - DELETE /reactor-formulas/{id}
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter id: (path)  
+     - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<Void> 
      */
-    open class func deleteWithRequestBuilder(id: UUID) -> RequestBuilder<Void> {
+    open class func deleteWithRequestBuilder(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) -> RequestBuilder<Void> {
         var localVariablePath = "/reactor-formulas/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -154,43 +133,37 @@ open class ReactorFormulasAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<Void>.Type = BasisTheoryAPI.requestBuilderFactory.getNonDecodableBuilder()
+        let localVariableRequestBuilder: RequestBuilder<Void>.Type = apiConfiguration.requestBuilderFactory.getNonDecodableBuilder()
 
-        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
 
      - parameter id: (path)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: ReactorFormula
      */
-    @discardableResult
-    open class func getById(id: UUID, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: ReactorFormula?, _ error: Error?) -> Void)) -> RequestTask {
-        return getByIdWithRequestBuilder(id: id).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func getById(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ReactorFormula {
+        return try await getByIdWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
      - GET /reactor-formulas/{id}
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter id: (path)  
+     - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<ReactorFormula> 
      */
-    open class func getByIdWithRequestBuilder(id: UUID) -> RequestBuilder<ReactorFormula> {
+    open class func getByIdWithRequestBuilder(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) -> RequestBuilder<ReactorFormula> {
         var localVariablePath = "/reactor-formulas/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -201,57 +174,51 @@ open class ReactorFormulasAPI {
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ReactorFormula>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ReactorFormula>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**
 
      - parameter id: (path)  
      - parameter updateReactorFormulaRequest: (body)  
-     - parameter apiResponseQueue: The queue on which api response is dispatched.
-     - parameter completion: completion handler to receive the data and the error objects
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: ReactorFormula
      */
-    @discardableResult
-    open class func update(id: UUID, updateReactorFormulaRequest: UpdateReactorFormulaRequest, apiResponseQueue: DispatchQueue = BasisTheoryAPI.apiResponseQueue, completion: @escaping ((_ data: ReactorFormula?, _ error: Error?) -> Void)) -> RequestTask {
-        return updateWithRequestBuilder(id: id, updateReactorFormulaRequest: updateReactorFormulaRequest).execute(apiResponseQueue) { result in
-            switch result {
-            case let .success(response):
-                completion(response.body, nil)
-            case let .failure(error):
-                completion(nil, error)
-            }
-        }
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func update(id: UUID, updateReactorFormulaRequest: UpdateReactorFormulaRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ReactorFormula {
+        return try await updateWithRequestBuilder(id: id, updateReactorFormulaRequest: updateReactorFormulaRequest, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
      - PUT /reactor-formulas/{id}
      - API Key:
-       - type: apiKey BT-API-KEY 
+       - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
      - parameter id: (path)  
      - parameter updateReactorFormulaRequest: (body)  
+     - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<ReactorFormula> 
      */
-    open class func updateWithRequestBuilder(id: UUID, updateReactorFormulaRequest: UpdateReactorFormulaRequest) -> RequestBuilder<ReactorFormula> {
+    open class func updateWithRequestBuilder(id: UUID, updateReactorFormulaRequest: UpdateReactorFormulaRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) -> RequestBuilder<ReactorFormula> {
         var localVariablePath = "/reactor-formulas/{id}"
         let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
         let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
         localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
-        let localVariableURLString = BasisTheoryAPI.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: updateReactorFormulaRequest)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: updateReactorFormulaRequest, codableHelper: apiConfiguration.codableHelper)
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
-            :
+            "Content-Type": "application/json",
         ]
 
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
-        let localVariableRequestBuilder: RequestBuilder<ReactorFormula>.Type = BasisTheoryAPI.requestBuilderFactory.getBuilder()
+        let localVariableRequestBuilder: RequestBuilder<ReactorFormula>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
-        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+        return localVariableRequestBuilder.init(method: "PUT", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 }

@@ -6,18 +6,15 @@
 //
 
 import Foundation
-#if canImport(AnyCodable)
-import AnyCodable
-#endif
 
 public struct ReactResponse: Codable, JSONEncodable, Hashable {
 
-    public var tokens: AnyCodable?
-    public var raw: AnyCodable?
-    public var body: AnyCodable?
-    public var headers: AnyCodable?
+    public var tokens: JSONValue?
+    public var raw: JSONValue?
+    public var body: JSONValue?
+    public var headers: JSONValue?
 
-    public init(tokens: AnyCodable? = nil, raw: AnyCodable? = nil, body: AnyCodable? = nil, headers: AnyCodable? = nil) {
+    public init(tokens: JSONValue? = nil, raw: JSONValue? = nil, body: JSONValue? = nil, headers: JSONValue? = nil) {
         self.tokens = tokens
         self.raw = raw
         self.body = body

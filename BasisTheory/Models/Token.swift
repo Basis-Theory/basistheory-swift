@@ -6,16 +6,13 @@
 //
 
 import Foundation
-#if canImport(AnyCodable)
-import AnyCodable
-#endif
 
 public struct Token: Codable, JSONEncodable, Hashable {
 
     public var id: String?
     public var type: String?
     public var tenantId: UUID?
-    public var data: AnyCodable?
+    public var data: JSONValue?
     public var metadata: [String: String]?
     public var enrichments: TokenEnrichments?
     public var createdBy: UUID?
@@ -24,14 +21,15 @@ public struct Token: Codable, JSONEncodable, Hashable {
     public var modifiedAt: Date?
     public var fingerprint: String?
     public var fingerprintExpression: String?
-    public var mask: AnyCodable?
+    public var mask: JSONValue?
     public var privacy: Privacy?
     public var searchIndexes: [String]?
     public var expiresAt: Date?
     public var containers: [String]?
     public var aliases: [String]?
+    public var extras: TokenExtras?
 
-    public init(id: String? = nil, type: String? = nil, tenantId: UUID? = nil, data: AnyCodable? = nil, metadata: [String: String]? = nil, enrichments: TokenEnrichments? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, modifiedBy: UUID? = nil, modifiedAt: Date? = nil, fingerprint: String? = nil, fingerprintExpression: String? = nil, mask: AnyCodable? = nil, privacy: Privacy? = nil, searchIndexes: [String]? = nil, expiresAt: Date? = nil, containers: [String]? = nil, aliases: [String]? = nil) {
+    public init(id: String? = nil, type: String? = nil, tenantId: UUID? = nil, data: JSONValue? = nil, metadata: [String: String]? = nil, enrichments: TokenEnrichments? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, modifiedBy: UUID? = nil, modifiedAt: Date? = nil, fingerprint: String? = nil, fingerprintExpression: String? = nil, mask: JSONValue? = nil, privacy: Privacy? = nil, searchIndexes: [String]? = nil, expiresAt: Date? = nil, containers: [String]? = nil, aliases: [String]? = nil, extras: TokenExtras? = nil) {
         self.id = id
         self.type = type
         self.tenantId = tenantId
@@ -50,6 +48,7 @@ public struct Token: Codable, JSONEncodable, Hashable {
         self.expiresAt = expiresAt
         self.containers = containers
         self.aliases = aliases
+        self.extras = extras
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -71,6 +70,7 @@ public struct Token: Codable, JSONEncodable, Hashable {
         case expiresAt = "expires_at"
         case containers
         case aliases
+        case extras = "_extras"
     }
 
     // Encodable protocol methods
@@ -95,6 +95,7 @@ public struct Token: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(expiresAt, forKey: .expiresAt)
         try containerEncoder.encodeIfPresent(containers, forKey: .containers)
         try containerEncoder.encodeIfPresent(aliases, forKey: .aliases)
+        try containerEncoder.encodeIfPresent(extras, forKey: .extras)
     }
 }
 

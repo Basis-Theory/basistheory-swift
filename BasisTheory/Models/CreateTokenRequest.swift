@@ -6,25 +6,23 @@
 //
 
 import Foundation
-#if canImport(AnyCodable)
-import AnyCodable
-#endif
 
 public struct CreateTokenRequest: Codable, JSONEncodable, Hashable {
 
     public var id: String?
     public var type: String?
-    public var data: AnyCodable?
+    public var data: JSONValue?
     public var privacy: Privacy?
     public var metadata: [String: String]?
     public var searchIndexes: [String]?
     public var fingerprintExpression: String?
-    public var mask: AnyCodable?
+    public var mask: JSONValue?
     public var deduplicateToken: Bool?
     public var expiresAt: String?
     public var containers: [String]?
+    public var tokenIntentId: String?
 
-    public init(id: String? = nil, type: String? = nil, data: AnyCodable?, privacy: Privacy? = nil, metadata: [String: String]? = nil, searchIndexes: [String]? = nil, fingerprintExpression: String? = nil, mask: AnyCodable? = nil, deduplicateToken: Bool? = nil, expiresAt: String? = nil, containers: [String]? = nil) {
+    public init(id: String? = nil, type: String? = nil, data: JSONValue? = nil, privacy: Privacy? = nil, metadata: [String: String]? = nil, searchIndexes: [String]? = nil, fingerprintExpression: String? = nil, mask: JSONValue? = nil, deduplicateToken: Bool? = nil, expiresAt: String? = nil, containers: [String]? = nil, tokenIntentId: String? = nil) {
         self.id = id
         self.type = type
         self.data = data
@@ -36,6 +34,7 @@ public struct CreateTokenRequest: Codable, JSONEncodable, Hashable {
         self.deduplicateToken = deduplicateToken
         self.expiresAt = expiresAt
         self.containers = containers
+        self.tokenIntentId = tokenIntentId
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -50,6 +49,7 @@ public struct CreateTokenRequest: Codable, JSONEncodable, Hashable {
         case deduplicateToken = "deduplicate_token"
         case expiresAt = "expires_at"
         case containers
+        case tokenIntentId = "token_intent_id"
     }
 
     // Encodable protocol methods
@@ -58,7 +58,7 @@ public struct CreateTokenRequest: Codable, JSONEncodable, Hashable {
         var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
         try containerEncoder.encodeIfPresent(id, forKey: .id)
         try containerEncoder.encodeIfPresent(type, forKey: .type)
-        try containerEncoder.encode(data, forKey: .data)
+        try containerEncoder.encodeIfPresent(data, forKey: .data)
         try containerEncoder.encodeIfPresent(privacy, forKey: .privacy)
         try containerEncoder.encodeIfPresent(metadata, forKey: .metadata)
         try containerEncoder.encodeIfPresent(searchIndexes, forKey: .searchIndexes)
@@ -67,6 +67,7 @@ public struct CreateTokenRequest: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(deduplicateToken, forKey: .deduplicateToken)
         try containerEncoder.encodeIfPresent(expiresAt, forKey: .expiresAt)
         try containerEncoder.encodeIfPresent(containers, forKey: .containers)
+        try containerEncoder.encodeIfPresent(tokenIntentId, forKey: .tokenIntentId)
     }
 }
 

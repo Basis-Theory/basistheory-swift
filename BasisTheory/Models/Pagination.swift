@@ -6,9 +6,6 @@
 //
 
 import Foundation
-#if canImport(AnyCodable)
-import AnyCodable
-#endif
 
 public struct Pagination: Codable, JSONEncodable, Hashable {
 
@@ -16,14 +13,17 @@ public struct Pagination: Codable, JSONEncodable, Hashable {
     public var pageNumber: Int?
     public var pageSize: Int?
     public var totalPages: Int?
+    @available(*, deprecated, message: "This property is deprecated.")
     public var after: String?
+    public var next: String?
 
-    public init(totalItems: Int? = nil, pageNumber: Int? = nil, pageSize: Int? = nil, totalPages: Int? = nil, after: String? = nil) {
+    public init(totalItems: Int? = nil, pageNumber: Int? = nil, pageSize: Int? = nil, totalPages: Int? = nil, after: String? = nil, next: String? = nil) {
         self.totalItems = totalItems
         self.pageNumber = pageNumber
         self.pageSize = pageSize
         self.totalPages = totalPages
         self.after = after
+        self.next = next
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -32,6 +32,7 @@ public struct Pagination: Codable, JSONEncodable, Hashable {
         case pageSize = "page_size"
         case totalPages = "total_pages"
         case after
+        case next
     }
 
     // Encodable protocol methods
@@ -43,6 +44,7 @@ public struct Pagination: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(pageSize, forKey: .pageSize)
         try containerEncoder.encodeIfPresent(totalPages, forKey: .totalPages)
         try containerEncoder.encodeIfPresent(after, forKey: .after)
+        try containerEncoder.encodeIfPresent(next, forKey: .next)
     }
 }
 

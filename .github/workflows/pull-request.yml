@@ -8,11 +8,11 @@ on:
 jobs:
   pod-linting:
     name: Pod Linting
-    runs-on: macOS-12
+    runs-on: macOS-15
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Pod Linting
         run: pod lib lint --allow-warnings
@@ -23,7 +23,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Dependency Check
         run: |
