@@ -1,3 +1,20 @@
+## [3.0.0](https://github.com/Basis-Theory/basistheory-swift/compare/2.1.0...3.0.0) (2024-12-11)
+
+
+### ⚠ BREAKING CHANGES
+
+* upgrade open api cli/generator to swift6
+
+### Features
+
+* trigger release ([#30](https://github.com/Basis-Theory/basistheory-swift/issues/30)) ([24af82b](https://github.com/Basis-Theory/basistheory-swift/commit/24af82b66ccf8abb91a5d2b6d275a6830ea6a793))
+
+
+### Continuous Integration
+
+* update release notifications ([#29](https://github.com/Basis-Theory/basistheory-swift/issues/29)) ([94a9c89](https://github.com/Basis-Theory/basistheory-swift/commit/94a9c8928c02b73597d5627b2db11880204906b2))
+
+
 ## [2.1.0](https://github.com/Basis-Theory/basistheory-swift/compare/2.0.0...2.1.0) (2024-03-26)
 
 
