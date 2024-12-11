@@ -10,5 +10,5 @@ Pod::Spec.new do |s|
   s.homepage = 'https://github.com/Basis-Theory/basistheory-swift'
   s.summary = 'BasisTheory Swift SDK'
   s.source_files = 'BasisTheory/**/*.swift'
-  s.swift_version = '5.1'
+  s.swift_version = '6.0'
 end
