@@ -4,7 +4,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **recommendedVersion** | **String** |  | [optional] 
-**availableVersion** | **[String]** |  | [optional] 
+**availableVersions** | **[String]** |  | [optional] 
 **earliestAcsSupportedVersion** | **String** |  | [optional] 
 **earliestDsSupportedVersion** | **String** |  | [optional] 
 **latestAcsSupportedVersion** | **String** |  | [optional] 

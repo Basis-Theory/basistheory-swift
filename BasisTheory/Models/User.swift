@@ -6,21 +6,22 @@
 //
 
 import Foundation
-#if canImport(AnyCodable)
-import AnyCodable
-#endif
 
 public struct User: Codable, JSONEncodable, Hashable {
 
     public var id: UUID?
     public var email: String?
+    public var provider: String?
+    public var mfaEnrolled: Bool?
     public var firstName: String?
     public var lastName: String?
     public var picture: String?
 
-    public init(id: UUID? = nil, email: String? = nil, firstName: String? = nil, lastName: String? = nil, picture: String? = nil) {
+    public init(id: UUID? = nil, email: String? = nil, provider: String? = nil, mfaEnrolled: Bool? = nil, firstName: String? = nil, lastName: String? = nil, picture: String? = nil) {
         self.id = id
         self.email = email
+        self.provider = provider
+        self.mfaEnrolled = mfaEnrolled
         self.firstName = firstName
         self.lastName = lastName
         self.picture = picture
@@ -29,6 +30,8 @@ public struct User: Codable, JSONEncodable, Hashable {
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case email
+        case provider
+        case mfaEnrolled = "mfa_enrolled"
         case firstName = "first_name"
         case lastName = "last_name"
         case picture
@@ -40,6 +43,8 @@ public struct User: Codable, JSONEncodable, Hashable {
         var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
         try containerEncoder.encodeIfPresent(id, forKey: .id)
         try containerEncoder.encodeIfPresent(email, forKey: .email)
+        try containerEncoder.encodeIfPresent(provider, forKey: .provider)
+        try containerEncoder.encodeIfPresent(mfaEnrolled, forKey: .mfaEnrolled)
         try containerEncoder.encodeIfPresent(firstName, forKey: .firstName)
         try containerEncoder.encodeIfPresent(lastName, forKey: .lastName)
         try containerEncoder.encodeIfPresent(picture, forKey: .picture)

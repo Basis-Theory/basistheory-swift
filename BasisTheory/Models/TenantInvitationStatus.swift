@@ -6,11 +6,8 @@
 //
 
 import Foundation
-#if canImport(AnyCodable)
-import AnyCodable
-#endif
 
-public enum TenantInvitationStatus: String, Codable, CaseIterable {
+public enum TenantInvitationStatus: String, Sendable, Codable, CaseIterable {
     case pending = "PENDING"
     case expired = "EXPIRED"
 }

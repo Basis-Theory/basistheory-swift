@@ -3,13 +3,12 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | [**AnyCodable**](.md) |  | [optional] 
-**encryption** | [**EncryptionMetadata**](EncryptionMetadata.md) |  | [optional] 
+**data** | **JSONValue** |  | [optional] 
 **privacy** | [**UpdatePrivacy**](UpdatePrivacy.md) |  | [optional] 
 **metadata** | **[String: String]** |  | [optional] 
 **searchIndexes** | **[String]** |  | [optional] 
 **fingerprintExpression** | **String** |  | [optional] 
-**mask** | [**AnyCodable**](.md) |  | [optional] 
+**mask** | **JSONValue** |  | [optional] 
 **expiresAt** | **String** |  | [optional] 
 **deduplicateToken** | **Bool** |  | [optional] 
 **containers** | **[String]** |  | [optional] 

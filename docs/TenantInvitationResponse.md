@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **id** | **UUID** |  | [optional] 
 **tenantId** | **UUID** |  | [optional] 
 **email** | **String** |  | [optional] 
+**role** | **String** |  | [optional] 
 **status** | [**TenantInvitationStatus**](TenantInvitationStatus.md) |  | [optional] 
 **expiresAt** | **Date** |  | [optional] 
 **createdBy** | **UUID** |  | [optional] 

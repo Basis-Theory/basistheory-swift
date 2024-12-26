@@ -6,16 +6,13 @@
 //
 
 import Foundation
-#if canImport(AnyCodable)
-import AnyCodable
-#endif
 
 public struct ReactRequest: Codable, JSONEncodable, Hashable {
 
-    public var args: AnyCodable?
+    public var args: JSONValue?
     public var callbackUrl: String?
 
-    public init(args: AnyCodable? = nil, callbackUrl: String? = nil) {
+    public init(args: JSONValue? = nil, callbackUrl: String? = nil) {
         self.args = args
         self.callbackUrl = callbackUrl
     }

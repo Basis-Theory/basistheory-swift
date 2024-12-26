@@ -6,12 +6,13 @@
 //
 
 import Foundation
-#if canImport(AnyCodable)
-import AnyCodable
-#endif
 
 public struct ThreeDSAuthentication: Codable, JSONEncodable, Hashable {
 
+    @available(*, deprecated, message: "This property is deprecated.")
+    public var panTokenId: String?
+    public var tokenId: String?
+    public var tokenIntentId: String?
     public var threedsVersion: String?
     public var acsTransactionId: UUID?
     public var dsTransactionId: UUID?
@@ -20,6 +21,7 @@ public struct ThreeDSAuthentication: Codable, JSONEncodable, Hashable {
     public var dsReferenceNumber: String?
     public var authenticationValue: String?
     public var authenticationStatus: String?
+    public var authenticationStatusCode: String?
     public var authenticationStatusReason: String?
     public var eci: String?
     public var acsChallengeMandated: String?
@@ -35,7 +37,10 @@ public struct ThreeDSAuthentication: Codable, JSONEncodable, Hashable {
     public var whitelistStatusSource: String?
     public var messageExtensions: [ThreeDSMessageExtension]?
 
-    public init(threedsVersion: String? = nil, acsTransactionId: UUID? = nil, dsTransactionId: UUID? = nil, sdkTransactionId: UUID? = nil, acsReferenceNumber: String? = nil, dsReferenceNumber: String? = nil, authenticationValue: String? = nil, authenticationStatus: String? = nil, authenticationStatusReason: String? = nil, eci: String? = nil, acsChallengeMandated: String? = nil, acsDecoupledAuthentication: String? = nil, authenticationChallengeType: String? = nil, acsRenderingType: ThreeDSAcsRenderingType? = nil, acsSignedContent: String? = nil, acsChallengeUrl: String? = nil, challengeAttempts: String? = nil, challengeCancelReason: String? = nil, cardholderInfo: String? = nil, whitelistStatus: String? = nil, whitelistStatusSource: String? = nil, messageExtensions: [ThreeDSMessageExtension]? = nil) {
+    public init(panTokenId: String? = nil, tokenId: String? = nil, tokenIntentId: String? = nil, threedsVersion: String? = nil, acsTransactionId: UUID? = nil, dsTransactionId: UUID? = nil, sdkTransactionId: UUID? = nil, acsReferenceNumber: String? = nil, dsReferenceNumber: String? = nil, authenticationValue: String? = nil, authenticationStatus: String? = nil, authenticationStatusCode: String? = nil, authenticationStatusReason: String? = nil, eci: String? = nil, acsChallengeMandated: String? = nil, acsDecoupledAuthentication: String? = nil, authenticationChallengeType: String? = nil, acsRenderingType: ThreeDSAcsRenderingType? = nil, acsSignedContent: String? = nil, acsChallengeUrl: String? = nil, challengeAttempts: String? = nil, challengeCancelReason: String? = nil, cardholderInfo: String? = nil, whitelistStatus: String? = nil, whitelistStatusSource: String? = nil, messageExtensions: [ThreeDSMessageExtension]? = nil) {
+        self.panTokenId = panTokenId
+        self.tokenId = tokenId
+        self.tokenIntentId = tokenIntentId
         self.threedsVersion = threedsVersion
         self.acsTransactionId = acsTransactionId
         self.dsTransactionId = dsTransactionId
@@ -44,6 +49,7 @@ public struct ThreeDSAuthentication: Codable, JSONEncodable, Hashable {
         self.dsReferenceNumber = dsReferenceNumber
         self.authenticationValue = authenticationValue
         self.authenticationStatus = authenticationStatus
+        self.authenticationStatusCode = authenticationStatusCode
         self.authenticationStatusReason = authenticationStatusReason
         self.eci = eci
         self.acsChallengeMandated = acsChallengeMandated
@@ -61,6 +67,9 @@ public struct ThreeDSAuthentication: Codable, JSONEncodable, Hashable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case panTokenId = "pan_token_id"
+        case tokenId = "token_id"
+        case tokenIntentId = "token_intent_id"
         case threedsVersion = "threeds_version"
         case acsTransactionId = "acs_transaction_id"
         case dsTransactionId = "ds_transaction_id"
@@ -69,6 +78,7 @@ public struct ThreeDSAuthentication: Codable, JSONEncodable, Hashable {
         case dsReferenceNumber = "ds_reference_number"
         case authenticationValue = "authentication_value"
         case authenticationStatus = "authentication_status"
+        case authenticationStatusCode = "authentication_status_code"
         case authenticationStatusReason = "authentication_status_reason"
         case eci
         case acsChallengeMandated = "acs_challenge_mandated"
@@ -89,6 +99,9 @@ public struct ThreeDSAuthentication: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encodeIfPresent(panTokenId, forKey: .panTokenId)
+        try containerEncoder.encodeIfPresent(tokenId, forKey: .tokenId)
+        try containerEncoder.encodeIfPresent(tokenIntentId, forKey: .tokenIntentId)
         try containerEncoder.encodeIfPresent(threedsVersion, forKey: .threedsVersion)
         try containerEncoder.encodeIfPresent(acsTransactionId, forKey: .acsTransactionId)
         try containerEncoder.encodeIfPresent(dsTransactionId, forKey: .dsTransactionId)
@@ -97,6 +110,7 @@ public struct ThreeDSAuthentication: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(dsReferenceNumber, forKey: .dsReferenceNumber)
         try containerEncoder.encodeIfPresent(authenticationValue, forKey: .authenticationValue)
         try containerEncoder.encodeIfPresent(authenticationStatus, forKey: .authenticationStatus)
+        try containerEncoder.encodeIfPresent(authenticationStatusCode, forKey: .authenticationStatusCode)
         try containerEncoder.encodeIfPresent(authenticationStatusReason, forKey: .authenticationStatusReason)
         try containerEncoder.encodeIfPresent(eci, forKey: .eci)
         try containerEncoder.encodeIfPresent(acsChallengeMandated, forKey: .acsChallengeMandated)
