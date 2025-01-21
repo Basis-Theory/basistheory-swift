@@ -1,9 +1,10 @@
-name: Pull Request
+name: Semgrep PR Check
 
 on:
-  pull_request:
-    branches:
-      - master
+  # Scan changed files in PRs (diff-aware scanning):
+  pull_request: {}
+  # Scan on-demand through GitHub Actions interface:
+  workflow_dispatch: {}
 
 jobs:
   pod-linting:
@@ -35,3 +36,8 @@ jobs:
         with:
           name: Dependency check report
           path: ${{github.workspace}}/reports
+
+  pr-security-check:
+    name: PR Security Check
+    uses: Basis-Theory/public-security-workflows/.github/workflows/pr-check.yml@master
+    secrets: inherit
