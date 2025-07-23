@@ -12,29 +12,35 @@ public struct CreateThreeDSSessionResponse: Codable, JSONEncodable, Hashable {
     public var id: UUID?
     public var type: String?
     public var cardBrand: String?
+    public var additionalCardBrands: [String]?
     public var methodUrl: String?
     public var methodNotificationUrl: String?
     public var directoryServerId: String?
     public var recommendedVersion: String?
+    public var redirectUrl: String?
 
-    public init(id: UUID? = nil, type: String? = nil, cardBrand: String? = nil, methodUrl: String? = nil, methodNotificationUrl: String? = nil, directoryServerId: String? = nil, recommendedVersion: String? = nil) {
+    public init(id: UUID? = nil, type: String? = nil, cardBrand: String? = nil, additionalCardBrands: [String]? = nil, methodUrl: String? = nil, methodNotificationUrl: String? = nil, directoryServerId: String? = nil, recommendedVersion: String? = nil, redirectUrl: String? = nil) {
         self.id = id
         self.type = type
         self.cardBrand = cardBrand
+        self.additionalCardBrands = additionalCardBrands
         self.methodUrl = methodUrl
         self.methodNotificationUrl = methodNotificationUrl
         self.directoryServerId = directoryServerId
         self.recommendedVersion = recommendedVersion
+        self.redirectUrl = redirectUrl
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case type
         case cardBrand
+        case additionalCardBrands = "additional_card_brands"
         case methodUrl = "method_url"
         case methodNotificationUrl = "method_notification_url"
         case directoryServerId = "directory_server_id"
         case recommendedVersion = "recommended_version"
+        case redirectUrl = "redirect_url"
     }
 
     // Encodable protocol methods
@@ -44,10 +50,12 @@ public struct CreateThreeDSSessionResponse: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(id, forKey: .id)
         try containerEncoder.encodeIfPresent(type, forKey: .type)
         try containerEncoder.encodeIfPresent(cardBrand, forKey: .cardBrand)
+        try containerEncoder.encodeIfPresent(additionalCardBrands, forKey: .additionalCardBrands)
         try containerEncoder.encodeIfPresent(methodUrl, forKey: .methodUrl)
         try containerEncoder.encodeIfPresent(methodNotificationUrl, forKey: .methodNotificationUrl)
         try containerEncoder.encodeIfPresent(directoryServerId, forKey: .directoryServerId)
         try containerEncoder.encodeIfPresent(recommendedVersion, forKey: .recommendedVersion)
+        try containerEncoder.encodeIfPresent(redirectUrl, forKey: .redirectUrl)
     }
 }
 

@@ -10,6 +10,10 @@ Name | Type | Description | Notes
 **brand** | **String** |  | [optional] 
 **funding** | **String** |  | [optional] 
 **authentication** | **String** |  | [optional] 
+**issuer** | [**CardIssuer**](CardIssuer.md) |  | [optional] 
+**issuerCountry** | [**CardIssuerCountry**](CardIssuerCountry.md) |  | [optional] 
+**segment** | **String** |  | [optional] 
+**additional** | [AdditionalCardDetails] |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

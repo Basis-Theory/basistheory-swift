@@ -3,6 +3,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**type** | **String** |  | [optional] 
+**container** | **String** |  | [optional] 
+**fingerprint** | **String** |  | [optional] 
+**metadata** | **[String: String]** |  | [optional] 
 **start** | **String** |  | [optional] 
 **size** | **Int** |  | [optional] 
 

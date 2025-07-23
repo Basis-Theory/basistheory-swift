@@ -16,8 +16,12 @@ public struct CardDetails: Codable, JSONEncodable, Hashable {
     public var brand: String?
     public var funding: String?
     public var authentication: String?
+    public var issuer: CardIssuer?
+    public var issuerCountry: CardIssuerCountry?
+    public var segment: String?
+    public var additional: [AdditionalCardDetails]?
 
-    public init(bin: String? = nil, last4: String? = nil, expirationMonth: Int? = nil, expirationYear: Int? = nil, brand: String? = nil, funding: String? = nil, authentication: String? = nil) {
+    public init(bin: String? = nil, last4: String? = nil, expirationMonth: Int? = nil, expirationYear: Int? = nil, brand: String? = nil, funding: String? = nil, authentication: String? = nil, issuer: CardIssuer? = nil, issuerCountry: CardIssuerCountry? = nil, segment: String? = nil, additional: [AdditionalCardDetails]? = nil) {
         self.bin = bin
         self.last4 = last4
         self.expirationMonth = expirationMonth
@@ -25,6 +29,10 @@ public struct CardDetails: Codable, JSONEncodable, Hashable {
         self.brand = brand
         self.funding = funding
         self.authentication = authentication
+        self.issuer = issuer
+        self.issuerCountry = issuerCountry
+        self.segment = segment
+        self.additional = additional
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -35,6 +43,10 @@ public struct CardDetails: Codable, JSONEncodable, Hashable {
         case brand
         case funding
         case authentication
+        case issuer
+        case issuerCountry = "issuer_country"
+        case segment
+        case additional
     }
 
     // Encodable protocol methods
@@ -48,6 +60,10 @@ public struct CardDetails: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(brand, forKey: .brand)
         try containerEncoder.encodeIfPresent(funding, forKey: .funding)
         try containerEncoder.encodeIfPresent(authentication, forKey: .authentication)
+        try containerEncoder.encodeIfPresent(issuer, forKey: .issuer)
+        try containerEncoder.encodeIfPresent(issuerCountry, forKey: .issuerCountry)
+        try containerEncoder.encodeIfPresent(segment, forKey: .segment)
+        try containerEncoder.encodeIfPresent(additional, forKey: .additional)
     }
 }
 

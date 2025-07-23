@@ -87,4 +87,45 @@ open class TokenIntentsAPI {
 
         return localVariableRequestBuilder.init(method: "DELETE", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
+
+    /**
+
+     - parameter id: (path)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: TokenIntent
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func read(id: String, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> TokenIntent {
+        return try await readWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
+    }
+
+    /**
+     - GET /token-intents/{id}
+     - API Key:
+       - type: apiKey BT-API-KEY (HEADER)
+       - name: ApiKey
+     - parameter id: (path)  
+     - parameter apiConfiguration: The configuration for the http request.
+     - returns: RequestBuilder<TokenIntent> 
+     */
+    open class func readWithRequestBuilder(id: String, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) -> RequestBuilder<TokenIntent> {
+        var localVariablePath = "/token-intents/{id}"
+        let idPreEscape = "\(APIHelper.mapValueToPathItem(id))"
+        let idPostEscape = idPreEscape.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? ""
+        localVariablePath = localVariablePath.replacingOccurrences(of: "{id}", with: idPostEscape, options: .literal, range: nil)
+        let localVariableURLString = apiConfiguration.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<TokenIntent>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
+    }
 }

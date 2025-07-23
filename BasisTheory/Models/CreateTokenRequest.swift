@@ -12,6 +12,7 @@ public struct CreateTokenRequest: Codable, JSONEncodable, Hashable {
     public var id: String?
     public var type: String?
     public var data: JSONValue?
+    public var encrypted: String?
     public var privacy: Privacy?
     public var metadata: [String: String]?
     public var searchIndexes: [String]?
@@ -22,10 +23,11 @@ public struct CreateTokenRequest: Codable, JSONEncodable, Hashable {
     public var containers: [String]?
     public var tokenIntentId: String?
 
-    public init(id: String? = nil, type: String? = nil, data: JSONValue? = nil, privacy: Privacy? = nil, metadata: [String: String]? = nil, searchIndexes: [String]? = nil, fingerprintExpression: String? = nil, mask: JSONValue? = nil, deduplicateToken: Bool? = nil, expiresAt: String? = nil, containers: [String]? = nil, tokenIntentId: String? = nil) {
+    public init(id: String? = nil, type: String? = nil, data: JSONValue? = nil, encrypted: String? = nil, privacy: Privacy? = nil, metadata: [String: String]? = nil, searchIndexes: [String]? = nil, fingerprintExpression: String? = nil, mask: JSONValue? = nil, deduplicateToken: Bool? = nil, expiresAt: String? = nil, containers: [String]? = nil, tokenIntentId: String? = nil) {
         self.id = id
         self.type = type
         self.data = data
+        self.encrypted = encrypted
         self.privacy = privacy
         self.metadata = metadata
         self.searchIndexes = searchIndexes
@@ -41,6 +43,7 @@ public struct CreateTokenRequest: Codable, JSONEncodable, Hashable {
         case id
         case type
         case data
+        case encrypted
         case privacy
         case metadata
         case searchIndexes = "search_indexes"
@@ -59,6 +62,7 @@ public struct CreateTokenRequest: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(id, forKey: .id)
         try containerEncoder.encodeIfPresent(type, forKey: .type)
         try containerEncoder.encodeIfPresent(data, forKey: .data)
+        try containerEncoder.encodeIfPresent(encrypted, forKey: .encrypted)
         try containerEncoder.encodeIfPresent(privacy, forKey: .privacy)
         try containerEncoder.encodeIfPresent(metadata, forKey: .metadata)
         try containerEncoder.encodeIfPresent(searchIndexes, forKey: .searchIndexes)

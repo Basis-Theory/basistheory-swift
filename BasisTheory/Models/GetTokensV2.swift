@@ -9,15 +9,27 @@ import Foundation
 
 public struct GetTokensV2: Codable, JSONEncodable, Hashable {
 
+    public var type: String?
+    public var container: String?
+    public var fingerprint: String?
+    public var metadata: [String: String]?
     public var start: String?
     public var size: Int?
 
-    public init(start: String? = nil, size: Int? = nil) {
+    public init(type: String? = nil, container: String? = nil, fingerprint: String? = nil, metadata: [String: String]? = nil, start: String? = nil, size: Int? = nil) {
+        self.type = type
+        self.container = container
+        self.fingerprint = fingerprint
+        self.metadata = metadata
         self.start = start
         self.size = size
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
+        case type
+        case container
+        case fingerprint
+        case metadata
         case start
         case size
     }
@@ -26,6 +38,10 @@ public struct GetTokensV2: Codable, JSONEncodable, Hashable {
 
     public func encode(to encoder: Encoder) throws {
         var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
+        try containerEncoder.encodeIfPresent(type, forKey: .type)
+        try containerEncoder.encodeIfPresent(container, forKey: .container)
+        try containerEncoder.encodeIfPresent(fingerprint, forKey: .fingerprint)
+        try containerEncoder.encodeIfPresent(metadata, forKey: .metadata)
         try containerEncoder.encodeIfPresent(start, forKey: .start)
         try containerEncoder.encodeIfPresent(size, forKey: .size)
     }

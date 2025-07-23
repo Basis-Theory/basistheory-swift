@@ -15,15 +15,21 @@ public struct CreateThreeDSSessionRequest: Codable, JSONEncodable, Hashable {
     public var tokenIntentId: String?
     public var type: String?
     public var device: String?
+    public var webChallengeMode: String?
     public var deviceInfo: ThreeDSDeviceInfo?
+    public var authenticationRequest: AuthenticateThreeDSSessionRequest?
+    public var callbackUrls: ThreeDSCallbackUrls?
 
-    public init(pan: String? = nil, tokenId: String? = nil, tokenIntentId: String? = nil, type: String? = nil, device: String? = nil, deviceInfo: ThreeDSDeviceInfo? = nil) {
+    public init(pan: String? = nil, tokenId: String? = nil, tokenIntentId: String? = nil, type: String? = nil, device: String? = nil, webChallengeMode: String? = nil, deviceInfo: ThreeDSDeviceInfo? = nil, authenticationRequest: AuthenticateThreeDSSessionRequest? = nil, callbackUrls: ThreeDSCallbackUrls? = nil) {
         self.pan = pan
         self.tokenId = tokenId
         self.tokenIntentId = tokenIntentId
         self.type = type
         self.device = device
+        self.webChallengeMode = webChallengeMode
         self.deviceInfo = deviceInfo
+        self.authenticationRequest = authenticationRequest
+        self.callbackUrls = callbackUrls
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -32,7 +38,10 @@ public struct CreateThreeDSSessionRequest: Codable, JSONEncodable, Hashable {
         case tokenIntentId = "token_intent_id"
         case type
         case device
+        case webChallengeMode = "web_challenge_mode"
         case deviceInfo = "device_info"
+        case authenticationRequest = "authentication_request"
+        case callbackUrls = "callback_urls"
     }
 
     // Encodable protocol methods
@@ -44,7 +53,10 @@ public struct CreateThreeDSSessionRequest: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(tokenIntentId, forKey: .tokenIntentId)
         try containerEncoder.encodeIfPresent(type, forKey: .type)
         try containerEncoder.encodeIfPresent(device, forKey: .device)
+        try containerEncoder.encodeIfPresent(webChallengeMode, forKey: .webChallengeMode)
         try containerEncoder.encodeIfPresent(deviceInfo, forKey: .deviceInfo)
+        try containerEncoder.encodeIfPresent(authenticationRequest, forKey: .authenticationRequest)
+        try containerEncoder.encodeIfPresent(callbackUrls, forKey: .callbackUrls)
     }
 }
 

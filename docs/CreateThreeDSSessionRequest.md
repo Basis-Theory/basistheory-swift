@@ -8,7 +8,10 @@ Name | Type | Description | Notes
 **tokenIntentId** | **String** |  | [optional] 
 **type** | **String** |  | [optional] 
 **device** | **String** |  | [optional] 
+**webChallengeMode** | **String** |  | [optional] 
 **deviceInfo** | [**ThreeDSDeviceInfo**](ThreeDSDeviceInfo.md) |  | [optional] 
+**authenticationRequest** | [**AuthenticateThreeDSSessionRequest**](AuthenticateThreeDSSessionRequest.md) |  | [optional] 
+**callbackUrls** | [**ThreeDSCallbackUrls**](ThreeDSCallbackUrls.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

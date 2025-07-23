@@ -184,14 +184,18 @@ open class TokensAPI {
 
     /**
 
+     - parameter type: (query)  (optional)
+     - parameter container: (query)  (optional)
+     - parameter fingerprint: (query)  (optional)
+     - parameter metadata: (query)  (optional)
      - parameter start: (query)  (optional)
      - parameter size: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: TokenCursorPaginatedList
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func getV2(start: String? = nil, size: Int? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> TokenCursorPaginatedList {
-        return try await getV2WithRequestBuilder(start: start, size: size, apiConfiguration: apiConfiguration).execute().body
+    open class func getV2(type: String? = nil, container: String? = nil, fingerprint: String? = nil, metadata: [String: String]? = nil, start: String? = nil, size: Int? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> TokenCursorPaginatedList {
+        return try await getV2WithRequestBuilder(type: type, container: container, fingerprint: fingerprint, metadata: metadata, start: start, size: size, apiConfiguration: apiConfiguration).execute().body
     }
 
     /**
@@ -199,18 +203,26 @@ open class TokensAPI {
      - API Key:
        - type: apiKey BT-API-KEY (HEADER)
        - name: ApiKey
+     - parameter type: (query)  (optional)
+     - parameter container: (query)  (optional)
+     - parameter fingerprint: (query)  (optional)
+     - parameter metadata: (query)  (optional)
      - parameter start: (query)  (optional)
      - parameter size: (query)  (optional)
      - parameter apiConfiguration: The configuration for the http request.
      - returns: RequestBuilder<TokenCursorPaginatedList> 
      */
-    open class func getV2WithRequestBuilder(start: String? = nil, size: Int? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) -> RequestBuilder<TokenCursorPaginatedList> {
+    open class func getV2WithRequestBuilder(type: String? = nil, container: String? = nil, fingerprint: String? = nil, metadata: [String: String]? = nil, start: String? = nil, size: Int? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) -> RequestBuilder<TokenCursorPaginatedList> {
         let localVariablePath = "/v2/tokens"
         let localVariableURLString = apiConfiguration.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "type": (wrappedValue: type?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "container": (wrappedValue: container?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "fingerprint": (wrappedValue: fingerprint?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
+            "metadata": (wrappedValue: metadata?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: false),
             "start": (wrappedValue: start?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
             "size": (wrappedValue: size?.encodeToJSON(codableHelper: apiConfiguration.codableHelper), isExplode: true),
         ])
@@ -224,44 +236,6 @@ open class TokensAPI {
         let localVariableRequestBuilder: RequestBuilder<TokenCursorPaginatedList>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
-    }
-
-    /**
-
-     - parameter searchTokensRequest: (body)  
-     - parameter apiConfiguration: The configuration for the http request.
-     - returns: TokenPaginatedList
-     */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func search(searchTokensRequest: SearchTokensRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> TokenPaginatedList {
-        return try await searchWithRequestBuilder(searchTokensRequest: searchTokensRequest, apiConfiguration: apiConfiguration).execute().body
-    }
-
-    /**
-     - POST /tokens/search
-     - API Key:
-       - type: apiKey BT-API-KEY (HEADER)
-       - name: ApiKey
-     - parameter searchTokensRequest: (body)  
-     - parameter apiConfiguration: The configuration for the http request.
-     - returns: RequestBuilder<TokenPaginatedList> 
-     */
-    open class func searchWithRequestBuilder(searchTokensRequest: SearchTokensRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) -> RequestBuilder<TokenPaginatedList> {
-        let localVariablePath = "/tokens/search"
-        let localVariableURLString = apiConfiguration.basePath + localVariablePath
-        let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: searchTokensRequest, codableHelper: apiConfiguration.codableHelper)
-
-        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            "Content-Type": "application/json",
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<TokenPaginatedList>.Type = apiConfiguration.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "POST", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true, apiConfiguration: apiConfiguration)
     }
 
     /**

@@ -11,11 +11,373 @@
     }
   ],
   "paths": {
+    "/connections/apple-pay/tokenize": {
+      "post": {
+        "tags": ["Connections", "ApplePay"],
+        "operationId": "Connections_Apple_Pay_Tokenize",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplePayTokenizeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApplePayTokenizeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Client Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": ["connection", "apple-pay"],
+        "x-fern-sdk-method-name": "tokenize"
+      }
+    },
+    "/connections/apple-pay/domain-deregistration": {
+      "post": {
+        "tags": ["Connections", "ApplePay"],
+        "operationId": "Connections_Apple_Pay_Domain_Deregistration",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplePayDomainDeregistrationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": ["connection", "apple-pay", "domain"],
+        "x-fern-sdk-method-name": "deregister"
+      }
+    },
+    "/connections/apple-pay/domain-registration": {
+      "post": {
+        "tags": ["Connections", "ApplePay"],
+        "operationId": "Connections_Apple_Pay_Domain_Registration",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplePayDomainRegistrationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApplePayDomainRegistrationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Client Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": ["connection", "apple-pay", "domain"],
+        "x-fern-sdk-method-name": "register"
+      },
+      "put": {
+        "tags": ["Connections", "ApplePay"],
+        "operationId": "Connections_Apple_Pay_Put_Domain_Registration",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplePayDomainRegistrationListRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApplePayDomainRegistrationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Client Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": ["connection", "apple-pay", "domain"],
+        "x-fern-sdk-method-name": "registerAll"
+      },
+      "get": {
+        "tags": ["Connections", "ApplePay"],
+        "operationId": "Connections_Apple_Pay_Get_Domain_Registration",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApplePayDomainRegistrationResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": ["connection", "apple-pay", "domain"],
+        "x-fern-sdk-method-name": "get"
+      }
+    },
+    "/connections/apple-pay/session": {
+      "post": {
+        "tags": ["Connections", "ApplePay"],
+        "operationId": "Connections_Apple_Pay_Session",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplePaySessionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Client Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": ["connection", "apple-pay", "session"],
+        "x-fern-sdk-method-name": "create"
+      }
+    },
     "/applications": {
       "get": {
-        "tags": [
-          "Applications"
-        ],
+        "tags": ["Applications"],
         "operationId": "Applications_Get",
         "parameters": [
           {
@@ -119,9 +481,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Applications"
-        ],
+        "tags": ["Applications"],
         "operationId": "Applications_Create",
         "requestBody": {
           "content": {
@@ -179,9 +539,7 @@
     },
     "/applications/{id}": {
       "get": {
-        "tags": [
-          "Applications"
-        ],
+        "tags": ["Applications"],
         "operationId": "Applications_GetById",
         "parameters": [
           {
@@ -240,9 +598,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Applications"
-        ],
+        "tags": ["Applications"],
         "operationId": "Applications_Update",
         "parameters": [
           {
@@ -321,9 +677,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Applications"
-        ],
+        "tags": ["Applications"],
         "operationId": "Applications_Delete",
         "parameters": [
           {
@@ -377,9 +731,7 @@
     },
     "/applications/key": {
       "get": {
-        "tags": [
-          "Applications"
-        ],
+        "tags": ["Applications"],
         "operationId": "Applications_GetByKey",
         "responses": {
           "200": {
@@ -417,9 +769,7 @@
     },
     "/applications/{id}/regenerate": {
       "post": {
-        "tags": [
-          "Applications"
-        ],
+        "tags": ["Applications"],
         "operationId": "Applications_RegenerateKey",
         "parameters": [
           {
@@ -491,9 +841,7 @@
     },
     "/applications/{id}/keys": {
       "post": {
-        "tags": [
-          "ApplicationKeys"
-        ],
+        "tags": ["ApplicationKeys"],
         "operationId": "ApplicationKeys_Create",
         "parameters": [
           {
@@ -552,9 +900,7 @@
         }
       },
       "get": {
-        "tags": [
-          "ApplicationKeys"
-        ],
+        "tags": ["ApplicationKeys"],
         "operationId": "ApplicationKeys_Get",
         "parameters": [
           {
@@ -641,9 +987,7 @@
     },
     "/applications/{id}/keys/{keyId}": {
       "get": {
-        "tags": [
-          "ApplicationKeys"
-        ],
+        "tags": ["ApplicationKeys"],
         "operationId": "ApplicationKeys_GetById",
         "parameters": [
           {
@@ -713,9 +1057,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "ApplicationKeys"
-        ],
+        "tags": ["ApplicationKeys"],
         "operationId": "ApplicationKeys_Delete",
         "parameters": [
           {
@@ -780,9 +1122,7 @@
     },
     "/application-templates": {
       "get": {
-        "tags": [
-          "ApplicationTemplates"
-        ],
+        "tags": ["ApplicationTemplates"],
         "operationId": "ApplicationTemplates_Get",
         "responses": {
           "200": {
@@ -823,9 +1163,7 @@
     },
     "/application-templates/{id}": {
       "get": {
-        "tags": [
-          "ApplicationTemplates"
-        ],
+        "tags": ["ApplicationTemplates"],
         "operationId": "ApplicationTemplates_GetById",
         "parameters": [
           {
@@ -874,16 +1212,16 @@
         }
       }
     },
-    "/detokenize": {
+    "/apple-pay": {
       "post": {
-        "tags": [
-          "Detokenize"
-        ],
-        "operationId": "Detokenize_Detokenize",
+        "tags": ["ApplePay"],
+        "operationId": "Apple_Pay_Create",
         "requestBody": {
           "content": {
             "application/json": {
-              "schema": { }
+              "schema": {
+                "$ref": "#/components/schemas/ApplePayCreateRequest"
+              }
             }
           }
         },
@@ -892,7 +1230,255 @@
             "description": "Success",
             "content": {
               "application/json": {
-                "schema": { }
+                "schema": {
+                  "$ref": "#/components/schemas/ApplePayCreateResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Client Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": ["apple-pay"],
+        "x-fern-sdk-method-name": "create"
+      }
+    },
+    "/documents": {
+      "post": {
+        "tags": ["Documents"],
+        "operationId": "Document_Upload",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "document": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "request": {
+                    "$ref": "#/components/schemas/CreateDocumentRequest"
+                  }
+                }
+              },
+              "encoding": {
+                "document": {
+                  "style": "form"
+                },
+                "request": {
+                  "contentType": "application/json",
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Document"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": ["documents"],
+        "x-fern-sdk-method-name": "upload"
+      }
+    },
+    "/documents/{id}": {
+      "delete": {
+        "tags": ["Documents"],
+        "operationId": "Document_Delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "maxLength": 36,
+              "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": ["documents"],
+        "x-fern-sdk-method-name": "delete"
+      },
+      "get": {
+        "tags": ["Documents"],
+        "operationId": "Document_Get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "maxLength": 36,
+              "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Document"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": ["documents"],
+        "x-fern-sdk-method-name": "get"
+      }
+    },
+    "/detokenize": {
+      "post": {
+        "tags": ["Detokenize"],
+        "operationId": "Detokenize_Detokenize",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {}
               }
             }
           },
@@ -939,11 +1525,235 @@
         }
       }
     },
+    "/apple-pay/domain-deregistration": {
+      "post": {
+        "tags": ["ApplePay"],
+        "operationId": "Apple_Pay_Domain_Deregistration",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplePayDomainDeregistrationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": ["apple-pay", "domain"],
+        "x-fern-sdk-method-name": "deregister"
+      }
+    },
+    "/apple-pay/domain-registration": {
+      "post": {
+        "tags": ["ApplePay"],
+        "operationId": "Apple_Pay_Domain_Registration",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplePayDomainRegistrationRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApplePayDomainRegistrationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Client Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": ["apple-pay", "domain"],
+        "x-fern-sdk-method-name": "register"
+      },
+      "put": {
+        "tags": ["ApplePay"],
+        "operationId": "Apple_Pay_Domain_Registration_All",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplePayDomainRegistrationListRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "202": {
+            "description": "Accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApplePayDomainRegistrationResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Client Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": ["apple-pay", "domain"],
+        "x-fern-sdk-method-name": "registerAll"
+      },
+      "get": {
+        "tags": ["ApplePay"],
+        "operationId": "Apple_Pay_Get_Domain_Registration",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApplePayDomainRegistrationResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": ["apple-pay", "domain"],
+        "x-fern-sdk-method-name": "get"
+      }
+    },
     "/enrichments/bank-account-verify": {
       "post": {
-        "tags": [
-          "Enrichments"
-        ],
+        "tags": ["Enrichments"],
         "operationId": "Enrichments_BankAccountVerify",
         "requestBody": {
           "content": {
@@ -999,11 +1809,662 @@
         }
       }
     },
+    "/apple-pay/{id}": {
+      "get": {
+        "tags": ["ApplePay"],
+        "operationId": "Apple_Pay_Get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "maxLength": 36,
+              "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ApplePayToken"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": ["apple-pay"],
+        "x-fern-sdk-method-name": "get"
+      }
+    },
+    "/documents/{documentId}/data": {
+      "get": {
+        "tags": ["Documents"],
+        "operationId": "Document_GetData",
+        "parameters": [
+          {
+            "name": "documentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "maxLength": 36,
+              "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": ["documents", "data"],
+        "x-fern-sdk-method-name": "get"
+      }
+    },
+    "/connections/google-pay/tokenize": {
+      "post": {
+        "tags": ["Connections", "GooglePay"],
+        "operationId": "Google_Pay_Tokenize",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GooglePayTokenizeRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GooglePayTokenizeResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Client Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/keys": {
+      "post": {
+        "tags": ["Keys"],
+        "operationId": "Keys_Create",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientEncryptionKeyRequest"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientEncryptionKeyRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientEncryptionKeyRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientEncryptionKeyRequest"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientEncryptionKeyRequest"
+              }
+            },
+            "text/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientEncryptionKeyRequest"
+              }
+            },
+            "application/*+xml": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientEncryptionKeyRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientEncryptionKeyResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Client Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": ["keys"],
+        "x-fern-sdk-method-name": "create"
+      },
+      "get": {
+        "tags": ["Keys"],
+        "operationId": "Keys_List",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ClientEncryptionKeyMetadataResponse"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": ["keys"],
+        "x-fern-sdk-method-name": "list"
+      }
+    },
+    "/keys/{id}": {
+      "get": {
+        "tags": ["Keys"],
+        "operationId": "Keys_Get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "maxLength": 36,
+              "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ClientEncryptionKeyMetadataResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": ["keys"],
+        "x-fern-sdk-method-name": "get"
+      },
+      "delete": {
+        "tags": ["Keys"],
+        "operationId": "Keys_Delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "maxLength": 36,
+              "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": ["keys"],
+        "x-fern-sdk-method-name": "delete"
+      }
+    },
     "/logs": {
       "get": {
-        "tags": [
-          "Logs"
-        ],
+        "tags": ["Logs"],
         "operationId": "Logs_Get",
         "parameters": [
           {
@@ -1123,9 +2584,7 @@
     },
     "/logs/entity-types": {
       "get": {
-        "tags": [
-          "Logs"
-        ],
+        "tags": ["Logs"],
         "operationId": "Logs_GetEntityTypes",
         "responses": {
           "200": {
@@ -1164,11 +2623,475 @@
         }
       }
     },
+    "/network-tokens": {
+      "post": {
+        "tags": ["NetworkTokens"],
+        "operationId": "Network_Tokens_Create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateNetworkTokenRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NetworkToken"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Client Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": ["network-tokens"],
+        "x-fern-sdk-method-name": "create"
+      }
+    },
+    "/network-tokens/{id}/cryptogram": {
+      "post": {
+        "tags": ["NetworkTokens"],
+        "operationId": "Network_Tokens_Cryptogram",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "maxLength": 36,
+              "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NetworkTokenCryptogram"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": ["network-tokens"],
+        "x-fern-sdk-method-name": "cryptogram"
+      }
+    },
+    "/network-tokens/{id}": {
+      "delete": {
+        "tags": ["NetworkTokens"],
+        "operationId": "Network_Tokens_Delete",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "maxLength": 36,
+              "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": ["network-tokens"],
+        "x-fern-sdk-method-name": "delete"
+      },
+      "get": {
+        "tags": ["NetworkTokens"],
+        "operationId": "Network_Tokens_Get",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "maxLength": 36,
+              "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NetworkToken"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": ["network-tokens"],
+        "x-fern-sdk-method-name": "get"
+      }
+    },
+    "/network-tokens/{id}/suspend": {
+      "put": {
+        "tags": ["NetworkTokens"],
+        "operationId": "Network_Tokens_Suspend",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "maxLength": 36,
+              "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NetworkToken"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": ["network-tokens"],
+        "x-fern-sdk-method-name": "suspend"
+      }
+    },
+    "/network-tokens/{id}/resume": {
+      "put": {
+        "tags": ["NetworkTokens"],
+        "operationId": "Network_Tokens_Resume",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "maxLength": 36,
+              "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NetworkToken"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Conflict",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": ["network-tokens"],
+        "x-fern-sdk-method-name": "resume"
+      }
+    },
     "/permissions": {
       "get": {
-        "tags": [
-          "Permissions"
-        ],
+        "tags": ["Permissions"],
         "operationId": "Permissions_Get",
         "parameters": [
           {
@@ -1231,9 +3154,7 @@
     },
     "/proxies": {
       "get": {
-        "tags": [
-          "Proxies"
-        ],
+        "tags": ["Proxies"],
         "operationId": "Proxies_Get",
         "parameters": [
           {
@@ -1336,9 +3257,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Proxies"
-        ],
+        "tags": ["Proxies"],
         "operationId": "Proxies_Create",
         "requestBody": {
           "content": {
@@ -1396,9 +3315,7 @@
     },
     "/proxies/{id}": {
       "get": {
-        "tags": [
-          "Proxies"
-        ],
+        "tags": ["Proxies"],
         "operationId": "Proxies_GetById",
         "parameters": [
           {
@@ -1457,9 +3374,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Proxies"
-        ],
+        "tags": ["Proxies"],
         "operationId": "Proxies_Update",
         "parameters": [
           {
@@ -1538,9 +3453,7 @@
         }
       },
       "patch": {
-        "tags": [
-          "Proxies"
-        ],
+        "tags": ["Proxies"],
         "operationId": "Proxies_Patch",
         "parameters": [
           {
@@ -1612,9 +3525,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Proxies"
-        ],
+        "tags": ["Proxies"],
         "operationId": "Proxies_Delete",
         "parameters": [
           {
@@ -1668,9 +3579,7 @@
     },
     "/reactor-formulas": {
       "get": {
-        "tags": [
-          "ReactorFormulas"
-        ],
+        "tags": ["ReactorFormulas"],
         "operationId": "ReactorFormulas_Get",
         "parameters": [
           {
@@ -1759,9 +3668,7 @@
         }
       },
       "post": {
-        "tags": [
-          "ReactorFormulas"
-        ],
+        "tags": ["ReactorFormulas"],
         "operationId": "ReactorFormulas_Create",
         "requestBody": {
           "content": {
@@ -1819,9 +3726,7 @@
     },
     "/reactor-formulas/{id}": {
       "get": {
-        "tags": [
-          "ReactorFormulas"
-        ],
+        "tags": ["ReactorFormulas"],
         "operationId": "ReactorFormulas_GetById",
         "parameters": [
           {
@@ -1880,9 +3785,7 @@
         }
       },
       "put": {
-        "tags": [
-          "ReactorFormulas"
-        ],
+        "tags": ["ReactorFormulas"],
         "operationId": "ReactorFormulas_Update",
         "parameters": [
           {
@@ -1961,9 +3864,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "ReactorFormulas"
-        ],
+        "tags": ["ReactorFormulas"],
         "operationId": "ReactorFormulas_Delete",
         "parameters": [
           {
@@ -2017,9 +3918,7 @@
     },
     "/reactors": {
       "get": {
-        "tags": [
-          "Reactors"
-        ],
+        "tags": ["Reactors"],
         "operationId": "Reactors_Get",
         "parameters": [
           {
@@ -2122,9 +4021,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Reactors"
-        ],
+        "tags": ["Reactors"],
         "operationId": "Reactors_Create",
         "requestBody": {
           "content": {
@@ -2182,9 +4079,7 @@
     },
     "/reactors/{id}": {
       "get": {
-        "tags": [
-          "Reactors"
-        ],
+        "tags": ["Reactors"],
         "operationId": "Reactors_GetById",
         "parameters": [
           {
@@ -2243,9 +4138,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Reactors"
-        ],
+        "tags": ["Reactors"],
         "operationId": "Reactors_Update",
         "parameters": [
           {
@@ -2324,9 +4217,7 @@
         }
       },
       "patch": {
-        "tags": [
-          "Reactors"
-        ],
+        "tags": ["Reactors"],
         "operationId": "Reactors_Patch",
         "parameters": [
           {
@@ -2398,9 +4289,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Reactors"
-        ],
+        "tags": ["Reactors"],
         "operationId": "Reactors_Delete",
         "parameters": [
           {
@@ -2454,9 +4343,7 @@
     },
     "/reactors/{id}/react": {
       "post": {
-        "tags": [
-          "Reactors"
-        ],
+        "tags": ["Reactors"],
         "operationId": "Reactors_React",
         "parameters": [
           {
@@ -2557,9 +4444,7 @@
     },
     "/reactors/{id}/react-async": {
       "post": {
-        "tags": [
-          "Reactors"
-        ],
+        "tags": ["Reactors"],
         "operationId": "Reactors_React_Async",
         "parameters": [
           {
@@ -2650,9 +4535,7 @@
     },
     "/reactors/{id}/results/{requestId}": {
       "get": {
-        "tags": [
-          "Reactors"
-        ],
+        "tags": ["Reactors"],
         "operationId": "Reactors_Result_GetById",
         "parameters": [
           {
@@ -2683,7 +4566,7 @@
             "description": "Success",
             "content": {
               "application/json": {
-                "schema": { }
+                "schema": {}
               }
             }
           },
@@ -2732,9 +4615,7 @@
     },
     "/roles": {
       "get": {
-        "tags": [
-          "Roles"
-        ],
+        "tags": ["Roles"],
         "operationId": "Roles_Get",
         "responses": {
           "200": {
@@ -2773,11 +4654,78 @@
         }
       }
     },
+    "/apple-pay/session": {
+      "post": {
+        "tags": ["ApplePay"],
+        "operationId": "Apple_Pay_Session",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ApplePaySessionRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Client Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": ["apple-pay", "session"],
+        "x-fern-sdk-method-name": "create"
+      }
+    },
     "/sessions": {
       "post": {
-        "tags": [
-          "Sessions"
-        ],
+        "tags": ["Sessions"],
         "operationId": "Sessions_Create",
         "responses": {
           "201": {
@@ -2825,9 +4773,7 @@
     },
     "/sessions/authorize": {
       "post": {
-        "tags": [
-          "Sessions"
-        ],
+        "tags": ["Sessions"],
         "operationId": "Sessions_Authorize",
         "requestBody": {
           "content": {
@@ -2898,9 +4844,7 @@
     },
     "/tenants/self/connections": {
       "post": {
-        "tags": [
-          "Tenants"
-        ],
+        "tags": ["Tenants"],
         "operationId": "TenantConnections_CreateConnection",
         "requestBody": {
           "content": {
@@ -2956,9 +4900,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Tenants"
-        ],
+        "tags": ["Tenants"],
         "operationId": "TenantConnections_DeleteConnection",
         "responses": {
           "204": {
@@ -3006,9 +4948,7 @@
     },
     "/tenants/self/invitations": {
       "post": {
-        "tags": [
-          "Tenants"
-        ],
+        "tags": ["Tenants"],
         "operationId": "TenantInvitations_CreateInvitation",
         "requestBody": {
           "content": {
@@ -3064,9 +5004,7 @@
         }
       },
       "get": {
-        "tags": [
-          "Tenants"
-        ],
+        "tags": ["Tenants"],
         "operationId": "TenantInvitations_GetInvitations",
         "parameters": [
           {
@@ -3144,9 +5082,7 @@
     },
     "/tenants/self/invitations/{invitationId}/resend": {
       "post": {
-        "tags": [
-          "Tenants"
-        ],
+        "tags": ["Tenants"],
         "operationId": "TenantInvitations_ResendInvitation",
         "parameters": [
           {
@@ -3207,9 +5143,7 @@
     },
     "/tenants/self/invitations/{invitationId}": {
       "get": {
-        "tags": [
-          "Tenants"
-        ],
+        "tags": ["Tenants"],
         "operationId": "TenantInvitations_GetById",
         "parameters": [
           {
@@ -3268,9 +5202,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Tenants"
-        ],
+        "tags": ["Tenants"],
         "operationId": "TenantInvitations_DeleteInvitation",
         "parameters": [
           {
@@ -3324,9 +5256,7 @@
     },
     "/tenants/self/members": {
       "get": {
-        "tags": [
-          "Tenants"
-        ],
+        "tags": ["Tenants"],
         "operationId": "TenantMembers_GetMembers",
         "parameters": [
           {
@@ -3411,9 +5341,7 @@
     },
     "/tenants/self/members/{memberId}": {
       "put": {
-        "tags": [
-          "Tenants"
-        ],
+        "tags": ["Tenants"],
         "operationId": "TenantMembers_UpdateMember",
         "parameters": [
           {
@@ -3511,9 +5439,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Tenants"
-        ],
+        "tags": ["Tenants"],
         "operationId": "TenantMembers_DeleteMember",
         "parameters": [
           {
@@ -3577,9 +5503,7 @@
     },
     "/tenants/self/owner": {
       "get": {
-        "tags": [
-          "Tenants"
-        ],
+        "tags": ["Tenants"],
         "operationId": "Tenants_Owner_Get",
         "responses": {
           "200": {
@@ -3627,9 +5551,7 @@
     },
     "/tenants/self/reports/usage": {
       "get": {
-        "tags": [
-          "Tenants"
-        ],
+        "tags": ["Tenants"],
         "operationId": "TenantReports_GetTenantUsageReport",
         "responses": {
           "200": {
@@ -3677,9 +5599,7 @@
     },
     "/tenants/self": {
       "get": {
-        "tags": [
-          "Tenants"
-        ],
+        "tags": ["Tenants"],
         "operationId": "Tenants_Get",
         "responses": {
           "200": {
@@ -3725,9 +5645,7 @@
         }
       },
       "put": {
-        "tags": [
-          "Tenants"
-        ],
+        "tags": ["Tenants"],
         "operationId": "Tenants_Update",
         "requestBody": {
           "content": {
@@ -3793,9 +5711,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Tenants"
-        ],
+        "tags": ["Tenants"],
         "operationId": "Tenants_Delete",
         "responses": {
           "204": {
@@ -3836,9 +5752,7 @@
     },
     "/3ds/sessions": {
       "post": {
-        "tags": [
-          "ThreeDS"
-        ],
+        "tags": ["ThreeDS"],
         "operationId": "ThreeDS.CreateSession",
         "requestBody": {
           "content": {
@@ -3895,9 +5809,7 @@
     },
     "/3ds/sessions/{sessionId}/authenticate": {
       "post": {
-        "tags": [
-          "ThreeDS"
-        ],
+        "tags": ["ThreeDS"],
         "operationId": "ThreeDS.AuthenticateSession",
         "parameters": [
           {
@@ -3967,9 +5879,7 @@
     },
     "/3ds/sessions/{sessionId}/challenge-result": {
       "get": {
-        "tags": [
-          "ThreeDS"
-        ],
+        "tags": ["ThreeDS"],
         "operationId": "ThreeDS.GetChallengeResult",
         "parameters": [
           {
@@ -4030,9 +5940,7 @@
     },
     "/3ds/sessions/{id}": {
       "get": {
-        "tags": [
-          "ThreeDS"
-        ],
+        "tags": ["ThreeDS"],
         "operationId": "ThreeDS.GetSessionById",
         "parameters": [
           {
@@ -4081,39 +5989,29 @@
         }
       }
     },
-    "/token-intents": {
-      "post": {
-        "tags": [
-          "TokenIntents"
+    "/token-intents/{id}": {
+      "get": {
+        "tags": ["TokenIntents"],
+        "operationId": "TokenIntents_Read",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "maxLength": 250,
+              "pattern": "^.+$",
+              "type": "string"
+            }
+          }
         ],
-        "operationId": "TokenIntents_Create",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateTokenIntentRequest"
-              }
-            }
-          },
-          "required": true
-        },
         "responses": {
-          "201": {
-            "description": "Created",
+          "200": {
+            "description": "Success",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/CreateTokenIntentResponse"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                  "$ref": "#/components/schemas/TokenIntent"
                 }
               }
             }
@@ -4137,15 +6035,21 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
-      }
-    },
-    "/token-intents/{id}": {
+      },
       "delete": {
-        "tags": [
-          "TokenIntents"
-        ],
+        "tags": ["TokenIntents"],
         "operationId": "TokenIntents_Delete",
         "parameters": [
           {
@@ -4254,16 +6158,72 @@
         }
       }
     },
+    "/token-intents": {
+      "post": {
+        "tags": ["TokenIntents"],
+        "operationId": "TokenIntents_Create",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTokenIntentRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateTokenIntentResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/tokenize": {
       "post": {
-        "tags": [
-          "Tokenize"
-        ],
+        "tags": ["Tokenize"],
         "operationId": "Tokenize_Tokenize",
         "requestBody": {
           "content": {
             "application/json": {
-              "schema": { }
+              "schema": {}
             }
           }
         },
@@ -4272,7 +6232,7 @@
             "description": "Success",
             "content": {
               "application/json": {
-                "schema": { }
+                "schema": {}
               }
             }
           },
@@ -4321,9 +6281,7 @@
     },
     "/tokens": {
       "get": {
-        "tags": [
-          "Tokens"
-        ],
+        "tags": ["Tokens"],
         "operationId": "Tokens_Get",
         "parameters": [
           {
@@ -4415,9 +6373,7 @@
         }
       },
       "post": {
-        "tags": [
-          "Tokens"
-        ],
+        "tags": ["Tokens"],
         "operationId": "Tokens_Create",
         "requestBody": {
           "content": {
@@ -4483,71 +6439,9 @@
         }
       }
     },
-    "/tokens/search": {
-      "post": {
-        "tags": [
-          "Tokens"
-        ],
-        "operationId": "Tokens_Search",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SearchTokensRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/TokenPaginatedList"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ValidationProblemDetails"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetails"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
     "/tokens/{id}": {
       "get": {
-        "tags": [
-          "Tokens"
-        ],
+        "tags": ["Tokens"],
         "operationId": "Tokens_GetById",
         "parameters": [
           {
@@ -4605,9 +6499,7 @@
         }
       },
       "patch": {
-        "tags": [
-          "Tokens"
-        ],
+        "tags": ["Tokens"],
         "operationId": "Tokens_Update",
         "parameters": [
           {
@@ -4695,9 +6587,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "Tokens"
-        ],
+        "tags": ["Tokens"],
         "operationId": "Tokens_Delete",
         "parameters": [
           {
@@ -4760,17 +6650,53 @@
     },
     "/v2/tokens": {
       "get": {
-        "tags": [
-          "Tokens"
-        ],
+        "tags": ["Tokens"],
         "operationId": "Tokens_Get_V2",
         "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "container",
+            "in": "query",
+            "schema": {
+              "maxLength": 400,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "fingerprint",
+            "in": "query",
+            "schema": {
+              "maxLength": 100,
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "metadata",
+            "in": "query",
+            "style": "deepObject",
+            "schema": {
+              "maxLength": 1,
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "nullable": true
+            }
+          },
           {
             "name": "start",
             "in": "query",
             "schema": {
-              "maxLength": 500,
-              "pattern": "^.+$",
+              "maxLength": 5000,
               "type": "string",
               "nullable": true
             }
@@ -4823,9 +6749,7 @@
     },
     "/v2/tokens/search": {
       "post": {
-        "tags": [
-          "Tokens"
-        ],
+        "tags": ["Tokens"],
         "operationId": "Tokens_Search_V2",
         "requestBody": {
           "content": {
@@ -4880,6 +6804,69 @@
           }
         }
       }
+    },
+    "/apple-pay/{id}/unlink": {
+      "post": {
+        "tags": ["ApplePay"],
+        "operationId": "Apple_Pay_Unlink",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "maxLength": 36,
+              "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Client Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": ["apple-pay"],
+        "x-fern-sdk-method-name": "unlink"
+      }
     }
   },
   "components": {
@@ -4917,6 +6904,293 @@
               "type": "string"
             },
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AdditionalCardDetails": {
+        "type": "object",
+        "properties": {
+          "brand": {
+            "type": "string",
+            "nullable": true
+          },
+          "funding": {
+            "type": "string",
+            "nullable": true
+          },
+          "authentication": {
+            "type": "string",
+            "nullable": true
+          },
+          "issuer": {
+            "$ref": "#/components/schemas/CardIssuer"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Address": {
+        "type": "object",
+        "properties": {
+          "line1": {
+            "type": "string",
+            "nullable": true
+          },
+          "line2": {
+            "type": "string",
+            "nullable": true
+          },
+          "line3": {
+            "type": "string",
+            "nullable": true
+          },
+          "postal_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "state_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "country_code": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ApplePayCreateRequest": {
+        "type": "object",
+        "properties": {
+          "expires_at": {
+            "type": "string",
+            "nullable": true
+          },
+          "apple_payment_data": {
+            "$ref": "#/components/schemas/ApplePayMethodToken"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ApplePayCreateResponse": {
+        "type": "object",
+        "properties": {
+          "apple_pay": {
+            "$ref": "#/components/schemas/ApplePayCreateTokenResponse"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ApplePayCreateTokenResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "maxLength": 36,
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+            "type": "string",
+            "format": "uuid"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "tenant_id": {
+            "maxLength": 36,
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+            "type": "string",
+            "format": "uuid"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "expires_at": {
+            "maxLength": 40,
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_by": {
+            "maxLength": 36,
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "created_at": {
+            "maxLength": 40,
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "card": {
+            "$ref": "#/components/schemas/CardDetails"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ApplePayDomainDeregistrationRequest": {
+        "required": ["domain"],
+        "type": "object",
+        "properties": {
+          "domain": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ApplePayDomainRegistrationListRequest": {
+        "type": "object",
+        "properties": {
+          "domains": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ApplePayDomainRegistrationRequest": {
+        "required": ["domain"],
+        "type": "object",
+        "properties": {
+          "domain": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ApplePayDomainRegistrationResponse": {
+        "type": "object",
+        "properties": {
+          "domains": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DomainRegistrationResponse"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ApplePayMethodToken": {
+        "type": "object",
+        "properties": {
+          "paymentData": {
+            "$ref": "#/components/schemas/PaymentData"
+          },
+          "transactionIdentifier": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ApplePaySessionRequest": {
+        "type": "object",
+        "properties": {
+          "validation_url": {
+            "type": "string",
+            "nullable": true
+          },
+          "display_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "domain": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ApplePayToken": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "maxLength": 36,
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+            "type": "string",
+            "format": "uuid"
+          },
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "tenant_id": {
+            "maxLength": 36,
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+            "type": "string",
+            "format": "uuid"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "expires_at": {
+            "maxLength": 40,
+            "type": "string",
+            "format": "date-time"
+          },
+          "created_by": {
+            "maxLength": 36,
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "created_at": {
+            "maxLength": 40,
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "modified_by": {
+            "maxLength": 36,
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "modified_at": {
+            "maxLength": 40,
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "card": {
+            "$ref": "#/components/schemas/CardDetails"
+          },
+          "data": {
+            "nullable": true
+          },
+          "authentication": {
+            "$ref": "#/components/schemas/Authentication"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ApplePayTokenizeRequest": {
+        "type": "object",
+        "properties": {
+          "apple_payment_method_token": {
+            "$ref": "#/components/schemas/ApplePayMethodToken"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ApplePayTokenizeResponse": {
+        "type": "object",
+        "properties": {
+          "token_intent": {
+            "$ref": "#/components/schemas/CreateTokenIntentResponse"
           }
         },
         "additionalProperties": false
@@ -4984,12 +7258,6 @@
             "nullable": true
           },
           "modified_at": {
-            "maxLength": 40,
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "expires_at": {
             "maxLength": 40,
             "type": "string",
             "format": "date-time",
@@ -5108,6 +7376,18 @@
         },
         "additionalProperties": false
       },
+      "AssuranceDetails": {
+        "type": "object",
+        "properties": {
+          "account_verified": {
+            "type": "boolean"
+          },
+          "card_holder_authenticated": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
       "AsyncReactResponse": {
         "type": "object",
         "properties": {
@@ -5121,11 +7401,7 @@
         "additionalProperties": false
       },
       "AuthenticateThreeDSSessionRequest": {
-        "required": [
-          "authentication_category",
-          "authentication_type",
-          "requestor_info"
-        ],
+        "required": ["authentication_category", "authentication_type"],
         "type": "object",
         "properties": {
           "authentication_category": {
@@ -5135,6 +7411,10 @@
           "authentication_type": {
             "minLength": 1,
             "type": "string"
+          },
+          "card_brand": {
+            "type": "string",
+            "nullable": true
           },
           "challenge_preference": {
             "type": "string",
@@ -5173,10 +7453,47 @@
         },
         "additionalProperties": false
       },
+      "Authentication": {
+        "type": "object",
+        "properties": {
+          "threeds_cryptogram": {
+            "type": "string",
+            "nullable": true
+          },
+          "eci_indicator": {
+            "type": "string",
+            "nullable": true
+          },
+          "authentication_responses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SubmerchantAuthenticationResponse"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuthenticationResponse": {
+        "type": "object",
+        "properties": {
+          "merchant_identifier": {
+            "type": "string",
+            "nullable": true
+          },
+          "authentication_data": {
+            "type": "string",
+            "nullable": true
+          },
+          "transaction_amount": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "AuthorizeSessionRequest": {
-        "required": [
-          "nonce"
-        ],
+        "required": ["nonce"],
         "type": "object",
         "properties": {
           "nonce": {
@@ -5205,10 +7522,22 @@
         },
         "additionalProperties": false
       },
+      "BankDetails": {
+        "type": "object",
+        "properties": {
+          "routing_number": {
+            "type": "string",
+            "nullable": true
+          },
+          "account_number_last4": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "BankVerificationRequest": {
-        "required": [
-          "token_id"
-        ],
+        "required": ["token_id"],
         "type": "object",
         "properties": {
           "token_id": {
@@ -5372,6 +7701,30 @@
         },
         "additionalProperties": false
       },
+      "Card": {
+        "type": "object",
+        "properties": {
+          "number": {
+            "type": "string",
+            "nullable": true
+          },
+          "expiration_month": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "expiration_year": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "cvc": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CardDetails": {
         "type": "object",
         "properties": {
@@ -5404,6 +7757,118 @@
           "authentication": {
             "type": "string",
             "nullable": true
+          },
+          "issuer": {
+            "$ref": "#/components/schemas/CardIssuer"
+          },
+          "issuer_country": {
+            "$ref": "#/components/schemas/CardIssuerCountry"
+          },
+          "segment": {
+            "type": "string",
+            "nullable": true
+          },
+          "additional": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AdditionalCardDetails"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CardIssuer": {
+        "type": "object",
+        "properties": {
+          "country": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CardIssuerCountry": {
+        "type": "object",
+        "properties": {
+          "alpha2": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "numeric": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CardholderInfo": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "$ref": "#/components/schemas/Address"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ClientEncryptionKeyMetadataResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "maxLength": 36,
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+            "type": "string",
+            "format": "uuid"
+          },
+          "expiresAt": {
+            "maxLength": 40,
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ClientEncryptionKeyRequest": {
+        "type": "object",
+        "properties": {
+          "expires_at": {
+            "maxLength": 40,
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ClientEncryptionKeyResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "maxLength": 36,
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+            "type": "string",
+            "format": "uuid"
+          },
+          "publicKeyPEM": {
+            "type": "string",
+            "nullable": true
+          },
+          "expiresAt": {
+            "maxLength": 40,
+            "type": "string",
+            "format": "date-time"
           }
         },
         "additionalProperties": false
@@ -5427,10 +7892,7 @@
         "additionalProperties": false
       },
       "CreateApplicationRequest": {
-        "required": [
-          "name",
-          "type"
-        ],
+        "required": ["name", "type"],
         "type": "object",
         "properties": {
           "name": {
@@ -5444,10 +7906,6 @@
             "minLength": 1,
             "pattern": "^[A-z_]+$",
             "type": "string"
-          },
-          "expires_at": {
-            "type": "string",
-            "nullable": true
           },
           "permissions": {
             "maxItems": 50,
@@ -5471,11 +7929,41 @@
         },
         "additionalProperties": false
       },
+      "CreateDocumentRequest": {
+        "type": "object",
+        "properties": {
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CreateNetworkTokenRequest": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "$ref": "#/components/schemas/Card"
+          },
+          "token_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "token_intent_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "cardholder_info": {
+            "$ref": "#/components/schemas/CardholderInfo"
+          }
+        },
+        "additionalProperties": false
+      },
       "CreateProxyRequest": {
-        "required": [
-          "destination_url",
-          "name"
-        ],
+        "required": ["destination_url", "name"],
         "type": "object",
         "properties": {
           "name": {
@@ -5530,10 +8018,7 @@
         "additionalProperties": false
       },
       "CreateReactorFormulaRequest": {
-        "required": [
-          "name",
-          "type"
-        ],
+        "required": ["name", "type"],
         "type": "object",
         "properties": {
           "id": {
@@ -5591,10 +8076,7 @@
         "deprecated": true
       },
       "CreateReactorRequest": {
-        "required": [
-          "code",
-          "name"
-        ],
+        "required": ["code", "name"],
         "type": "object",
         "properties": {
           "name": {
@@ -5645,10 +8127,7 @@
         "additionalProperties": false
       },
       "CreateTenantConnectionRequest": {
-        "required": [
-          "options",
-          "strategy"
-        ],
+        "required": ["options", "strategy"],
         "type": "object",
         "properties": {
           "strategy": {
@@ -5672,9 +8151,7 @@
         "additionalProperties": false
       },
       "CreateTenantInvitationRequest": {
-        "required": [
-          "email"
-        ],
+        "required": ["email"],
         "type": "object",
         "properties": {
           "email": {
@@ -5717,8 +8194,18 @@
             "type": "string",
             "nullable": true
           },
+          "web_challenge_mode": {
+            "type": "string",
+            "nullable": true
+          },
           "device_info": {
             "$ref": "#/components/schemas/ThreeDSDeviceInfo"
+          },
+          "authentication_request": {
+            "$ref": "#/components/schemas/AuthenticateThreeDSSessionRequest"
+          },
+          "callback_urls": {
+            "$ref": "#/components/schemas/ThreeDSCallbackUrls"
           }
         },
         "additionalProperties": false
@@ -5740,6 +8227,13 @@
             "type": "string",
             "nullable": true
           },
+          "additional_card_brands": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
           "method_url": {
             "type": "string",
             "nullable": true
@@ -5755,22 +8249,23 @@
           "recommended_version": {
             "type": "string",
             "nullable": true
+          },
+          "redirect_url": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
       },
       "CreateTokenIntentRequest": {
-        "required": [
-          "data",
-          "type"
-        ],
+        "required": ["data", "type"],
         "type": "object",
         "properties": {
           "type": {
             "minLength": 1,
             "type": "string"
           },
-          "data": { }
+          "data": {}
         },
         "additionalProperties": false
       },
@@ -5813,6 +8308,18 @@
           },
           "card": {
             "$ref": "#/components/schemas/CardDetails"
+          },
+          "bank": {
+            "$ref": "#/components/schemas/BankDetails"
+          },
+          "network_token": {
+            "$ref": "#/components/schemas/CardDetails"
+          },
+          "authentication": {
+            "nullable": true
+          },
+          "_extras": {
+            "$ref": "#/components/schemas/TokenIntentExtras"
           }
         },
         "additionalProperties": false
@@ -5829,6 +8336,10 @@
             "nullable": true
           },
           "data": {
+            "nullable": true
+          },
+          "encrypted": {
+            "type": "string",
             "nullable": true
           },
           "privacy": {
@@ -5888,6 +8399,62 @@
             "nullable": true
           },
           "next": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Document": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "maxLength": 36,
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+            "type": "string",
+            "format": "uuid"
+          },
+          "tenant_id": {
+            "maxLength": 36,
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+            "type": "string",
+            "format": "uuid"
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "content_type": {
+            "type": "string",
+            "nullable": true
+          },
+          "created_by": {
+            "maxLength": 36,
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "created_at": {
+            "maxLength": 40,
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "DomainRegistrationResponse": {
+        "type": "object",
+        "properties": {
+          "domain": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
             "type": "string",
             "nullable": true
           }
@@ -6215,9 +8782,31 @@
       "GetTokensV2": {
         "type": "object",
         "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "container": {
+            "maxLength": 400,
+            "type": "string",
+            "nullable": true
+          },
+          "fingerprint": {
+            "maxLength": 100,
+            "type": "string",
+            "nullable": true
+          },
+          "metadata": {
+            "maxLength": 1,
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "nullable": true
+            },
+            "nullable": true
+          },
           "start": {
-            "maxLength": 500,
-            "pattern": "^.+$",
+            "maxLength": 5000,
             "type": "string",
             "nullable": true
           },
@@ -6226,6 +8815,84 @@
             "minimum": 0,
             "type": "integer",
             "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GooglePayTokenizeRequest": {
+        "type": "object",
+        "properties": {
+          "google_payment_method_token": {
+            "$ref": "#/components/schemas/GooglePaymentMethodToken"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GooglePayTokenizeResponse": {
+        "type": "object",
+        "properties": {
+          "token_intent": {
+            "$ref": "#/components/schemas/CreateTokenIntentResponse"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GooglePaymentMethodToken": {
+        "type": "object",
+        "properties": {
+          "protocolVersion": {
+            "type": "string",
+            "nullable": true
+          },
+          "signature": {
+            "type": "string",
+            "nullable": true
+          },
+          "intermediateSigningKey": {
+            "$ref": "#/components/schemas/IntermediateSigningKey"
+          },
+          "signedMessage": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Header": {
+        "type": "object",
+        "properties": {
+          "publicKeyHash": {
+            "type": "string",
+            "nullable": true
+          },
+          "ephemeralPublicKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "transactionId": {
+            "type": "string",
+            "nullable": true
+          },
+          "applicationData": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "IntermediateSigningKey": {
+        "type": "object",
+        "properties": {
+          "signedKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "signatures": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
             "nullable": true
           }
         },
@@ -6320,6 +8987,98 @@
             "items": {
               "$ref": "#/components/schemas/Log"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "NetworkToken": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "tenant_id": {
+            "maxLength": 36,
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+            "type": "string",
+            "format": "uuid"
+          },
+          "data": {
+            "$ref": "#/components/schemas/Card"
+          },
+          "card": {
+            "$ref": "#/components/schemas/CardDetails"
+          },
+          "network_token": {
+            "$ref": "#/components/schemas/CardDetails"
+          },
+          "par": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "created_by": {
+            "maxLength": 36,
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+            "type": "string",
+            "format": "uuid"
+          },
+          "created_at": {
+            "maxLength": 40,
+            "type": "string",
+            "format": "date-time"
+          },
+          "modified_by": {
+            "maxLength": 36,
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "modified_at": {
+            "maxLength": 40,
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "token_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "token_intent_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "_extras": {
+            "$ref": "#/components/schemas/NetworkTokenExtras"
+          }
+        },
+        "additionalProperties": false
+      },
+      "NetworkTokenCryptogram": {
+        "type": "object",
+        "properties": {
+          "cryptogram": {
+            "type": "string",
+            "nullable": true
+          },
+          "eci": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "NetworkTokenExtras": {
+        "type": "object",
+        "properties": {
+          "deduplicated": {
+            "type": "boolean",
             "nullable": true
           }
         },
@@ -6428,6 +9187,27 @@
         },
         "additionalProperties": false
       },
+      "PaymentData": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "string",
+            "nullable": true
+          },
+          "signature": {
+            "type": "string",
+            "nullable": true
+          },
+          "header": {
+            "$ref": "#/components/schemas/Header"
+          },
+          "version": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "Permission": {
         "type": "object",
         "properties": {
@@ -6503,7 +9283,7 @@
             "nullable": true
           }
         },
-        "additionalProperties": { }
+        "additionalProperties": {}
       },
       "Proxy": {
         "type": "object",
@@ -6577,6 +9357,15 @@
             "nullable": true
           },
           "proxy_host": {
+            "type": "string",
+            "nullable": true
+          },
+          "timeout": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "client_certificate": {
             "type": "string",
             "nullable": true
           },
@@ -6853,10 +9642,7 @@
         "deprecated": true
       },
       "ReactorFormulaConfiguration": {
-        "required": [
-          "name",
-          "type"
-        ],
+        "required": ["name", "type"],
         "type": "object",
         "properties": {
           "name": {
@@ -6898,10 +9684,7 @@
         "additionalProperties": false
       },
       "ReactorFormulaRequestParameter": {
-        "required": [
-          "name",
-          "type"
-        ],
+        "required": ["name", "type"],
         "type": "object",
         "properties": {
           "name": {
@@ -6955,37 +9738,6 @@
         },
         "additionalProperties": false
       },
-      "SearchTokensRequest": {
-        "type": "object",
-        "properties": {
-          "query": {
-            "maxLength": 200,
-            "pattern": "^.*$",
-            "type": "string",
-            "nullable": true
-          },
-          "page": {
-            "maximum": 2147483647,
-            "minimum": 0,
-            "exclusiveMinimum": true,
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "start": {
-            "type": "string",
-            "nullable": true
-          },
-          "size": {
-            "maximum": 100,
-            "minimum": 0,
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "SearchTokensRequestV2": {
         "type": "object",
         "properties": {
@@ -6996,7 +9748,7 @@
             "nullable": true
           },
           "start": {
-            "maxLength": 500,
+            "maxLength": 5000,
             "pattern": "^.+$",
             "type": "string",
             "nullable": true
@@ -7012,10 +9764,7 @@
         "additionalProperties": false
       },
       "StringStringKeyValuePair": {
-        "required": [
-          "key",
-          "value"
-        ],
+        "required": ["key", "value"],
         "type": "object",
         "properties": {
           "key": {
@@ -7028,6 +9777,24 @@
             "maxLength": 200,
             "minLength": 1,
             "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubmerchantAuthenticationResponse": {
+        "type": "object",
+        "properties": {
+          "merchant_identifier": {
+            "type": "string",
+            "nullable": true
+          },
+          "authentication_data": {
+            "type": "string",
+            "nullable": true
+          },
+          "transaction_amount": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -7189,10 +9956,7 @@
         "additionalProperties": false
       },
       "TenantInvitationStatus": {
-        "enum": [
-          "PENDING",
-          "EXPIRED"
-        ],
+        "enum": ["PENDING", "EXPIRED"],
         "type": "string"
       },
       "TenantMemberResponse": {
@@ -7268,8 +10032,9 @@
       "TenantUsageReport": {
         "type": "object",
         "properties": {
-          "token_report": {
-            "$ref": "#/components/schemas/TokenReport"
+          "total_tokens": {
+            "type": "integer",
+            "format": "int64"
           }
         },
         "additionalProperties": false
@@ -7338,6 +10103,10 @@
             "type": "string",
             "nullable": true
           },
+          "session_id": {
+            "type": "string",
+            "nullable": true
+          },
           "threeds_version": {
             "type": "string",
             "nullable": true
@@ -7371,6 +10140,10 @@
             "type": "string",
             "nullable": true
           },
+          "liability_shifted": {
+            "type": "boolean",
+            "nullable": true
+          },
           "authentication_value": {
             "type": "string",
             "nullable": true
@@ -7383,7 +10156,15 @@
             "type": "string",
             "nullable": true
           },
+          "directory_status_code": {
+            "type": "string",
+            "nullable": true
+          },
           "authentication_status_reason": {
+            "type": "string",
+            "nullable": true
+          },
+          "authentication_status_reason_code": {
             "type": "string",
             "nullable": true
           },
@@ -7414,11 +10195,23 @@
             "type": "string",
             "nullable": true
           },
+          "challenge_preference": {
+            "type": "string",
+            "nullable": true
+          },
+          "challenge_preference_code": {
+            "type": "string",
+            "nullable": true
+          },
           "challenge_attempts": {
             "type": "string",
             "nullable": true
           },
           "challenge_cancel_reason": {
+            "type": "string",
+            "nullable": true
+          },
+          "challenge_cancel_reason_code": {
             "type": "string",
             "nullable": true
           },
@@ -7439,6 +10232,20 @@
             "items": {
               "$ref": "#/components/schemas/ThreeDSMessageExtension"
             },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ThreeDSCallbackUrls": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "string",
+            "nullable": true
+          },
+          "failure": {
+            "type": "string",
             "nullable": true
           }
         },
@@ -7688,6 +10495,10 @@
             "type": "string",
             "nullable": true
           },
+          "url": {
+            "type": "string",
+            "nullable": true
+          },
           "risk_info": {
             "$ref": "#/components/schemas/ThreeDSMerchantRiskInfo"
           }
@@ -7853,13 +10664,32 @@
         "properties": {
           "id": {
             "type": "string",
-            "nullable": true
+            "nullable": true,
+            "deprecated": true
           },
           "name": {
             "type": "string",
-            "nullable": true
+            "nullable": true,
+            "deprecated": true
           },
           "url": {
+            "type": "string",
+            "nullable": true,
+            "deprecated": true
+          },
+          "discover_client_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "discover_requestor_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "amex_requestor_type": {
+            "type": "string",
+            "nullable": true
+          },
+          "cb_siret_number": {
             "type": "string",
             "nullable": true
           }
@@ -7902,6 +10732,13 @@
             "type": "string",
             "nullable": true
           },
+          "additional_card_brands": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
           "expiration_date": {
             "maxLength": 40,
             "type": "string",
@@ -7940,6 +10777,10 @@
           },
           "device_info": {
             "$ref": "#/components/schemas/ThreeDSDeviceInfo"
+          },
+          "web_challenge_mode": {
+            "type": "string",
+            "nullable": true
           },
           "version": {
             "$ref": "#/components/schemas/ThreeDSVersion"
@@ -8039,6 +10880,15 @@
             "format": "date-time",
             "nullable": true
           },
+          "card": {
+            "$ref": "#/components/schemas/CardDetails"
+          },
+          "bank": {
+            "$ref": "#/components/schemas/BankDetails"
+          },
+          "network_token": {
+            "$ref": "#/components/schemas/CardDetails"
+          },
           "modified_by": {
             "maxLength": 36,
             "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
@@ -8101,6 +10951,9 @@
             },
             "nullable": true
           },
+          "authentication": {
+            "nullable": true
+          },
           "_extras": {
             "$ref": "#/components/schemas/TokenExtras"
           }
@@ -8153,24 +11006,96 @@
         "type": "object",
         "properties": {
           "deduplicated": {
-            "type": "boolean"
+            "type": "boolean",
+            "nullable": true
+          },
+          "tsp_details": {
+            "$ref": "#/components/schemas/TokenServiceProviderDetails"
+          },
+          "deduplication_behavior": {
+            "type": "string",
+            "nullable": true
+          },
+          "network_token_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "decrypted_payload": {
+            "type": "boolean",
+            "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "TokenMetrics": {
+      "TokenIntent": {
         "type": "object",
         "properties": {
-          "count": {
-            "maximum": 2147483647,
-            "minimum": 0,
-            "type": "integer",
-            "format": "int64"
+          "id": {
+            "type": "string",
+            "nullable": true
           },
-          "last_created_at": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "tenant_id": {
+            "maxLength": 36,
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+            "type": "string",
+            "format": "uuid"
+          },
+          "fingerprint": {
+            "type": "string",
+            "nullable": true
+          },
+          "created_by": {
+            "maxLength": 36,
+            "pattern": "^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$",
+            "type": "string",
+            "format": "uuid"
+          },
+          "created_at": {
             "maxLength": 40,
             "type": "string",
-            "format": "date-time",
+            "format": "date-time"
+          },
+          "expires_at": {
+            "maxLength": 40,
+            "type": "string",
+            "format": "date-time"
+          },
+          "card": {
+            "$ref": "#/components/schemas/CardDetails"
+          },
+          "bank": {
+            "$ref": "#/components/schemas/BankDetails"
+          },
+          "network_token": {
+            "$ref": "#/components/schemas/CardDetails"
+          },
+          "authentication": {
+            "nullable": true
+          },
+          "_extras": {
+            "$ref": "#/components/schemas/TokenIntentExtras"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TokenIntentExtras": {
+        "type": "object",
+        "properties": {
+          "tsp_details": {
+            "$ref": "#/components/schemas/TokenServiceProviderDetails"
+          },
+          "network_token_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
             "nullable": true
           }
         },
@@ -8193,39 +11118,73 @@
         },
         "additionalProperties": false
       },
-      "TokenReport": {
+      "TokenServiceProviderDetails": {
         "type": "object",
         "properties": {
-          "included_monthly_active_tokens": {
-            "maximum": 2147483647,
-            "minimum": 0,
-            "type": "integer",
-            "format": "int64"
+          "tsp": {
+            "type": "string",
+            "nullable": true
           },
-          "monthly_active_tokens": {
-            "minimum": 0,
-            "type": "integer",
-            "format": "int64"
+          "auth_method": {
+            "type": "string",
+            "nullable": true
           },
-          "metrics_by_type": {
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/TokenMetrics"
+          "message_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "eci_indicator": {
+            "type": "string",
+            "nullable": true
+          },
+          "assurance_details": {
+            "$ref": "#/components/schemas/AssuranceDetails"
+          },
+          "transaction_id": {
+            "type": "string",
+            "nullable": true
+          },
+          "currency_code": {
+            "type": "string",
+            "nullable": true
+          },
+          "transaction_amount": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "cardholder_name": {
+            "type": "string",
+            "nullable": true
+          },
+          "device_manufacturer_identifier": {
+            "type": "string",
+            "nullable": true
+          },
+          "payment_data_type": {
+            "type": "string",
+            "nullable": true
+          },
+          "merchant_token_identifier": {
+            "type": "string",
+            "nullable": true
+          },
+          "authentication_responses": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AuthenticationResponse"
             },
             "nullable": true
           },
-          "total_tokens": {
-            "minimum": 0,
-            "type": "integer",
-            "format": "int64"
+          "status": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
       },
       "UpdateApplicationRequest": {
-        "required": [
-          "name"
-        ],
+        "required": ["name"],
         "type": "object",
         "properties": {
           "name": {
@@ -8267,10 +11226,7 @@
         "additionalProperties": false
       },
       "UpdateProxyRequest": {
-        "required": [
-          "destination_url",
-          "name"
-        ],
+        "required": ["destination_url", "name"],
         "type": "object",
         "properties": {
           "name": {
@@ -8325,10 +11281,7 @@
         "additionalProperties": false
       },
       "UpdateReactorFormulaRequest": {
-        "required": [
-          "name",
-          "type"
-        ],
+        "required": ["name", "type"],
         "type": "object",
         "properties": {
           "type": {
@@ -8380,10 +11333,7 @@
         "deprecated": true
       },
       "UpdateReactorRequest": {
-        "required": [
-          "code",
-          "name"
-        ],
+        "required": ["code", "name"],
         "type": "object",
         "properties": {
           "name": {
@@ -8414,9 +11364,7 @@
         "additionalProperties": false
       },
       "UpdateTenantMemberRequest": {
-        "required": [
-          "role"
-        ],
+        "required": ["role"],
         "type": "object",
         "properties": {
           "role": {
@@ -8427,9 +11375,7 @@
         "additionalProperties": false
       },
       "UpdateTenantRequest": {
-        "required": [
-          "name"
-        ],
+        "required": ["name"],
         "type": "object",
         "properties": {
           "name": {
@@ -8579,7 +11525,7 @@
             "nullable": true
           }
         },
-        "additionalProperties": { }
+        "additionalProperties": {}
       }
     },
     "securitySchemes": {
@@ -8593,7 +11539,7 @@
   },
   "security": [
     {
-      "ApiKey": [ ]
+      "ApiKey": []
     }
   ]
 }

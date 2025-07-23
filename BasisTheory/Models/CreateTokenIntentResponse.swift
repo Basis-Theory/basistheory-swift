@@ -17,8 +17,12 @@ public struct CreateTokenIntentResponse: Codable, JSONEncodable, Hashable {
     public var createdAt: Date?
     public var expiresAt: Date?
     public var card: CardDetails?
+    public var bank: BankDetails?
+    public var networkToken: CardDetails?
+    public var authentication: JSONValue?
+    public var extras: TokenIntentExtras?
 
-    public init(id: String? = nil, type: String? = nil, tenantId: UUID? = nil, fingerprint: String? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, expiresAt: Date? = nil, card: CardDetails? = nil) {
+    public init(id: String? = nil, type: String? = nil, tenantId: UUID? = nil, fingerprint: String? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, expiresAt: Date? = nil, card: CardDetails? = nil, bank: BankDetails? = nil, networkToken: CardDetails? = nil, authentication: JSONValue? = nil, extras: TokenIntentExtras? = nil) {
         self.id = id
         self.type = type
         self.tenantId = tenantId
@@ -27,6 +31,10 @@ public struct CreateTokenIntentResponse: Codable, JSONEncodable, Hashable {
         self.createdAt = createdAt
         self.expiresAt = expiresAt
         self.card = card
+        self.bank = bank
+        self.networkToken = networkToken
+        self.authentication = authentication
+        self.extras = extras
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -38,6 +46,10 @@ public struct CreateTokenIntentResponse: Codable, JSONEncodable, Hashable {
         case createdAt = "created_at"
         case expiresAt = "expires_at"
         case card
+        case bank
+        case networkToken = "network_token"
+        case authentication
+        case extras = "_extras"
     }
 
     // Encodable protocol methods
@@ -52,6 +64,10 @@ public struct CreateTokenIntentResponse: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(createdAt, forKey: .createdAt)
         try containerEncoder.encodeIfPresent(expiresAt, forKey: .expiresAt)
         try containerEncoder.encodeIfPresent(card, forKey: .card)
+        try containerEncoder.encodeIfPresent(bank, forKey: .bank)
+        try containerEncoder.encodeIfPresent(networkToken, forKey: .networkToken)
+        try containerEncoder.encodeIfPresent(authentication, forKey: .authentication)
+        try containerEncoder.encodeIfPresent(extras, forKey: .extras)
     }
 }
 

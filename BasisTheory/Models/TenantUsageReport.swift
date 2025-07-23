@@ -9,21 +9,21 @@ import Foundation
 
 public struct TenantUsageReport: Codable, JSONEncodable, Hashable {
 
-    public var tokenReport: TokenReport?
+    public var totalTokens: Int64?
 
-    public init(tokenReport: TokenReport? = nil) {
-        self.tokenReport = tokenReport
+    public init(totalTokens: Int64? = nil) {
+        self.totalTokens = totalTokens
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case tokenReport = "token_report"
+        case totalTokens = "total_tokens"
     }
 
     // Encodable protocol methods
 
     public func encode(to encoder: Encoder) throws {
         var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
-        try containerEncoder.encodeIfPresent(tokenReport, forKey: .tokenReport)
+        try containerEncoder.encodeIfPresent(totalTokens, forKey: .totalTokens)
     }
 }
 
