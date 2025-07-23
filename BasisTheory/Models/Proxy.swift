@@ -22,12 +22,14 @@ public struct Proxy: Codable, JSONEncodable, Hashable {
     public var applicationId: UUID?
     public var configuration: [String: String]?
     public var proxyHost: String?
+    public var timeout: Int?
+    public var clientCertificate: String?
     public var createdBy: UUID?
     public var createdAt: Date?
     public var modifiedBy: UUID?
     public var modifiedAt: Date?
 
-    public init(id: UUID? = nil, key: String? = nil, tenantId: UUID? = nil, name: String? = nil, destinationUrl: String? = nil, requestReactorId: UUID? = nil, responseReactorId: UUID? = nil, requireAuth: Bool? = nil, requestTransform: ProxyTransform? = nil, responseTransform: ProxyTransform? = nil, applicationId: UUID? = nil, configuration: [String: String]? = nil, proxyHost: String? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, modifiedBy: UUID? = nil, modifiedAt: Date? = nil) {
+    public init(id: UUID? = nil, key: String? = nil, tenantId: UUID? = nil, name: String? = nil, destinationUrl: String? = nil, requestReactorId: UUID? = nil, responseReactorId: UUID? = nil, requireAuth: Bool? = nil, requestTransform: ProxyTransform? = nil, responseTransform: ProxyTransform? = nil, applicationId: UUID? = nil, configuration: [String: String]? = nil, proxyHost: String? = nil, timeout: Int? = nil, clientCertificate: String? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, modifiedBy: UUID? = nil, modifiedAt: Date? = nil) {
         self.id = id
         self.key = key
         self.tenantId = tenantId
@@ -41,6 +43,8 @@ public struct Proxy: Codable, JSONEncodable, Hashable {
         self.applicationId = applicationId
         self.configuration = configuration
         self.proxyHost = proxyHost
+        self.timeout = timeout
+        self.clientCertificate = clientCertificate
         self.createdBy = createdBy
         self.createdAt = createdAt
         self.modifiedBy = modifiedBy
@@ -61,6 +65,8 @@ public struct Proxy: Codable, JSONEncodable, Hashable {
         case applicationId = "application_id"
         case configuration
         case proxyHost = "proxy_host"
+        case timeout
+        case clientCertificate = "client_certificate"
         case createdBy = "created_by"
         case createdAt = "created_at"
         case modifiedBy = "modified_by"
@@ -84,6 +90,8 @@ public struct Proxy: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(applicationId, forKey: .applicationId)
         try containerEncoder.encodeIfPresent(configuration, forKey: .configuration)
         try containerEncoder.encodeIfPresent(proxyHost, forKey: .proxyHost)
+        try containerEncoder.encodeIfPresent(timeout, forKey: .timeout)
+        try containerEncoder.encodeIfPresent(clientCertificate, forKey: .clientCertificate)
         try containerEncoder.encodeIfPresent(createdBy, forKey: .createdBy)
         try containerEncoder.encodeIfPresent(createdAt, forKey: .createdAt)
         try containerEncoder.encodeIfPresent(modifiedBy, forKey: .modifiedBy)

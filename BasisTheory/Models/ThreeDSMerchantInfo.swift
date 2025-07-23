@@ -14,14 +14,16 @@ public struct ThreeDSMerchantInfo: Codable, JSONEncodable, Hashable {
     public var name: String?
     public var countryCode: String?
     public var categoryCode: String?
+    public var url: String?
     public var riskInfo: ThreeDSMerchantRiskInfo?
 
-    public init(mid: String? = nil, acquirerBin: String? = nil, name: String? = nil, countryCode: String? = nil, categoryCode: String? = nil, riskInfo: ThreeDSMerchantRiskInfo? = nil) {
+    public init(mid: String? = nil, acquirerBin: String? = nil, name: String? = nil, countryCode: String? = nil, categoryCode: String? = nil, url: String? = nil, riskInfo: ThreeDSMerchantRiskInfo? = nil) {
         self.mid = mid
         self.acquirerBin = acquirerBin
         self.name = name
         self.countryCode = countryCode
         self.categoryCode = categoryCode
+        self.url = url
         self.riskInfo = riskInfo
     }
 
@@ -31,6 +33,7 @@ public struct ThreeDSMerchantInfo: Codable, JSONEncodable, Hashable {
         case name
         case countryCode = "country_code"
         case categoryCode = "category_code"
+        case url
         case riskInfo = "risk_info"
     }
 
@@ -43,6 +46,7 @@ public struct ThreeDSMerchantInfo: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(name, forKey: .name)
         try containerEncoder.encodeIfPresent(countryCode, forKey: .countryCode)
         try containerEncoder.encodeIfPresent(categoryCode, forKey: .categoryCode)
+        try containerEncoder.encodeIfPresent(url, forKey: .url)
         try containerEncoder.encodeIfPresent(riskInfo, forKey: .riskInfo)
     }
 }

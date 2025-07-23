@@ -16,6 +16,8 @@ Name | Type | Description | Notes
 **applicationId** | **UUID** |  | [optional] 
 **configuration** | **[String: String]** |  | [optional] 
 **proxyHost** | **String** |  | [optional] 
+**timeout** | **Int** |  | [optional] 
+**clientCertificate** | **String** |  | [optional] 
 **createdBy** | **UUID** |  | [optional] 
 **createdAt** | **Date** |  | [optional] 
 **modifiedBy** | **UUID** |  | [optional] 

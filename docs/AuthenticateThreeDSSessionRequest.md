@@ -5,12 +5,13 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **authenticationCategory** | **String** |  | 
 **authenticationType** | **String** |  | 
+**cardBrand** | **String** |  | [optional] 
 **challengePreference** | **String** |  | [optional] 
 **requestDecoupledChallenge** | **Bool** |  | [optional] 
 **decoupledChallengeMaxTime** | **Int** |  | [optional] 
 **purchaseInfo** | [**ThreeDSPurchaseInfo**](ThreeDSPurchaseInfo.md) |  | [optional] 
 **merchantInfo** | [**ThreeDSMerchantInfo**](ThreeDSMerchantInfo.md) |  | [optional] 
-**requestorInfo** | [**ThreeDSRequestorInfo**](ThreeDSRequestorInfo.md) |  | 
+**requestorInfo** | [**ThreeDSRequestorInfo**](ThreeDSRequestorInfo.md) |  | [optional] 
 **cardholderInfo** | [**ThreeDSCardholderInfo**](ThreeDSCardholderInfo.md) |  | [optional] 
 **broadcastInfo** | **JSONValue** |  | [optional] 
 **messageExtensions** | [ThreeDSMessageExtension] |  | [optional] 

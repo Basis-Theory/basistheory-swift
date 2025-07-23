@@ -10,13 +10,25 @@ import Foundation
 public struct TokenExtras: Codable, JSONEncodable, Hashable {
 
     public var deduplicated: Bool?
+    public var tspDetails: TokenServiceProviderDetails?
+    public var deduplicationBehavior: String?
+    public var networkTokenIds: [String]?
+    public var decryptedPayload: Bool?
 
-    public init(deduplicated: Bool? = nil) {
+    public init(deduplicated: Bool? = nil, tspDetails: TokenServiceProviderDetails? = nil, deduplicationBehavior: String? = nil, networkTokenIds: [String]? = nil, decryptedPayload: Bool? = nil) {
         self.deduplicated = deduplicated
+        self.tspDetails = tspDetails
+        self.deduplicationBehavior = deduplicationBehavior
+        self.networkTokenIds = networkTokenIds
+        self.decryptedPayload = decryptedPayload
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case deduplicated
+        case tspDetails = "tsp_details"
+        case deduplicationBehavior = "deduplication_behavior"
+        case networkTokenIds = "network_token_ids"
+        case decryptedPayload = "decrypted_payload"
     }
 
     // Encodable protocol methods
@@ -24,6 +36,10 @@ public struct TokenExtras: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var containerEncoder = encoder.container(keyedBy: CodingKeys.self)
         try containerEncoder.encodeIfPresent(deduplicated, forKey: .deduplicated)
+        try containerEncoder.encodeIfPresent(tspDetails, forKey: .tspDetails)
+        try containerEncoder.encodeIfPresent(deduplicationBehavior, forKey: .deduplicationBehavior)
+        try containerEncoder.encodeIfPresent(networkTokenIds, forKey: .networkTokenIds)
+        try containerEncoder.encodeIfPresent(decryptedPayload, forKey: .decryptedPayload)
     }
 }
 

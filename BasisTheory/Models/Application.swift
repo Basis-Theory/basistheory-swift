@@ -20,11 +20,10 @@ public struct Application: Codable, JSONEncodable, Hashable {
     public var createdAt: Date?
     public var modifiedBy: UUID?
     public var modifiedAt: Date?
-    public var expiresAt: Date?
     public var permissions: [String]?
     public var rules: [AccessRule]?
 
-    public init(id: UUID? = nil, tenantId: UUID? = nil, name: String? = nil, key: String? = nil, keys: [ApplicationKey]? = nil, type: String? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, modifiedBy: UUID? = nil, modifiedAt: Date? = nil, expiresAt: Date? = nil, permissions: [String]? = nil, rules: [AccessRule]? = nil) {
+    public init(id: UUID? = nil, tenantId: UUID? = nil, name: String? = nil, key: String? = nil, keys: [ApplicationKey]? = nil, type: String? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, modifiedBy: UUID? = nil, modifiedAt: Date? = nil, permissions: [String]? = nil, rules: [AccessRule]? = nil) {
         self.id = id
         self.tenantId = tenantId
         self.name = name
@@ -35,7 +34,6 @@ public struct Application: Codable, JSONEncodable, Hashable {
         self.createdAt = createdAt
         self.modifiedBy = modifiedBy
         self.modifiedAt = modifiedAt
-        self.expiresAt = expiresAt
         self.permissions = permissions
         self.rules = rules
     }
@@ -51,7 +49,6 @@ public struct Application: Codable, JSONEncodable, Hashable {
         case createdAt = "created_at"
         case modifiedBy = "modified_by"
         case modifiedAt = "modified_at"
-        case expiresAt = "expires_at"
         case permissions
         case rules
     }
@@ -70,7 +67,6 @@ public struct Application: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(createdAt, forKey: .createdAt)
         try containerEncoder.encodeIfPresent(modifiedBy, forKey: .modifiedBy)
         try containerEncoder.encodeIfPresent(modifiedAt, forKey: .modifiedAt)
-        try containerEncoder.encodeIfPresent(expiresAt, forKey: .expiresAt)
         try containerEncoder.encodeIfPresent(permissions, forKey: .permissions)
         try containerEncoder.encodeIfPresent(rules, forKey: .rules)
     }

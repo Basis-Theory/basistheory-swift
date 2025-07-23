@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **id** | **String** |  | [optional] 
 **type** | **String** |  | [optional] 
 **data** | **JSONValue** |  | [optional] 
+**encrypted** | **String** |  | [optional] 
 **privacy** | [**Privacy**](Privacy.md) |  | [optional] 
 **metadata** | **[String: String]** |  | [optional] 
 **searchIndexes** | **[String]** |  | [optional] 

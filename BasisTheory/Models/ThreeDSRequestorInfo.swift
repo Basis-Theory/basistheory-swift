@@ -9,20 +9,35 @@ import Foundation
 
 public struct ThreeDSRequestorInfo: Codable, JSONEncodable, Hashable {
 
+    @available(*, deprecated, message: "This property is deprecated.")
     public var id: String?
+    @available(*, deprecated, message: "This property is deprecated.")
     public var name: String?
+    @available(*, deprecated, message: "This property is deprecated.")
     public var url: String?
+    public var discoverClientId: String?
+    public var discoverRequestorId: String?
+    public var amexRequestorType: String?
+    public var cbSiretNumber: String?
 
-    public init(id: String? = nil, name: String? = nil, url: String? = nil) {
+    public init(id: String? = nil, name: String? = nil, url: String? = nil, discoverClientId: String? = nil, discoverRequestorId: String? = nil, amexRequestorType: String? = nil, cbSiretNumber: String? = nil) {
         self.id = id
         self.name = name
         self.url = url
+        self.discoverClientId = discoverClientId
+        self.discoverRequestorId = discoverRequestorId
+        self.amexRequestorType = amexRequestorType
+        self.cbSiretNumber = cbSiretNumber
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case id
         case name
         case url
+        case discoverClientId = "discover_client_id"
+        case discoverRequestorId = "discover_requestor_id"
+        case amexRequestorType = "amex_requestor_type"
+        case cbSiretNumber = "cb_siret_number"
     }
 
     // Encodable protocol methods
@@ -32,6 +47,10 @@ public struct ThreeDSRequestorInfo: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(id, forKey: .id)
         try containerEncoder.encodeIfPresent(name, forKey: .name)
         try containerEncoder.encodeIfPresent(url, forKey: .url)
+        try containerEncoder.encodeIfPresent(discoverClientId, forKey: .discoverClientId)
+        try containerEncoder.encodeIfPresent(discoverRequestorId, forKey: .discoverRequestorId)
+        try containerEncoder.encodeIfPresent(amexRequestorType, forKey: .amexRequestorType)
+        try containerEncoder.encodeIfPresent(cbSiretNumber, forKey: .cbSiretNumber)
     }
 }
 

@@ -17,6 +17,7 @@ public struct ThreeDSSession: Codable, JSONEncodable, Hashable {
     public var tokenId: String?
     public var tokenIntentId: String?
     public var cardBrand: String?
+    public var additionalCardBrands: [String]?
     public var expirationDate: Date?
     public var createdDate: Date?
     public var createdBy: UUID?
@@ -24,11 +25,12 @@ public struct ThreeDSSession: Codable, JSONEncodable, Hashable {
     public var modifiedBy: UUID?
     public var device: String?
     public var deviceInfo: ThreeDSDeviceInfo?
+    public var webChallengeMode: String?
     public var version: ThreeDSVersion?
     public var method: ThreeDSMethod?
     public var authentication: ThreeDSAuthentication?
 
-    public init(id: UUID? = nil, type: String? = nil, tenantId: UUID? = nil, panTokenId: String? = nil, tokenId: String? = nil, tokenIntentId: String? = nil, cardBrand: String? = nil, expirationDate: Date? = nil, createdDate: Date? = nil, createdBy: UUID? = nil, modifiedDate: Date? = nil, modifiedBy: UUID? = nil, device: String? = nil, deviceInfo: ThreeDSDeviceInfo? = nil, version: ThreeDSVersion? = nil, method: ThreeDSMethod? = nil, authentication: ThreeDSAuthentication? = nil) {
+    public init(id: UUID? = nil, type: String? = nil, tenantId: UUID? = nil, panTokenId: String? = nil, tokenId: String? = nil, tokenIntentId: String? = nil, cardBrand: String? = nil, additionalCardBrands: [String]? = nil, expirationDate: Date? = nil, createdDate: Date? = nil, createdBy: UUID? = nil, modifiedDate: Date? = nil, modifiedBy: UUID? = nil, device: String? = nil, deviceInfo: ThreeDSDeviceInfo? = nil, webChallengeMode: String? = nil, version: ThreeDSVersion? = nil, method: ThreeDSMethod? = nil, authentication: ThreeDSAuthentication? = nil) {
         self.id = id
         self.type = type
         self.tenantId = tenantId
@@ -36,6 +38,7 @@ public struct ThreeDSSession: Codable, JSONEncodable, Hashable {
         self.tokenId = tokenId
         self.tokenIntentId = tokenIntentId
         self.cardBrand = cardBrand
+        self.additionalCardBrands = additionalCardBrands
         self.expirationDate = expirationDate
         self.createdDate = createdDate
         self.createdBy = createdBy
@@ -43,6 +46,7 @@ public struct ThreeDSSession: Codable, JSONEncodable, Hashable {
         self.modifiedBy = modifiedBy
         self.device = device
         self.deviceInfo = deviceInfo
+        self.webChallengeMode = webChallengeMode
         self.version = version
         self.method = method
         self.authentication = authentication
@@ -56,6 +60,7 @@ public struct ThreeDSSession: Codable, JSONEncodable, Hashable {
         case tokenId = "token_id"
         case tokenIntentId = "token_intent_id"
         case cardBrand = "card_brand"
+        case additionalCardBrands = "additional_card_brands"
         case expirationDate = "expiration_date"
         case createdDate = "created_date"
         case createdBy = "created_by"
@@ -63,6 +68,7 @@ public struct ThreeDSSession: Codable, JSONEncodable, Hashable {
         case modifiedBy = "modified_by"
         case device
         case deviceInfo = "device_info"
+        case webChallengeMode = "web_challenge_mode"
         case version
         case method
         case authentication
@@ -79,6 +85,7 @@ public struct ThreeDSSession: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(tokenId, forKey: .tokenId)
         try containerEncoder.encodeIfPresent(tokenIntentId, forKey: .tokenIntentId)
         try containerEncoder.encodeIfPresent(cardBrand, forKey: .cardBrand)
+        try containerEncoder.encodeIfPresent(additionalCardBrands, forKey: .additionalCardBrands)
         try containerEncoder.encodeIfPresent(expirationDate, forKey: .expirationDate)
         try containerEncoder.encodeIfPresent(createdDate, forKey: .createdDate)
         try containerEncoder.encodeIfPresent(createdBy, forKey: .createdBy)
@@ -86,6 +93,7 @@ public struct ThreeDSSession: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(modifiedBy, forKey: .modifiedBy)
         try containerEncoder.encodeIfPresent(device, forKey: .device)
         try containerEncoder.encodeIfPresent(deviceInfo, forKey: .deviceInfo)
+        try containerEncoder.encodeIfPresent(webChallengeMode, forKey: .webChallengeMode)
         try containerEncoder.encodeIfPresent(version, forKey: .version)
         try containerEncoder.encodeIfPresent(method, forKey: .method)
         try containerEncoder.encodeIfPresent(authentication, forKey: .authentication)

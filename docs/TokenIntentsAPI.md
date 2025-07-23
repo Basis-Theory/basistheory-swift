@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**create**](TokenIntentsAPI.md#create) | **POST** /token-intents | 
 [**delete**](TokenIntentsAPI.md#delete) | **DELETE** /token-intents/{id} | 
+[**read**](TokenIntentsAPI.md#read) | **GET** /token-intents/{id} | 
 
 
 # **create**
@@ -99,6 +100,53 @@ Void (empty response body)
 
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json, application/xml, text/xml
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **read**
+```swift
+    open class func read(id: String, completion: @escaping (_ data: TokenIntent?, _ error: Error?) -> Void)
+```
+
+
+
+### Example
+```swift
+// The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
+import BasisTheory
+
+let id = "id_example" // String | 
+
+TokenIntentsAPI.read(id: id) { (response, error) in
+    guard error == nil else {
+        print(error)
+        return
+    }
+
+    if (response) {
+        dump(response)
+    }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String** |  | 
+
+### Return type
+
+[**TokenIntent**](TokenIntent.md)
+
+### Authorization
+
+[ApiKey](../README.md#ApiKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

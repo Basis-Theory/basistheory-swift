@@ -11,6 +11,9 @@ Name | Type | Description | Notes
 **enrichments** | [**TokenEnrichments**](TokenEnrichments.md) |  | [optional] 
 **createdBy** | **UUID** |  | [optional] 
 **createdAt** | **Date** |  | [optional] 
+**card** | [**CardDetails**](CardDetails.md) |  | [optional] 
+**bank** | [**BankDetails**](BankDetails.md) |  | [optional] 
+**networkToken** | [**CardDetails**](CardDetails.md) |  | [optional] 
 **modifiedBy** | **UUID** |  | [optional] 
 **modifiedAt** | **Date** |  | [optional] 
 **fingerprint** | **String** |  | [optional] 
@@ -21,6 +24,7 @@ Name | Type | Description | Notes
 **expiresAt** | **Date** |  | [optional] 
 **containers** | **[String]** |  | [optional] 
 **aliases** | **[String]** |  | [optional] 
+**authentication** | **JSONValue** |  | [optional] 
 **extras** | [**TokenExtras**](TokenExtras.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

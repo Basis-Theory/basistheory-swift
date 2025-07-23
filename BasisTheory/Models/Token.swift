@@ -17,6 +17,9 @@ public struct Token: Codable, JSONEncodable, Hashable {
     public var enrichments: TokenEnrichments?
     public var createdBy: UUID?
     public var createdAt: Date?
+    public var card: CardDetails?
+    public var bank: BankDetails?
+    public var networkToken: CardDetails?
     public var modifiedBy: UUID?
     public var modifiedAt: Date?
     public var fingerprint: String?
@@ -27,9 +30,10 @@ public struct Token: Codable, JSONEncodable, Hashable {
     public var expiresAt: Date?
     public var containers: [String]?
     public var aliases: [String]?
+    public var authentication: JSONValue?
     public var extras: TokenExtras?
 
-    public init(id: String? = nil, type: String? = nil, tenantId: UUID? = nil, data: JSONValue? = nil, metadata: [String: String]? = nil, enrichments: TokenEnrichments? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, modifiedBy: UUID? = nil, modifiedAt: Date? = nil, fingerprint: String? = nil, fingerprintExpression: String? = nil, mask: JSONValue? = nil, privacy: Privacy? = nil, searchIndexes: [String]? = nil, expiresAt: Date? = nil, containers: [String]? = nil, aliases: [String]? = nil, extras: TokenExtras? = nil) {
+    public init(id: String? = nil, type: String? = nil, tenantId: UUID? = nil, data: JSONValue? = nil, metadata: [String: String]? = nil, enrichments: TokenEnrichments? = nil, createdBy: UUID? = nil, createdAt: Date? = nil, card: CardDetails? = nil, bank: BankDetails? = nil, networkToken: CardDetails? = nil, modifiedBy: UUID? = nil, modifiedAt: Date? = nil, fingerprint: String? = nil, fingerprintExpression: String? = nil, mask: JSONValue? = nil, privacy: Privacy? = nil, searchIndexes: [String]? = nil, expiresAt: Date? = nil, containers: [String]? = nil, aliases: [String]? = nil, authentication: JSONValue? = nil, extras: TokenExtras? = nil) {
         self.id = id
         self.type = type
         self.tenantId = tenantId
@@ -38,6 +42,9 @@ public struct Token: Codable, JSONEncodable, Hashable {
         self.enrichments = enrichments
         self.createdBy = createdBy
         self.createdAt = createdAt
+        self.card = card
+        self.bank = bank
+        self.networkToken = networkToken
         self.modifiedBy = modifiedBy
         self.modifiedAt = modifiedAt
         self.fingerprint = fingerprint
@@ -48,6 +55,7 @@ public struct Token: Codable, JSONEncodable, Hashable {
         self.expiresAt = expiresAt
         self.containers = containers
         self.aliases = aliases
+        self.authentication = authentication
         self.extras = extras
     }
 
@@ -60,6 +68,9 @@ public struct Token: Codable, JSONEncodable, Hashable {
         case enrichments
         case createdBy = "created_by"
         case createdAt = "created_at"
+        case card
+        case bank
+        case networkToken = "network_token"
         case modifiedBy = "modified_by"
         case modifiedAt = "modified_at"
         case fingerprint
@@ -70,6 +81,7 @@ public struct Token: Codable, JSONEncodable, Hashable {
         case expiresAt = "expires_at"
         case containers
         case aliases
+        case authentication
         case extras = "_extras"
     }
 
@@ -85,6 +97,9 @@ public struct Token: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(enrichments, forKey: .enrichments)
         try containerEncoder.encodeIfPresent(createdBy, forKey: .createdBy)
         try containerEncoder.encodeIfPresent(createdAt, forKey: .createdAt)
+        try containerEncoder.encodeIfPresent(card, forKey: .card)
+        try containerEncoder.encodeIfPresent(bank, forKey: .bank)
+        try containerEncoder.encodeIfPresent(networkToken, forKey: .networkToken)
         try containerEncoder.encodeIfPresent(modifiedBy, forKey: .modifiedBy)
         try containerEncoder.encodeIfPresent(modifiedAt, forKey: .modifiedAt)
         try containerEncoder.encodeIfPresent(fingerprint, forKey: .fingerprint)
@@ -95,6 +110,7 @@ public struct Token: Codable, JSONEncodable, Hashable {
         try containerEncoder.encodeIfPresent(expiresAt, forKey: .expiresAt)
         try containerEncoder.encodeIfPresent(containers, forKey: .containers)
         try containerEncoder.encodeIfPresent(aliases, forKey: .aliases)
+        try containerEncoder.encodeIfPresent(authentication, forKey: .authentication)
         try containerEncoder.encodeIfPresent(extras, forKey: .extras)
     }
 }
