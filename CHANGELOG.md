@@ -1,3 +1,11 @@
+## [3.1.0](https://github.com/Basis-Theory/basistheory-swift/compare/3.0.1...3.1.0) (2025-07-23)
+
+
+### Features
+
+* update api spec ([#33](https://github.com/Basis-Theory/basistheory-swift/issues/33)) ([975f6ec](https://github.com/Basis-Theory/basistheory-swift/commit/975f6ecc2d85491fc93273931284f6d2621d3880))
+
+
 ### [3.0.1](https://github.com/Basis-Theory/basistheory-swift/compare/3.0.0...3.0.1) (2024-12-11)
 
 
