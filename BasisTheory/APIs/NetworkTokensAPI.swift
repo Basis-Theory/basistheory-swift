@@ -16,7 +16,7 @@ open class NetworkTokensAPI {
      - returns: NetworkToken
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func tokensCreate(createNetworkTokenRequest: CreateNetworkTokenRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> NetworkToken {
+    open class func tokensCreate(createNetworkTokenRequest: CreateNetworkTokenRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> NetworkToken {
         return try await tokensCreateWithRequestBuilder(createNetworkTokenRequest: createNetworkTokenRequest, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -54,7 +54,7 @@ open class NetworkTokensAPI {
      - returns: NetworkTokenCryptogram
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func tokensCryptogram(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> NetworkTokenCryptogram {
+    open class func tokensCryptogram(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> NetworkTokenCryptogram {
         return try await tokensCryptogramWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -95,7 +95,7 @@ open class NetworkTokensAPI {
      - returns: Void
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func tokensDelete(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws {
+    open class func tokensDelete(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) {
         return try await tokensDeleteWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -136,7 +136,7 @@ open class NetworkTokensAPI {
      - returns: NetworkToken
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func tokensGet(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> NetworkToken {
+    open class func tokensGet(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> NetworkToken {
         return try await tokensGetWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -177,7 +177,7 @@ open class NetworkTokensAPI {
      - returns: NetworkToken
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func tokensResume(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> NetworkToken {
+    open class func tokensResume(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> NetworkToken {
         return try await tokensResumeWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -218,7 +218,7 @@ open class NetworkTokensAPI {
      - returns: NetworkToken
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func tokensSuspend(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> NetworkToken {
+    open class func tokensSuspend(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> NetworkToken {
         return try await tokensSuspendWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 

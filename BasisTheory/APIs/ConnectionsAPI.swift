@@ -16,7 +16,7 @@ open class ConnectionsAPI {
      - returns: Void
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func applePayDomainDeregistration(applePayDomainDeregistrationRequest: ApplePayDomainDeregistrationRequest? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws {
+    open class func applePayDomainDeregistration(applePayDomainDeregistrationRequest: ApplePayDomainDeregistrationRequest? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) {
         return try await applePayDomainDeregistrationWithRequestBuilder(applePayDomainDeregistrationRequest: applePayDomainDeregistrationRequest, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -54,7 +54,7 @@ open class ConnectionsAPI {
      - returns: ApplePayDomainRegistrationResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func applePayDomainRegistration(applePayDomainRegistrationRequest: ApplePayDomainRegistrationRequest? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> ApplePayDomainRegistrationResponse {
+    open class func applePayDomainRegistration(applePayDomainRegistrationRequest: ApplePayDomainRegistrationRequest? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ApplePayDomainRegistrationResponse {
         return try await applePayDomainRegistrationWithRequestBuilder(applePayDomainRegistrationRequest: applePayDomainRegistrationRequest, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -91,7 +91,7 @@ open class ConnectionsAPI {
      - returns: ApplePayDomainRegistrationResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func applePayGetDomainRegistration(apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> ApplePayDomainRegistrationResponse {
+    open class func applePayGetDomainRegistration(apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ApplePayDomainRegistrationResponse {
         return try await applePayGetDomainRegistrationWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -128,7 +128,7 @@ open class ConnectionsAPI {
      - returns: ApplePayDomainRegistrationResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func applePayPutDomainRegistration(applePayDomainRegistrationListRequest: ApplePayDomainRegistrationListRequest? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> ApplePayDomainRegistrationResponse {
+    open class func applePayPutDomainRegistration(applePayDomainRegistrationListRequest: ApplePayDomainRegistrationListRequest? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ApplePayDomainRegistrationResponse {
         return try await applePayPutDomainRegistrationWithRequestBuilder(applePayDomainRegistrationListRequest: applePayDomainRegistrationListRequest, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -166,7 +166,7 @@ open class ConnectionsAPI {
      - returns: String
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func applePaySession(applePaySessionRequest: ApplePaySessionRequest? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> String {
+    open class func applePaySession(applePaySessionRequest: ApplePaySessionRequest? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> String {
         return try await applePaySessionWithRequestBuilder(applePaySessionRequest: applePaySessionRequest, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -204,7 +204,7 @@ open class ConnectionsAPI {
      - returns: ApplePayTokenizeResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func applePayTokenize(applePayTokenizeRequest: ApplePayTokenizeRequest? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> ApplePayTokenizeResponse {
+    open class func applePayTokenize(applePayTokenizeRequest: ApplePayTokenizeRequest? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ApplePayTokenizeResponse {
         return try await applePayTokenizeWithRequestBuilder(applePayTokenizeRequest: applePayTokenizeRequest, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -242,7 +242,7 @@ open class ConnectionsAPI {
      - returns: GooglePayTokenizeResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func payTokenize(googlePayTokenizeRequest: GooglePayTokenizeRequest? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> GooglePayTokenizeResponse {
+    open class func payTokenize(googlePayTokenizeRequest: GooglePayTokenizeRequest? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> GooglePayTokenizeResponse {
         return try await payTokenizeWithRequestBuilder(googlePayTokenizeRequest: googlePayTokenizeRequest, apiConfiguration: apiConfiguration).execute().body
     }
 

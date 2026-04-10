@@ -20,7 +20,7 @@ open class ReactorsAPI {
      - returns: ReactorPaginatedList
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func callGet(id: [UUID]? = nil, name: String? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> ReactorPaginatedList {
+    open class func callGet(id: [UUID]? = nil, name: String? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ReactorPaginatedList {
         return try await callGetWithRequestBuilder(id: id, name: name, page: page, start: start, size: size, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -69,7 +69,7 @@ open class ReactorsAPI {
      - returns: Reactor
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func create(createReactorRequest: CreateReactorRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> Reactor {
+    open class func create(createReactorRequest: CreateReactorRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> Reactor {
         return try await createWithRequestBuilder(createReactorRequest: createReactorRequest, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -107,7 +107,7 @@ open class ReactorsAPI {
      - returns: Void
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func delete(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws {
+    open class func delete(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) {
         return try await deleteWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -148,7 +148,7 @@ open class ReactorsAPI {
      - returns: Reactor
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func getById(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> Reactor {
+    open class func getById(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> Reactor {
         return try await getByIdWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -190,7 +190,7 @@ open class ReactorsAPI {
      - returns: Void
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func patch(id: UUID, patchReactorRequest: PatchReactorRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws {
+    open class func patch(id: UUID, patchReactorRequest: PatchReactorRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) {
         return try await patchWithRequestBuilder(id: id, patchReactorRequest: patchReactorRequest, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -233,7 +233,7 @@ open class ReactorsAPI {
      - returns: ReactResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func react(id: UUID, reactRequest: ReactRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> ReactResponse {
+    open class func react(id: UUID, reactRequest: ReactRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ReactResponse {
         return try await reactWithRequestBuilder(id: id, reactRequest: reactRequest, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -276,7 +276,7 @@ open class ReactorsAPI {
      - returns: AsyncReactResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func reactAsync(id: UUID, reactRequestAsync: ReactRequestAsync, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> AsyncReactResponse {
+    open class func reactAsync(id: UUID, reactRequestAsync: ReactRequestAsync, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> AsyncReactResponse {
         return try await reactAsyncWithRequestBuilder(id: id, reactRequestAsync: reactRequestAsync, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -319,7 +319,7 @@ open class ReactorsAPI {
      - returns: JSONValue
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func resultGetById(id: UUID, requestId: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> JSONValue {
+    open class func resultGetById(id: UUID, requestId: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> JSONValue {
         return try await resultGetByIdWithRequestBuilder(id: id, requestId: requestId, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -365,7 +365,7 @@ open class ReactorsAPI {
      - returns: Reactor
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func update(id: UUID, updateReactorRequest: UpdateReactorRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> Reactor {
+    open class func update(id: UUID, updateReactorRequest: UpdateReactorRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> Reactor {
         return try await updateWithRequestBuilder(id: id, updateReactorRequest: updateReactorRequest, apiConfiguration: apiConfiguration).execute().body
     }
 

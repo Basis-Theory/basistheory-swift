@@ -16,7 +16,7 @@ open class KeysAPI {
      - returns: ClientEncryptionKeyMetadataResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func callGet(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> ClientEncryptionKeyMetadataResponse {
+    open class func callGet(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ClientEncryptionKeyMetadataResponse {
         return try await callGetWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -57,7 +57,7 @@ open class KeysAPI {
      - returns: ClientEncryptionKeyResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func create(clientEncryptionKeyRequest: ClientEncryptionKeyRequest? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> ClientEncryptionKeyResponse {
+    open class func create(clientEncryptionKeyRequest: ClientEncryptionKeyRequest? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ClientEncryptionKeyResponse {
         return try await createWithRequestBuilder(clientEncryptionKeyRequest: clientEncryptionKeyRequest, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -95,7 +95,7 @@ open class KeysAPI {
      - returns: Void
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func delete(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws {
+    open class func delete(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) {
         return try await deleteWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -135,7 +135,7 @@ open class KeysAPI {
      - returns: [ClientEncryptionKeyMetadataResponse]
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func list(apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> [ClientEncryptionKeyMetadataResponse] {
+    open class func list(apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> [ClientEncryptionKeyMetadataResponse] {
         return try await listWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
     }
 

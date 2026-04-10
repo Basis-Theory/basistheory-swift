@@ -16,7 +16,7 @@ open class PermissionsAPI {
      - returns: [Permission]
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func callGet(applicationType: String? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> [Permission] {
+    open class func callGet(applicationType: String? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> [Permission] {
         return try await callGetWithRequestBuilder(applicationType: applicationType, apiConfiguration: apiConfiguration).execute().body
     }
 

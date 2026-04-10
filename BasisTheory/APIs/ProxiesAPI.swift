@@ -20,7 +20,7 @@ open class ProxiesAPI {
      - returns: ProxyPaginatedList
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func callGet(id: [UUID]? = nil, name: String? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> ProxyPaginatedList {
+    open class func callGet(id: [UUID]? = nil, name: String? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ProxyPaginatedList {
         return try await callGetWithRequestBuilder(id: id, name: name, page: page, start: start, size: size, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -69,7 +69,7 @@ open class ProxiesAPI {
      - returns: Proxy
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func create(createProxyRequest: CreateProxyRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> Proxy {
+    open class func create(createProxyRequest: CreateProxyRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> Proxy {
         return try await createWithRequestBuilder(createProxyRequest: createProxyRequest, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -107,7 +107,7 @@ open class ProxiesAPI {
      - returns: Void
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func delete(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws {
+    open class func delete(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) {
         return try await deleteWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -148,7 +148,7 @@ open class ProxiesAPI {
      - returns: Proxy
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func getById(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> Proxy {
+    open class func getById(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> Proxy {
         return try await getByIdWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -190,7 +190,7 @@ open class ProxiesAPI {
      - returns: Void
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func patch(id: UUID, patchProxyRequest: PatchProxyRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws {
+    open class func patch(id: UUID, patchProxyRequest: PatchProxyRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) {
         return try await patchWithRequestBuilder(id: id, patchProxyRequest: patchProxyRequest, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -233,7 +233,7 @@ open class ProxiesAPI {
      - returns: Proxy
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func update(id: UUID, updateProxyRequest: UpdateProxyRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> Proxy {
+    open class func update(id: UUID, updateProxyRequest: UpdateProxyRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> Proxy {
         return try await updateWithRequestBuilder(id: id, updateProxyRequest: updateProxyRequest, apiConfiguration: apiConfiguration).execute().body
     }
 

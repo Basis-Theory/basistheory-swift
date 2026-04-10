@@ -16,7 +16,7 @@ open class GooglePayAPI {
      - returns: GooglePayTokenizeResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func payTokenize(googlePayTokenizeRequest: GooglePayTokenizeRequest? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> GooglePayTokenizeResponse {
+    open class func payTokenize(googlePayTokenizeRequest: GooglePayTokenizeRequest? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> GooglePayTokenizeResponse {
         return try await payTokenizeWithRequestBuilder(googlePayTokenizeRequest: googlePayTokenizeRequest, apiConfiguration: apiConfiguration).execute().body
     }
 

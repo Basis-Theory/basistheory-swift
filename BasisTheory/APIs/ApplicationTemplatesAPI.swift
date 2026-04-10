@@ -15,7 +15,7 @@ open class ApplicationTemplatesAPI {
      - returns: [ApplicationTemplate]
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func callGet(apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> [ApplicationTemplate] {
+    open class func callGet(apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> [ApplicationTemplate] {
         return try await callGetWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -52,7 +52,7 @@ open class ApplicationTemplatesAPI {
      - returns: ApplicationTemplate
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func getById(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> ApplicationTemplate {
+    open class func getById(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ApplicationTemplate {
         return try await getByIdWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 
