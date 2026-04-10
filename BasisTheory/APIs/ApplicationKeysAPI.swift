@@ -18,7 +18,7 @@ open class ApplicationKeysAPI {
      - returns: [ApplicationKey]
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func callGet(id: UUID, id2: [UUID]? = nil, type: [String]? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> [ApplicationKey] {
+    open class func callGet(id: UUID, id2: [UUID]? = nil, type: [String]? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> [ApplicationKey] {
         return try await callGetWithRequestBuilder(id: id, id2: id2, type: type, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -65,7 +65,7 @@ open class ApplicationKeysAPI {
      - returns: ApplicationKey
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func create(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ApplicationKey {
+    open class func create(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> ApplicationKey {
         return try await createWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -107,7 +107,7 @@ open class ApplicationKeysAPI {
      - returns: Void
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func delete(id: UUID, keyId: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) {
+    open class func delete(id: UUID, keyId: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws {
         return try await deleteWithRequestBuilder(id: id, keyId: keyId, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -153,7 +153,7 @@ open class ApplicationKeysAPI {
      - returns: ApplicationKey
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func getById(id: UUID, keyId: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ApplicationKey {
+    open class func getById(id: UUID, keyId: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> ApplicationKey {
         return try await getByIdWithRequestBuilder(id: id, keyId: keyId, apiConfiguration: apiConfiguration).execute().body
     }
 

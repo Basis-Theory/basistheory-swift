@@ -16,7 +16,7 @@ open class EnrichmentsAPI {
      - returns: BankVerificationResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func bankAccountVerify(bankVerificationRequest: BankVerificationRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> BankVerificationResponse {
+    open class func bankAccountVerify(bankVerificationRequest: BankVerificationRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> BankVerificationResponse {
         return try await bankAccountVerifyWithRequestBuilder(bankVerificationRequest: bankVerificationRequest, apiConfiguration: apiConfiguration).execute().body
     }
 

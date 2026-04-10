@@ -15,7 +15,7 @@ open class RolesAPI {
      - returns: [Role]
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func callGet(apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> [Role] {
+    open class func callGet(apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> [Role] {
         return try await callGetWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
     }
 

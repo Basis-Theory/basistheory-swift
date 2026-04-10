@@ -20,7 +20,7 @@ open class ApplicationsAPI {
      - returns: ApplicationPaginatedList
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func callGet(id: [UUID]? = nil, type: [String]? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ApplicationPaginatedList {
+    open class func callGet(id: [UUID]? = nil, type: [String]? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> ApplicationPaginatedList {
         return try await callGetWithRequestBuilder(id: id, type: type, page: page, start: start, size: size, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -69,7 +69,7 @@ open class ApplicationsAPI {
      - returns: Application
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func create(createApplicationRequest: CreateApplicationRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> Application {
+    open class func create(createApplicationRequest: CreateApplicationRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> Application {
         return try await createWithRequestBuilder(createApplicationRequest: createApplicationRequest, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -107,7 +107,7 @@ open class ApplicationsAPI {
      - returns: Void
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func delete(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) {
+    open class func delete(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws {
         return try await deleteWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -148,7 +148,7 @@ open class ApplicationsAPI {
      - returns: Application
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func getById(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> Application {
+    open class func getById(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> Application {
         return try await getByIdWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -188,7 +188,7 @@ open class ApplicationsAPI {
      - returns: Application
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func getByKey(apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> Application {
+    open class func getByKey(apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> Application {
         return try await getByKeyWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -226,7 +226,7 @@ open class ApplicationsAPI {
      */
     @available(*, deprecated, message: "This operation is deprecated.")
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func regenerateKey(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> Application {
+    open class func regenerateKey(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> Application {
         return try await regenerateKeyWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -269,7 +269,7 @@ open class ApplicationsAPI {
      - returns: Application
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func update(id: UUID, updateApplicationRequest: UpdateApplicationRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> Application {
+    open class func update(id: UUID, updateApplicationRequest: UpdateApplicationRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> Application {
         return try await updateWithRequestBuilder(id: id, updateApplicationRequest: updateApplicationRequest, apiConfiguration: apiConfiguration).execute().body
     }
 

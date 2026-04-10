@@ -17,7 +17,7 @@ open class ThreeDSAPI {
      - returns: ThreeDSAuthentication
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func threeDSAuthenticateSession(sessionId: UUID, authenticateThreeDSSessionRequest: AuthenticateThreeDSSessionRequest? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ThreeDSAuthentication {
+    open class func threeDSAuthenticateSession(sessionId: UUID, authenticateThreeDSSessionRequest: AuthenticateThreeDSSessionRequest? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> ThreeDSAuthentication {
         return try await threeDSAuthenticateSessionWithRequestBuilder(sessionId: sessionId, authenticateThreeDSSessionRequest: authenticateThreeDSSessionRequest, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -59,7 +59,7 @@ open class ThreeDSAPI {
      - returns: CreateThreeDSSessionResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func threeDSCreateSession(createThreeDSSessionRequest: CreateThreeDSSessionRequest? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> CreateThreeDSSessionResponse {
+    open class func threeDSCreateSession(createThreeDSSessionRequest: CreateThreeDSSessionRequest? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> CreateThreeDSSessionResponse {
         return try await threeDSCreateSessionWithRequestBuilder(createThreeDSSessionRequest: createThreeDSSessionRequest, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -97,7 +97,7 @@ open class ThreeDSAPI {
      - returns: ThreeDSAuthentication
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func threeDSGetChallengeResult(sessionId: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ThreeDSAuthentication {
+    open class func threeDSGetChallengeResult(sessionId: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> ThreeDSAuthentication {
         return try await threeDSGetChallengeResultWithRequestBuilder(sessionId: sessionId, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -138,7 +138,7 @@ open class ThreeDSAPI {
      - returns: ThreeDSSession
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func threeDSGetSessionById(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ThreeDSSession {
+    open class func threeDSGetSessionById(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> ThreeDSSession {
         return try await threeDSGetSessionByIdWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 

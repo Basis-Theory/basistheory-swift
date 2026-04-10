@@ -16,7 +16,7 @@ open class DocumentsAPI {
      - returns: Document
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func callGet(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> Document {
+    open class func callGet(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> Document {
         return try await callGetWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -57,7 +57,7 @@ open class DocumentsAPI {
      - returns: Void
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func delete(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) {
+    open class func delete(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws {
         return try await deleteWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -98,7 +98,7 @@ open class DocumentsAPI {
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func getData(documentId: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> URL {
+    open class func getData(documentId: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> URL {
         return try await getDataWithRequestBuilder(documentId: documentId, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -140,7 +140,7 @@ open class DocumentsAPI {
      - returns: Document
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func upload(document: URL? = nil, request: CreateDocumentRequest? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> Document {
+    open class func upload(document: URL? = nil, request: CreateDocumentRequest? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> Document {
         return try await uploadWithRequestBuilder(document: document, request: request, apiConfiguration: apiConfiguration).execute().body
     }
 

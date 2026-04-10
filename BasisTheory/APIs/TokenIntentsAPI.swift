@@ -16,7 +16,7 @@ open class TokenIntentsAPI {
      - returns: CreateTokenIntentResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func create(createTokenIntentRequest: CreateTokenIntentRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> CreateTokenIntentResponse {
+    open class func create(createTokenIntentRequest: CreateTokenIntentRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> CreateTokenIntentResponse {
         return try await createWithRequestBuilder(createTokenIntentRequest: createTokenIntentRequest, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -54,7 +54,7 @@ open class TokenIntentsAPI {
      - returns: Void
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func delete(id: String, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) {
+    open class func delete(id: String, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws {
         return try await deleteWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -95,7 +95,7 @@ open class TokenIntentsAPI {
      - returns: TokenIntent
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func read(id: String, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> TokenIntent {
+    open class func read(id: String, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> TokenIntent {
         return try await readWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 

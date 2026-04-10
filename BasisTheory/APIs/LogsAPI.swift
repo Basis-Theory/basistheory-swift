@@ -22,7 +22,7 @@ open class LogsAPI {
      - returns: LogPaginatedList
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func callGet(entityType: String? = nil, entityId: String? = nil, startDate: Date? = nil, endDate: Date? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> LogPaginatedList {
+    open class func callGet(entityType: String? = nil, entityId: String? = nil, startDate: Date? = nil, endDate: Date? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> LogPaginatedList {
         return try await callGetWithRequestBuilder(entityType: entityType, entityId: entityId, startDate: startDate, endDate: endDate, page: page, start: start, size: size, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -74,7 +74,7 @@ open class LogsAPI {
      - returns: [LogEntityType]
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func getEntityTypes(apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> [LogEntityType] {
+    open class func getEntityTypes(apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> [LogEntityType] {
         return try await getEntityTypesWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
     }
 

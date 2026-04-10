@@ -15,7 +15,7 @@ open class TenantsAPI {
      - returns: Tenant
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func callGet(apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> Tenant {
+    open class func callGet(apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> Tenant {
         return try await callGetWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -52,7 +52,7 @@ open class TenantsAPI {
      - returns: CreateTenantConnectionResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func createConnection(createTenantConnectionRequest: CreateTenantConnectionRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> CreateTenantConnectionResponse {
+    open class func createConnection(createTenantConnectionRequest: CreateTenantConnectionRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> CreateTenantConnectionResponse {
         return try await createConnectionWithRequestBuilder(createTenantConnectionRequest: createTenantConnectionRequest, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -90,7 +90,7 @@ open class TenantsAPI {
      - returns: TenantInvitationResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func createInvitation(createTenantInvitationRequest: CreateTenantInvitationRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> TenantInvitationResponse {
+    open class func createInvitation(createTenantInvitationRequest: CreateTenantInvitationRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> TenantInvitationResponse {
         return try await createInvitationWithRequestBuilder(createTenantInvitationRequest: createTenantInvitationRequest, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -127,7 +127,7 @@ open class TenantsAPI {
      - returns: Void
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func delete(apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) {
+    open class func delete(apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws {
         return try await deleteWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -163,7 +163,7 @@ open class TenantsAPI {
      - returns: CreateTenantConnectionResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func deleteConnection(apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> CreateTenantConnectionResponse {
+    open class func deleteConnection(apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> CreateTenantConnectionResponse {
         return try await deleteConnectionWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -200,7 +200,7 @@ open class TenantsAPI {
      - returns: Void
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func deleteInvitation(invitationId: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) {
+    open class func deleteInvitation(invitationId: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws {
         return try await deleteInvitationWithRequestBuilder(invitationId: invitationId, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -241,7 +241,7 @@ open class TenantsAPI {
      - returns: Void
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func deleteMember(memberId: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) {
+    open class func deleteMember(memberId: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws {
         return try await deleteMemberWithRequestBuilder(memberId: memberId, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -282,7 +282,7 @@ open class TenantsAPI {
      - returns: TenantInvitationResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func getById(invitationId: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> TenantInvitationResponse {
+    open class func getById(invitationId: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> TenantInvitationResponse {
         return try await getByIdWithRequestBuilder(invitationId: invitationId, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -326,7 +326,7 @@ open class TenantsAPI {
      - returns: TenantInvitationResponsePaginatedList
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func getInvitations(status: TenantInvitationStatus? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> TenantInvitationResponsePaginatedList {
+    open class func getInvitations(status: TenantInvitationStatus? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> TenantInvitationResponsePaginatedList {
         return try await getInvitationsWithRequestBuilder(status: status, page: page, start: start, size: size, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -376,7 +376,7 @@ open class TenantsAPI {
      - returns: TenantMemberResponsePaginatedList
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func getMembers(userId: [UUID]? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> TenantMemberResponsePaginatedList {
+    open class func getMembers(userId: [UUID]? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> TenantMemberResponsePaginatedList {
         return try await getMembersWithRequestBuilder(userId: userId, page: page, start: start, size: size, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -422,7 +422,7 @@ open class TenantsAPI {
      - returns: TenantUsageReport
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func getTenantUsageReport(apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> TenantUsageReport {
+    open class func getTenantUsageReport(apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> TenantUsageReport {
         return try await getTenantUsageReportWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -458,7 +458,7 @@ open class TenantsAPI {
      - returns: TenantMemberResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func ownerGet(apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> TenantMemberResponse {
+    open class func ownerGet(apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> TenantMemberResponse {
         return try await ownerGetWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -495,7 +495,7 @@ open class TenantsAPI {
      - returns: TenantInvitationResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func resendInvitation(invitationId: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> TenantInvitationResponse {
+    open class func resendInvitation(invitationId: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> TenantInvitationResponse {
         return try await resendInvitationWithRequestBuilder(invitationId: invitationId, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -536,7 +536,7 @@ open class TenantsAPI {
      - returns: Tenant
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func update(updateTenantRequest: UpdateTenantRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> Tenant {
+    open class func update(updateTenantRequest: UpdateTenantRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> Tenant {
         return try await updateWithRequestBuilder(updateTenantRequest: updateTenantRequest, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -575,7 +575,7 @@ open class TenantsAPI {
      - returns: TenantMemberResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func updateMember(memberId: UUID, updateTenantMemberRequest: UpdateTenantMemberRequest? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> TenantMemberResponse {
+    open class func updateMember(memberId: UUID, updateTenantMemberRequest: UpdateTenantMemberRequest? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> TenantMemberResponse {
         return try await updateMemberWithRequestBuilder(memberId: memberId, updateTenantMemberRequest: updateTenantMemberRequest, apiConfiguration: apiConfiguration).execute().body
     }
 

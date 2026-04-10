@@ -19,7 +19,7 @@ open class ReactorFormulasAPI {
      - returns: ReactorFormulaPaginatedList
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func callGet(name: String? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ReactorFormulaPaginatedList {
+    open class func callGet(name: String? = nil, page: Int? = nil, start: String? = nil, size: Int? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> ReactorFormulaPaginatedList {
         return try await callGetWithRequestBuilder(name: name, page: page, start: start, size: size, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -66,7 +66,7 @@ open class ReactorFormulasAPI {
      - returns: ReactorFormula
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func create(createReactorFormulaRequest: CreateReactorFormulaRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ReactorFormula {
+    open class func create(createReactorFormulaRequest: CreateReactorFormulaRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> ReactorFormula {
         return try await createWithRequestBuilder(createReactorFormulaRequest: createReactorFormulaRequest, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -104,7 +104,7 @@ open class ReactorFormulasAPI {
      - returns: Void
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func delete(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) {
+    open class func delete(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws {
         return try await deleteWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -145,7 +145,7 @@ open class ReactorFormulasAPI {
      - returns: ReactorFormula
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func getById(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ReactorFormula {
+    open class func getById(id: UUID, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> ReactorFormula {
         return try await getByIdWithRequestBuilder(id: id, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -187,7 +187,7 @@ open class ReactorFormulasAPI {
      - returns: ReactorFormula
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func update(id: UUID, updateReactorFormulaRequest: UpdateReactorFormulaRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> ReactorFormula {
+    open class func update(id: UUID, updateReactorFormulaRequest: UpdateReactorFormulaRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> ReactorFormula {
         return try await updateWithRequestBuilder(id: id, updateReactorFormulaRequest: updateReactorFormulaRequest, apiConfiguration: apiConfiguration).execute().body
     }
 

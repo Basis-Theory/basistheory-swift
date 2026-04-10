@@ -16,7 +16,7 @@ open class TokenizeAPI {
      - returns: JSONValue
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func tokenize(body: JSONValue? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> JSONValue {
+    open class func tokenize(body: JSONValue? = nil, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> JSONValue {
         return try await tokenizeWithRequestBuilder(body: body, apiConfiguration: apiConfiguration).execute().body
     }
 

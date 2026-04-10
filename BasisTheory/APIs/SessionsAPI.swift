@@ -16,7 +16,7 @@ open class SessionsAPI {
      - returns: Void
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func authorize(authorizeSessionRequest: AuthorizeSessionRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) {
+    open class func authorize(authorizeSessionRequest: AuthorizeSessionRequest, apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws {
         return try await authorizeWithRequestBuilder(authorizeSessionRequest: authorizeSessionRequest, apiConfiguration: apiConfiguration).execute().body
     }
 
@@ -53,7 +53,7 @@ open class SessionsAPI {
      - returns: CreateSessionResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func create(apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws(ErrorResponse) -> CreateSessionResponse {
+    open class func create(apiConfiguration: BasisTheoryAPIConfiguration = BasisTheoryAPIConfiguration.shared) async throws -> CreateSessionResponse {
         return try await createWithRequestBuilder(apiConfiguration: apiConfiguration).execute().body
     }
 
