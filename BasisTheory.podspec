@@ -11,4 +11,5 @@ Pod::Spec.new do |s|
   s.summary = 'BasisTheory Swift SDK'
   s.source_files = 'BasisTheory/**/*.swift'
   s.swift_version = '6.0'
+  s.pod_target_xcconfig = { 'OTHER_SWIFT_FLAGS' => '-strict-concurrency=minimal' }
 end
