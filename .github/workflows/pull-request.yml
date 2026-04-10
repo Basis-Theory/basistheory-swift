@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Pod Linting
-        run: pod lib lint --allow-warnings --verbose
+        run: pod lib lint --allow-warnings
 
   dependency-check-test:
     name: Dependency Check Test
